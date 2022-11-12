@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx} from '@emotion/react'
 
 import * as React from 'react'
 import {Input, Button, Spinner, FormGroup, ErrorMessage} from './components/lib'
@@ -50,7 +50,7 @@ function LoginForm({onSubmit, submitButton}) {
           ...(Array.isArray(submitButton.props.children)
             ? submitButton.props.children
             : [submitButton.props.children]),
-          isLoading ? <Spinner css={{marginLeft: 5}} /> : null,
+          // isLoading ? <Spinner css={{marginLeft: 5}} /> : null,
         )}
       </div>
       {isError ? <ErrorMessage error={error} /> : null}

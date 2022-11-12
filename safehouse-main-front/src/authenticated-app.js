@@ -1,32 +1,18 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx} from '@emotion/react'
 
-import {Routes, Route, Link as RouterLink, useMatch} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import {ErrorBoundary} from 'react-error-boundary'
-import {Button, ErrorMessage, FullPageErrorFallback} from './components/lib'
+import {Button, FullPageErrorFallback} from './components/lib'
 import * as mq from './styles/media-queries'
 import * as colors from './styles/colors'
 import {useAuth} from './context/auth-context'
 import {AboutScreen} from './screens/about'
-import {GamesScreen} from './screens/games'
-import {FinanceScreen} from './screens/finance'
-import {TechScreen} from './screens/tech'
+import {GamesApp} from './screens/games'
+import {FinanceApp} from './screens/finance'
+import {TechApp} from './screens/tech'
 import {NotFoundScreen} from './screens/not-found'
-
-function ErrorFallback({error}) {
-  return (
-    <ErrorMessage
-      error={error}
-      css={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    />
-  )
-}
+import { NavLink, ErrorFallback } from './screens/navigation'
 
 function AuthenticatedApp() {
   const {user, logout} = useAuth()
@@ -66,42 +52,7 @@ function AuthenticatedApp() {
   )
 }
 
-function NavLink(props) {
-  const match = useMatch(props.to)
-  return (
-    <RouterLink
-      css={[
-        {
-          display: 'block',
-          padding: '8px 15px 8px 10px',
-          margin: '5px 0',
-          width: '100%',
-          height: '100%',
-          color: colors.text,
-          borderRadius: '2px',
-          borderLeft: '5px solid transparent',
-          ':hover,:focus': {
-            color: colors.indigo,
-            textDecoration: 'none',
-            background: colors.gray10,
-          },
-        },
-        match
-          ? {
-              borderLeft: `5px solid ${colors.indigo}`,
-              background: colors.gray10,
-              ':hover,:focus': {
-                background: colors.gray10,
-              },
-            }
-          : null,
-      ]}
-      {...props}
-    />
-  )
-}
-
-function Nav(params) {
+function Nav() {
   return (
     <nav
       css={{
@@ -125,13 +76,13 @@ function Nav(params) {
           <NavLink to="/about">About</NavLink>
         </li>
         <li style={{display: "inline-flex"}}>
-          <NavLink to="/games">Games</NavLink>
+          <NavLink to="/games/intro">Games</NavLink>
         </li>
         <li style={{display: "inline-flex"}}>
-          <NavLink to="/finance">Finance</NavLink>
+          <NavLink to="/finance/intro">Finance</NavLink>
         </li>
         <li style={{display: "inline-flex"}}>
-          <NavLink to="/tech">Tech</NavLink>
+          <NavLink to="/tech/intro">Tech</NavLink>
         </li>
       </ul>
     </nav>
@@ -141,11 +92,10 @@ function Nav(params) {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/about" element={<AboutScreen />} />
-      <Route path="/games" element={<GamesScreen />} />
-      <Route path="/finance" element={<FinanceScreen />} />
-      <Route path="/tech" element={<TechScreen/>} />
-      {/* <Route path="/book/:bookId" element={<BookScreen />} /> */}
+      <Route path="/about/*" element={<AboutScreen />} />
+      <Route path="/games/*" element={<GamesApp />} />
+      <Route path="/finance/*" element={<FinanceApp />} />
+      <Route path="/tech/*" element={<TechApp/>} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   )

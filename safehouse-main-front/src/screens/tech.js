@@ -1,9 +1,85 @@
 import * as React from 'react'
 
-function TechScreen() {
+import { NavLink, ErrorFallback } from './navigation'
+import {Routes, Route} from 'react-router-dom'
+import {NotFoundScreen} from './not-found'
+import {ErrorBoundary} from 'react-error-boundary'
+
+function TechIntroScreen() {
   return (
-    <p>This is the technology screen.</p>
+    <div>This is the Tech Intro screen.</div>
   )
 }
 
-export {TechScreen}
+function TechBlogScreen() {
+  return (
+    <p>This is the Tech Blog screen.</p>
+  )
+}
+
+function TechStudiesScreen() {
+  return (
+    <p>This is the Tech Studies screen.</p>
+  )
+}
+
+function TechDownloadScreen() {
+  return (
+    <p>This is the Tech download screen.</p>
+  )
+}
+
+function TechApp() {
+  return (
+      <div style={{display: 'table'}}>
+        <div style={{position: 'relative', width:'10%', display: 'table-cell'}}>
+          <TechNav />
+        </div>
+        <div style={{width: '90%', display: 'table-cell'}}>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <TechAppRoutes />
+          </ErrorBoundary>
+        </div>
+      </div>
+  )
+}
+
+function TechNav() {
+  return (
+    <nav>
+      <ul
+        css={{
+          listStyle: 'none',
+          padding: '0',
+        }}
+      >
+        <li>
+          <NavLink to="/tech/intro">Introduction</NavLink>
+        </li>
+        <li>
+          <NavLink to="/tech/blogs">Blog posts</NavLink>
+        </li>
+        <li>
+          <NavLink to="/tech/studies">Studies</NavLink>
+        </li>
+        <li>
+          <NavLink to="/tech/download">Downloads</NavLink>
+        </li>
+      </ul>
+    </nav>
+  )
+}
+
+function TechAppRoutes() {
+  return (
+    <Routes>
+      <Route path="/intro" element={<TechIntroScreen />} />
+      <Route path="/blogs" element={<TechBlogScreen />} />
+      <Route path="/studies" element={<TechStudiesScreen />} />
+      <Route path="/download" element={<TechDownloadScreen />} />
+      <Route path="/*" element={<NotFoundScreen />} />
+    </Routes>
+  )
+}
+
+export {TechApp}

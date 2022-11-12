@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx} from '@emotion/react'
 
 import * as React from 'react'
-import VisuallyHidden from '@reach/visually-hidden'
-import {Dialog, CircleButton} from './lib'
+import {CircleButton} from './lib'
 
 const callAll =
   (...fns) =>
@@ -32,27 +31,20 @@ function ModalOpenButton({children: child}) {
   })
 }
 
-function ModalContentsBase(props) {
-  const [isOpen, setIsOpen] = React.useContext(ModalContext)
-  return (
-    <Dialog isOpen={isOpen} onDismiss={() => setIsOpen(false)} {...props} />
-  )
-}
-
 function ModalContents({title, children, ...props}) {
   return (
-    <ModalContentsBase {...props}>
-      <div css={{display: 'flex', justifyContent: 'flex-end'}}>
+    <>
+    <div css={{display: 'flex', justifyContent: 'flex-end'}}>
         <ModalDismissButton>
           <CircleButton>
-            <VisuallyHidden>Close</VisuallyHidden>
+            <span>Close</span>
             <span aria-hidden>×</span>
           </CircleButton>
         </ModalDismissButton>
       </div>
       <h3 css={{textAlign: 'center', fontSize: '2em'}}>{title}</h3>
       {children}
-    </ModalContentsBase>
+    </>
   )
 }
 
