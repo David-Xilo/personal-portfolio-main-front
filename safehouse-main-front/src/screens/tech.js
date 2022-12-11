@@ -47,14 +47,9 @@ function TechApp() {
 function TechNav() {
   return (
     <nav>
-      <ul
-        css={{
-          listStyle: 'none',
-          padding: '0',
-        }}
-      >
+      <ul style={{listStyle: 'none',}}>
         <li>
-          <NavLink to="/tech/intro">Introduction</NavLink>
+          <NavLink to="/tech/">Introduction</NavLink>
         </li>
         <li>
           <NavLink to="/tech/blogs">Blog posts</NavLink>
@@ -73,7 +68,7 @@ function TechNav() {
 function TechAppRoutes() {
   return (
     <Routes>
-      <Route path="/intro" element={<TechIntroScreen />} />
+      <Route path="/" element={<TechIntroScreen />} />
       <Route path="/blogs" element={<TechBlogScreen />} />
       <Route path="/studies" element={<TechStudiesScreen />} />
       <Route path="/download" element={<TechDownloadScreen />} />

@@ -2,13 +2,13 @@
 import {jsx} from '@emotion/react'
 
 import * as React from 'react'
-import {Input, Button, Spinner, FormGroup, ErrorMessage} from './components/lib'
+import {Input, Button, FormGroup, ErrorMessage} from './components/lib'
 import {Modal, ModalContents, ModalOpenButton} from './components/modal'
 import {useAuth} from './context/auth-context'
 import {useAsync} from './utils/hooks'
 
 function LoginForm({onSubmit, submitButton}) {
-  const {isLoading, isError, error, run} = useAsync()
+  const {isError, error, run} = useAsync()
   function handleSubmit(event) {
     event.preventDefault()
     const {username, password} = event.target.elements
@@ -50,11 +50,22 @@ function LoginForm({onSubmit, submitButton}) {
           ...(Array.isArray(submitButton.props.children)
             ? submitButton.props.children
             : [submitButton.props.children]),
-          // isLoading ? <Spinner css={{marginLeft: 5}} /> : null,
         )}
       </div>
       {isError ? <ErrorMessage error={error} /> : null}
     </form>
+  )
+}
+
+function AppLoginForm() {
+  return (
+    <></>
+  )
+}
+
+function AppRegisterForm() {
+  return (
+    <></>
   )
 }
 
@@ -71,7 +82,7 @@ function UnauthenticatedApp() {
         height: '100vh',
       }}
     >
-      <h1>Bookshelf</h1>
+      <h1>Safehouse</h1>
       <div
         css={{
           display: 'grid',

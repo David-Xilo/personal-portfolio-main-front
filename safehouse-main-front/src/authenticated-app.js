@@ -14,11 +14,10 @@ import {TechApp} from './screens/tech'
 import {NotFoundScreen} from './screens/not-found'
 import { NavLink, ErrorFallback } from './screens/navigation'
 
-function AuthenticatedApp() {
+function AuthenticatedHeader() {
   const {user, logout} = useAuth()
   return (
-    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <div
+    <div
         css={{
           display: 'flex',
           alignItems: 'center',
@@ -32,6 +31,13 @@ function AuthenticatedApp() {
           Logout
         </Button>
       </div>
+  )
+}
+
+function AuthenticatedApp() {
+  return (
+    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
+      <AuthenticatedHeader />
       <div
         css={{
           margin: '0 auto',
@@ -42,7 +48,7 @@ function AuthenticatedApp() {
         <div css={{position: 'relative'}}>
           <Nav />
         </div>
-        <main css={{width: '100%'}}>
+        <main>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <AppRoutes />
           </ErrorBoundary>
@@ -59,30 +65,33 @@ function Nav() {
         position: 'sticky',
         top: '4px',
         padding: '1em 1.5em',
-        border: `1px solid ${colors.gray10}`,
+        border: `2px solid ${colors.gray10}`,
         borderRadius: '3px',
         [mq.small]: {
           position: 'static',
           top: 'auto',
         },
+        background: colors.gray10,
       }}
     >
       <ul
         css={{
           listStyle: 'none',
+          padding: '0',
+          margin: '0',
         }}
       >
-        <li style={{display: "inline-flex"}}>
-          <NavLink to="/about">About</NavLink>
+        <li css={{display: "inline-flex"}}>
+          <NavLink to="/" disableOutline={true}>About</NavLink>
         </li>
-        <li style={{display: "inline-flex"}}>
-          <NavLink to="/games/intro">Games</NavLink>
+        <li css={{display: "inline-flex"}}>
+          <NavLink to="/games" disableOutline={true}>Games</NavLink>
         </li>
-        <li style={{display: "inline-flex"}}>
-          <NavLink to="/finance/intro">Finance</NavLink>
+        <li css={{display: "inline-flex"}}>
+          <NavLink to="/finance" disableOutline={true}>Finance</NavLink>
         </li>
-        <li style={{display: "inline-flex"}}>
-          <NavLink to="/tech/intro">Tech</NavLink>
+        <li css={{display: "inline-flex"}}>
+          <NavLink to="/tech" disableOutline={true}>Tech</NavLink>
         </li>
       </ul>
     </nav>
@@ -92,11 +101,11 @@ function Nav() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/about/*" element={<AboutScreen />} />
+      <Route path="/" element={<AboutScreen />} />
       <Route path="/games/*" element={<GamesApp />} />
       <Route path="/finance/*" element={<FinanceApp />} />
       <Route path="/tech/*" element={<TechApp/>} />
-      <Route path="*" element={<NotFoundScreen />} />
+      <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   )
 }

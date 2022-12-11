@@ -43,14 +43,9 @@ function GamesApp() {
 function GamesNav() {
   return (
     <nav>
-      <ul
-        css={{
-          listStyle: 'none',
-          padding: '0',
-        }}
-      >
+      <ul style={{listStyle: 'none',}}>
         <li>
-          <NavLink to="/games/intro">Introduction</NavLink>
+          <NavLink to="/games/">Introduction</NavLink>
         </li>
         <li>
           <NavLink to="/games/blogs">Blog posts</NavLink>
@@ -66,7 +61,7 @@ function GamesNav() {
 function GamesAppRoutes() {
   return (
     <Routes>
-      <Route path="/intro" element={<GamesIntroScreen />} />
+      <Route path="/" element={<GamesIntroScreen />} />
       <Route path="/blogs" element={<GamesBlogScreen />} />
       <Route path="/downloads" element={<GamesDownloadScreen />} />
       <Route path="/*" element={<NotFoundScreen />} />

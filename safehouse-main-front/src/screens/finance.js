@@ -47,14 +47,9 @@ function FinanceApp() {
 function FinanceNav() {
   return (
     <nav>
-      <ul
-        css={{
-          listStyle: 'none',
-          padding: '0',
-        }}
-      >
+      <ul style={{listStyle: 'none',}}>
         <li>
-          <NavLink to="/finance/intro">Introduction</NavLink>
+          <NavLink to="/finance/">Introduction</NavLink>
         </li>
         <li>
           <NavLink to="/finance/blogs">Blog posts</NavLink>
@@ -73,7 +68,7 @@ function FinanceNav() {
 function FinanceAppRoutes() {
   return (
     <Routes>
-      <Route path="/intro" element={<FinanceIntroScreen />} />
+      <Route path="/" element={<FinanceIntroScreen />} />
       <Route path="/blogs" element={<FinanceBlogScreen />} />
       <Route path="/analysis" element={<FinanceAnalysisScreen />} />
       <Route path="/studies" element={<FinanceStudiesScreen />} />

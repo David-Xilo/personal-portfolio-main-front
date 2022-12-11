@@ -8,6 +8,7 @@ import {ErrorMessage} from '../components/lib'
 
 function NavLink(props) {
 const match = useMatch(props.to)
+const outline = match && !props.disableOutline
 return (
     <RouterLink
     css={[
@@ -15,21 +16,26 @@ return (
         display: 'block',
         padding: '8px 15px 8px 10px',
         margin: '5px 0',
-        // width: '100%',
-        // height: '100%',
         color: colors.text,
         borderRadius: '2px',
         borderLeft: '5px solid transparent',
-        ':hover,:focus': {
+        textDecorationLine: 'none',
+        ':hover': {
             color: colors.indigo,
             textDecoration: 'none',
             background: colors.gray10,
         },
+        ':focus': outline ? {
+            color: colors.indigo,
+            textDecoration: 'none',
+            background: colors.gray10,
+        } : null,
         },
-        match
+        outline
         ? {
             borderLeft: `5px solid ${colors.indigo}`,
             background: colors.gray10,
+            fontWeight: 'bold',
             ':hover,:focus': {
                 background: colors.gray10,
             },
