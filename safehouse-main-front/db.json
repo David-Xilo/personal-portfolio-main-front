@@ -1,0 +1,13 @@
+{
+  "games": {
+    "intro": {
+      "message": "This is the game Intro screen."
+    },
+    "blogs": {
+      "message": "This is the game Blog screen."
+    },
+    "downloads": {
+      "message": "This is the game Download screen."
+    }
+  }
+}

@@ -1,9 +1,16 @@
-version: '3'
-
+version: "3"
 services:
-  node:
+  frontend:
     build: .
-    volumes:
-      - ./src:/app/src
     ports:
-      - '3000:3000'
+      - "3000:3000"
+    command: npm start
+    volumes:
+      - .:/app
+  backend:
+    image: node:alpine
+    command: json-server --watch db.json
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app

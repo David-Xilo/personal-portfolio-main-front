@@ -4,23 +4,30 @@ import { NavLink, ErrorFallback } from './navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from './not-found'
 import {ErrorBoundary} from 'react-error-boundary'
+import {useGetApi} from '../utils/useApi'
 
 
 function GamesIntroScreen() {
+  const data = useGetApi('games/intro')
+
   return (
-    <div>This is the game Intro screen.</div>
+    <div>{data.message}</div>
   )
 }
 
 function GamesBlogScreen() {
+  const data = useGetApi('games/blogs')
+
   return (
-    <p>This is the game Blog screen.</p>
+    <p>{data.message}</p>
   )
 }
 
 function GamesDownloadScreen() {
+  const data = useGetApi('games/downloads')
+
   return (
-    <p>This is the game Download screen.</p>
+    <p>{data.message}</p>
   )
 }
 

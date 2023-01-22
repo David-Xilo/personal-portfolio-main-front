@@ -4,28 +4,37 @@ import { NavLink, ErrorFallback } from './navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from './not-found'
 import {ErrorBoundary} from 'react-error-boundary'
+import {useGetApi} from '../utils/useApi'
 
 function FinanceIntroScreen() {
+  const data = useGetApi('finance/intro')
+
   return (
-    <div>This is the finance Intro screen.</div>
+    <div>{data.message}</div>
   )
 }
 
 function FinanceBlogScreen() {
+  const data = useGetApi('finance/blogs')
+
   return (
-    <p>This is the finance Blog screen.</p>
+    <p>{data.message}</p>
   )
 }
 
 function FinanceAnalysisScreen() {
+  const data = useGetApi('finance/analysis')
+
   return (
-    <p>This is the finance analysis screen.</p>
+    <p>{data.message}</p>
   )
 }
 
 function FinanceStudiesScreen() {
+  const data = useGetApi('finance/studies')
+
   return (
-    <p>This is the finance studies screen.</p>
+    <p>{data.message}</p>
   )
 }
 

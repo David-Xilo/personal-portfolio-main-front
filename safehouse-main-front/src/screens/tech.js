@@ -4,28 +4,37 @@ import { NavLink, ErrorFallback } from './navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from './not-found'
 import {ErrorBoundary} from 'react-error-boundary'
+import {useGetApi} from '../utils/useApi'
 
 function TechIntroScreen() {
+  const data = useGetApi('tech/intro')
+
   return (
-    <div>This is the Tech Intro screen.</div>
+    <div>{data.message}</div>
   )
 }
 
 function TechBlogScreen() {
+  const data = useGetApi('tech/blogs')
+
   return (
-    <p>This is the Tech Blog screen.</p>
+    <p>{data.message}</p>
   )
 }
 
 function TechStudiesScreen() {
+  const data = useGetApi('tech/studies')
+
   return (
-    <p>This is the Tech Studies screen.</p>
+    <p>{data.message}</p>
   )
 }
 
 function TechDownloadScreen() {
+  const data = useGetApi('tech/downloads')
+
   return (
-    <p>This is the Tech download screen.</p>
+    <p>{data.message}</p>
   )
 }
 
@@ -58,7 +67,7 @@ function TechNav() {
           <NavLink to="/tech/studies">Studies</NavLink>
         </li>
         <li>
-          <NavLink to="/tech/download">Downloads</NavLink>
+          <NavLink to="/tech/downloads">Downloads</NavLink>
         </li>
       </ul>
     </nav>
@@ -71,7 +80,7 @@ function TechAppRoutes() {
       <Route path="/" element={<TechIntroScreen />} />
       <Route path="/blogs" element={<TechBlogScreen />} />
       <Route path="/studies" element={<TechStudiesScreen />} />
-      <Route path="/download" element={<TechDownloadScreen />} />
+      <Route path="/downloads" element={<TechDownloadScreen />} />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   )
