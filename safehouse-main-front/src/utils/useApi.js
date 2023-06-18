@@ -6,7 +6,7 @@ const domain = "http://localhost:4000/";
 const useGetApi = (endpoint) => {
   const completeEndpoint = domain + endpoint;
   const [data, setData] = useState([]);
-
+  console.log(completeEndpoint)
   useEffect(() => {
     fetch(completeEndpoint)
       .then(response => response.json())

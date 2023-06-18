@@ -7,6 +7,7 @@ import {ErrorBoundary} from 'react-error-boundary'
 import {useGetApi} from '../utils/useApi'
 
 function FinanceIntroScreen() {
+  console.log("FinanceIntroScreen")
   const data = useGetApi('finance/intro')
 
   return (
@@ -15,6 +16,7 @@ function FinanceIntroScreen() {
 }
 
 function FinanceBlogScreen() {
+  console.log("FinanceBlogScreen")
   const data = useGetApi('finance/blogs')
 
   return (
