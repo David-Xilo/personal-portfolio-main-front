@@ -35,6 +35,10 @@ const buttonVariants = {
     background: colors.gray,
     color: colors.text,
   },
+  terciary: {
+    background: colors.black,
+    color: colors.base,
+  },
 }
 const Button = styled.button(
   {

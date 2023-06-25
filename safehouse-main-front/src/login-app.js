@@ -2,10 +2,28 @@
 import {jsx} from '@emotion/react'
 
 import * as React from 'react'
+import {useNavigate, Route, Routes} from 'react-router-dom'
+import {ErrorBoundary} from 'react-error-boundary'
+import { ErrorFallback } from './screens/navigation'
 import { useState, cloneElement } from 'react'
 import {Input, Button, FormGroup, ErrorMessage} from './components/lib'
 import {useAuth} from './context/auth-context'
 import {useAsync} from './utils/hooks'
+import {useMain} from './main-app'
+
+function useLogin() {
+    const navigate = useNavigate();
+
+    console.log("useLogin")
+    const renderLogin = () => {
+      navigate('/account'); 
+    };
+  
+    return {
+        renderLogin,
+    };
+  }
+
 
 function LoginForm({ onSubmit, submitButton, handleBackClick }) {
   const { isError, error, run } = useAsync();
@@ -62,13 +80,15 @@ function LoginForm({ onSubmit, submitButton, handleBackClick }) {
 }
 
 function LoginScreen({ handleRegisterClick, handleLoginClick }) {
+  const { renderMainApp } = useMain();
+  console.log("LoginScreen")
   return (
     <>
           <h1>Safehouse</h1>
           <div
             css={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
               gridGap: '0.75rem',
             }}
           >
@@ -78,32 +98,34 @@ function LoginScreen({ handleRegisterClick, handleLoginClick }) {
             <Button variant="primary" onClick={handleLoginClick}>
               Login
             </Button>
+            <Button variant="terciary" onClick={renderMainApp}>
+              Back
+            </Button>
           </div>
         </>
   )
 }
 
+function Login({login, register}) {
+    
+    const [showLoginForm, setShowLoginForm] = useState(false);
+    const [showRegisterForm, setShowRegisterForm] = useState(false);
+  
+    const handleRegisterClick = () => {
+      setShowRegisterForm(true);
+    };
+  
+    const handleLoginClick = () => {
+      setShowLoginForm(true);
+    };
+  
+    const handleBackClick = () => {
+      setShowLoginForm(false);
+      setShowRegisterForm(false);
+    };
 
-function UnauthenticatedApp() {
-  const { login, register } = useAuth();
-  const [showLoginForm, setShowLoginForm] = useState(false);
-  const [showRegisterForm, setShowRegisterForm] = useState(false);
-
-  const handleRegisterClick = () => {
-    setShowRegisterForm(true); // Show the login form
-  };
-
-  const handleLoginClick = () => {
-    setShowLoginForm(true); // Show the login form
-  };
-
-  const handleBackClick = () => {
-    setShowLoginForm(false);
-    setShowRegisterForm(false);
-  };
-
-  return (
-    <div
+    return (
+        <div
       css={{
         display: 'flex',
         flexDirection: 'column',
@@ -134,7 +156,65 @@ function UnauthenticatedApp() {
         />
       )}
     </div>
+    )
+}
+
+
+function LoginApp() {
+    const { user, login, register, logout } = useAuth();
+    const { renderLogin } = useLogin()
+
+  return (
+    <>
+    {user && 
+        <div
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+        }}
+      >
+        {user.username}
+        <Button variant="secondary" css={{marginLeft: '10px'}} onClick={renderLogin}>
+          Logout
+        </Button>
+      </div>
+    }
+
+    {!user && 
+        <div
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+        }}
+      >
+        {user.username}
+        <Button variant="secondary" css={{marginLeft: '10px'}} onClick={renderLogin}>
+          Login
+        </Button>
+      </div>
+    }
+    <main>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <LoginRoutes />
+        </ErrorBoundary>
+    </main>
+    </>
+    
   );
 }
 
-export default UnauthenticatedApp
+function LoginRoutes() {
+    return (
+      <Routes>
+        <Route path="/account/*" element={<Login />} />
+      </Routes>
+    )
+  }
+
+export {LoginApp, useLogin, Login}
