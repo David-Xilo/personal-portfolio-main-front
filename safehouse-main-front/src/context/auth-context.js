@@ -3,7 +3,7 @@ import {jsx} from '@emotion/react'
 
 import * as React from 'react'
 import {queryCache} from 'react-query'
-import * as auth from 'auth-provider'
+import * as auth from '../login-service/auth-provider'
 import {client} from 'utils/api-client'
 import {useAsync} from 'utils/hooks'
 import {FullPageSpinner, FullPageErrorFallback} from 'components/lib'

@@ -3,18 +3,6 @@
 
 const localStorageKey = '__auth_provider_token__'
 
-async function getToken() {
-  // if we were a real auth provider, this is where we would make a request
-  // to retrieve the user's token. (It's a bit more complicated than that...
-  // but you're probably not an auth provider so you don't need to worry about it).
-  return window.localStorage.getItem(localStorageKey)
-}
-
-function handleUserResponse({user}) {
-  window.localStorage.setItem(localStorageKey, user.token)
-  return user
-}
-
 function login({username, password}) {
   return client('login', {username, password}).then(handleUserResponse)
 }
@@ -23,8 +11,20 @@ function register({username, password}) {
   return client('register', {username, password}).then(handleUserResponse)
 }
 
+async function getToken() {
+  // if we were a real auth provider, this is where we would make a request
+  // to retrieve the user's token. (It's a bit more complicated than that...
+  // but you're probably not an auth provider so you don't need to worry about it).
+  return window.localStorage.getItem(localStorageKey)
+}
+
 async function logout() {
   window.localStorage.removeItem(localStorageKey)
+}
+
+function handleUserResponse({user}) {
+  window.localStorage.setItem(localStorageKey, user.token)
+  return user
 }
 
 // an auth provider wouldn't use your client, they'd have their own
