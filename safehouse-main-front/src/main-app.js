@@ -12,7 +12,6 @@ import {FinanceApp} from './screens/finance'
 import {TechApp} from './screens/tech'
 import {NotFoundScreen} from './screens/not-found'
 import { NavLink, ErrorFallback } from './screens/navigation'
-import { LoginApp } from './screens/login'
 
 function useMain() {
     const navigate = useNavigate();
@@ -31,7 +30,6 @@ function MainApp() {
     console.log("MainApp")
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <LoginApp />
       <div
         css={{
           margin: '0 auto',
