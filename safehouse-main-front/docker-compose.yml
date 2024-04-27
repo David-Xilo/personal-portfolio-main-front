@@ -7,10 +7,3 @@ services:
     command: npm start
     volumes:
       - .:/app
-  backend:
-    image: node:alpine
-    command: json-server --watch db.json
-    ports:
-      - "4000:4000"
-    volumes:
-      - .:/app
