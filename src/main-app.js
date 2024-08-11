@@ -19,6 +19,7 @@ import {HiddenMenu} from './screens/hiddenMenu'
 function MainApp() {
   const [menuContent, setMenuContent] = useState(null);
   const [SubNavComponent, setSubNavComponent] = useState(null);
+  const navHeight = '60px'; // Define the height of the main navigation
 
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
@@ -31,7 +32,7 @@ function MainApp() {
         }}
       >
         {/* Main Navigation at the top */}
-        <MainNav />
+        <MainNav navHeight={navHeight} />
 
         <div
           css={{
@@ -75,19 +76,20 @@ function MainApp() {
           </main>
 
           {/* Hidden Menu on the right */}
-          <HiddenMenu content={menuContent} />
+          <HiddenMenu content={menuContent} navHeight={navHeight} />
         </div>
       </div>
     </ErrorBoundary>
   );
 }
 
-function MainNav() {
+function MainNav({ navHeight }) {
   return (
     <nav
       css={{
         position: 'sticky',
         top: '4px',
+        height: navHeight, // Use the passed navHeight for consistent styling
         zIndex: 1002,
         padding: '1em 1.5em',
         borderBottom: `2px solid ${colors.gray10}`,

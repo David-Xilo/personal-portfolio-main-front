@@ -1,44 +1,46 @@
 import React, { useState } from 'react';
 
-function HiddenMenu({ content }) {
+function HiddenMenu({ content, navHeight }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <>
+      {/* Button to toggle the hidden menu */}
       <button
         onClick={toggleMenu}
-        style={{
+        css={{
           position: 'fixed',
-          top: '20px',
+          top: `calc(${navHeight} + 10px)`, // Position the button just below the nav bar
           right: isOpen ? '300px' : '0',
           backgroundColor: '#333',
           color: 'white',
           border: 'none',
           cursor: 'pointer',
           padding: '10px',
-          zIndex: 1001,
+          zIndex: 1002, // Ensure the button is above the hidden menu
         }}
       >
         {isOpen ? 'Close' : 'Open'}
       </button>
 
-      <div style={{
-        position: 'fixed',
-        right: isOpen ? '0' : '-300px',
-        top: 0,
-        height: '100vh',
-        width: '300px',
-        overflowY: 'auto',
-        transition: 'right 0.5s ease',
-        backgroundColor: '#333',
-        zIndex: 1000,
-        color: 'white',
-      }}>
-        <div style={{ padding: '8px 16px' }}>
-          {content}
-        </div>
+      {/* Hidden menu positioned below the navigation bar */}
+      <div
+        css={{
+          position: 'fixed',
+          top: navHeight, // Start the hidden menu just below the main nav bar
+          right: isOpen ? '0' : '-300px',
+          height: `calc(100vh - ${navHeight})`, // Adjust the height based on the nav bar
+          width: '300px',
+          overflowY: 'auto',
+          transition: 'right 0.5s ease',
+          backgroundColor: '#333',
+          zIndex: 1001, // Make sure it's below the button but above other content
+          color: 'white',
+        }}
+      >
+        <div css={{ padding: '8px 16px' }}>{content}</div>
       </div>
     </>
   );
