@@ -14,14 +14,6 @@ function TechIntroScreen() {
   )
 }
 
-function TechBlogScreen() {
-  const data = useGetApi('tech/blogs')
-
-  return (
-    <p>{data.message}</p>
-  )
-}
-
 function TechStudiesScreen() {
   const data = useGetApi('tech/studies')
 
@@ -61,9 +53,6 @@ function TechNav() {
           <NavLink to="/tech/">Introduction</NavLink>
         </li>
         <li>
-          <NavLink to="/tech/blogs">Blog posts</NavLink>
-        </li>
-        <li>
           <NavLink to="/tech/studies">Studies</NavLink>
         </li>
         <li>
@@ -78,7 +67,6 @@ function TechAppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<TechIntroScreen />} />
-      <Route path="/blogs" element={<TechBlogScreen />} />
       <Route path="/studies" element={<TechStudiesScreen />} />
       <Route path="/downloads" element={<TechDownloadScreen />} />
       <Route path="/*" element={<NotFoundScreen />} />

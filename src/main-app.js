@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 
-import {Routes, Route, useNavigate} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import {ErrorBoundary} from 'react-error-boundary'
 import {FullPageErrorFallback} from './components/lib'
 import * as mq from './styles/media-queries'
@@ -12,45 +12,11 @@ import {FinanceApp} from './screens/finance'
 import {TechApp} from './screens/tech'
 import {NotFoundScreen} from './screens/not-found'
 import { NavLink, ErrorFallback } from './screens/navigation'
+import {BlogApp} from './screens/blog'
+import {useState} from 'react'
+import {HiddenMenu} from './screens/hiddenMenu'
 
-function useMain() {
-    const navigate = useNavigate();
-
-    console.log("useMain")
-    const renderMainApp = () => {
-      navigate('/'); 
-    };
-  
-    return {
-      renderMainApp,
-    };
-  }
-
-function MainApp() {
-    console.log("MainApp")
-  return (
-    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <div
-        css={{
-          margin: '0 auto',
-          padding: '4em 2em',
-          width: '100%',
-        }}
-      >
-        <div css={{position: 'relative'}}>
-          <Nav />
-        </div>
-        <main>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <AppRoutes />
-          </ErrorBoundary>
-        </main>
-      </div>
-    </ErrorBoundary>
-  )
-}
-
-function Nav() {
+function MainNav() {
   return (
     <nav
       css={{
@@ -73,16 +39,19 @@ function Nav() {
           margin: '0',
         }}
       >
-        <li css={{display: "inline-flex"}}>
+        <li css={{display: 'inline-flex'}}>
           <NavLink to="">About</NavLink>
         </li>
-        <li css={{display: "inline-flex"}}>
+        <li css={{display: 'inline-flex'}}>
+          <NavLink to="/blog">Blog</NavLink>
+        </li>
+        <li css={{display: 'inline-flex'}}>
           <NavLink to="/games">Games</NavLink>
         </li>
-        <li css={{display: "inline-flex"}}>
+        <li css={{display: 'inline-flex'}}>
           <NavLink to="/finance">Finance</NavLink>
         </li>
-        <li css={{display: "inline-flex"}}>
+        <li css={{display: 'inline-flex'}}>
           <NavLink to="/tech">Tech</NavLink>
         </li>
       </ul>
@@ -90,19 +59,44 @@ function Nav() {
   )
 }
 
-function AppRoutes() {
+function MainApp() {
+  const [menuContent, setMenuContent] = useState(null);
+
+  return (
+    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
+      <div
+        css={{
+          margin: '0 auto',
+          padding: '4em 2em',
+          width: '100%',
+        }}
+      >
+        <div css={{position: 'relative'}}>
+          <MainNav />
+        </div>
+        <main>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <AppRoutes setMenuContent={setMenuContent} />
+          </ErrorBoundary>
+        </main>
+        <HiddenMenu content={menuContent} />
+      </div>
+    </ErrorBoundary>
+  );
+}
+
+function AppRoutes({ setMenuContent }) {
   return (
     <Routes>
       <Route path="" element={<AboutScreen />} />
       <Route path="/about" element={<AboutScreen />} />
-      <Route path="/games/*" element={<GamesApp />} />
-      <Route path="/finance/*" element={<FinanceApp />} />
-      <Route path="/tech/*" element={<TechApp/>} />
+      <Route path="/blog/*" element={<BlogApp setMenuContent={setMenuContent} />} />
+      <Route path="/games/*" element={<GamesApp setMenuContent={setMenuContent} />} />
+      <Route path="/finance/*" element={<FinanceApp setMenuContent={setMenuContent} />} />
+      <Route path="/tech/*" element={<TechApp setMenuContent={setMenuContent} />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
-  )
+  );
 }
 
 export default MainApp
-
-export {useMain}

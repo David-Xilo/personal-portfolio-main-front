@@ -15,14 +15,6 @@ function GamesIntroScreen() {
   )
 }
 
-function GamesBlogScreen() {
-  const data = useGetApi('games/blogs')
-
-  return (
-    <p>{data.message}</p>
-  )
-}
-
 function GamesDownloadScreen() {
   const data = useGetApi('games/downloads')
 
@@ -55,9 +47,6 @@ function GamesNav() {
           <NavLink to="/games/">Introduction</NavLink>
         </li>
         <li>
-          <NavLink to="/games/blogs">Blog posts</NavLink>
-        </li>
-        <li>
           <NavLink to="/games/downloads">Downloads</NavLink>
         </li>
       </ul>
@@ -69,7 +58,6 @@ function GamesAppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<GamesIntroScreen />} />
-      <Route path="/blogs" element={<GamesBlogScreen />} />
       <Route path="/downloads" element={<GamesDownloadScreen />} />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>

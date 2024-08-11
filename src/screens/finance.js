@@ -15,15 +15,6 @@ function FinanceIntroScreen() {
   )
 }
 
-function FinanceBlogScreen() {
-  console.log("FinanceBlogScreen")
-  const data = useGetApi('finance/blogs')
-
-  return (
-    <p>{data.message}</p>
-  )
-}
-
 function FinanceAnalysisScreen() {
   const data = useGetApi('finance/analysis')
 
@@ -63,9 +54,6 @@ function FinanceNav() {
           <NavLink to="/finance/">Introduction</NavLink>
         </li>
         <li>
-          <NavLink to="/finance/blogs">Blog posts</NavLink>
-        </li>
-        <li>
           <NavLink to="/finance/analysis">Analysis</NavLink>
         </li>
         <li>
@@ -80,7 +68,6 @@ function FinanceAppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<FinanceIntroScreen />} />
-      <Route path="/blogs" element={<FinanceBlogScreen />} />
       <Route path="/analysis" element={<FinanceAnalysisScreen />} />
       <Route path="/studies" element={<FinanceStudiesScreen />} />
       <Route path="/*" element={<NotFoundScreen />} />
