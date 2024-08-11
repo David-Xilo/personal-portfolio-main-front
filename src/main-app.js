@@ -16,19 +16,81 @@ import {BlogApp} from './screens/blog'
 import {useState} from 'react'
 import {HiddenMenu} from './screens/hiddenMenu'
 
+function MainApp() {
+  const [menuContent, setMenuContent] = useState(null);
+  const [SubNavComponent, setSubNavComponent] = useState(null);
+
+  return (
+    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
+      <div
+        css={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Main Navigation at the top */}
+        <MainNav />
+
+        <div
+          css={{
+            display: 'flex',
+            flex: 1,
+            overflow: 'hidden',
+          }}
+        >
+          {/* Sub Navigation passed from the current domain */}
+          {SubNavComponent && (
+            <div
+              css={{
+                width: '200px',
+                position: 'sticky',
+                top: 0,
+                height: '100vh',
+                borderRight: `2px solid ${colors.gray10}`,
+                background: colors.gray10,
+                overflowY: 'auto',
+                padding: '1em',
+              }}
+            >
+              <SubNavComponent />
+            </div>
+          )}
+
+          {/* Main Screen (Center Content) */}
+          <main
+            css={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '1em',
+            }}
+          >
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <AppRoutes
+                setMenuContent={setMenuContent}
+                setSubNavComponent={setSubNavComponent}
+              />
+            </ErrorBoundary>
+          </main>
+
+          {/* Hidden Menu on the right */}
+          <HiddenMenu content={menuContent} />
+        </div>
+      </div>
+    </ErrorBoundary>
+  );
+}
+
 function MainNav() {
   return (
     <nav
       css={{
         position: 'sticky',
         top: '4px',
+        zIndex: 1002,
         padding: '1em 1.5em',
-        border: `2px solid ${colors.gray10}`,
-        borderRadius: '3px',
-        [mq.small]: {
-          position: 'static',
-          top: 'auto',
-        },
+        borderBottom: `2px solid ${colors.gray10}`,
         background: colors.gray10,
       }}
     >
@@ -37,6 +99,8 @@ function MainNav() {
           listStyle: 'none',
           padding: '0',
           margin: '0',
+          display: 'flex',
+          gap: '1em',
         }}
       >
         <li css={{display: 'inline-flex'}}>
@@ -56,44 +120,50 @@ function MainNav() {
         </li>
       </ul>
     </nav>
-  )
-}
-
-function MainApp() {
-  const [menuContent, setMenuContent] = useState(null);
-
-  return (
-    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <div
-        css={{
-          margin: '0 auto',
-          padding: '4em 2em',
-          width: '100%',
-        }}
-      >
-        <div css={{position: 'relative'}}>
-          <MainNav />
-        </div>
-        <main>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <AppRoutes setMenuContent={setMenuContent} />
-          </ErrorBoundary>
-        </main>
-        <HiddenMenu content={menuContent} />
-      </div>
-    </ErrorBoundary>
   );
 }
 
-function AppRoutes({ setMenuContent }) {
+function AppRoutes({ setMenuContent, setSubNavComponent }) {
   return (
     <Routes>
-      <Route path="" element={<AboutScreen />} />
+      <Route path="/" element={<AboutScreen />} />
       <Route path="/about" element={<AboutScreen />} />
-      <Route path="/blog/*" element={<BlogApp setMenuContent={setMenuContent} />} />
-      <Route path="/games/*" element={<GamesApp setMenuContent={setMenuContent} />} />
-      <Route path="/finance/*" element={<FinanceApp setMenuContent={setMenuContent} />} />
-      <Route path="/tech/*" element={<TechApp setMenuContent={setMenuContent} />} />
+      <Route
+        path="/blog/*"
+        element={
+          <BlogApp
+            setMenuContent={setMenuContent}
+            setSubNavComponent={setSubNavComponent}
+          />
+        }
+      />
+      <Route
+        path="/games/*"
+        element={
+          <GamesApp
+            setMenuContent={setMenuContent}
+            setSubNavComponent={setSubNavComponent}
+          />
+        }
+      />
+      <Route
+        path="/finance/*"
+        element={
+          <FinanceApp
+            setMenuContent={setMenuContent}
+            setSubNavComponent={setSubNavComponent}
+          />
+        }
+      />
+      <Route
+        path="/tech/*"
+        element={
+          <TechApp
+            setMenuContent={setMenuContent}
+            setSubNavComponent={setSubNavComponent}
+          />
+        }
+      />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   );

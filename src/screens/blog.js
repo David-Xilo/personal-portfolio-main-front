@@ -61,31 +61,26 @@ function BlogFavoriteScreen({ setMenuContent }) {
   );
 }
 
-
 function BlogNav() {
   return (
     <nav>
-      <ul style={{listStyle: 'none',}}>
-        <li>
-          <NavLink to="/blog/">All Posts</NavLink>
-        </li>
-        <li>
-          <NavLink to="/blog/you">Your Posts</NavLink>
-        </li>
-        <li>
-          <NavLink to="/blog/favorite">Favorites</NavLink>
-        </li>
+      <ul style={{ listStyle: 'none' }}>
+        <li><NavLink to="/blog/">All Posts</NavLink></li>
+        <li><NavLink to="/blog/you">Your Posts</NavLink></li>
+        <li><NavLink to="/blog/favorite">Favorites</NavLink></li>
       </ul>
     </nav>
-  )
+  );
 }
 
-function BlogApp({ setMenuContent }) {
+function BlogApp({ setMenuContent, setSubNavComponent }) {
+  React.useEffect(() => {
+    // Set the sub-navigation component when the BlogApp is mounted
+    setSubNavComponent(() => BlogNav);
+  }, [setSubNavComponent]);
+
   return (
     <div style={{ display: 'table' }}>
-      <div style={{ position: 'relative', width: '10%', display: 'table-cell' }}>
-        <BlogNav />
-      </div>
       <div style={{ width: '90%', display: 'table-cell' }}>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <BlogAppRoutes setMenuContent={setMenuContent} />
