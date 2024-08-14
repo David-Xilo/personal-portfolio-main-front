@@ -21,9 +21,9 @@ function MainApp() {
 
   const topHeight = 5;
   const navHeight = 60;
-  const navPadding = 16; // 1em = 16px padding (top)
-  const navBorder = 2; // 2px border (bottom)
-  const totalHeight = topHeight + navHeight + navPadding + navBorder;
+  const navPadding = 16;
+  const navBorder = 2;
+  const totalHeight = 99;
 
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
@@ -38,15 +38,13 @@ function MainApp() {
         {SubNavComponent && (
           <div
             style={{
-              width: '200px',
               position: 'fixed',
-              top: `${totalHeight}px`, // Positioned below the MainNav
+              top: `${totalHeight}px`,
               height: `calc(100vh - ${totalHeight}px)`,
               borderRight: `2px solid ${colors.gray10}`,
               background: colors.gray10,
               overflowY: 'auto',
-              padding: '1em',
-              zIndex: 1000, // Ensure it stays on top
+              padding: '20px',
             }}
           >
             <SubNavComponent />
@@ -58,11 +56,11 @@ function MainApp() {
         <main
           style={{
             position: 'relative',
-            marginLeft: SubNavComponent ? '200px' : '0', // Adjust margin if SubNav is present
-            paddingTop: `${totalHeight}px`, // Ensure content starts below the MainNav
-            height: `calc(100vh - ${totalHeight}px)`, // Allow scrolling under MainNav
+            marginLeft: SubNavComponent ? '200px' : '0',
+            paddingTop: `${totalHeight}px`,
+            height: `calc(100vh - ${totalHeight}px)`,
             overflowY: 'auto',
-            zIndex: 1, // Ensure it's below the MainNav
+            zIndex: 1,
           }}
         >
           <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -81,15 +79,15 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
   return (
     <nav
       style={{
-        position: 'fixed', // Fixed at the top
+        position: 'fixed',
         top: `${topHeight}px`,
         height: `${navHeight}px`,
-        padding: `${navPadding}px 1.5em`, // Apply navPadding
-        borderBottom: `${navBorder}px solid ${colors.gray10}`, // Apply navBorder
+        padding: `${navPadding}px 30px`,
+        borderBottom: `${navBorder}px solid ${colors.gray10}`,
         backgroundColor: 'cyan',
         border: '1px solid black',
         width: '100%',
-        zIndex: 1001, // Ensure it stays on top
+        zIndex: 1001,
       }}
     >
       <ul

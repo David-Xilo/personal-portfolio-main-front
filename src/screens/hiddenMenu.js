@@ -21,7 +21,6 @@ function HiddenMenu({ content, menuHeight }) {
           cursor: 'pointer',
           padding: '10px',
           transition: 'right 0.5s ease',
-          zIndex: 1000, // Ensure it's above the main content
         }}
       >
         {isOpen ? 'Close' : 'Open'}
@@ -39,7 +38,6 @@ function HiddenMenu({ content, menuHeight }) {
           backgroundColor: 'white',
           borderLeft: '2px solid #333',
           color: 'black',
-          zIndex: 1000, // Ensure it's above the main content
         }}
       >
         <div style={{ padding: '8px 16px' }}>
