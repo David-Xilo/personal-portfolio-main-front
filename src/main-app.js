@@ -4,7 +4,6 @@ import {jsx} from '@emotion/react'
 import {Routes, Route} from 'react-router-dom'
 import {ErrorBoundary} from 'react-error-boundary'
 import {FullPageErrorFallback} from './components/lib'
-import * as mq from './styles/media-queries'
 import * as colors from './styles/colors'
 import {AboutScreen} from './screens/about'
 import {GamesApp} from './screens/games'
@@ -19,32 +18,33 @@ import {HiddenMenu} from './screens/hiddenMenu'
 function MainApp() {
   const [menuContent, setMenuContent] = useState(null);
   const [SubNavComponent, setSubNavComponent] = useState(null);
-  const navHeight = '60px'; // Define the height of the main navigation
+  const topHeight = 5;
+  const navHeight = 60;
+  const totalHeight = topHeight + navHeight;
 
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div
-        css={{
+        style={{
           display: 'flex',
           flexDirection: 'column',
           height: '100vh',
           overflow: 'hidden',
         }}
       >
-        {/* Main Navigation at the top */}
-        <MainNav navHeight={navHeight} />
+        <MainNav navHeight={navHeight} topHeight={topHeight} />
 
         <div
-          css={{
+          style={{
             display: 'flex',
             flex: 1,
             overflow: 'hidden',
           }}
         >
-          {/* Sub Navigation passed from the current domain */}
+
           {SubNavComponent && (
             <div
-              css={{
+              style={{
                 width: '200px',
                 position: 'sticky',
                 top: 0,
@@ -56,12 +56,12 @@ function MainApp() {
               }}
             >
               <SubNavComponent />
+              <HiddenMenu content={menuContent} menuHeight={totalHeight} />
             </div>
           )}
 
-          {/* Main Screen (Center Content) */}
           <main
-            css={{
+            style={{
               flex: 1,
               overflowY: 'auto',
               padding: '1em',
@@ -75,29 +75,29 @@ function MainApp() {
             </ErrorBoundary>
           </main>
 
-          {/* Hidden Menu on the right */}
-          <HiddenMenu content={menuContent} navHeight={navHeight} />
+
         </div>
       </div>
     </ErrorBoundary>
   );
 }
 
-function MainNav({ navHeight }) {
+function MainNav({ topHeight, navHeight }) {
   return (
     <nav
-      css={{
+      style={{
         position: 'sticky',
-        top: '4px',
-        height: navHeight, // Use the passed navHeight for consistent styling
-        zIndex: 1002,
+        top: `${topHeight}px`,
+        height: `${navHeight}px`,
         padding: '1em 1.5em',
         borderBottom: `2px solid ${colors.gray10}`,
-        background: colors.gray10,
+        // background: colors.gray10,
+        backgroundColor: 'cyan',
+        border: '1px solid black',
       }}
     >
       <ul
-        css={{
+        style={{
           listStyle: 'none',
           padding: '0',
           margin: '0',
@@ -105,19 +105,19 @@ function MainNav({ navHeight }) {
           gap: '1em',
         }}
       >
-        <li css={{display: 'inline-flex'}}>
+        <li style={{display: 'inline-flex'}}>
           <NavLink to="">About</NavLink>
         </li>
-        <li css={{display: 'inline-flex'}}>
+        <li style={{display: 'inline-flex'}}>
           <NavLink to="/blog">Blog</NavLink>
         </li>
-        <li css={{display: 'inline-flex'}}>
+        <li style={{display: 'inline-flex'}}>
           <NavLink to="/games">Games</NavLink>
         </li>
-        <li css={{display: 'inline-flex'}}>
+        <li style={{display: 'inline-flex'}}>
           <NavLink to="/finance">Finance</NavLink>
         </li>
-        <li css={{display: 'inline-flex'}}>
+        <li style={{display: 'inline-flex'}}>
           <NavLink to="/tech">Tech</NavLink>
         </li>
       </ul>

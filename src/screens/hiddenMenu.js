@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function HiddenMenu({ content, navHeight }) {
+function HiddenMenu({ content, menuHeight }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,14 +13,14 @@ function HiddenMenu({ content, navHeight }) {
         onClick={toggleMenu}
         style={{
           position: 'fixed',
-          top: navHeight,
+          top: `${menuHeight}px`,
           right: isOpen ? '300px' : '0',
           backgroundColor: '#333',
           color: 'white',
           border: 'none',
           cursor: 'pointer',
           padding: '10px',
-          zIndex: 1002, // Ensure the button is above the hidden menu
+          zIndex: 1002,
           transition: 'right 0.5s ease',
         }}
       >
@@ -30,9 +30,9 @@ function HiddenMenu({ content, navHeight }) {
       <div
         style={{
           position: 'fixed',
-          top: navHeight,
+          top: `${menuHeight}px`,
           right: isOpen ? '0' : '-300px',
-          height: `calc(100vh - ${navHeight})`,
+          height: `calc(100vh - ${menuHeight})`,
           width: '300px',
           overflowY: 'auto',
           transition: 'right 0.5s ease',
