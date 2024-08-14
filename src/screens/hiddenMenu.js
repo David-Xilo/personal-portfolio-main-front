@@ -32,7 +32,7 @@ function HiddenMenu({ content, menuHeight }) {
           position: 'fixed',
           top: `${menuHeight}px`,
           right: isOpen ? '0' : '-300px',
-          height: `calc(100vh - ${menuHeight})`,
+          height: `calc(100vh - ${menuHeight}px)`, // Ensure it occupies the full remaining height
           width: '300px',
           overflowY: 'auto',
           transition: 'right 0.5s ease',

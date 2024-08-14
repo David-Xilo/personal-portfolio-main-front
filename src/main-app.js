@@ -41,22 +41,20 @@ function MainApp() {
             overflow: 'hidden',
           }}
         >
-
           {SubNavComponent && (
             <div
               style={{
                 width: '200px',
                 position: 'sticky',
-                top: 0,
-                height: '100vh',
+                top: `${totalHeight}px`, // Adjusted top to start right below the MainNav
+                height: `calc(100vh - ${totalHeight}px)`, // Submenu takes the remaining height
                 borderRight: `2px solid ${colors.gray10}`,
                 background: colors.gray10,
                 overflowY: 'auto',
-                padding: '1em',
+                // padding: '1em',
               }}
             >
               <SubNavComponent />
-              <HiddenMenu content={menuContent} menuHeight={totalHeight} />
             </div>
           )}
 
@@ -64,7 +62,7 @@ function MainApp() {
             style={{
               flex: 1,
               overflowY: 'auto',
-              padding: '1em',
+              // padding: '1em',
             }}
           >
             <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -75,7 +73,7 @@ function MainApp() {
             </ErrorBoundary>
           </main>
 
-
+          <HiddenMenu content={menuContent} menuHeight={totalHeight} />
         </div>
       </div>
     </ErrorBoundary>
@@ -89,9 +87,8 @@ function MainNav({ topHeight, navHeight }) {
         position: 'sticky',
         top: `${topHeight}px`,
         height: `${navHeight}px`,
-        padding: '1em 1.5em',
+        // padding: '1em 1.5em',
         borderBottom: `2px solid ${colors.gray10}`,
-        // background: colors.gray10,
         backgroundColor: 'cyan',
         border: '1px solid black',
       }}
@@ -102,22 +99,22 @@ function MainNav({ topHeight, navHeight }) {
           padding: '0',
           margin: '0',
           display: 'flex',
-          gap: '1em',
+          // gap: '1em',
         }}
       >
-        <li style={{display: 'inline-flex'}}>
+        <li style={{ display: 'inline-flex' }}>
           <NavLink to="">About</NavLink>
         </li>
-        <li style={{display: 'inline-flex'}}>
+        <li style={{ display: 'inline-flex' }}>
           <NavLink to="/blog">Blog</NavLink>
         </li>
-        <li style={{display: 'inline-flex'}}>
+        <li style={{ display: 'inline-flex' }}>
           <NavLink to="/games">Games</NavLink>
         </li>
-        <li style={{display: 'inline-flex'}}>
+        <li style={{ display: 'inline-flex' }}>
           <NavLink to="/finance">Finance</NavLink>
         </li>
-        <li style={{display: 'inline-flex'}}>
+        <li style={{ display: 'inline-flex' }}>
           <NavLink to="/tech">Tech</NavLink>
         </li>
       </ul>
