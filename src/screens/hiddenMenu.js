@@ -20,7 +20,6 @@ function HiddenMenu({ content, menuHeight }) {
           border: 'none',
           cursor: 'pointer',
           padding: '10px',
-          zIndex: 1002,
           transition: 'right 0.5s ease',
         }}
       >
@@ -32,13 +31,12 @@ function HiddenMenu({ content, menuHeight }) {
           position: 'fixed',
           top: `${menuHeight}px`,
           right: isOpen ? '0' : '-300px',
-          height: `calc(100vh - ${menuHeight}px)`, // Ensure it occupies the full remaining height
+          height: `calc(100vh - ${menuHeight}px)`,
           width: '300px',
           overflowY: 'auto',
           transition: 'right 0.5s ease',
           backgroundColor: 'white',
           borderLeft: '2px solid #333',
-          zIndex: 1001,
           color: 'black',
         }}
       >
