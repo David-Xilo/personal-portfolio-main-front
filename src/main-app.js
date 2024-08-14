@@ -18,9 +18,12 @@ import {HiddenMenu} from './screens/hiddenMenu'
 function MainApp() {
   const [menuContent, setMenuContent] = useState(null);
   const [SubNavComponent, setSubNavComponent] = useState(null);
+
   const topHeight = 5;
   const navHeight = 60;
-  const totalHeight = topHeight + navHeight;
+  const navPadding = 16; // 1em = 16px padding (top)
+  const navBorder = 2; // 2px border (bottom)
+  const totalHeight = topHeight + navHeight + navPadding + navBorder;
 
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
@@ -32,7 +35,12 @@ function MainApp() {
           overflow: 'hidden',
         }}
       >
-        <MainNav navHeight={navHeight} topHeight={topHeight} />
+        <MainNav
+          navHeight={navHeight}
+          topHeight={topHeight}
+          navPadding={navPadding}
+          navBorder={navBorder}
+        />
 
         <div
           style={{
@@ -46,8 +54,8 @@ function MainApp() {
               style={{
                 width: '200px',
                 position: 'sticky',
-                top: `${totalHeight}px`, // Align with the bottom of MainNav
-                height: `calc(100vh - ${totalHeight}px)`, // Submenu takes the remaining height
+                top: `${totalHeight}px`,
+                height: `calc(100vh - ${totalHeight}px)`,
                 borderRight: `2px solid ${colors.gray10}`,
                 background: colors.gray10,
                 overflowY: 'auto',
@@ -80,15 +88,15 @@ function MainApp() {
   );
 }
 
-function MainNav({ topHeight, navHeight }) {
+function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
   return (
     <nav
       style={{
         position: 'sticky',
         top: `${topHeight}px`,
         height: `${navHeight}px`,
-        padding: '1em 1.5em',
-        borderBottom: `2px solid ${colors.gray10}`,
+        padding: `${navPadding}px`,
+        borderBottom: `${navBorder}px solid ${colors.gray10}`,
         backgroundColor: 'cyan',
         border: '1px solid black',
       }}
