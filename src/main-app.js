@@ -27,14 +27,7 @@ function MainApp() {
 
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100vh',
-          overflow: 'hidden',
-        }}
-      >
+      <div style={{ height: '100vh', overflow: 'hidden' }}>
         <MainNav
           navHeight={navHeight}
           topHeight={topHeight}
@@ -42,47 +35,43 @@ function MainApp() {
           navBorder={navBorder}
         />
 
-        <div
-          style={{
-            display: 'flex',
-            flex: 1,
-            overflow: 'hidden',
-          }}
-        >
-          {SubNavComponent && (
-            <div
-              style={{
-                width: '200px',
-                position: 'sticky',
-                top: `${totalHeight}px`,
-                height: `calc(100vh - ${totalHeight}px)`,
-                borderRight: `2px solid ${colors.gray10}`,
-                background: colors.gray10,
-                overflowY: 'auto',
-                padding: '1em',
-              }}
-            >
-              <SubNavComponent />
-            </div>
-          )}
-
-          <main
+        {SubNavComponent && (
+          <div
             style={{
-              flex: 1,
+              width: '200px',
+              position: 'fixed',
+              top: `${totalHeight}px`, // Positioned below the MainNav
+              height: `calc(100vh - ${totalHeight}px)`,
+              borderRight: `2px solid ${colors.gray10}`,
+              background: colors.gray10,
               overflowY: 'auto',
               padding: '1em',
+              zIndex: 1000, // Ensure it stays on top
             }}
           >
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <AppRoutes
-                setMenuContent={setMenuContent}
-                setSubNavComponent={setSubNavComponent}
-              />
-            </ErrorBoundary>
-          </main>
-        </div>
+            <SubNavComponent />
+          </div>
+        )}
 
         <HiddenMenu content={menuContent} menuHeight={totalHeight} />
+
+        <main
+          style={{
+            position: 'relative',
+            marginLeft: SubNavComponent ? '200px' : '0', // Adjust margin if SubNav is present
+            paddingTop: `${totalHeight}px`, // Ensure content starts below the MainNav
+            height: `calc(100vh - ${totalHeight}px)`, // Allow scrolling under MainNav
+            overflowY: 'auto',
+            zIndex: 1, // Ensure it's below the MainNav
+          }}
+        >
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <AppRoutes
+              setMenuContent={setMenuContent}
+              setSubNavComponent={setSubNavComponent}
+            />
+          </ErrorBoundary>
+        </main>
       </div>
     </ErrorBoundary>
   );
@@ -92,13 +81,15 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
   return (
     <nav
       style={{
-        position: 'sticky',
+        position: 'fixed', // Fixed at the top
         top: `${topHeight}px`,
         height: `${navHeight}px`,
-        padding: `${navPadding}px`,
-        borderBottom: `${navBorder}px solid ${colors.gray10}`,
+        padding: `${navPadding}px 1.5em`, // Apply navPadding
+        borderBottom: `${navBorder}px solid ${colors.gray10}`, // Apply navBorder
         backgroundColor: 'cyan',
         border: '1px solid black',
+        width: '100%',
+        zIndex: 1001, // Ensure it stays on top
       }}
     >
       <ul
