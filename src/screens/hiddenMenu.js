@@ -21,6 +21,7 @@ function HiddenMenu({ content, menuHeight }) {
           cursor: 'pointer',
           padding: '10px',
           transition: 'right 0.5s ease',
+          zIndex: 1002,  // Higher z-index to ensure the button is on top
         }}
       >
         {isOpen ? 'Close' : 'Open'}
@@ -38,6 +39,7 @@ function HiddenMenu({ content, menuHeight }) {
           backgroundColor: 'white',
           borderLeft: '2px solid #333',
           color: 'black',
+          zIndex: 1001,  // Lower z-index so it stays below the button
         }}
       >
         <div style={{ padding: '8px 16px' }}>

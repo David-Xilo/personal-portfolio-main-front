@@ -27,7 +27,7 @@ function MainApp() {
 
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <div style={{ height: '100vh', overflow: 'hidden' }}>
+      <div style={{ height: '100vh' }}>
         <MainNav
           navHeight={navHeight}
           topHeight={topHeight}
@@ -60,7 +60,6 @@ function MainApp() {
             paddingTop: `${totalHeight}px`,
             height: `calc(100vh - ${totalHeight}px)`,
             overflowY: 'auto',
-            zIndex: 1,
           }}
         >
           <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -87,7 +86,7 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
         backgroundColor: 'cyan',
         border: '1px solid black',
         width: '100%',
-        zIndex: 1001,
+        // zIndex: 1001,
       }}
     >
       <ul
@@ -105,15 +104,15 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
         <li style={{ display: 'inline-flex' }}>
           <NavLink to="/blog">Blog</NavLink>
         </li>
-        <li style={{ display: 'inline-flex' }}>
-          <NavLink to="/games">Games</NavLink>
-        </li>
-        <li style={{ display: 'inline-flex' }}>
-          <NavLink to="/finance">Finance</NavLink>
-        </li>
-        <li style={{ display: 'inline-flex' }}>
-          <NavLink to="/tech">Tech</NavLink>
-        </li>
+        {/*<li style={{ display: 'inline-flex' }}>*/}
+        {/*  <NavLink to="/games">Games</NavLink>*/}
+        {/*</li>*/}
+        {/*<li style={{ display: 'inline-flex' }}>*/}
+        {/*  <NavLink to="/finance">Finance</NavLink>*/}
+        {/*</li>*/}
+        {/*<li style={{ display: 'inline-flex' }}>*/}
+        {/*  <NavLink to="/tech">Tech</NavLink>*/}
+        {/*</li>*/}
       </ul>
     </nav>
   );
@@ -133,33 +132,33 @@ function AppRoutes({ setMenuContent, setSubNavComponent }) {
           />
         }
       />
-      <Route
-        path="/games/*"
-        element={
-          <GamesApp
-            setMenuContent={setMenuContent}
-            setSubNavComponent={setSubNavComponent}
-          />
-        }
-      />
-      <Route
-        path="/finance/*"
-        element={
-          <FinanceApp
-            setMenuContent={setMenuContent}
-            setSubNavComponent={setSubNavComponent}
-          />
-        }
-      />
-      <Route
-        path="/tech/*"
-        element={
-          <TechApp
-            setMenuContent={setMenuContent}
-            setSubNavComponent={setSubNavComponent}
-          />
-        }
-      />
+      {/*<Route*/}
+      {/*  path="/games/*"*/}
+      {/*  element={*/}
+      {/*    <GamesApp*/}
+      {/*      setMenuContent={setMenuContent}*/}
+      {/*      setSubNavComponent={setSubNavComponent}*/}
+      {/*    />*/}
+      {/*  }*/}
+      {/*/>*/}
+      {/*<Route*/}
+      {/*  path="/finance/*"*/}
+      {/*  element={*/}
+      {/*    <FinanceApp*/}
+      {/*      setMenuContent={setMenuContent}*/}
+      {/*      setSubNavComponent={setSubNavComponent}*/}
+      {/*    />*/}
+      {/*  }*/}
+      {/*/>*/}
+      {/*<Route*/}
+      {/*  path="/tech/*"*/}
+      {/*  element={*/}
+      {/*    <TechApp*/}
+      {/*      setMenuContent={setMenuContent}*/}
+      {/*      setSubNavComponent={setSubNavComponent}*/}
+      {/*    />*/}
+      {/*  }*/}
+      {/*/>*/}
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   );
