@@ -6,9 +6,6 @@ import {ErrorBoundary} from 'react-error-boundary'
 import {FullPageErrorFallback} from './components/lib'
 import * as colors from './styles/colors'
 import {AboutScreen} from './screens/about'
-import {GamesApp} from './screens/games'
-import {FinanceApp} from './screens/finance'
-import {TechApp} from './screens/tech'
 import {NotFoundScreen} from './screens/not-found'
 import { NavLink, ErrorFallback } from './screens/navigation'
 import {BlogApp} from './screens/blog'
@@ -104,15 +101,6 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
         <li style={{ display: 'inline-flex' }}>
           <NavLink to="/blog">Blog</NavLink>
         </li>
-        {/*<li style={{ display: 'inline-flex' }}>*/}
-        {/*  <NavLink to="/games">Games</NavLink>*/}
-        {/*</li>*/}
-        {/*<li style={{ display: 'inline-flex' }}>*/}
-        {/*  <NavLink to="/finance">Finance</NavLink>*/}
-        {/*</li>*/}
-        {/*<li style={{ display: 'inline-flex' }}>*/}
-        {/*  <NavLink to="/tech">Tech</NavLink>*/}
-        {/*</li>*/}
       </ul>
     </nav>
   );
@@ -132,33 +120,6 @@ function AppRoutes({ setMenuContent, setSubNavComponent }) {
           />
         }
       />
-      {/*<Route*/}
-      {/*  path="/games/*"*/}
-      {/*  element={*/}
-      {/*    <GamesApp*/}
-      {/*      setMenuContent={setMenuContent}*/}
-      {/*      setSubNavComponent={setSubNavComponent}*/}
-      {/*    />*/}
-      {/*  }*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  path="/finance/*"*/}
-      {/*  element={*/}
-      {/*    <FinanceApp*/}
-      {/*      setMenuContent={setMenuContent}*/}
-      {/*      setSubNavComponent={setSubNavComponent}*/}
-      {/*    />*/}
-      {/*  }*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  path="/tech/*"*/}
-      {/*  element={*/}
-      {/*    <TechApp*/}
-      {/*      setMenuContent={setMenuContent}*/}
-      {/*      setSubNavComponent={setSubNavComponent}*/}
-      {/*    />*/}
-      {/*  }*/}
-      {/*/>*/}
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   );
