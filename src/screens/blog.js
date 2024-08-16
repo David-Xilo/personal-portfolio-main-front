@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from './not-found'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useGetApi} from '../utils/useApi'
+import {useEffect} from 'react'
 
 
 function BlogHiddenMenuScreen() {
@@ -16,10 +17,13 @@ function BlogHiddenMenuScreen() {
   )
 }
 
-function BlogAllScreen({ setMenuContent }) {
-  React.useEffect(() => {
-    setMenuContent(<BlogHiddenMenuScreen />);
-  }, [setMenuContent]);
+function BlogAllScreen({ hiddenMenuDispatch }) {
+  useEffect(() => {
+    hiddenMenuDispatch({
+      type: 'SET_HIDDEN_NAV',
+      component: BlogHiddenMenuScreen,
+    });
+  }, [hiddenMenuDispatch]);
 
   console.log("BlogAllScreen");
   const data = useGetApi('finance/intro');
@@ -31,10 +35,13 @@ function BlogAllScreen({ setMenuContent }) {
   );
 }
 
-function BlogYouScreen({ setMenuContent }) {
-  React.useEffect(() => {
-    setMenuContent(<BlogHiddenMenuScreen />);
-  }, [setMenuContent]);
+function BlogYouScreen({ hiddenMenuDispatch }) {
+  useEffect(() => {
+    hiddenMenuDispatch({
+      type: 'SET_HIDDEN_NAV',
+      component: BlogHiddenMenuScreen,
+    });
+  }, [hiddenMenuDispatch]);
 
   console.log("BlogYourPostsScreen");
   const data = useGetApi('finance/intro');
@@ -46,10 +53,13 @@ function BlogYouScreen({ setMenuContent }) {
   );
 }
 
-function BlogFavoriteScreen({ setMenuContent }) {
-  React.useEffect(() => {
-    setMenuContent(<BlogHiddenMenuScreen />);
-  }, [setMenuContent]);
+function BlogFavoriteScreen({ hiddenMenuDispatch }) {
+  useEffect(() => {
+    hiddenMenuDispatch({
+      type: 'SET_HIDDEN_NAV',
+      component: BlogHiddenMenuScreen,
+    });
+  }, [hiddenMenuDispatch]);
 
   console.log("BlogYourPostsScreen");
   const data = useGetApi('finance/intro');
@@ -73,29 +83,31 @@ function BlogNav() {
   );
 }
 
-function BlogApp({ setMenuContent, setSubNavComponent }) {
-  React.useEffect(() => {
-    // Set the sub-navigation component when the BlogApp is mounted
-    setSubNavComponent(() => BlogNav);
-  }, [setSubNavComponent]);
+function BlogApp({ subMenuDispatch, hiddenMenuDispatch }) {
+  useEffect(() => {
+    subMenuDispatch({
+      type: 'SET_SUB_NAV',
+      component: BlogNav,
+    });
+  }, [subMenuDispatch]);
 
   return (
     <div style={{ display: 'table' }}>
       <div style={{ width: '90%', display: 'table-cell' }}>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <BlogAppRoutes setMenuContent={setMenuContent} />
+          <BlogAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
       </div>
     </div>
   );
 }
 
-function BlogAppRoutes({ setMenuContent }) {
+function BlogAppRoutes({ hiddenMenuDispatch }) {
   return (
     <Routes>
-      <Route path="/" element={<BlogAllScreen setMenuContent={setMenuContent} />} />
-      <Route path="/you" element={<BlogYouScreen setMenuContent={setMenuContent} />} />
-      <Route path="/favorite" element={<BlogFavoriteScreen setMenuContent={setMenuContent} />} />
+      <Route path="/" element={<BlogAllScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/you" element={<BlogYouScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/favorite" element={<BlogFavoriteScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   );

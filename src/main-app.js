@@ -9,12 +9,66 @@ import {AboutScreen} from './screens/about'
 import {NotFoundScreen} from './screens/not-found'
 import { NavLink, ErrorFallback } from './screens/navigation'
 import {BlogApp} from './screens/blog'
-import {useState} from 'react'
+import {useReducer, useState} from 'react'
 import {HiddenMenu} from './screens/hiddenMenu'
+import styled from '@emotion/styled/macro'
+import {
+  hiddenMenuInitialState,
+  hiddenMenuReducer,
+  initialState,
+  reducer,
+  subMenuInitialState,
+  subMenuReducer,
+} from './screens/menuReducer'
+
+const StyledContainer = styled.div`
+  height: 100vh;
+`;
+
+const StyledSubNavDivContainer = styled.div`
+  position: fixed;
+  top: ${({ totalHeight }) => `${totalHeight}px`};
+  height: ${({ totalHeight }) => `calc(100vh - ${totalHeight}px)`};
+  border-right: 2px solid ${colors.gray10};
+  background: ${colors.gray10};
+  overflow-y: auto;
+  padding: 20px;
+`;
+
+const StyledMainContent = styled.main`
+  position: relative;
+  margin-left: ${({ hasSubNav }) => (hasSubNav ? '200px' : '0')};
+  padding-top: ${({ totalHeight }) => `${totalHeight}px`};
+  height: ${({ totalHeight }) => `calc(100vh - ${totalHeight}px)`};
+  overflow-y: auto;
+`;
+
+const StyledNav = styled.nav`
+    position: fixed;
+    top: ${({topHeight}) => `${topHeight}px`};
+    height: ${({navHeight}) => `${navHeight}px`};
+    padding: ${({navPadding}) => `${navPadding}px 30px`};
+    border-bottom: ${({navBorder}) => `${navBorder}px solid ${colors.gray10}`};
+    background-color: cyan;
+    border: 1px solid black;
+    width: 100%;
+`;
+
+const StyledMainNavList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1em;
+`;
+
+const StyledMainNavItem = styled.li`
+  display: inline-flex;
+`;
 
 function MainApp() {
-  const [menuContent, setMenuContent] = useState(null);
-  const [SubNavComponent, setSubNavComponent] = useState(null);
+  const [hiddenMenuState, hiddenMenuDispatch] = useReducer(hiddenMenuReducer, hiddenMenuInitialState);
+  const [subMenuState, subMenuDispatch] = useReducer(subMenuReducer, subMenuInitialState);
 
   const topHeight = 5;
   const navHeight = 60;
@@ -24,7 +78,7 @@ function MainApp() {
 
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
-      <div style={{ height: '100vh' }}>
+      <StyledContainer>
         <MainNav
           navHeight={navHeight}
           topHeight={topHeight}
@@ -32,91 +86,60 @@ function MainApp() {
           navBorder={navBorder}
         />
 
-        {SubNavComponent && (
-          <div
-            style={{
-              position: 'fixed',
-              top: `${totalHeight}px`,
-              height: `calc(100vh - ${totalHeight}px)`,
-              borderRight: `2px solid ${colors.gray10}`,
-              background: colors.gray10,
-              overflowY: 'auto',
-              padding: '20px',
-            }}
-          >
-            <SubNavComponent />
-          </div>
+        {subMenuState.shouldRenderSubNav && (
+          <StyledSubNavDivContainer totalHeight={totalHeight}>
+            <subMenuState.SubNavComponent />
+          </StyledSubNavDivContainer>
         )}
 
-        <HiddenMenu content={menuContent} menuHeight={totalHeight} />
+        {hiddenMenuState.shouldRenderHiddenMenu && (
+          <HiddenMenu content={hiddenMenuState.HiddenMenuComponent} menuHeight={totalHeight} />
+        )}
 
-        <main
-          style={{
-            position: 'relative',
-            marginLeft: SubNavComponent ? '200px' : '0',
-            paddingTop: `${totalHeight}px`,
-            height: `calc(100vh - ${totalHeight}px)`,
-            overflowY: 'auto',
-          }}
-        >
+        <StyledMainContent hasSubNav={subMenuState.shouldRenderSubNav} totalHeight={totalHeight}>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <AppRoutes
-              setMenuContent={setMenuContent}
-              setSubNavComponent={setSubNavComponent}
+              hiddenMenuDispatch={hiddenMenuDispatch}
+              subMenuDispatch={subMenuDispatch}
             />
           </ErrorBoundary>
-        </main>
-      </div>
+        </StyledMainContent>
+      </StyledContainer>
     </ErrorBoundary>
   );
 }
 
 function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
   return (
-    <nav
-      style={{
-        position: 'fixed',
-        top: `${topHeight}px`,
-        height: `${navHeight}px`,
-        padding: `${navPadding}px 30px`,
-        borderBottom: `${navBorder}px solid ${colors.gray10}`,
-        backgroundColor: 'cyan',
-        border: '1px solid black',
-        width: '100%',
-        // zIndex: 1001,
-      }}
-    >
-      <ul
-        style={{
-          listStyle: 'none',
-          padding: '0',
-          margin: '0',
-          display: 'flex',
-          gap: '1em',
-        }}
-      >
-        <li style={{ display: 'inline-flex' }}>
+    <StyledNav topHeight={topHeight}
+               navHeight={navHeight}
+               navPadding={navPadding}
+               navBorder={navBorder}>
+      <StyledMainNavList>
+        <StyledMainNavItem>
           <NavLink to="">About</NavLink>
-        </li>
-        <li style={{ display: 'inline-flex' }}>
+        </StyledMainNavItem>
+        <StyledMainNavItem>
           <NavLink to="/blog">Blog</NavLink>
-        </li>
-      </ul>
-    </nav>
+        </StyledMainNavItem>
+      </StyledMainNavList>
+    </StyledNav>
   );
 }
 
-function AppRoutes({ setMenuContent, setSubNavComponent }) {
+function AppRoutes({ hiddenMenuDispatch, subMenuDispatch }) {
   return (
     <Routes>
-      <Route path="/" element={<AboutScreen />} />
-      <Route path="/about" element={<AboutScreen />} />
+      {/*<Route path="" element={<AboutScreen dispatch={dispatch}/>} />*/}
+      <Route path="" element={<AboutScreen hiddenMenuDispatch={hiddenMenuDispatch}
+                                            subMenuDispatch={subMenuDispatch}/>} />
+      {/*<Route path="/about" element={<AboutScreen dispatch={dispatch}/>} />*/}
       <Route
         path="/blog/*"
         element={
           <BlogApp
-            setMenuContent={setMenuContent}
-            setSubNavComponent={setSubNavComponent}
+            hiddenMenuDispatch={hiddenMenuDispatch}
+            subMenuDispatch={subMenuDispatch}
           />
         }
       />
