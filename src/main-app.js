@@ -3,16 +3,16 @@ import {jsx} from '@emotion/react'
 
 import {Routes, Route} from 'react-router-dom'
 import {ErrorBoundary} from 'react-error-boundary'
-import {FullPageErrorFallback} from './components/lib'
 import * as colors from './styles/colors'
 import {AboutScreen} from './screens/about'
-import {NotFoundScreen} from './screens/not-found'
-import { NavLink, ErrorFallback } from './screens/navigation'
+import {NotFoundScreen} from './components/error/not-found'
+import { NavLink } from './components/navigation/navigation'
 import {BlogApp} from './screens/blog'
 import {useReducer} from 'react'
 import {HiddenMenu} from './screens/hiddenMenu'
 import styled from '@emotion/styled/macro'
-import {menuInitialState, menuReducer} from './screens/menuReducer'
+import {menuInitialState, menuReducer} from './reducers/menuReducer'
+import {ErrorFallback, FullPageErrorFallback} from './components/error/errorFallback'
 
 const StyledContainer = styled.div`
   height: 100vh;

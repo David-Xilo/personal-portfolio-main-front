@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:mock-server": "node src/fake-server/fakeServer.js",
+    "start:mock-server": "node public/fake-server/fakeServer.js",
     "build": "react-scripts build --profile",
     "lint": "eslint . --cache-location node_modules/.cache/eslint",
     "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\""

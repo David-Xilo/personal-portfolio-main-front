@@ -1,11 +1,12 @@
 import * as React from 'react'
 
-import { NavLink, ErrorFallback } from './navigation'
+import { NavLink } from '../components/navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
-import {NotFoundScreen} from './not-found'
+import {NotFoundScreen} from '../components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useGetApi} from '../utils/useApi'
 import {useEffect} from 'react'
+import {ErrorFallback} from '../components/error/errorFallback'
 
 
 function BlogHiddenMenuScreen() {

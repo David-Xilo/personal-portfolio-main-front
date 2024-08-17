@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {BlogHiddenMenuScreen, BlogNav} from './blog'
+import {BlogHiddenMenuScreen, BlogNav} from '../screens/blog'
 
 function EmptyContent() {
   return (<div></div>)
