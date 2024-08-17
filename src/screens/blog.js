@@ -9,7 +9,6 @@ import {useEffect} from 'react'
 
 
 function BlogHiddenMenuScreen() {
-  console.log("BlogHiddenMenuScreen")
   const data = useGetApi('finance/intro')
 
   return (
@@ -17,13 +16,10 @@ function BlogHiddenMenuScreen() {
   )
 }
 
-function BlogAllScreen({ hiddenMenuDispatch }) {
+function BlogAllScreen({ menuDispatch }) {
   useEffect(() => {
-    hiddenMenuDispatch({
-      type: 'SET_HIDDEN_NAV',
-      component: BlogHiddenMenuScreen,
-    });
-  }, [hiddenMenuDispatch]);
+    menuDispatch({ type: 'SET_BLOG_NAV' });
+  }, [menuDispatch]);
 
   console.log("BlogAllScreen");
   const data = useGetApi('finance/intro');
@@ -35,15 +31,11 @@ function BlogAllScreen({ hiddenMenuDispatch }) {
   );
 }
 
-function BlogYouScreen({ hiddenMenuDispatch }) {
+function BlogYouScreen({ menuDispatch }) {
   useEffect(() => {
-    hiddenMenuDispatch({
-      type: 'SET_HIDDEN_NAV',
-      component: BlogHiddenMenuScreen,
-    });
-  }, [hiddenMenuDispatch]);
+    menuDispatch({ type: 'SET_BLOG_NAV' });
+  }, [menuDispatch]);
 
-  console.log("BlogYourPostsScreen");
   const data = useGetApi('finance/intro');
 
   return (
@@ -53,15 +45,11 @@ function BlogYouScreen({ hiddenMenuDispatch }) {
   );
 }
 
-function BlogFavoriteScreen({ hiddenMenuDispatch }) {
+function BlogFavoriteScreen({ menuDispatch }) {
   useEffect(() => {
-    hiddenMenuDispatch({
-      type: 'SET_HIDDEN_NAV',
-      component: BlogHiddenMenuScreen,
-    });
-  }, [hiddenMenuDispatch]);
+    menuDispatch({ type: 'SET_BLOG_NAV' });
+  }, [menuDispatch]);
 
-  console.log("BlogYourPostsScreen");
   const data = useGetApi('finance/intro');
 
   return (
@@ -83,34 +71,28 @@ function BlogNav() {
   );
 }
 
-function BlogApp({ subMenuDispatch, hiddenMenuDispatch }) {
-  useEffect(() => {
-    subMenuDispatch({
-      type: 'SET_SUB_NAV',
-      component: BlogNav,
-    });
-  }, [subMenuDispatch]);
+function BlogApp({ menuDispatch }) {
 
   return (
     <div style={{ display: 'table' }}>
       <div style={{ width: '90%', display: 'table-cell' }}>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <BlogAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
+        <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />} >
+          <BlogAppRoutes menuDispatch={menuDispatch} />
         </ErrorBoundary>
       </div>
     </div>
   );
 }
 
-function BlogAppRoutes({ hiddenMenuDispatch }) {
+function BlogAppRoutes({ menuDispatch }) {
   return (
     <Routes>
-      <Route path="/" element={<BlogAllScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/you" element={<BlogYouScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/favorite" element={<BlogFavoriteScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/" element={<BlogAllScreen menuDispatch={menuDispatch} />} />
+      <Route path="/you" element={<BlogYouScreen menuDispatch={menuDispatch} />} />
+      <Route path="/favorite" element={<BlogFavoriteScreen menuDispatch={menuDispatch} />} />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   );
 }
 
-export {BlogApp, BlogHiddenMenuScreen}
+export {BlogApp, BlogHiddenMenuScreen, BlogNav}

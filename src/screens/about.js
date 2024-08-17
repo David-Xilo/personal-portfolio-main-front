@@ -1,17 +1,11 @@
 import * as React from 'react'
 import {Link} from 'components/lib'
-import {NavLink} from './navigation'
 import {useEffect} from 'react'
-import {BlogHiddenMenuScreen} from './blog'
 
-function AboutScreen({ subMenuDispatch, hiddenMenuDispatch }) {
+function AboutScreen({ menuDispatch }) {
   useEffect(() => {
-    subMenuDispatch({ type: 'CLEAR_SUB_NAV' });  // Clear the sub-navigation component
-  }, [subMenuDispatch]);
-
-  useEffect(() => {
-    hiddenMenuDispatch({ type: 'CLEAR_HIDDEN_NAV' });  // Clear the sub-navigation component
-  }, [hiddenMenuDispatch]);
+    menuDispatch({ type: 'CLEAR_NAV' });
+  }, [menuDispatch]);
 
   return (<AboutContent />)
 }

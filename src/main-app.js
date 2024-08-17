@@ -9,17 +9,10 @@ import {AboutScreen} from './screens/about'
 import {NotFoundScreen} from './screens/not-found'
 import { NavLink, ErrorFallback } from './screens/navigation'
 import {BlogApp} from './screens/blog'
-import {useReducer, useState} from 'react'
+import {useReducer} from 'react'
 import {HiddenMenu} from './screens/hiddenMenu'
 import styled from '@emotion/styled/macro'
-import {
-  hiddenMenuInitialState,
-  hiddenMenuReducer,
-  initialState,
-  reducer,
-  subMenuInitialState,
-  subMenuReducer,
-} from './screens/menuReducer'
+import {menuInitialState, menuReducer} from './screens/menuReducer'
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -43,7 +36,7 @@ const StyledMainContent = styled.main`
   overflow-y: auto;
 `;
 
-const StyledNav = styled.nav`
+const StyledMainNav = styled.nav`
     position: fixed;
     top: ${({topHeight}) => `${topHeight}px`};
     height: ${({navHeight}) => `${navHeight}px`};
@@ -52,6 +45,7 @@ const StyledNav = styled.nav`
     background-color: cyan;
     border: 1px solid black;
     width: 100%;
+    z-index: 1000;
 `;
 
 const StyledMainNavList = styled.ul`
@@ -67,8 +61,7 @@ const StyledMainNavItem = styled.li`
 `;
 
 function MainApp() {
-  const [hiddenMenuState, hiddenMenuDispatch] = useReducer(hiddenMenuReducer, hiddenMenuInitialState);
-  const [subMenuState, subMenuDispatch] = useReducer(subMenuReducer, subMenuInitialState);
+  const [menuState, menuDispatch] = useReducer(menuReducer, menuInitialState);
 
   const topHeight = 5;
   const navHeight = 60;
@@ -77,7 +70,7 @@ function MainApp() {
   const totalHeight = 99;
 
   return (
-    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
+    <ErrorBoundary FallbackComponent={FullPageErrorFallback} fallback={< FullPageErrorFallback />} >
       <StyledContainer>
         <MainNav
           navHeight={navHeight}
@@ -86,21 +79,24 @@ function MainApp() {
           navBorder={navBorder}
         />
 
-        {subMenuState.shouldRenderSubNav && (
-          <StyledSubNavDivContainer totalHeight={totalHeight}>
-            <subMenuState.SubNavComponent />
-          </StyledSubNavDivContainer>
-        )}
+        <div>
+          {menuState.shouldRenderSubNav && (
+            <StyledSubNavDivContainer totalHeight={totalHeight}>
+              <menuState.SubNavComponent />
+            </StyledSubNavDivContainer>
+           )}
+        </div>
 
-        {hiddenMenuState.shouldRenderHiddenMenu && (
-          <HiddenMenu content={hiddenMenuState.HiddenMenuComponent} menuHeight={totalHeight} />
-        )}
+        <div>
+          {menuState.shouldRenderHiddenMenu && (
+            <HiddenMenu content={menuState.HiddenMenuComponent} menuHeight={totalHeight} />
+          )}
+        </div>
 
-        <StyledMainContent hasSubNav={subMenuState.shouldRenderSubNav} totalHeight={totalHeight}>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <StyledMainContent hasSubNav={menuState.shouldRenderSubNav} totalHeight={totalHeight}>
+          <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />}  >
             <AppRoutes
-              hiddenMenuDispatch={hiddenMenuDispatch}
-              subMenuDispatch={subMenuDispatch}
+              menuDispatch={menuDispatch}
             />
           </ErrorBoundary>
         </StyledMainContent>
@@ -111,38 +107,27 @@ function MainApp() {
 
 function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
   return (
-    <StyledNav topHeight={topHeight}
+    <StyledMainNav topHeight={topHeight}
                navHeight={navHeight}
                navPadding={navPadding}
                navBorder={navBorder}>
       <StyledMainNavList>
         <StyledMainNavItem>
-          <NavLink to="">About</NavLink>
+          <NavLink to="/">About</NavLink>
         </StyledMainNavItem>
         <StyledMainNavItem>
           <NavLink to="/blog">Blog</NavLink>
         </StyledMainNavItem>
       </StyledMainNavList>
-    </StyledNav>
+    </StyledMainNav>
   );
 }
 
-function AppRoutes({ hiddenMenuDispatch, subMenuDispatch }) {
+function AppRoutes({ menuDispatch }) {
   return (
     <Routes>
-      {/*<Route path="" element={<AboutScreen dispatch={dispatch}/>} />*/}
-      <Route path="" element={<AboutScreen hiddenMenuDispatch={hiddenMenuDispatch}
-                                            subMenuDispatch={subMenuDispatch}/>} />
-      {/*<Route path="/about" element={<AboutScreen dispatch={dispatch}/>} />*/}
-      <Route
-        path="/blog/*"
-        element={
-          <BlogApp
-            hiddenMenuDispatch={hiddenMenuDispatch}
-            subMenuDispatch={subMenuDispatch}
-          />
-        }
-      />
+      <Route path="/" element={<AboutScreen menuDispatch={menuDispatch} />} />
+      <Route path="/blog/*" element={<BlogApp menuDispatch={menuDispatch} />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   );

@@ -30,7 +30,7 @@ function GamesApp() {
           <GamesNav />
         </div>
         <div style={{width: '90%', display: 'table-cell'}}>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />} >
             <GamesAppRoutes />
           </ErrorBoundary>
         </div>

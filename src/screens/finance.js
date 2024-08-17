@@ -7,7 +7,6 @@ import {ErrorBoundary} from 'react-error-boundary'
 import {useGetApi} from '../utils/useApi'
 
 function FinanceIntroScreen() {
-  console.log("FinanceIntroScreen")
   const data = useGetApi('finance/intro')
 
   return (
@@ -38,7 +37,7 @@ function FinanceApp() {
           <FinanceNav />
         </div>
         <div style={{width: '90%', display: 'table-cell'}}>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />} >
             <FinanceAppRoutes />
           </ErrorBoundary>
         </div>
