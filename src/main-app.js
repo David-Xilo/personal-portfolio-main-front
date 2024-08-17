@@ -11,8 +11,9 @@ import {BlogApp} from './screens/blog'
 import {useReducer} from 'react'
 import {HiddenMenu} from './screens/hiddenMenu'
 import styled from '@emotion/styled/macro'
-import {menuInitialState, menuReducer} from './reducers/menuReducer'
+import {hiddenMenuInitialState, hiddenMenuReducer} from './reducers/hiddenMenuReducer'
 import {ErrorFallback, FullPageErrorFallback} from './components/error/errorFallback'
+import {subMenuInitialState, subMenuReducer} from './reducers/subMenuReducer'
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -61,7 +62,8 @@ const StyledMainNavItem = styled.li`
 `;
 
 function MainApp() {
-  const [menuState, menuDispatch] = useReducer(menuReducer, menuInitialState);
+  const [subMenuState, subMenuDispatch] = useReducer(subMenuReducer, subMenuInitialState);
+  const [hiddenMenuState, hiddenMenuDispatch] = useReducer(hiddenMenuReducer, hiddenMenuInitialState);
 
   const topHeight = 5;
   const navHeight = 60;
@@ -79,25 +81,19 @@ function MainApp() {
           navBorder={navBorder}
         />
 
-        <div>
-          {menuState.shouldRenderSubNav && (
-            <StyledSubNavDivContainer totalHeight={totalHeight}>
-              <menuState.SubNavComponent />
-            </StyledSubNavDivContainer>
-           )}
-        </div>
+        {subMenuState.shouldRenderSubNav && (
+          <StyledSubNavDivContainer totalHeight={totalHeight}>
+            <subMenuState.SubNavComponent />
+          </StyledSubNavDivContainer>
+        )}
 
-        <div>
-          {menuState.shouldRenderHiddenMenu && (
-            <HiddenMenu content={menuState.HiddenMenuComponent} menuHeight={totalHeight} />
-          )}
-        </div>
+        {hiddenMenuState.shouldRenderHiddenMenu && (
+          <HiddenMenu content={hiddenMenuState.HiddenMenuComponent} menuHeight={totalHeight} />
+        )}
 
-        <StyledMainContent hasSubNav={menuState.shouldRenderSubNav} totalHeight={totalHeight}>
+        <StyledMainContent hasSubNav={subMenuState.shouldRenderSubNav} totalHeight={totalHeight}>
           <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />}  >
-            <AppRoutes
-              menuDispatch={menuDispatch}
-            />
+            <AppRoutes subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />
           </ErrorBoundary>
         </StyledMainContent>
       </StyledContainer>
@@ -123,11 +119,11 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
   );
 }
 
-function AppRoutes({ menuDispatch }) {
+function AppRoutes({ subMenuDispatch, hiddenMenuDispatch }) {
   return (
     <Routes>
-      <Route path="/" element={<AboutScreen menuDispatch={menuDispatch} />} />
-      <Route path="/blog/*" element={<BlogApp menuDispatch={menuDispatch} />} />
+      <Route path="/" element={<AboutScreen subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/blog/*" element={<BlogApp subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   );

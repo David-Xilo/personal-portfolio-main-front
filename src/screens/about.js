@@ -2,10 +2,11 @@ import * as React from 'react'
 import {Link} from 'components/lib'
 import {useEffect} from 'react'
 
-function AboutScreen({ menuDispatch }) {
+function AboutScreen({ subMenuDispatch, hiddenMenuDispatch }) {
   useEffect(() => {
-    menuDispatch({ type: 'CLEAR_NAV' });
-  }, [menuDispatch]);
+    hiddenMenuDispatch({ type: 'CLEAR_HIDDEN_NAV' });
+    subMenuDispatch({ type: 'CLEAR_SUB_NAV' });
+  }, [subMenuDispatch, hiddenMenuDispatch]);
 
   return (<AboutContent />)
 }

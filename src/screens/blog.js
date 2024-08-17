@@ -17,10 +17,10 @@ function BlogHiddenMenuScreen() {
   )
 }
 
-function BlogAllScreen({ menuDispatch }) {
+function BlogAllScreen({ hiddenMenuDispatch }) {
   useEffect(() => {
-    menuDispatch({ type: 'SET_BLOG_NAV' });
-  }, [menuDispatch]);
+    hiddenMenuDispatch({ type: 'SET_HIDDEN_NAV', component: BlogHiddenMenuScreen });
+  }, [hiddenMenuDispatch]);
 
   console.log("BlogAllScreen");
   const data = useGetApi('finance/intro');
@@ -32,10 +32,10 @@ function BlogAllScreen({ menuDispatch }) {
   );
 }
 
-function BlogYouScreen({ menuDispatch }) {
+function BlogYouScreen({ hiddenMenuDispatch }) {
   useEffect(() => {
-    menuDispatch({ type: 'SET_BLOG_NAV' });
-  }, [menuDispatch]);
+    hiddenMenuDispatch({ type: 'SET_HIDDEN_NAV', component: BlogHiddenMenuScreen });
+  }, [hiddenMenuDispatch]);
 
   const data = useGetApi('finance/intro');
 
@@ -46,10 +46,10 @@ function BlogYouScreen({ menuDispatch }) {
   );
 }
 
-function BlogFavoriteScreen({ menuDispatch }) {
+function BlogFavoriteScreen({ hiddenMenuDispatch }) {
   useEffect(() => {
-    menuDispatch({ type: 'SET_BLOG_NAV' });
-  }, [menuDispatch]);
+    hiddenMenuDispatch({ type: 'SET_HIDDEN_NAV', component: BlogHiddenMenuScreen });
+  }, [hiddenMenuDispatch]);
 
   const data = useGetApi('finance/intro');
 
@@ -73,25 +73,28 @@ function BlogNav() {
   );
 }
 
-function BlogAppRoutes({ menuDispatch }) {
+function BlogAppRoutes({ hiddenMenuDispatch }) {
   return (
     <Routes>
-      <Route path="/" element={<BlogAllScreen menuDispatch={menuDispatch} />} />
-      <Route path="/you" element={<BlogYouScreen menuDispatch={menuDispatch} />} />
-      <Route path="/favorite" element={<BlogFavoriteScreen menuDispatch={menuDispatch} />} />
+      <Route path="/" element={<BlogAllScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/you" element={<BlogYouScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/favorite" element={<BlogFavoriteScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   );
 }
 
 
-function BlogApp({ menuDispatch }) {
+function BlogApp({ subMenuDispatch, hiddenMenuDispatch }) {
+  useEffect(() => {
+    subMenuDispatch({ type: 'SET_SUB_NAV', component: BlogNav });
+  }, [subMenuDispatch]);
 
   return (
     <div style={{ display: 'table' }}>
       <div style={{ width: '90%', display: 'table-cell' }}>
         <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />} >
-          <BlogAppRoutes menuDispatch={menuDispatch} />
+          <BlogAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
       </div>
     </div>
