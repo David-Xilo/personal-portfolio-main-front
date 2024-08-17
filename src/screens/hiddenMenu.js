@@ -1,6 +1,38 @@
 import React, { useState } from 'react';
+import styled from '@emotion/styled/macro'
 
-function HiddenMenu({ content, menuHeight }) {
+const StylizedHiddenMenuButton = styled.button`
+  position: fixed;
+  top: ${({ menuHeight }) => `${menuHeight}px`};
+  right: ${({ isOpen }) => (isOpen ? '300px' : '0')};
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: right 0.5s ease;
+  z-index: 1002;
+`;
+
+const StylizedHiddenMenuContainer = styled.div`
+  position: fixed;
+  top: ${({ menuHeight }) => `${menuHeight}px`};
+  right: ${({ isOpen }) => (isOpen ? '0' : '-300px')};
+  height: ${({ menuHeight }) => `calc(100vh - ${menuHeight}px)`};
+  width: 300px;
+  overflow-y: auto;
+  transition: right 0.5s ease;
+  background-color: white;
+  border-left: 2px solid #333;
+  color: black;
+  z-index: 1001;
+`;
+
+const StylizedHiddenMenuContentWrapper = styled.div`
+  padding: 8px 16px;
+`;
+
+function HiddenMenu({ content: Content, menuHeight }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -9,43 +41,15 @@ function HiddenMenu({ content, menuHeight }) {
 
   return (
     <>
-      <button
-        onClick={toggleMenu}
-        style={{
-          position: 'fixed',
-          top: `${menuHeight}px`,
-          right: isOpen ? '300px' : '0',
-          backgroundColor: '#333',
-          color: 'white',
-          border: 'none',
-          cursor: 'pointer',
-          padding: '10px',
-          transition: 'right 0.5s ease',
-          zIndex: 1002,  // Higher z-index to ensure the button is on top
-        }}
-      >
+      <StylizedHiddenMenuButton onClick={toggleMenu} isOpen={isOpen} menuHeight={menuHeight}>
         {isOpen ? 'Close' : 'Open'}
-      </button>
+      </StylizedHiddenMenuButton>
 
-      <div
-        style={{
-          position: 'fixed',
-          top: `${menuHeight}px`,
-          right: isOpen ? '0' : '-300px',
-          height: `calc(100vh - ${menuHeight}px)`,
-          width: '300px',
-          overflowY: 'auto',
-          transition: 'right 0.5s ease',
-          backgroundColor: 'white',
-          borderLeft: '2px solid #333',
-          color: 'black',
-          zIndex: 1001,  // Lower z-index so it stays below the button
-        }}
-      >
-        <div style={{ padding: '8px 16px' }}>
-          {content}
-        </div>
-      </div>
+      <StylizedHiddenMenuContainer isOpen={isOpen} menuHeight={menuHeight}>
+        <StylizedHiddenMenuContentWrapper>
+          {Content && <Content />}
+        </StylizedHiddenMenuContentWrapper>
+      </StylizedHiddenMenuContainer>
     </>
   );
 }

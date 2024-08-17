@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-import { NavLink, ErrorFallback } from '../components/navigation/navigation'
+import { NavLink, ErrorFallback } from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from '../components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
-import {useGetApi} from '../utils/useApi'
+import {useGetApi} from '../hooks/useApi'
 
 function FinanceIntroScreen() {
   const data = useGetApi('finance/intro')

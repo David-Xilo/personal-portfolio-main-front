@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-import { NavLink } from '../components/navigation/navigation'
+import { NavLink } from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from '../components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
-import {useGetApi} from '../utils/useApi'
+import {useGetApi} from '../hooks/useApi'
 import {useEffect} from 'react'
 import {ErrorFallback} from '../components/error/errorFallback'
 
@@ -60,6 +60,7 @@ function BlogFavoriteScreen({ menuDispatch }) {
   );
 }
 
+
 function BlogNav() {
   return (
     <nav>
@@ -69,19 +70,6 @@ function BlogNav() {
         <li><NavLink to="/blog/favorite">Favorites</NavLink></li>
       </ul>
     </nav>
-  );
-}
-
-function BlogApp({ menuDispatch }) {
-
-  return (
-    <div style={{ display: 'table' }}>
-      <div style={{ width: '90%', display: 'table-cell' }}>
-        <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />} >
-          <BlogAppRoutes menuDispatch={menuDispatch} />
-        </ErrorBoundary>
-      </div>
-    </div>
   );
 }
 
@@ -96,4 +84,19 @@ function BlogAppRoutes({ menuDispatch }) {
   );
 }
 
-export {BlogApp, BlogHiddenMenuScreen, BlogNav}
+
+function BlogApp({ menuDispatch }) {
+
+  return (
+    <div style={{ display: 'table' }}>
+      <div style={{ width: '90%', display: 'table-cell' }}>
+        <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />} >
+          <BlogAppRoutes menuDispatch={menuDispatch} />
+        </ErrorBoundary>
+      </div>
+    </div>
+  );
+}
+
+
+export {BlogApp, BlogNav, BlogHiddenMenuScreen}
