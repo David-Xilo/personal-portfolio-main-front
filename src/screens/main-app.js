@@ -1,19 +1,15 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 
-import {Routes, Route} from 'react-router-dom'
 import {ErrorBoundary} from 'react-error-boundary'
-import * as colors from './styles/colors'
-import {AboutScreen} from './screens/about'
-import {NotFoundScreen} from './components/error/not-found'
-import { NavLink } from './navigation/navigation'
-import {BlogApp} from './screens/blog'
+import * as colors from '../styles/colors'
 import {useReducer} from 'react'
-import {HiddenMenu} from './screens/hiddenMenu'
+import {HiddenMenu} from './hiddenMenu'
 import styled from '@emotion/styled/macro'
-import {hiddenMenuInitialState, hiddenMenuReducer} from './reducers/hiddenMenuReducer'
-import {ErrorFallback, FullPageErrorFallback} from './components/error/errorFallback'
-import {subMenuInitialState, subMenuReducer} from './reducers/subMenuReducer'
+import {hiddenMenuInitialState, hiddenMenuReducer} from '../reducers/hiddenMenuReducer'
+import {ErrorFallback, FullPageErrorFallback} from '../components/error/errorFallback'
+import {subMenuInitialState, subMenuReducer} from '../reducers/subMenuReducer'
+import {AppRoutes, MainNav} from '../navigation/mainNavigation'
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -35,30 +31,6 @@ const StyledMainContent = styled.main`
   padding-top: ${({ totalHeight }) => `${totalHeight}px`};
   height: ${({ totalHeight }) => `calc(100vh - ${totalHeight}px)`};
   overflow-y: auto;
-`;
-
-const StyledMainNav = styled.nav`
-    position: fixed;
-    top: ${({topHeight}) => `${topHeight}px`};
-    height: ${({navHeight}) => `${navHeight}px`};
-    padding: ${({navPadding}) => `${navPadding}px 30px`};
-    border-bottom: ${({navBorder}) => `${navBorder}px solid ${colors.gray10}`};
-    background-color: cyan;
-    border: 1px solid black;
-    width: 100%;
-    z-index: 1000;
-`;
-
-const StyledMainNavList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 1em;
-`;
-
-const StyledMainNavItem = styled.li`
-  display: inline-flex;
 `;
 
 function MainApp() {
@@ -98,34 +70,6 @@ function MainApp() {
         </StyledMainContent>
       </StyledContainer>
     </ErrorBoundary>
-  );
-}
-
-function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
-  return (
-    <StyledMainNav topHeight={topHeight}
-               navHeight={navHeight}
-               navPadding={navPadding}
-               navBorder={navBorder}>
-      <StyledMainNavList>
-        <StyledMainNavItem>
-          <NavLink to="/">About</NavLink>
-        </StyledMainNavItem>
-        <StyledMainNavItem>
-          <NavLink to="/blog">Blog</NavLink>
-        </StyledMainNavItem>
-      </StyledMainNavList>
-    </StyledMainNav>
-  );
-}
-
-function AppRoutes({ subMenuDispatch, hiddenMenuDispatch }) {
-  return (
-    <Routes>
-      <Route path="/" element={<AboutScreen subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/blog/*" element={<BlogApp subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="*" element={<NotFoundScreen />} />
-    </Routes>
   );
 }
 

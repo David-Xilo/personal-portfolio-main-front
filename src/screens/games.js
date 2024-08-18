@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { NavLink, ErrorFallback } from '../navigation/navigation'
+import { MainNavLink, ErrorFallback } from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from '../components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
@@ -44,10 +44,10 @@ function GamesNav() {
     <nav>
       <ul style={{listStyle: 'none',}}>
         <li>
-          <NavLink to="/games/">Introduction</NavLink>
+          <MainNavLink to="/games/">Introduction</MainNavLink>
         </li>
         <li>
-          <NavLink to="/games/downloads">Downloads</NavLink>
+          <MainNavLink to="/games/downloads">Downloads</MainNavLink>
         </li>
       </ul>
     </nav>

@@ -2,7 +2,7 @@
 import {jsx} from '@emotion/react'
 
 import * as colors from '../styles/colors'
-import {Link as RouterLink, useMatch} from 'react-router-dom'
+import {Link as RouterLink, useLocation, useMatch} from 'react-router-dom'
 import styled from '@emotion/styled/macro'
 
 const StyledRouterLink = styled(RouterLink)`
@@ -22,26 +22,32 @@ const StyledRouterLink = styled(RouterLink)`
 
     &:focus {
         ${({ match }) => match && `
-      color: ${colors.indigo};
-      background: ${colors.gray10};
-      text-decoration: none;
-    `}
+          color: ${colors.indigo};
+          background: ${colors.gray10};
+          text-decoration: none;
+        `}
     }
 
     ${({ match }) => match && `
-    border-left: 5px solid ${colors.indigo};
-    background: ${colors.gray10};
-    font-weight: bold;
+        border-left: 5px solid ${colors.indigo};
+        background: ${colors.gray10};
+        font-weight: bold;
 
-    &:hover,
-    &:focus {
-      background: ${colors.gray10};
-    }
-  `}
+        &:hover,
+        &:focus {
+          background: ${colors.gray10};
+        }
+    `}
 `;
 
-function NavLink(props) {
-const match = useMatch(props.to)
+function MainNavLink(props) {
+  const location = useLocation();
+  const { to } = props;
+
+  const matchExactly = location.pathname === to;
+  const matchBeginning = !matchExactly && location.pathname.startsWith(`${to}/`) && location.pathname !== `${to}/`;
+  const match = matchExactly || matchBeginning;
+
   return (
     <StyledRouterLink
       match={match}
@@ -50,4 +56,15 @@ const match = useMatch(props.to)
   );
 }
 
-export {NavLink}
+function SubNavLink(props) {
+  const match = useMatch(props.to)
+
+  return (
+    <StyledRouterLink
+      match={match}
+      {...props}
+    />
+  );
+}
+
+export {MainNavLink, SubNavLink}

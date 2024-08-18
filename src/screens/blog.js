@@ -1,12 +1,14 @@
 import * as React from 'react'
 
-import { NavLink } from '../navigation/navigation'
+import {SubNavLink} from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from '../components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useGetApi} from '../hooks/useApi'
 import {useEffect} from 'react'
 import {ErrorFallback} from '../components/error/errorFallback'
+import {SET_HIDDEN_NAV} from '../reducers/hiddenMenuReducer'
+import {SET_SUB_NAV} from '../reducers/subMenuReducer'
 
 
 function BlogHiddenMenuScreen() {
@@ -19,7 +21,7 @@ function BlogHiddenMenuScreen() {
 
 function BlogAllScreen({ hiddenMenuDispatch }) {
   useEffect(() => {
-    hiddenMenuDispatch({ type: 'SET_HIDDEN_NAV', component: BlogHiddenMenuScreen });
+    hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: BlogHiddenMenuScreen });
   }, [hiddenMenuDispatch]);
 
   console.log("BlogAllScreen");
@@ -34,7 +36,7 @@ function BlogAllScreen({ hiddenMenuDispatch }) {
 
 function BlogYouScreen({ hiddenMenuDispatch }) {
   useEffect(() => {
-    hiddenMenuDispatch({ type: 'SET_HIDDEN_NAV', component: BlogHiddenMenuScreen });
+    hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: BlogHiddenMenuScreen });
   }, [hiddenMenuDispatch]);
 
   const data = useGetApi('finance/intro');
@@ -48,7 +50,7 @@ function BlogYouScreen({ hiddenMenuDispatch }) {
 
 function BlogFavoriteScreen({ hiddenMenuDispatch }) {
   useEffect(() => {
-    hiddenMenuDispatch({ type: 'SET_HIDDEN_NAV', component: BlogHiddenMenuScreen });
+    hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: BlogHiddenMenuScreen });
   }, [hiddenMenuDispatch]);
 
   const data = useGetApi('finance/intro');
@@ -60,14 +62,13 @@ function BlogFavoriteScreen({ hiddenMenuDispatch }) {
   );
 }
 
-
 function BlogNav() {
   return (
     <nav>
       <ul style={{ listStyle: 'none' }}>
-        <li><NavLink to="/blog/">All Posts</NavLink></li>
-        <li><NavLink to="/blog/you">Your Posts</NavLink></li>
-        <li><NavLink to="/blog/favorite">Favorites</NavLink></li>
+        <li><SubNavLink to="/blog">All Posts</SubNavLink></li>
+        <li><SubNavLink to="/blog/you">Your Posts</SubNavLink></li>
+        <li><SubNavLink to="/blog/favorite">Favorites</SubNavLink></li>
       </ul>
     </nav>
   );
@@ -76,7 +77,7 @@ function BlogNav() {
 function BlogAppRoutes({ hiddenMenuDispatch }) {
   return (
     <Routes>
-      <Route path="/" element={<BlogAllScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="" element={<BlogAllScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="/you" element={<BlogYouScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="/favorite" element={<BlogFavoriteScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="/*" element={<NotFoundScreen />} />
@@ -87,7 +88,7 @@ function BlogAppRoutes({ hiddenMenuDispatch }) {
 
 function BlogApp({ subMenuDispatch, hiddenMenuDispatch }) {
   useEffect(() => {
-    subMenuDispatch({ type: 'SET_SUB_NAV', component: BlogNav });
+    subMenuDispatch({ type: SET_SUB_NAV, component: BlogNav });
   }, [subMenuDispatch]);
 
   return (

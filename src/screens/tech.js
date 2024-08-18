@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { NavLink, ErrorFallback } from '../navigation/navigation'
+import { MainNavLink, ErrorFallback } from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from '../components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
@@ -37,7 +37,7 @@ function TechApp() {
           <TechNav />
         </div>
         <div style={{width: '90%', display: 'table-cell'}}>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />}>
             <TechAppRoutes />
           </ErrorBoundary>
         </div>
@@ -50,13 +50,13 @@ function TechNav() {
     <nav>
       <ul style={{listStyle: 'none',}}>
         <li>
-          <NavLink to="/tech/">Introduction</NavLink>
+          <MainNavLink to="/tech/">Introduction</MainNavLink>
         </li>
         <li>
-          <NavLink to="/tech/studies">Studies</NavLink>
+          <MainNavLink to="/tech/studies">Studies</MainNavLink>
         </li>
         <li>
-          <NavLink to="/tech/downloads">Downloads</NavLink>
+          <MainNavLink to="/tech/downloads">Downloads</MainNavLink>
         </li>
       </ul>
     </nav>

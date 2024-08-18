@@ -1,4 +1,7 @@
 
+const SET_HIDDEN_NAV = 'SET_HIDDEN_NAV';
+const CLEAR_HIDDEN_NAV = 'CLEAR_HIDDEN_NAV';
+
 const hiddenMenuInitialState = {
   HiddenMenuComponent: null,
   shouldRenderHiddenMenu: false,
@@ -6,13 +9,13 @@ const hiddenMenuInitialState = {
 
 function hiddenMenuReducer(state, action) {
   switch (action.type) {
-    case 'SET_HIDDEN_NAV':
+    case SET_HIDDEN_NAV:
       return {
         ...state,
         HiddenMenuComponent: action.component,
         shouldRenderHiddenMenu: true,
       };
-    case 'CLEAR_HIDDEN_NAV':
+    case CLEAR_HIDDEN_NAV:
       return {
         ...state,
         HiddenMenuComponent: null,
@@ -25,4 +28,4 @@ function hiddenMenuReducer(state, action) {
 
 
 
-export {hiddenMenuInitialState, hiddenMenuReducer}
+export {hiddenMenuInitialState, hiddenMenuReducer, SET_HIDDEN_NAV, CLEAR_HIDDEN_NAV}

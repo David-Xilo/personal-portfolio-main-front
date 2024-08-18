@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { NavLink, ErrorFallback } from '../navigation/navigation'
+import { MainNavLink, ErrorFallback } from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from '../components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
@@ -50,13 +50,13 @@ function FinanceNav() {
     <nav>
       <ul style={{listStyle: 'none',}}>
         <li>
-          <NavLink to="/finance/">Introduction</NavLink>
+          <MainNavLink to="/finance/">Introduction</MainNavLink>
         </li>
         <li>
-          <NavLink to="/finance/analysis">Analysis</NavLink>
+          <MainNavLink to="/finance/analysis">Analysis</MainNavLink>
         </li>
         <li>
-          <NavLink to="/finance/studies">Studies</NavLink>
+          <MainNavLink to="/finance/studies">Studies</MainNavLink>
         </li>
       </ul>
     </nav>

@@ -1,11 +1,13 @@
 import * as React from 'react'
 import {Link} from 'components/lib'
 import {useEffect} from 'react'
+import {CLEAR_HIDDEN_NAV} from '../reducers/hiddenMenuReducer'
+import {CLEAR_SUB_NAV} from '../reducers/subMenuReducer'
 
 function AboutScreen({ subMenuDispatch, hiddenMenuDispatch }) {
   useEffect(() => {
-    hiddenMenuDispatch({ type: 'CLEAR_HIDDEN_NAV' });
-    subMenuDispatch({ type: 'CLEAR_SUB_NAV' });
+    hiddenMenuDispatch({ type:CLEAR_HIDDEN_NAV });
+    subMenuDispatch({ type: CLEAR_SUB_NAV });
   }, [subMenuDispatch, hiddenMenuDispatch]);
 
   return (<AboutContent />)
