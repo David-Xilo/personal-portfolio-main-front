@@ -20,7 +20,7 @@ const StyledSubNavDivContainer = styled.div`
   top: ${({ totalHeight }) => `${totalHeight}px`};
   height: ${({ totalHeight }) => `calc(100vh - ${totalHeight}px)`};
   border-right: 2px solid ${colors.gray10};
-  background: ${colors.gray10};
+  background: white;
   overflow-y: auto;
   padding: 20px;
 `;
