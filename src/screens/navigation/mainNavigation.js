@@ -3,11 +3,14 @@ import {jsx} from '@emotion/react'
 
 import {MainNavLink} from './navigation'
 import {Route, Routes} from 'react-router-dom'
-import {AboutScreen} from '../screens/about'
-import {BlogApp} from '../screens/blog'
-import {NotFoundScreen} from '../components/error/not-found'
+import {AboutApp} from '../about/about'
+import {NotFoundScreen} from '../../components/error/not-found'
 import styled from '@emotion/styled/macro'
-import * as colors from '../styles/colors'
+import * as colors from '../../styles/colors'
+import {TechApp} from '../tech/tech'
+import {WelcomeScreen} from '../welcome/welcome'
+import {GamesApp} from '../games/games'
+import {FinanceApp} from '../finance/finance'
 
 
 const StyledMainNav = styled.nav`
@@ -42,10 +45,16 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
                    navBorder={navBorder}>
       <StyledMainNavList>
         <StyledMainNavItem>
-          <MainNavLink to="/">About</MainNavLink>
+          <MainNavLink to={"/about"}>About</MainNavLink>
         </StyledMainNavItem>
         <StyledMainNavItem>
-          <MainNavLink to="/blog">Blog</MainNavLink>
+          <MainNavLink to={"/tech"}>Technology</MainNavLink>
+        </StyledMainNavItem>
+        <StyledMainNavItem>
+          <MainNavLink to={"/games"}>Games</MainNavLink>
+        </StyledMainNavItem>
+        <StyledMainNavItem>
+          <MainNavLink to={"/finance"}>Finance</MainNavLink>
         </StyledMainNavItem>
       </StyledMainNavList>
     </StyledMainNav>
@@ -55,8 +64,11 @@ function MainNav({ topHeight, navHeight, navPadding, navBorder }) {
 function AppRoutes({ subMenuDispatch, hiddenMenuDispatch }) {
   return (
     <Routes>
-      <Route path="/" element={<AboutScreen subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/blog/*" element={<BlogApp subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/" element={<WelcomeScreen subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/about/*" element={<AboutApp subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/tech/*" element={<TechApp subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/games/*" element={<GamesApp subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/finance/*" element={<FinanceApp subMenuDispatch={subMenuDispatch} hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   );

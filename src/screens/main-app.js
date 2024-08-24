@@ -4,12 +4,12 @@ import {jsx} from '@emotion/react'
 import {ErrorBoundary} from 'react-error-boundary'
 import * as colors from '../styles/colors'
 import {useReducer} from 'react'
-import {HiddenMenu} from './hiddenMenu'
+import {HiddenMenu} from './common/hiddenMenu'
 import styled from '@emotion/styled/macro'
 import {hiddenMenuInitialState, hiddenMenuReducer} from '../reducers/hiddenMenuReducer'
 import {ErrorFallback, FullPageErrorFallback} from '../components/error/errorFallback'
 import {subMenuInitialState, subMenuReducer} from '../reducers/subMenuReducer'
-import {AppRoutes, MainNav} from '../navigation/mainNavigation'
+import {AppRoutes, MainNav} from './navigation/mainNavigation'
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -55,7 +55,7 @@ function MainApp() {
 
         {subMenuState.shouldRenderSubNav && (
           <StyledSubNavDivContainer totalHeight={totalHeight}>
-            <subMenuState.SubNavComponent />
+            <subMenuState.SubNavComponent/>
           </StyledSubNavDivContainer>
         )}
 

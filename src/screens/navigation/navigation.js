@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 
-import * as colors from '../styles/colors'
+import * as colors from '../../styles/colors'
 import {Link as RouterLink, useLocation, useMatch} from 'react-router-dom'
 import styled from '@emotion/styled/macro'
 
