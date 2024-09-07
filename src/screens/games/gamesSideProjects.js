@@ -7,7 +7,7 @@ import {SET_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
 function GamesSideProjectsHiddenMenu() {
 
   // const data = useGetApi('tech/news')
-  const data = useGetApi('finance/intro');
+  const data = useGetApi('tech/intro');
 
   return (
     <p>{data.message}</p>
@@ -21,7 +21,7 @@ function GamesSideProjectsScreen({ hiddenMenuDispatch }) {
   }, [hiddenMenuDispatch]);
 
   // const data = useGetApi('tech/news')
-  const data = useGetApi('finance/intro');
+  const data = useGetApi('tech/intro');
 
   return (
     <p>{data.message}</p>

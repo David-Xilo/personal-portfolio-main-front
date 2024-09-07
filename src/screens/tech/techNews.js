@@ -7,7 +7,7 @@ import {useGetApi} from '../../hooks/useApi'
 function TechNewsHiddenMenu() {
 
   // const data = useGetApi('tech/news')
-  const data = useGetApi('finance/intro');
+  const data = useGetApi('tech/intro');
 
   return (
     <p>{data.message}</p>
@@ -21,7 +21,7 @@ function TechNewsScreen({ hiddenMenuDispatch }) {
   }, [hiddenMenuDispatch]);
 
   // const data = useGetApi('tech/news')
-  const data = useGetApi('finance/intro');
+  const data = useGetApi('tech/intro');
 
   return (
     <p>{data.message}</p>

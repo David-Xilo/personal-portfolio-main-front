@@ -11,7 +11,7 @@ function FinanceIntroScreen({ hiddenMenuDispatch }) {
   }, [hiddenMenuDispatch]);
 
   // const data = useGetApi('tech/intro')
-  const data = useGetApi('finance/intro');
+  const data = useGetApi('tech/intro');
 
   return (
     <div>{data.message}</div>

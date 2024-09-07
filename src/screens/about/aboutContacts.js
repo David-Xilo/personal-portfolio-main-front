@@ -8,7 +8,7 @@ import {useGetApi} from '../../hooks/useApi'
 function AboutContactsHiddenMenu() {
 
   // const data = useGetApi('tech/news')
-  const data = useGetApi('finance/intro');
+  const data = useGetApi('tech/intro');
 
   return (
     <p>{data.message}</p>
@@ -22,7 +22,7 @@ function AboutContactsScreen({ hiddenMenuDispatch }) {
   }, [hiddenMenuDispatch]);
 
   // const data = useGetApi('tech/intro')
-  const data = useGetApi('finance/intro');
+  const data = useGetApi('tech/intro');
 
   return (
     <div>{data.message}</div>
