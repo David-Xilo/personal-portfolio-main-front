@@ -7,8 +7,7 @@ import {useGetApi} from '../../hooks/useApi'
 
 function AboutContactsHiddenMenu() {
 
-  // const data = useGetApi('tech/news')
-  const data = useGetApi('tech/intro');
+  const data = useGetApi('about/intro');
 
   return (
     <p>{data.message}</p>
@@ -21,13 +20,16 @@ function AboutContactsScreen({ hiddenMenuDispatch }) {
     hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: AboutContactsHiddenMenu });
   }, [hiddenMenuDispatch]);
 
-  // const data = useGetApi('tech/intro')
-  const data = useGetApi('tech/intro');
+  const text = useGetApi('about/contact-text');
+  const data = useGetApi('about/contact');
 
   return (
-    <div>{data.message}</div>
+    <>
+      <div>{text.message}</div>
+      <div>{data.message}</div>
+    </>
   )
 }
 
 
-export { AboutContactsScreen }
+export {AboutContactsScreen}

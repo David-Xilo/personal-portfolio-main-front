@@ -15,6 +15,7 @@ import {
   StyledSubMenuNavigationUl,
 } from '../navigation/navCommons'
 import {StyledMenuTableCellDiv, StyledMenuTableDiv} from '../common/menuDisplay'
+import {TechProjectsScreen} from './techProjects'
 
 
 function TechApp({ subMenuDispatch, hiddenMenuDispatch }) {
@@ -43,6 +44,9 @@ function TechNav() {
         <StyledSubMenuNavigationLi>
           <SubNavLink to={"/tech/news"}>News</SubNavLink>
         </StyledSubMenuNavigationLi>
+        <StyledSubMenuNavigationLi>
+          <SubNavLink to={"/tech/projects"}>Projects</SubNavLink>
+        </StyledSubMenuNavigationLi>
       </StyledSubMenuNavigationUl>
     </StyledSubMenuNavigationNav>
   )
@@ -53,6 +57,7 @@ function TechAppRoutes({ hiddenMenuDispatch }) {
     <Routes>
       <Route path="/" element={<TechIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="/news" element={<TechNewsScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route path="/projects" element={<TechProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   )

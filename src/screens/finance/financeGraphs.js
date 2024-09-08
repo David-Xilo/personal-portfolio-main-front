@@ -6,7 +6,6 @@ import {SET_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
 
 function FinanceGraphsHiddenMenu() {
 
-  // const data = useGetApi('tech/news')
   const data = useGetApi('tech/intro');
 
   return (
@@ -20,7 +19,6 @@ function FinanceGraphsScreen({ hiddenMenuDispatch }) {
     hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: FinanceGraphsHiddenMenu });
   }, [hiddenMenuDispatch]);
 
-  // const data = useGetApi('tech/news')
   const data = useGetApi('tech/intro');
 
   return (

@@ -10,7 +10,6 @@ function TechIntroScreen({ hiddenMenuDispatch }) {
     hiddenMenuDispatch({ type: CLEAR_HIDDEN_NAV });
   }, [hiddenMenuDispatch]);
 
-  // const data = useGetApi('tech/intro')
   const data = useGetApi('tech/intro');
 
   return (
