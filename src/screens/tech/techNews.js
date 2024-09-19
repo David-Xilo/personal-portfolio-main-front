@@ -21,6 +21,8 @@ function TechNewsScreen({ hiddenMenuDispatch }) {
 
   const data = useGetApi('tech/news');
 
+  console.log(data.message);
+
   return (
     <div>{data.message}</div>
   )
