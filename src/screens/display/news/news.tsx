@@ -9,12 +9,11 @@ interface NewsScreenProps {
 
 interface NewsItemProps {
   news: News;
-  idx: number;
 }
 
-const NewsItem: React.FC<NewsItemProps> = ({news, idx}) => {
+const NewsItem: React.FC<NewsItemProps> = ({news}) => {
   return (
-    <div key={idx}>
+    <div>
       <h2>{news.headline}</h2>
       <p>{news.description}</p>
       <a href={news.link_to_source}>Source</a>
@@ -34,8 +33,8 @@ const NewsScreen: React.FC<NewsScreenProps> = ({ path }) => {
 
   return (
     <div>
-      {message.map((item, index) => (
-        <NewsItem news={item} idx={index} />
+      {message.map((item) => (
+        <NewsItem news={item} key={item.link_to_source} />
       ))}
     </div>
   );
