@@ -3,6 +3,7 @@ import * as React from 'react'
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
 import {useGetApi} from '../../hooks/useApi'
+import {NewsScreen} from '../display/news/news'
 
 function TechNewsHiddenMenu() {
 
@@ -19,12 +20,8 @@ function TechNewsScreen({ hiddenMenuDispatch }) {
     hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: TechNewsHiddenMenu });
   }, [hiddenMenuDispatch]);
 
-  const data = useGetApi('tech/news');
-
-  console.log(data.message);
-
   return (
-    <div>{data.message}</div>
+    <NewsScreen path={'tech'} />
   )
 }
 

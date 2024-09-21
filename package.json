@@ -10,43 +10,53 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@tanstack/react-query": "^4.29.3",
     "bootstrap": "^5.3.3",
     "cross-env": "^7.0.3",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
-    "react-query": "^3.39.3",
-    "react-router": "^6.23.0",
     "react-router-dom": "^6.23.0",
-    "react-scripts": "^5.0.1",
     "styled-components": "^6.1.12"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.24.1",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "@typescript-eslint/parser": "^8.6.0",
+    "babel-loader": "^9.2.1",
+    "babel-plugin-macros": "^3.1.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.11.0",
+    "eslint-plugin-react": "^7.36.1",
+    "eslint-webpack-plugin": "^4.2.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.6.0",
     "husky": "^9.0.11",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "resolve": "^1.22.8",
+    "source-map-loader": "^5.0.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
     "typescript": "^5.6.2",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0",
     "whatwg-fetch": "^3.6.20"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start:mock-server": "node public/fake-server/fakeServer.js",
-    "build": "react-scripts build --profile",
-    "lint": "eslint . --cache-location node_modules/.cache/eslint",
-    "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\""
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "husky": {
     "hooks": {

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {FullPageSpinner} from './components/lib'
+import {FullPageSpinner} from 'components/lib'
 
 const MainApp = React.lazy(() => import('./screens/main-app'))
 

@@ -27,6 +27,7 @@ const NewsScreen: React.FC<NewsScreenProps> = ({ path }) => {
   const newsPath = "/" + path + "/news"
   const {status, message, error} = useNewsGetApi(newsPath)
 
+  console.log('Message in NewsScreen:', message);
   if (status !== "success") {
     return <div>Found error {error}</div>
   }

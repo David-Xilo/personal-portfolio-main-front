@@ -7,7 +7,7 @@ import {useReducer} from 'react'
 import {HiddenMenu} from './common/hiddenMenu'
 import styled from '@emotion/styled/macro'
 import {hiddenMenuInitialState, hiddenMenuReducer} from '../reducers/hiddenMenuReducer'
-import {ErrorFallback, FullPageErrorFallback} from '../components/error/errorFallback'
+import {ErrorFallback, FullPageErrorFallback} from 'components/error/errorFallback'
 import {subMenuInitialState, subMenuReducer} from '../reducers/subMenuReducer'
 import {AppRoutes, MainNav} from './navigation/mainNavigation'
 

@@ -1,4 +1,4 @@
-import {queryCache} from 'react-query'
+// import {queryCache} from 'react-query'
 const apiURL = process.env.REACT_APP_API_URL
 
 async function client(

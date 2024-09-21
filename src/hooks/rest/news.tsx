@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
 
 
-const domain = "localhost:4000"
+const domain = "http://localhost:4000/";
+
 
 interface News {
   headline: string;
@@ -25,6 +26,7 @@ const useNewsGetApi = (endpoint: string): NewsResponse => {
     error: null,
   })
 
+  console.log(completeEndpoint)
   useEffect(() => {
     fetch(completeEndpoint)
       .then(res => {
@@ -34,6 +36,8 @@ const useNewsGetApi = (endpoint: string): NewsResponse => {
       return res.json()
       })
       .then((data) => {
+        console.log('API Response:', data);
+        console.log('Data Message:', data.message);
         const normalizedData: NewsResponse = {
           status: "success",
           message: Array.isArray(data.message) ? data.message : [],
