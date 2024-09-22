@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "author": "David Bugalho de Moura <david.dbmoura@gmail.com>",
+  "type": "module",
   "engines": {
     "node": "14 || 16 || 18 || 19",
     "npm": ">=6"
@@ -25,6 +26,8 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.11.0",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
@@ -35,13 +38,16 @@
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "eslint": "^9.11.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.36.1",
     "eslint-webpack-plugin": "^4.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
     "husky": "^9.0.11",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.3",
     "resolve": "^1.22.8",
     "source-map-loader": "^5.0.0",
     "style-loader": "^4.0.0",
@@ -55,7 +61,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "husky": {

@@ -3,30 +3,25 @@ import {useGetApi} from '../../hooks/useApi'
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
 
-
 function GamesSideProjectsHiddenMenu() {
-
   // const data = useGetApi('tech/news')
-  const data = useGetApi('tech/intro');
+  const data = useGetApi('tech/intro')
 
-  return (
-    <p>{data.message}</p>
-  )
+  return <p>{data.message}</p>
 }
 
-
-function GamesSideProjectsScreen({ hiddenMenuDispatch }) {
+function GamesSideProjectsScreen({hiddenMenuDispatch}) {
   useEffect(() => {
-    hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: GamesSideProjectsHiddenMenu });
-  }, [hiddenMenuDispatch]);
+    hiddenMenuDispatch({
+      type: SET_HIDDEN_NAV,
+      component: GamesSideProjectsHiddenMenu,
+    })
+  }, [hiddenMenuDispatch])
 
   // const data = useGetApi('tech/news')
-  const data = useGetApi('tech/intro');
+  const data = useGetApi('tech/intro')
 
-  return (
-    <p>{data.message}</p>
-  )
+  return <p>{data.message}</p>
 }
 
 export {GamesSideProjectsScreen}
-

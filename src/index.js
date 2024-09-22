@@ -6,6 +6,5 @@ import {FullApp} from './app'
 createRoot(document.getElementById('root')).render(
   <Router>
     <FullApp />
-  </Router>
-    
+  </Router>,
 )

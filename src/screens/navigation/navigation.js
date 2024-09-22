@@ -6,29 +6,33 @@ import {Link as RouterLink, useLocation, useMatch} from 'react-router-dom'
 import styled from '@emotion/styled/macro'
 
 const StyledRouterLink = styled(RouterLink)`
-    display: block;
-    padding: 8px 15px 8px 10px;
-    margin: 5px 0;
-    color: ${colors.text};
-    border-radius: 2px;
-    border-left: 5px solid transparent;
+  display: block;
+  padding: 8px 15px 8px 10px;
+  margin: 5px 0;
+  color: ${colors.text};
+  border-radius: 2px;
+  border-left: 5px solid transparent;
+  text-decoration: none;
+
+  &:hover {
+    color: ${colors.indigo};
+    background: ${colors.gray10};
     text-decoration: none;
+  }
 
-    &:hover {
-        color: ${colors.indigo};
-        background: ${colors.gray10};
-        text-decoration: none;
-    }
-
-    &:focus {
-        ${({ match }) => match && `
+  &:focus {
+    ${({match}) =>
+      match &&
+      `
           color: ${colors.indigo};
           background: ${colors.gray10};
           text-decoration: none;
         `}
-    }
+  }
 
-    ${({ match }) => match && `
+  ${({match}) =>
+    match &&
+    `
         border-left: 5px solid ${colors.indigo};
         background: ${colors.gray10};
         font-weight: bold;
@@ -38,33 +42,26 @@ const StyledRouterLink = styled(RouterLink)`
           background: ${colors.gray10};
         }
     `}
-`;
+`
 
 function MainNavLink(props) {
-  const location = useLocation();
-  const { to } = props;
+  const location = useLocation()
+  const {to} = props
 
-  const matchExactly = location.pathname === to;
-  const matchBeginning = !matchExactly && location.pathname.startsWith(`${to}/`) && location.pathname !== `${to}/`;
-  const match = matchExactly || matchBeginning;
+  const matchExactly = location.pathname === to
+  const matchBeginning =
+    !matchExactly &&
+    location.pathname.startsWith(`${to}/`) &&
+    location.pathname !== `${to}/`
+  const match = matchExactly || matchBeginning
 
-  return (
-    <StyledRouterLink
-      match={match}
-      {...props}
-    />
-  );
+  return <StyledRouterLink match={match} {...props} />
 }
 
 function SubNavLink(props) {
   const match = useMatch(props.to)
 
-  return (
-    <StyledRouterLink
-      match={match}
-      {...props}
-    />
-  );
+  return <StyledRouterLink match={match} {...props} />
 }
 
 export {MainNavLink, SubNavLink}

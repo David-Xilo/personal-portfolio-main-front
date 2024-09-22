@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {jsx} from '@emotion/react'
+// import {jsx} from '@emotion/react'
 
 import {Link as RouterLink} from 'react-router-dom'
 import styled from '@emotion/styled/macro'
@@ -64,22 +64,22 @@ const FormGroup = styled.div({
   flexDirection: 'column',
 })
 
-function FullPageSpinner() {
-  return (
-    <div
-      css={{
-        fontSize: '4em',
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      {/* <Spinner /> */}
-    </div>
-  )
-}
+// function FullPageSpinner() {
+//   return (
+//     <div
+//       css={{
+//         fontSize: '4em',
+//         height: '100vh',
+//         display: 'flex',
+//         flexDirection: 'column',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//       }}
+//     >
+//       {/* <Spinner /> */}
+//     </div>
+//   )
+// }
 
 const Link = styled(RouterLink)({
   color: colors.indigo,
@@ -89,12 +89,4 @@ const Link = styled(RouterLink)({
   },
 })
 
-export {
-  CircleButton,
-  Button,
-  Input,
-  Textarea,
-  FormGroup,
-  FullPageSpinner,
-  Link,
-}
+export {CircleButton, Button, Input, Textarea, FormGroup, Link}

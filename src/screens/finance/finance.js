@@ -17,19 +17,22 @@ import {
 } from '../navigation/navCommons'
 import {StyledMenuTableCellDiv, StyledMenuTableDiv} from '../common/menuDisplay'
 
-function FinanceApp({ subMenuDispatch, hiddenMenuDispatch }) {
+function FinanceApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {
-    subMenuDispatch({ type: SET_SUB_NAV, component: FinanceNav });
-  }, [subMenuDispatch]);
+    subMenuDispatch({type: SET_SUB_NAV, component: FinanceNav})
+  }, [subMenuDispatch])
 
   return (
-      <StyledMenuTableDiv>
-        <StyledMenuTableCellDiv>
-          <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />} >
-            <FinanceAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
-          </ErrorBoundary>
-        </StyledMenuTableCellDiv>
-      </StyledMenuTableDiv>
+    <StyledMenuTableDiv>
+      <StyledMenuTableCellDiv>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          fallback={<ErrorFallback />}
+        >
+          <FinanceAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
+        </ErrorBoundary>
+      </StyledMenuTableCellDiv>
+    </StyledMenuTableDiv>
   )
 }
 
@@ -38,25 +41,36 @@ function FinanceNav() {
     <StyledSubMenuNavigationNav>
       <StyledSubMenuNavigationUl>
         <StyledSubMenuNavigationLi>
-          <SubNavLink to={"/finance"}>Introduction</SubNavLink>
+          <SubNavLink to={'/finance'}>Introduction</SubNavLink>
         </StyledSubMenuNavigationLi>
         <StyledSubMenuNavigationLi>
-          <SubNavLink to={"/finance/news"}>News</SubNavLink>
+          <SubNavLink to={'/finance/news'}>News</SubNavLink>
         </StyledSubMenuNavigationLi>
         <StyledSubMenuNavigationLi>
-          <SubNavLink to={"/finance/graphs"}>Graphs</SubNavLink>
+          <SubNavLink to={'/finance/graphs'}>Graphs</SubNavLink>
         </StyledSubMenuNavigationLi>
       </StyledSubMenuNavigationUl>
     </StyledSubMenuNavigationNav>
   )
 }
 
-function FinanceAppRoutes({ hiddenMenuDispatch }) {
+function FinanceAppRoutes({hiddenMenuDispatch}) {
   return (
     <Routes>
-      <Route path="/" element={<FinanceIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/news" element={<FinanceNewsScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/graphs" element={<FinanceGraphsScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route
+        path="/"
+        element={<FinanceIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
+      />
+      <Route
+        path="/news"
+        element={<FinanceNewsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
+      />
+      <Route
+        path="/graphs"
+        element={
+          <FinanceGraphsScreen hiddenMenuDispatch={hiddenMenuDispatch} />
+        }
+      />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   )

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react'
 import styled from '@emotion/styled/macro'
 
 const StylizedHiddenMenuButton = styled.button`
   position: fixed;
-  top: ${({ menuHeight }) => `${menuHeight}px`};
-  right: ${({ isOpen }) => (isOpen ? '300px' : '0')};
+  top: ${({menuHeight}) => `${menuHeight}px`};
+  right: ${({isOpen}) => (isOpen ? '300px' : '0')};
   background-color: #333;
   color: white;
   border: none;
@@ -12,13 +12,13 @@ const StylizedHiddenMenuButton = styled.button`
   padding: 10px;
   transition: right 0.5s ease;
   z-index: 1002;
-`;
+`
 
 const StylizedHiddenMenuContainer = styled.div`
   position: fixed;
-  top: ${({ menuHeight }) => `${menuHeight}px`};
-  right: ${({ isOpen }) => (isOpen ? '0' : '-300px')};
-  height: ${({ menuHeight }) => `calc(100vh - ${menuHeight}px)`};
+  top: ${({menuHeight}) => `${menuHeight}px`};
+  right: ${({isOpen}) => (isOpen ? '0' : '-300px')};
+  height: ${({menuHeight}) => `calc(100vh - ${menuHeight}px)`};
   width: 300px;
   overflow-y: auto;
   transition: right 0.5s ease;
@@ -26,22 +26,26 @@ const StylizedHiddenMenuContainer = styled.div`
   border-left: 2px solid #333;
   color: black;
   z-index: 1001;
-`;
+`
 
 const StylizedHiddenMenuContentWrapper = styled.div`
   padding: 8px 16px;
-`;
+`
 
-function HiddenMenu({ content: Content, menuHeight }) {
-  const [isOpen, setIsOpen] = useState(false);
+function HiddenMenu({content: Content, menuHeight}) {
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <>
-      <StylizedHiddenMenuButton onClick={toggleMenu} isOpen={isOpen} menuHeight={menuHeight}>
+      <StylizedHiddenMenuButton
+        onClick={toggleMenu}
+        isOpen={isOpen}
+        menuHeight={menuHeight}
+      >
         {isOpen ? 'Close' : 'Open'}
       </StylizedHiddenMenuButton>
 
@@ -51,8 +55,7 @@ function HiddenMenu({ content: Content, menuHeight }) {
         </StylizedHiddenMenuContentWrapper>
       </StylizedHiddenMenuContainer>
     </>
-  );
+  )
 }
 
-
-export {HiddenMenu};
+export {HiddenMenu}

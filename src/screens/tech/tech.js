@@ -17,20 +17,22 @@ import {
 import {StyledMenuTableCellDiv, StyledMenuTableDiv} from '../common/menuDisplay'
 import {TechProjectsScreen} from './techProjects'
 
-
-function TechApp({ subMenuDispatch, hiddenMenuDispatch }) {
+function TechApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {
-    subMenuDispatch({ type: SET_SUB_NAV, component: TechNav });
-  }, [subMenuDispatch]);
+    subMenuDispatch({type: SET_SUB_NAV, component: TechNav})
+  }, [subMenuDispatch])
 
   return (
-      <StyledMenuTableDiv>
-        <StyledMenuTableCellDiv>
-          <ErrorBoundary FallbackComponent={ErrorFallback} fallback={< ErrorFallback />}>
-            <TechAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
-          </ErrorBoundary>
-        </StyledMenuTableCellDiv>
-      </StyledMenuTableDiv>
+    <StyledMenuTableDiv>
+      <StyledMenuTableCellDiv>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          fallback={<ErrorFallback />}
+        >
+          <TechAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
+        </ErrorBoundary>
+      </StyledMenuTableCellDiv>
+    </StyledMenuTableDiv>
   )
 }
 
@@ -39,28 +41,37 @@ function TechNav() {
     <StyledSubMenuNavigationNav>
       <StyledSubMenuNavigationUl>
         <StyledSubMenuNavigationLi>
-          <SubNavLink to={"/tech"}>Introduction</SubNavLink>
+          <SubNavLink to={'/tech'}>Introduction</SubNavLink>
         </StyledSubMenuNavigationLi>
         <StyledSubMenuNavigationLi>
-          <SubNavLink to={"/tech/news"}>News</SubNavLink>
+          <SubNavLink to={'/tech/news'}>News</SubNavLink>
         </StyledSubMenuNavigationLi>
         <StyledSubMenuNavigationLi>
-          <SubNavLink to={"/tech/projects"}>Projects</SubNavLink>
+          <SubNavLink to={'/tech/projects'}>Projects</SubNavLink>
         </StyledSubMenuNavigationLi>
       </StyledSubMenuNavigationUl>
     </StyledSubMenuNavigationNav>
   )
 }
 
-function TechAppRoutes({ hiddenMenuDispatch }) {
+function TechAppRoutes({hiddenMenuDispatch}) {
   return (
     <Routes>
-      <Route path="/" element={<TechIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/news" element={<TechNewsScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
-      <Route path="/projects" element={<TechProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />} />
+      <Route
+        path="/"
+        element={<TechIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
+      />
+      <Route
+        path="/news"
+        element={<TechNewsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
+      />
+      <Route
+        path="/projects"
+        element={<TechProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
+      />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
   )
 }
 
-export { TechApp }
+export {TechApp}

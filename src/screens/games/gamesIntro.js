@@ -4,17 +4,14 @@ import {useGetApi} from '../../hooks/useApi'
 import {useEffect} from 'react'
 import {CLEAR_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
 
-
-function GamesIntroScreen({ hiddenMenuDispatch }) {
+function GamesIntroScreen({hiddenMenuDispatch}) {
   useEffect(() => {
-    hiddenMenuDispatch({ type: CLEAR_HIDDEN_NAV });
-  }, [hiddenMenuDispatch]);
+    hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
+  }, [hiddenMenuDispatch])
 
   const data = useGetApi('games/intro')
 
-  return (
-    <div>{data.message}</div>
-  )
+  return <div>{data.message}</div>
 }
 
-export { GamesIntroScreen }
+export {GamesIntroScreen}

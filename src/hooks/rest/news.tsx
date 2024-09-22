@@ -1,53 +1,47 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react'
 
-
-const domain = "http://localhost:4000/";
-
+const domain = 'http://localhost:4000/'
 
 interface News {
-  headline: string;
-  link_to_source: string;
-  description: string;
-  sentiment: string;
-  genre: string;
+  headline: string
+  link_to_source: string
+  description: string
+  sentiment: string
+  genre: string
 }
 
 interface NewsResponse {
-  status: string;
-  message: News[];
-  error: string | null;
+  status: string
+  message: News[]
+  error: string | null
 }
 
 const useNewsGetApi = (endpoint: string): NewsResponse => {
-  const completeEndpoint = domain + endpoint;
+  const completeEndpoint = domain + endpoint
   const [data, setData] = useState<NewsResponse>({
     status: '',
     message: [],
     error: null,
   })
-
-  console.log(completeEndpoint)
   useEffect(() => {
     fetch(completeEndpoint)
       .then(res => {
-      if (!res.ok) {
-        throw new Error('Error using endpoint ' + completeEndpoint)
-      }
-      return res.json()
+        if (!res.ok) {
+          throw new Error('Error using endpoint ' + completeEndpoint)
+        }
+        return res.json()
       })
-      .then((data) => {
-        console.log('API Response:', data);
-        console.log('Data Message:', data.message);
+      .then(data => {
         const normalizedData: NewsResponse = {
-          status: "success",
+          status: 'success',
           message: Array.isArray(data.message) ? data.message : [],
-          error: null
+          error: null,
         }
         setData(normalizedData)
       })
-      .catch((err) => {
+      .catch(err => {
         const errorData = {
-          status: "error",
+          status: 'error',
           message: [],
           error: err.message,
         }
@@ -56,9 +50,6 @@ const useNewsGetApi = (endpoint: string): NewsResponse => {
   }, [completeEndpoint])
 
   return data
-};
+}
 
-
-export {useNewsGetApi, News};
-
-
+export {useNewsGetApi, News}

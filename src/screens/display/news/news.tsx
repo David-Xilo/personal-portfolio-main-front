@@ -4,11 +4,11 @@ import {useNewsGetApi} from '../../../hooks/rest/news'
 import {News} from '../../../hooks/rest/news'
 
 interface NewsScreenProps {
-  path: string;
+  path: string
 }
 
 interface NewsItemProps {
-  news: News;
+  news: News
 }
 
 const NewsItem: React.FC<NewsItemProps> = ({news}) => {
@@ -23,22 +23,20 @@ const NewsItem: React.FC<NewsItemProps> = ({news}) => {
   )
 }
 
-const NewsScreen: React.FC<NewsScreenProps> = ({ path }) => {
-  const newsPath = "/" + path + "/news"
+const NewsScreen: React.FC<NewsScreenProps> = ({path}) => {
+  const newsPath = '/' + path + '/news'
   const {status, message, error} = useNewsGetApi(newsPath)
-
-  console.log('Message in NewsScreen:', message);
-  if (status !== "success") {
+  if (status !== 'success') {
     return <div>Found error {error}</div>
   }
 
   return (
     <div>
-      {message.map((item) => (
+      {message.map(item => (
         <NewsItem news={item} key={item.link_to_source} />
       ))}
     </div>
-  );
-};
+  )
+}
 
 export {NewsScreen}

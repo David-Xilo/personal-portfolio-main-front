@@ -5,25 +5,22 @@ import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
 
 function FinanceGraphsHiddenMenu() {
+  const data = useGetApi('tech/intro')
 
-  const data = useGetApi('tech/intro');
-
-  return (
-    <p>{data.message}</p>
-  )
+  return <p>{data.message}</p>
 }
 
-
-function FinanceGraphsScreen({ hiddenMenuDispatch }) {
+function FinanceGraphsScreen({hiddenMenuDispatch}) {
   useEffect(() => {
-    hiddenMenuDispatch({ type: SET_HIDDEN_NAV, component: FinanceGraphsHiddenMenu });
-  }, [hiddenMenuDispatch]);
+    hiddenMenuDispatch({
+      type: SET_HIDDEN_NAV,
+      component: FinanceGraphsHiddenMenu,
+    })
+  }, [hiddenMenuDispatch])
 
-  const data = useGetApi('tech/intro');
+  const data = useGetApi('tech/intro')
 
-  return (
-    <p>{data.message}</p>
-  )
+  return <p>{data.message}</p>
 }
 
-export { FinanceGraphsScreen }
+export {FinanceGraphsScreen}
