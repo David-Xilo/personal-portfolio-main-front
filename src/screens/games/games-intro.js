@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import {useGetApi} from '../../hooks/useApi'
+import {useGetApi} from '../../hooks/use-api.js'
 import {useEffect} from 'react'
-import {CLEAR_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
+import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
 
 function GamesIntroScreen({hiddenMenuDispatch}) {
   useEffect(() => {

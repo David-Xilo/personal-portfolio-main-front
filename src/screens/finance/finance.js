@@ -5,17 +5,20 @@ import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/subMenuReducer'
-import {FinanceNewsScreen} from './financeNews'
-import {FinanceGraphsScreen} from './financeGraphs'
-import {FinanceIntroScreen} from './financeIntro'
-import {ErrorFallback} from 'components/error/errorFallback'
+import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
+import {FinanceNewsScreen} from './finance-news.js'
+import {FinanceGraphsScreen} from './finance-graphs.js'
+import {FinanceIntroScreen} from './finance-intro.js'
+import {ErrorFallback} from 'components/error/error-fallback.js'
 import {
   StyledSubMenuNavigationLi,
   StyledSubMenuNavigationNav,
   StyledSubMenuNavigationUl,
-} from '../navigation/navCommons'
-import {StyledMenuTableCellDiv, StyledMenuTableDiv} from '../common/menuDisplay'
+} from '../navigation/nav-commons.js'
+import {
+  StyledMenuTableCellDiv,
+  StyledMenuTableDiv,
+} from 'components/menu/menu-display.js'
 
 function FinanceApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {

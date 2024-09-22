@@ -4,18 +4,21 @@ import {SubNavLink} from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/subMenuReducer'
-import {TechIntroScreen} from './techIntro'
-import {TechNewsScreen} from './techNews'
+import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
+import {TechIntroScreen} from './tech-intro.js'
+import {TechNewsScreen} from './tech-news.js'
 import {ErrorBoundary} from 'react-error-boundary'
-import {ErrorFallback} from 'components/error/errorFallback'
+import {ErrorFallback} from 'components/error/error-fallback.js'
 import {
   StyledSubMenuNavigationLi,
   StyledSubMenuNavigationNav,
   StyledSubMenuNavigationUl,
-} from '../navigation/navCommons'
-import {StyledMenuTableCellDiv, StyledMenuTableDiv} from '../common/menuDisplay'
-import {TechProjectsScreen} from './techProjects'
+} from '../navigation/nav-commons.js'
+import {
+  StyledMenuTableCellDiv,
+  StyledMenuTableDiv,
+} from 'components/menu/menu-display.js'
+import {TechProjectsScreen} from './tech-projects.js'
 
 function TechApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {

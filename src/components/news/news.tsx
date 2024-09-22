@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import {useNewsGetApi} from '../../../hooks/rest/news'
-import {News} from '../../../hooks/rest/news'
+import {useNewsGetApi} from '../../hooks/rest/news'
+import {News} from '../../hooks/rest/news'
 
 interface NewsScreenProps {
   path: string

@@ -4,18 +4,21 @@ import {SubNavLink} from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
-import {GamesSideProjectsScreen} from './gamesSideProjects'
-import {GamesNewsScreen} from './gamesNews'
-import {GamesIntroScreen} from './gamesIntro'
-import {ErrorFallback} from 'components/error/errorFallback'
+import {GamesSideProjectsScreen} from './games-side-projects.js'
+import {GamesNewsScreen} from './games-news.js'
+import {GamesIntroScreen} from './games-intro.js'
+import {ErrorFallback} from 'components/error/error-fallback.js'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/subMenuReducer'
+import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
 import {
   StyledSubMenuNavigationLi,
   StyledSubMenuNavigationNav,
   StyledSubMenuNavigationUl,
-} from '../navigation/navCommons'
-import {StyledMenuTableCellDiv, StyledMenuTableDiv} from '../common/menuDisplay'
+} from '../navigation/nav-commons.js'
+import {
+  StyledMenuTableCellDiv,
+  StyledMenuTableDiv,
+} from 'components/menu/menu-display.js'
 
 function GamesApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {

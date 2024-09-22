@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 
-import {Link} from 'components/lib'
 import styled from '@emotion/styled/macro'
+import {Link as RouterLink} from 'react-router-dom'
+import * as colors from 'styles/colors.js'
 
 const StyledNotFoundContainer = styled.div`
   height: 100%;
@@ -14,6 +15,14 @@ const StyledNotFoundContainer = styled.div`
 const StyledNotFoundMessage = styled.div`
   text-align: center; /* Optional: Ensures the text is centered */
 `
+
+const Link = styled(RouterLink)({
+  color: colors.indigo,
+  ':hover': {
+    color: colors.indigoDarken10,
+    textDecoration: 'underline',
+  },
+})
 
 function NotFoundScreen() {
   return (

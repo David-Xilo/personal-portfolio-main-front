@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import {useGetApi} from '../../hooks/useApi'
+import {useGetApi} from '../../hooks/use-api.js'
 import {useEffect} from 'react'
-import {SET_HIDDEN_NAV} from '../../reducers/hiddenMenuReducer'
-import {NewsScreen} from '../display/news/news'
+import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
+import {NewsScreen} from 'components/news/news'
 
 function FinanceNewsHiddenMenu() {
   // const data = useGetApi('tech/news')
