@@ -1,17 +1,9 @@
 import * as React from 'react'
 
-import {useNewsGetApi} from '../../hooks/rest/news'
-import {News} from '../../hooks/rest/news'
+import {useNewsGetApi} from '../hooks/news-rest'
+import {News} from '../hooks/news-rest'
 
-interface NewsScreenProps {
-  path: string
-}
-
-interface NewsItemProps {
-  news: News
-}
-
-const NewsItem: React.FC<NewsItemProps> = ({news}) => {
+const NewsItem: React.FC<{ news: News }> = ({ news }) => {
   return (
     <div>
       <h2>{news.headline}</h2>
@@ -23,7 +15,7 @@ const NewsItem: React.FC<NewsItemProps> = ({news}) => {
   )
 }
 
-const NewsScreen: React.FC<NewsScreenProps> = ({path}) => {
+const NewsScreen: React.FC<{ path: string }> = ({ path }) => {
   const newsPath = '/' + path + '/news'
   const {status, message, error} = useNewsGetApi(newsPath)
   if (status !== 'success') {
