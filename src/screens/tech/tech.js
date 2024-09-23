@@ -18,7 +18,7 @@ import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
 } from 'components/menu/menu-display.ts'
-import {TechProjectsScreen} from './tech-projects.js'
+import {TechSideProjectsScreen} from './tech-side-projects.js'
 
 function TechApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {
@@ -70,7 +70,7 @@ function TechAppRoutes({hiddenMenuDispatch}) {
       />
       <Route
         path="/projects"
-        element={<TechProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
+        element={<TechSideProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
       />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>

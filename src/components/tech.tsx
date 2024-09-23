@@ -1,0 +1,33 @@
+import React from 'react'
+import {TechProjects, useTechProjectsGetApi} from '../hooks/tech-rest'
+
+
+const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
+  return (
+    <div>
+      <h2>{project.title}</h2>
+      <p>{project.description}</p>
+      <a href={project.link_to_git}>Git</a>
+    </div>
+  )
+}
+
+const TechProjectsScreen: React.FC = () => {
+  const projectsPath = '/tech/projects'
+  const {status, message, error} = useTechProjectsGetApi(projectsPath)
+  if (status !== 'success') {
+    return <div>Found error {error}</div>
+  }
+
+  return (
+    <div>
+      {message.map(item => (
+        <TechProject project={item} key={item.link_to_git} />
+      ))}
+    </div>
+  )
+}
+
+
+export {TechProjectsScreen}
+

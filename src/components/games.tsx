@@ -15,8 +15,8 @@ const GamesItem: React.FC<{ games: Games }> = ({ games }) => {
 }
 
 const GamesScreen: React.FC = () => {
-  const newsPath = '/games/projects'
-  const {status, message, error} = useGamesGetApi(newsPath)
+  const gamesPath = '/games/projects'
+  const {status, message, error} = useGamesGetApi(gamesPath)
   if (status !== 'success') {
     return <div>Found error {error}</div>
   }

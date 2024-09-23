@@ -3,6 +3,7 @@ import * as React from 'react'
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
 import {useGetApi} from '../../hooks/use-api.js'
+import {TechProjectsScreen} from 'components/tech.tsx'
 
 function TechProjectsHiddenMenu() {
   const data = useGetApi('tech/intro')
@@ -10,7 +11,7 @@ function TechProjectsHiddenMenu() {
   return <p>{data.message}</p>
 }
 
-function TechProjectsScreen({hiddenMenuDispatch}) {
+function TechSideProjectsScreen({hiddenMenuDispatch}) {
   useEffect(() => {
     hiddenMenuDispatch({
       type: SET_HIDDEN_NAV,
@@ -18,9 +19,7 @@ function TechProjectsScreen({hiddenMenuDispatch}) {
     })
   }, [hiddenMenuDispatch])
 
-  const data = useGetApi('tech/projects')
-
-  return <div>{data.message}</div>
+  return (<TechProjectsScreen />)
 }
 
-export {TechProjectsScreen}
+export {TechSideProjectsScreen}
