@@ -1,4 +1,4 @@
-import styled from '@emotion/styled/macro'
+import styled from 'styled-components'
 
 // Styled components
 const StyledMenuTableDiv = styled.div`

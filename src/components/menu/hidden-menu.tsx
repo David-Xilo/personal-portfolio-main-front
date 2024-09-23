@@ -1,7 +1,12 @@
 import React, {useState} from 'react'
-import styled from '@emotion/styled/macro'
+import styled from 'styled-components'
 
-const StylizedHiddenMenuButton = styled.button`
+interface HiddenMenuStyledComponentProps {
+  menuHeight: number,
+  isOpen: boolean,
+}
+
+const StylizedHiddenMenuButton = styled.button<HiddenMenuStyledComponentProps>`
   position: fixed;
   top: ${({menuHeight}) => `${menuHeight}px`};
   right: ${({isOpen}) => (isOpen ? '300px' : '0')};
@@ -14,7 +19,7 @@ const StylizedHiddenMenuButton = styled.button`
   z-index: 1002;
 `
 
-const StylizedHiddenMenuContainer = styled.div`
+const StylizedHiddenMenuContainer = styled.div<HiddenMenuStyledComponentProps>`
   position: fixed;
   top: ${({menuHeight}) => `${menuHeight}px`};
   right: ${({isOpen}) => (isOpen ? '0' : '-300px')};
@@ -32,7 +37,7 @@ const StylizedHiddenMenuContentWrapper = styled.div`
   padding: 8px 16px;
 `
 
-function HiddenMenu({content: Content, menuHeight}) {
+const HiddenMenu: React.FC<{ content: React.ComponentType, menuHeight: number }> = ({content: Content, menuHeight}) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {

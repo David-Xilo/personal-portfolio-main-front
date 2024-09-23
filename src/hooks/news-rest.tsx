@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-const domain = 'http://localhost:4000/'
+const domain = 'http://localhost:4000'
 
 interface News {
   headline: string
