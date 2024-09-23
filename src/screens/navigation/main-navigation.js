@@ -1,16 +1,16 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 
-import {MainNavLink} from './navigation'
+import {MainNavLink} from './navigation.js'
 import {Route, Routes} from 'react-router-dom'
-import {AboutApp} from '../about/about'
-import {NotFoundScreen} from 'components/error/not-found'
+import {AboutApp} from '../about/about.js'
+import {NotFoundScreen} from 'components/error/not-found.js'
 import styled from '@emotion/styled/macro'
-import * as colors from '../../styles/colors'
-import {TechApp} from '../tech/tech'
-import {WelcomeScreen} from '../welcome/welcome'
-import {GamesApp} from '../games/games'
-import {FinanceApp} from '../finance/finance'
+import * as colors from '../../styles/colors.js'
+import {TechApp} from '../tech/tech.js'
+import {WelcomeScreen} from '../welcome/welcome.js'
+import {GamesApp} from '../games/games.js'
+import {FinanceApp} from '../finance/finance.js'
 
 const StyledMainNav = styled.nav`
   position: fixed;

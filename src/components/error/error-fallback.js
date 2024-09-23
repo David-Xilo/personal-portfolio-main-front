@@ -2,8 +2,8 @@
 import {jsx} from '@emotion/react'
 
 import styled from '@emotion/styled/macro'
-import * as colors from '../../styles/colors'
-import {ErrorMessage} from './error'
+import * as colors from '../../styles/colors.js'
+import {ErrorMessage} from './error.js'
 
 const FullPageErrorContainer = styled.div`
   color: ${colors.danger};

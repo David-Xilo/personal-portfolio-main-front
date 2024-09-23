@@ -3,7 +3,7 @@ import * as React from 'react'
 import {useGetApi} from '../../hooks/use-api.js'
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
-import {NewsScreen} from 'components/news.js'
+import {NewsScreen} from 'components/news.tsx'
 
 function GamesNewsHiddenMenu() {
   // const data = useGetApi('tech/news')

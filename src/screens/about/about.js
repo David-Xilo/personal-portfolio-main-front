@@ -4,9 +4,9 @@ import {useEffect} from 'react'
 import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
 import {ErrorBoundary} from 'react-error-boundary'
 import {ErrorFallback} from 'components/error/error-fallback.js'
-import {SubNavLink} from '../navigation/navigation'
+import {SubNavLink} from '../navigation/navigation.js'
 import {Route, Routes} from 'react-router-dom'
-import {NotFoundScreen} from 'components/error/not-found'
+import {NotFoundScreen} from 'components/error/not-found.js'
 import {AboutIntroScreen} from './about-intro.js'
 import {AboutContactsScreen} from './about-contacts.js'
 import {
@@ -17,7 +17,7 @@ import {
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
-} from 'components/menu/menu-display.js'
+} from 'components/menu/menu-display.ts'
 
 function AboutApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {

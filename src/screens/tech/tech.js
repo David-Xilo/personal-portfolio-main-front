@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import {SubNavLink} from '../navigation/navigation'
+import {SubNavLink} from '../navigation/navigation.js'
 import {Routes, Route} from 'react-router-dom'
-import {NotFoundScreen} from 'components/error/not-found'
+import {NotFoundScreen} from 'components/error/not-found.js'
 import {useEffect} from 'react'
 import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
 import {TechIntroScreen} from './tech-intro.js'
@@ -17,7 +17,7 @@ import {
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
-} from 'components/menu/menu-display.js'
+} from 'components/menu/menu-display.ts'
 import {TechProjectsScreen} from './tech-projects.js'
 
 function TechApp({subMenuDispatch, hiddenMenuDispatch}) {

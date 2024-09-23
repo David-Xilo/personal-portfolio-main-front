@@ -2,7 +2,7 @@
 import {jsx} from '@emotion/react'
 
 import styled from '@emotion/styled/macro'
-import * as colors from '../../styles/colors'
+import * as colors from '../../styles/colors.js'
 
 const StyledErrorMessageContainer = styled.div`
   role: alert;

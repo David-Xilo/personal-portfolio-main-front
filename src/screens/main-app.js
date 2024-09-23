@@ -2,9 +2,9 @@
 import {jsx} from '@emotion/react'
 
 import {ErrorBoundary} from 'react-error-boundary'
-import * as colors from '../styles/colors'
+import * as colors from '../styles/colors.js'
 import {useReducer} from 'react'
-import {HiddenMenu} from 'components/menu/hidden-menu.js'
+import {HiddenMenu} from 'components/menu/hidden-menu.tsx'
 import styled from '@emotion/styled/macro'
 import {
   hiddenMenuInitialState,

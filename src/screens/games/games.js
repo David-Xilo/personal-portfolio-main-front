@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import {SubNavLink} from '../navigation/navigation'
+import {SubNavLink} from '../navigation/navigation.js'
 import {Routes, Route} from 'react-router-dom'
-import {NotFoundScreen} from 'components/error/not-found'
+import {NotFoundScreen} from 'components/error/not-found.js'
 import {ErrorBoundary} from 'react-error-boundary'
 import {GamesSideProjectsScreen} from './games-side-projects.js'
 import {GamesNewsScreen} from './games-news.js'
@@ -18,7 +18,7 @@ import {
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
-} from 'components/menu/menu-display.js'
+} from 'components/menu/menu-display.ts'
 
 function GamesApp({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {
