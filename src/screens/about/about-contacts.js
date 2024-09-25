@@ -2,11 +2,11 @@ import * as React from 'react'
 
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
-import {useGetApi} from '../../hooks/use-api.js'
 import {ContactScreen} from 'components/contact.tsx'
+import {useIntroGetApi} from '../../hooks/intro-rest.tsx'
 
 function AboutContactsHiddenMenu() {
-  const data = useGetApi('about/intro')
+  const data = useIntroGetApi('/about/intro')
 
   return <p>{data.message}</p>
 }

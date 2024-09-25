@@ -1,28 +1,22 @@
 import {useEffect, useState} from 'react'
 
+
 const domain = 'http://localhost:4000'
 
-interface Games {
-  title: string
-  genre: string
-  description: string
-  link_to_git: string
-  link_to_store: string
+interface IntroResponse {
+  status: string,
+  message: string | null,
+  error: string | null,
 }
 
-interface GamesResponse {
-  status: string
-  message: Games[]
-  error: string | null
-}
-
-const useGamesGetApi = (endpoint: string): GamesResponse => {
+const useIntroGetApi = (endpoint: string) => {
   const completeEndpoint = domain + endpoint
-  const [data, setData] = useState<GamesResponse>({
+  const [data, setData] = useState<IntroResponse>({
     status: '',
-    message: [],
+    message: null,
     error: null,
   })
+
   useEffect(() => {
     fetch(completeEndpoint)
       .then(res => {
@@ -32,17 +26,17 @@ const useGamesGetApi = (endpoint: string): GamesResponse => {
         return res.json()
       })
       .then(data => {
-        const normalizedData: GamesResponse = {
+        const normalizedData = {
           status: 'success',
-          message: Array.isArray(data.message) ? data.message : [],
+          message: data.message,
           error: null,
         }
         setData(normalizedData)
       })
       .catch(err => {
-        const errorData = {
+        const errorData ={
           status: 'error',
-          message: [],
+          message: null,
           error: err.message,
         }
         setData(errorData)
@@ -52,5 +46,6 @@ const useGamesGetApi = (endpoint: string): GamesResponse => {
   return data
 }
 
-export {useGamesGetApi, Games}
+
+export { useIntroGetApi }
 

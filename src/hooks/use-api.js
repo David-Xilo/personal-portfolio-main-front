@@ -1,21 +1,6 @@
 import {useState, useEffect} from 'react'
 
-const domain = 'http://localhost:4000/'
-
-const useGetApi = endpoint => {
-  const completeEndpoint = domain + endpoint
-  const [data, setData] = useState([])
-  useEffect(() => {
-    fetch(completeEndpoint)
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => {
-        console.error(error)
-      })
-  }, [completeEndpoint])
-
-  return data
-}
+const domain = 'http://localhost:4000'
 
 const usePostApi = (endpoint, body) => {
   const completeEndpoint = domain + endpoint
@@ -36,4 +21,4 @@ const usePostApi = (endpoint, body) => {
   return {data, handleSubmit}
 }
 
-export {useGetApi, usePostApi}
+export {usePostApi}
