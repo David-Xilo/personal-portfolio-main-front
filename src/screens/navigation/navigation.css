@@ -1,0 +1,13 @@
+/* src/styles/components.css */
+.sub-menu-nav {
+    @apply bg-gray-100 p-5 rounded-lg shadow-md;
+}
+
+.sub-menu-ul {
+    @apply list-none m-0 p-0;
+}
+
+.sub-menu-li {
+    @apply mb-2;
+}
+
