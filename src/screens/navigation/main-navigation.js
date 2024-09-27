@@ -3,7 +3,7 @@ import {jsx} from '@emotion/react'
 
 import {MainNavLink} from './navigation.js'
 import {Route, Routes} from 'react-router-dom'
-import {AboutApp} from '../about/about.js'
+import {AboutApp} from '../about/about.tsx'
 import {NotFoundScreen} from 'components/error/not-found.js'
 import styled from '@emotion/styled/macro'
 import * as colors from '../../styles/colors.js'

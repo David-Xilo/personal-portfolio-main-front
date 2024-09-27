@@ -9,12 +9,12 @@ import {GamesNewsScreen} from './games-news.js'
 import {GamesIntroScreen} from './games-intro.js'
 import {ErrorFallback} from 'components/error/error-fallback.js'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
+import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.ts'
 import {
-  StyledSubMenuNavigationLi,
-  StyledSubMenuNavigationNav,
-  StyledSubMenuNavigationUl,
-} from '../navigation/nav-commons.js'
+  SubMenuListItem,
+  SubMenuNavigation,
+  SubMenuList,
+} from '../navigation/nav-commons.tsx'
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
@@ -41,19 +41,19 @@ function GamesApp({subMenuDispatch, hiddenMenuDispatch}) {
 
 function GamesNav() {
   return (
-    <StyledSubMenuNavigationNav>
-      <StyledSubMenuNavigationUl>
-        <StyledSubMenuNavigationLi>
+    <SubMenuNavigation>
+      <SubMenuList>
+        <SubMenuListItem>
           <SubNavLink to={'/games'}>Introduction</SubNavLink>
-        </StyledSubMenuNavigationLi>
-        <StyledSubMenuNavigationLi>
+        </SubMenuListItem>
+        <SubMenuListItem>
           <SubNavLink to={'/games/news'}>News</SubNavLink>
-        </StyledSubMenuNavigationLi>
-        <StyledSubMenuNavigationLi>
+        </SubMenuListItem>
+        <SubMenuListItem>
           <SubNavLink to={'/games/side-projects'}>Side Projects</SubNavLink>
-        </StyledSubMenuNavigationLi>
-      </StyledSubMenuNavigationUl>
-    </StyledSubMenuNavigationNav>
+        </SubMenuListItem>
+      </SubMenuList>
+    </SubMenuNavigation>
   )
 }
 

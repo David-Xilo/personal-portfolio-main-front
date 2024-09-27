@@ -1,4 +1,3 @@
-import './styles/components.css';
 import {ReactNode} from 'react'
 
 // Define the type for components that accept children

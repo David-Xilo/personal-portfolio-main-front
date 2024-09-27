@@ -1,25 +1,19 @@
-import * as React from 'react'
-
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
+import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
 import {ErrorBoundary} from 'react-error-boundary'
 import {ErrorFallback} from 'components/error/error-fallback.js'
 import {SubNavLink} from '../navigation/navigation.js'
 import {Route, Routes} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found.js'
-import {AboutIntroScreen} from './about-intro.js'
+import {AboutIntroScreen} from './about-intro'
 import {AboutContactsScreen} from './about-contacts.js'
-import {
-  StyledSubMenuNavigationLi,
-  StyledSubMenuNavigationNav,
-  StyledSubMenuNavigationUl,
-} from '../navigation/nav-commons.js'
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
-} from 'components/menu/menu-display.ts'
+} from 'components/menu/menu-display'
+import {SubMenuList, SubMenuListItem, SubMenuNavigation} from '../navigation/nav-commons.tsx'
 
-function AboutApp({subMenuDispatch, hiddenMenuDispatch}) {
+const AboutApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
   useEffect(() => {
     subMenuDispatch({type: SET_SUB_NAV, component: AboutNav})
   }, [subMenuDispatch])
@@ -27,10 +21,7 @@ function AboutApp({subMenuDispatch, hiddenMenuDispatch}) {
   return (
     <StyledMenuTableDiv>
       <StyledMenuTableCellDiv>
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          fallback={<ErrorFallback />}
-        >
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
           <AboutAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
       </StyledMenuTableCellDiv>
@@ -38,22 +29,22 @@ function AboutApp({subMenuDispatch, hiddenMenuDispatch}) {
   )
 }
 
-function AboutNav() {
+const AboutNav: React.FC = () => {
   return (
-    <StyledSubMenuNavigationNav>
-      <StyledSubMenuNavigationUl>
-        <StyledSubMenuNavigationLi>
+    <SubMenuNavigation>
+      <SubMenuList>
+        <SubMenuListItem>
           <SubNavLink to={'/about'}>Introduction</SubNavLink>
-        </StyledSubMenuNavigationLi>
-        <StyledSubMenuNavigationLi>
+        </SubMenuListItem>
+        <SubMenuListItem>
           <SubNavLink to={'/about/contacts'}>Contacts</SubNavLink>
-        </StyledSubMenuNavigationLi>
-      </StyledSubMenuNavigationUl>
-    </StyledSubMenuNavigationNav>
+        </SubMenuListItem>
+      </SubMenuList>
+    </SubMenuNavigation>
   )
 }
 
-function AboutAppRoutes({hiddenMenuDispatch}) {
+const AboutAppRoutes: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   return (
     <Routes>
       <Route

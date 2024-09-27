@@ -4,16 +4,16 @@ import {SubNavLink} from '../navigation/navigation.js'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found.js'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
+import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.ts'
 import {TechIntroScreen} from './tech-intro.js'
 import {TechNewsScreen} from './tech-news.js'
 import {ErrorBoundary} from 'react-error-boundary'
 import {ErrorFallback} from 'components/error/error-fallback.js'
 import {
-  StyledSubMenuNavigationLi,
-  StyledSubMenuNavigationNav,
-  StyledSubMenuNavigationUl,
-} from '../navigation/nav-commons.js'
+  SubMenuListItem,
+  SubMenuNavigation,
+  SubMenuList,
+} from '../navigation/nav-commons.tsx'
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
@@ -41,19 +41,19 @@ function TechApp({subMenuDispatch, hiddenMenuDispatch}) {
 
 function TechNav() {
   return (
-    <StyledSubMenuNavigationNav>
-      <StyledSubMenuNavigationUl>
-        <StyledSubMenuNavigationLi>
+    <SubMenuNavigation>
+      <SubMenuList>
+        <SubMenuListItem>
           <SubNavLink to={'/tech'}>Introduction</SubNavLink>
-        </StyledSubMenuNavigationLi>
-        <StyledSubMenuNavigationLi>
+        </SubMenuListItem>
+        <SubMenuListItem>
           <SubNavLink to={'/tech/news'}>News</SubNavLink>
-        </StyledSubMenuNavigationLi>
-        <StyledSubMenuNavigationLi>
+        </SubMenuListItem>
+        <SubMenuListItem>
           <SubNavLink to={'/tech/projects'}>Projects</SubNavLink>
-        </StyledSubMenuNavigationLi>
-      </StyledSubMenuNavigationUl>
-    </StyledSubMenuNavigationNav>
+        </SubMenuListItem>
+      </SubMenuList>
+    </SubMenuNavigation>
   )
 }
 

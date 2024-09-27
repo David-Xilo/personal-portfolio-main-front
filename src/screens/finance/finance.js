@@ -5,16 +5,16 @@ import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found.js'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.js'
+import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.ts'
 import {FinanceNewsScreen} from './finance-news.js'
 import {FinanceGraphsScreen} from './finance-graphs.js'
 import {FinanceIntroScreen} from './finance-intro.js'
 import {ErrorFallback} from 'components/error/error-fallback.js'
 import {
-  StyledSubMenuNavigationLi,
-  StyledSubMenuNavigationNav,
-  StyledSubMenuNavigationUl,
-} from '../navigation/nav-commons.js'
+  SubMenuListItem,
+  SubMenuNavigation,
+  SubMenuList,
+} from '../navigation/nav-commons.tsx'
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
@@ -41,19 +41,19 @@ function FinanceApp({subMenuDispatch, hiddenMenuDispatch}) {
 
 function FinanceNav() {
   return (
-    <StyledSubMenuNavigationNav>
-      <StyledSubMenuNavigationUl>
-        <StyledSubMenuNavigationLi>
+    <SubMenuNavigation>
+      <SubMenuList>
+        <SubMenuListItem>
           <SubNavLink to={'/finance'}>Introduction</SubNavLink>
-        </StyledSubMenuNavigationLi>
-        <StyledSubMenuNavigationLi>
+        </SubMenuListItem>
+        <SubMenuListItem>
           <SubNavLink to={'/finance/news'}>News</SubNavLink>
-        </StyledSubMenuNavigationLi>
-        <StyledSubMenuNavigationLi>
+        </SubMenuListItem>
+        <SubMenuListItem>
           <SubNavLink to={'/finance/graphs'}>Graphs</SubNavLink>
-        </StyledSubMenuNavigationLi>
-      </StyledSubMenuNavigationUl>
-    </StyledSubMenuNavigationNav>
+        </SubMenuListItem>
+      </SubMenuList>
+    </SubMenuNavigation>
   )
 }
 

@@ -17,7 +17,7 @@ import {
 import {
   subMenuInitialState,
   subMenuReducer,
-} from '../reducers/sub-menu-reducer.js'
+} from '../reducers/sub-menu-reducer.ts'
 import {AppRoutes, MainNav} from './navigation/main-navigation.js'
 
 const StyledContainer = styled.div`
