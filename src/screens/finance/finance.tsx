@@ -5,7 +5,7 @@ import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found.js'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.ts'
+import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
 import {FinanceNewsScreen} from './finance-news.js'
 import {FinanceGraphsScreen} from './finance-graphs.js'
 import {FinanceIntroScreen} from './finance-intro.js'
@@ -14,13 +14,13 @@ import {
   SubMenuListItem,
   SubMenuNavigation,
   SubMenuList,
-} from '../navigation/nav-commons.tsx'
+} from '../navigation/nav-commons'
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
-} from 'components/menu/menu-display.ts'
+} from 'components/menu/menu-display'
 
-function FinanceApp({subMenuDispatch, hiddenMenuDispatch}) {
+const FinanceApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
   useEffect(() => {
     subMenuDispatch({type: SET_SUB_NAV, component: FinanceNav})
   }, [subMenuDispatch])
@@ -28,10 +28,7 @@ function FinanceApp({subMenuDispatch, hiddenMenuDispatch}) {
   return (
     <StyledMenuTableDiv>
       <StyledMenuTableCellDiv>
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          fallback={<ErrorFallback />}
-        >
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
           <FinanceAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
       </StyledMenuTableCellDiv>
@@ -39,7 +36,7 @@ function FinanceApp({subMenuDispatch, hiddenMenuDispatch}) {
   )
 }
 
-function FinanceNav() {
+const FinanceNav: React.FC = () => {
   return (
     <SubMenuNavigation>
       <SubMenuList>
@@ -57,7 +54,7 @@ function FinanceNav() {
   )
 }
 
-function FinanceAppRoutes({hiddenMenuDispatch}) {
+const FinanceAppRoutes: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   return (
     <Routes>
       <Route

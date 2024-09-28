@@ -2,7 +2,8 @@ import * as React from 'react'
 
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
-import {useIntroGetApi} from '../../hooks/intro-rest.tsx'
+import {useIntroGetApi} from '../../hooks/intro-rest'
+import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 
 function FinanceGraphsHiddenMenu() {
   const data = useIntroGetApi('/tech/intro')
@@ -10,7 +11,7 @@ function FinanceGraphsHiddenMenu() {
   return <p>{data.message}</p>
 }
 
-function FinanceGraphsScreen({hiddenMenuDispatch}) {
+const FinanceGraphsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {
     hiddenMenuDispatch({
       type: SET_HIDDEN_NAV,

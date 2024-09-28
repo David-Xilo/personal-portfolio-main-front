@@ -18,7 +18,7 @@ import {
   subMenuInitialState,
   subMenuReducer,
 } from '../reducers/sub-menu-reducer.ts'
-import {AppRoutes, MainNav} from './navigation/main-navigation.js'
+import {AppRoutes, MainNav} from './navigation/main-navigation.tsx'
 
 const StyledContainer = styled.div`
   height: 100vh;
