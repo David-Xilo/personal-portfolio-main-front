@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {useEffect} from 'react'
 import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
 import {ErrorBoundary} from 'react-error-boundary'
@@ -11,7 +12,7 @@ import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
 } from 'components/menu/menu-display'
-import {SubMenuList, SubMenuListItem, SubMenuNavigation} from '../navigation/nav-commons.tsx'
+import {SubMenuList, SubMenuListItem, SubMenuNavigation} from '../navigation/nav-commons'
 
 const AboutApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
   useEffect(() => {

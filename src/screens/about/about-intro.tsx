@@ -3,7 +3,7 @@ import * as React from 'react'
 import {useEffect} from 'react'
 import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
 import {useIntroGetApi} from '../../hooks/intro-rest'
-import {SubMenuProps} from '../../reducers/sub-menu-reducer.ts'
+import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 
 const AboutIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {

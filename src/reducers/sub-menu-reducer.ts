@@ -1,3 +1,4 @@
+import * as React from 'react'
 const SET_SUB_NAV = 'SET_SUB_NAV'
 const CLEAR_SUB_NAV = 'CLEAR_SUB_NAV'
 
