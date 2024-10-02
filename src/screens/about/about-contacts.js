@@ -1,9 +1,9 @@
 import * as React from 'react'
 
 import {useEffect} from 'react'
-import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
-import {ContactScreen} from 'components/contact-screen.tsx'
-import {useIntroGetApi} from '../../hooks/intro-rest.tsx'
+import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
+import {ContactScreen} from 'components/contact-screen'
+import {useIntroGetApi} from '../../hooks/intro-rest'
 
 function AboutContactsHiddenMenu() {
   const data = useIntroGetApi('/about/intro')

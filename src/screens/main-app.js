@@ -4,12 +4,12 @@ import {jsx} from '@emotion/react'
 import {ErrorBoundary} from 'react-error-boundary'
 import * as colors from '../styles/colors.js'
 import {useReducer} from 'react'
-import {HiddenMenu} from 'components/menu/hidden-menu.tsx'
+import {HiddenMenu} from 'components/menu/hidden-menu'
 import styled from '@emotion/styled/macro'
 import {
   hiddenMenuInitialState,
   hiddenMenuReducer,
-} from '../reducers/hidden-menu-reducer.js'
+} from '../reducers/hidden-menu-reducer'
 import {
   ErrorFallback,
   FullPageErrorFallback,
@@ -17,8 +17,8 @@ import {
 import {
   subMenuInitialState,
   subMenuReducer,
-} from '../reducers/sub-menu-reducer.ts'
-import {AppRoutes, MainNav} from './navigation/main-navigation.tsx'
+} from '../reducers/sub-menu-reducer'
+import {AppRoutes, MainNav} from './navigation/main-navigation'
 
 const StyledContainer = styled.div`
   height: 100vh;

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {useEffect} from 'react'
-import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
-import {CLEAR_SUB_NAV} from '../../reducers/sub-menu-reducer.ts'
+import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
+import {CLEAR_SUB_NAV} from '../../reducers/sub-menu-reducer'
 
 function WelcomeScreen({subMenuDispatch, hiddenMenuDispatch}) {
   useEffect(() => {

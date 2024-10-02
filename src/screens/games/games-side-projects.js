@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {useEffect} from 'react'
-import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
-import {GamesScreen} from 'components/games-screen.tsx'
-import {useIntroGetApi} from '../../hooks/intro-rest.tsx'
+import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
+import {GamesScreen} from 'components/games-screen'
+import {useIntroGetApi} from '../../hooks/intro-rest'
 
 function GamesSideProjectsHiddenMenu() {
   const data = useIntroGetApi('/tech/intro')
