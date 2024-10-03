@@ -4,14 +4,15 @@ import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {ContactScreen} from 'components/contact-screen'
 import {useIntroGetApi} from '../../hooks/intro-rest'
+import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 
-function AboutContactsHiddenMenu() {
+const AboutContactsHiddenMenu: React.FC = () => {
   const data = useIntroGetApi('/about/intro')
 
   return <p>{data.message}</p>
 }
 
-function AboutContactsScreen({hiddenMenuDispatch}) {
+const AboutContactsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {
     hiddenMenuDispatch({
       type: SET_HIDDEN_NAV,

@@ -7,7 +7,7 @@ import {SubNavLink} from '../navigation/navigation.js'
 import {Route, Routes} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found.js'
 import {AboutIntroScreen} from './about-intro'
-import {AboutContactsScreen} from './about-contacts.js'
+import {AboutContactsScreen} from './about-contacts'
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
