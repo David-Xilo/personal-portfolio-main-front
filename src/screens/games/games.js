@@ -4,12 +4,12 @@ import {SubNavLink} from '../navigation/navigation.js'
 import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found.js'
 import {ErrorBoundary} from 'react-error-boundary'
-import {GamesSideProjectsScreen} from './games-side-projects.js'
+import {GamesSideProjectsScreen} from './games-side-projects'
 import {GamesNewsScreen} from './games-news.js'
 import {GamesIntroScreen} from './games-intro.js'
 import {ErrorFallback} from 'components/error/error-fallback.js'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.ts'
+import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer'
 import {
   SubMenuListItem,
   SubMenuNavigation,
