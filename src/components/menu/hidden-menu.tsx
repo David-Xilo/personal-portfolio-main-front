@@ -37,7 +37,7 @@ const StylizedHiddenMenuContentWrapper = styled.div`
   padding: 8px 16px;
 `
 
-const HiddenMenu: React.FC<{ content: React.ComponentType, menuHeight: number }> = ({content: Content, menuHeight}) => {
+const HiddenMenu: React.FC<{ content: React.ComponentType<any> | null, menuHeight: number }> = ({content: Content, menuHeight}) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {

@@ -3,15 +3,16 @@ import * as React from 'react'
 import {useEffect} from 'react'
 import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {useIntroGetApi} from '../../hooks/intro-rest'
+import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 
-function GamesIntroScreen({hiddenMenuDispatch}) {
+const TechIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {
     hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
   }, [hiddenMenuDispatch])
 
-  const data = useIntroGetApi('/games/intro')
+  const data = useIntroGetApi('/tech/intro')
 
   return <div>{data.message}</div>
 }
 
-export {GamesIntroScreen}
+export {TechIntroScreen}

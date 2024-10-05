@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js', // Entry point of your application
+  entry: './src/index.tsx', // Entry point of your application
   output: {
     path: path.resolve(__dirname, 'dist'), // Output directory
     filename: 'bundle.[contenthash].js', // Output bundle name with content hashing

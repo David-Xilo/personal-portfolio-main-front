@@ -1,18 +1,25 @@
-/** @jsx jsx */
-import {jsx} from '@emotion/react'
+import * as React from 'react'
 
-import {MainNavLink} from './navigation.js'
+import {MainNavLink} from './navigation'
 import {Route, Routes} from 'react-router-dom'
-import {AboutApp} from '../about/about.tsx'
-import {NotFoundScreen} from 'components/error/not-found.js'
+import {AboutApp} from '../about/about'
+import {NotFoundScreen} from 'components/error/not-found'
 import styled from '@emotion/styled/macro'
-import * as colors from '../../styles/colors.js'
-import {TechApp} from '../tech/tech.js'
-import {WelcomeScreen} from '../welcome/welcome.js'
-import {GamesApp} from '../games/games.js'
-import {FinanceApp} from '../finance/finance.js'
+import * as colors from 'styles/colors'
+import {TechApp} from '../tech/tech'
+import {WelcomeScreen} from '../welcome/welcome'
+import {GamesApp} from '../games/games'
+import {FinanceApp} from '../finance/finance'
+import {MainMenuProps} from '../../reducers/sub-menu-reducer'
 
-const StyledMainNav = styled.nav`
+interface MainNavigationProps {
+  topHeight: number,
+  navHeight: number,
+  navPadding: number,
+  navBorder: number,
+}
+
+const StyledMainNav = styled.nav<{topHeight: number, navHeight: number, navPadding: number, navBorder: number}>`
   position: fixed;
   top: ${({topHeight}) => `${topHeight}px`};
   height: ${({navHeight}) => `${navHeight}px`};
@@ -36,7 +43,7 @@ const StyledMainNavItem = styled.li`
   display: inline-flex;
 `
 
-function MainNav({topHeight, navHeight, navPadding, navBorder}) {
+const MainNav: React.FC<MainNavigationProps> = ({topHeight, navHeight, navPadding, navBorder}) => {
   return (
     <StyledMainNav
       topHeight={topHeight}
@@ -62,7 +69,7 @@ function MainNav({topHeight, navHeight, navPadding, navBorder}) {
   )
 }
 
-function AppRoutes({subMenuDispatch, hiddenMenuDispatch}) {
+const AppRoutes: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
   return (
     <Routes>
       <Route

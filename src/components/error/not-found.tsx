@@ -1,9 +1,8 @@
-/** @jsx jsx */
-import {jsx} from '@emotion/react'
+import * as React from 'react'
 
 import styled from '@emotion/styled/macro'
 import {Link as RouterLink} from 'react-router-dom'
-import * as colors from 'styles/colors.js'
+import * as colors from 'styles/colors'
 
 const StyledNotFoundContainer = styled.div`
   height: 100%;
@@ -24,7 +23,7 @@ const Link = styled(RouterLink)({
   },
 })
 
-function NotFoundScreen() {
+const NotFoundScreen: React.FC = () => {
   return (
     <StyledNotFoundContainer>
       <StyledNotFoundMessage>

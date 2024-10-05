@@ -1,9 +1,12 @@
-/** @jsx jsx */
-import {jsx} from '@emotion/react'
-
+import * as React from 'react'
 import styled from '@emotion/styled/macro'
-import * as colors from '../../styles/colors.js'
-import {ErrorMessage} from './error.js'
+import * as colors from 'styles/colors'
+import {ErrorMessage} from './error'
+
+interface ErrorProps {
+  error: Error,
+  resetErrorBoundary: () => void,
+}
 
 const FullPageErrorContainer = styled.div`
   color: ${colors.danger};
@@ -22,7 +25,7 @@ const StyledErrorMessage = styled(ErrorMessage)`
   align-items: center;
 `
 
-function FullPageErrorFallback({error}) {
+const FullPageErrorFallback: React.FC<ErrorProps> = ({error}) => {
   return (
     <FullPageErrorContainer role="alert">
       <p>Uh oh... There&apos;s a problem. Try refreshing the app.</p>
@@ -31,8 +34,8 @@ function FullPageErrorFallback({error}) {
   )
 }
 
-function ErrorFallback({error}) {
+const ErrorFallback: React.FC<ErrorProps> = (error) => {
   return <StyledErrorMessage error={error} />
 }
 
-export {FullPageErrorFallback, ErrorFallback}
+export {FullPageErrorFallback, ErrorFallback, ErrorProps}

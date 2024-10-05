@@ -1,15 +1,15 @@
 import * as React from 'react'
 
-import {SubNavLink} from '../navigation/navigation.js'
+import {SubNavLink} from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
-import {NotFoundScreen} from 'components/error/not-found.js'
+import {NotFoundScreen} from 'components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useEffect} from 'react'
 import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
-import {FinanceNewsScreen} from './finance-news.js'
-import {FinanceGraphsScreen} from './finance-graphs.js'
-import {FinanceIntroScreen} from './finance-intro.js'
-import {ErrorFallback} from 'components/error/error-fallback.js'
+import {FinanceNewsScreen} from './finance-news'
+import {FinanceGraphsScreen} from './finance-graphs'
+import {FinanceIntroScreen} from './finance-intro'
+import {ErrorFallback} from 'components/error/error-fallback'
 import {
   SubMenuListItem,
   SubMenuNavigation,

@@ -3,7 +3,7 @@ import * as React from 'react'
 const SET_SUB_NAV = 'SET_SUB_NAV'
 const CLEAR_SUB_NAV = 'CLEAR_SUB_NAV'
 
-type SubMenuComponentType = React.ComponentType | null
+type SubMenuComponentType = React.ComponentType
 
 interface MainMenuProps {
   subMenuDispatch: React.Dispatch<any>,
@@ -15,7 +15,7 @@ interface SubMenuProps {
 }
 
 interface SubMenuState {
-  SubNavComponent: React.ComponentType<any> | null,
+  SubNavComponent: React.ComponentType<any>,
   shouldRenderSubNav: boolean,
 }
 
@@ -24,8 +24,12 @@ interface SubMenuAction {
   component: SubMenuComponentType,
 }
 
+const EmptyComponent: React.FC = () => {
+  return (<div></div>)
+}
+
 const subMenuInitialState = {
-  SubNavComponent: null,
+  SubNavComponent: EmptyComponent,
   shouldRenderSubNav: false,
 }
 
@@ -40,7 +44,7 @@ function subMenuReducer(state: SubMenuState, action: SubMenuAction) {
     case CLEAR_SUB_NAV:
       return {
         ...state,
-        SubNavComponent: null,
+        SubNavComponent: EmptyComponent,
         shouldRenderSubNav: false,
       }
     default:
@@ -48,4 +52,4 @@ function subMenuReducer(state: SubMenuState, action: SubMenuAction) {
   }
 }
 
-export {subMenuInitialState, subMenuReducer, SET_SUB_NAV, CLEAR_SUB_NAV, SubMenuProps, MainMenuProps}
+export {subMenuInitialState, subMenuReducer, SET_SUB_NAV, CLEAR_SUB_NAV, SubMenuProps, MainMenuProps, SubMenuState, SubMenuAction}

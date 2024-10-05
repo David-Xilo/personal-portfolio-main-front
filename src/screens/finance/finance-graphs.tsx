@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import {useEffect} from 'react'
-import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer.js'
+import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 

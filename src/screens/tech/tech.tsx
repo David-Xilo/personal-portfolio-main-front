@@ -1,26 +1,26 @@
 import * as React from 'react'
 
-import {SubNavLink} from '../navigation/navigation.js'
+import {SubNavLink} from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'
-import {NotFoundScreen} from 'components/error/not-found.js'
+import {NotFoundScreen} from 'components/error/not-found'
 import {useEffect} from 'react'
-import {SET_SUB_NAV} from '../../reducers/sub-menu-reducer.ts'
-import {TechIntroScreen} from './tech-intro.js'
-import {TechNewsScreen} from './tech-news.js'
+import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
+import {TechIntroScreen} from './tech-intro'
+import {TechNewsScreen} from './tech-news'
 import {ErrorBoundary} from 'react-error-boundary'
-import {ErrorFallback} from 'components/error/error-fallback.js'
+import {ErrorFallback} from 'components/error/error-fallback'
 import {
   SubMenuListItem,
   SubMenuNavigation,
   SubMenuList,
-} from '../navigation/nav-commons.tsx'
+} from '../navigation/nav-commons'
 import {
   StyledMenuTableCellDiv,
   StyledMenuTableDiv,
-} from 'components/menu/menu-display.ts'
-import {TechSideProjectsScreen} from './tech-side-projects.js'
+} from 'components/menu/menu-display'
+import {TechSideProjectsScreen} from './tech-side-projects'
 
-function TechApp({subMenuDispatch, hiddenMenuDispatch}) {
+const TechApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
   useEffect(() => {
     subMenuDispatch({type: SET_SUB_NAV, component: TechNav})
   }, [subMenuDispatch])
@@ -28,10 +28,7 @@ function TechApp({subMenuDispatch, hiddenMenuDispatch}) {
   return (
     <StyledMenuTableDiv>
       <StyledMenuTableCellDiv>
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          fallback={<ErrorFallback />}
-        >
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
           <TechAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
       </StyledMenuTableCellDiv>
@@ -39,7 +36,7 @@ function TechApp({subMenuDispatch, hiddenMenuDispatch}) {
   )
 }
 
-function TechNav() {
+const TechNav: React.FC = () => {
   return (
     <SubMenuNavigation>
       <SubMenuList>
@@ -57,7 +54,7 @@ function TechNav() {
   )
 }
 
-function TechAppRoutes({hiddenMenuDispatch}) {
+const TechAppRoutes: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   return (
     <Routes>
       <Route

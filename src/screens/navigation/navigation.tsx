@@ -1,11 +1,20 @@
-/** @jsx jsx */
-import {jsx} from '@emotion/react'
+import * as React from 'react'
 
-import * as colors from '../../styles/colors.js'
+import * as colors from 'styles/colors'
 import {Link as RouterLink, useLocation, useMatch} from 'react-router-dom'
 import styled from '@emotion/styled/macro'
+import type {PathMatch} from '@remix-run/router'
 
-const StyledRouterLink = styled(RouterLink)`
+interface NavLinkProps {
+  to: string
+  children: React.ReactNode,
+}
+
+interface MatchProps {
+  match: boolean | PathMatch<any> | null
+}
+
+const StyledRouterLink = styled(RouterLink)<MatchProps>`
   display: block;
   padding: 8px 15px 8px 10px;
   margin: 5px 0;
@@ -44,9 +53,8 @@ const StyledRouterLink = styled(RouterLink)`
     `}
 `
 
-function MainNavLink(props) {
+const MainNavLink: React.FC<NavLinkProps> = ({to, children}) => {
   const location = useLocation()
-  const {to} = props
 
   const matchExactly = location.pathname === to
   const matchBeginning =
@@ -55,13 +63,13 @@ function MainNavLink(props) {
     location.pathname !== `${to}/`
   const match = matchExactly || matchBeginning
 
-  return <StyledRouterLink match={match} {...props} />
+  return <StyledRouterLink to={to} match={match}>{children}</StyledRouterLink>
 }
 
-function SubNavLink(props) {
-  const match = useMatch(props.to)
+const SubNavLink: React.FC<NavLinkProps> = ({to, children}) => {
+  const match = useMatch(to)
 
-  return <StyledRouterLink match={match} {...props} />
+  return <StyledRouterLink to={to} match={match}>{children}</StyledRouterLink>
 }
 
 export {MainNavLink, SubNavLink}

@@ -3,11 +3,11 @@ import * as React from 'react'
 const SET_HIDDEN_NAV = 'SET_HIDDEN_NAV'
 const CLEAR_HIDDEN_NAV = 'CLEAR_HIDDEN_NAV'
 
-type HiddenMenuComponentType = React.ComponentType | null
+type HiddenMenuComponentType = React.ComponentType
 
 interface HiddenMenuState {
-  HiddenMenuComponent: React.ComponentType<any> | null,
-  shouldRenderHiddenMenu: false,
+  HiddenMenuComponent: React.ComponentType<any>,
+  shouldRenderHiddenMenu: boolean,
 }
 
 interface HiddenMenuAction {
@@ -15,8 +15,12 @@ interface HiddenMenuAction {
   component: HiddenMenuComponentType,
 }
 
+const EmptyComponent: React.FC = () => {
+  return (<div></div>)
+}
+
 const hiddenMenuInitialState = {
-  HiddenMenuComponent: null,
+  HiddenMenuComponent: EmptyComponent,
   shouldRenderHiddenMenu: false,
 }
 
@@ -31,7 +35,7 @@ function hiddenMenuReducer(state: HiddenMenuState, action: HiddenMenuAction) {
     case CLEAR_HIDDEN_NAV:
       return {
         ...state,
-        HiddenMenuComponent: null,
+        HiddenMenuComponent: EmptyComponent,
         shouldRenderHiddenMenu: false,
       }
     default:
@@ -44,4 +48,6 @@ export {
   hiddenMenuReducer,
   SET_HIDDEN_NAV,
   CLEAR_HIDDEN_NAV,
+  HiddenMenuState,
+  HiddenMenuAction,
 }

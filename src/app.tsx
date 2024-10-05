@@ -1,7 +1,7 @@
 import * as React from 'react'
 // import {FullPageSpinner} from 'components/lib'
 
-const MainApp = React.lazy(() => import('./screens/main-app.js'))
+const MainApp = React.lazy(() => import('./screens/main-app'))
 
 function FullApp() {
   return (
@@ -11,7 +11,7 @@ function FullApp() {
   )
 }
 
-function App() {
+const App: React.FC = () => {
   return (
     <MainApp />
     // <React.Suspense fallback={<FullPageSpinner />}>

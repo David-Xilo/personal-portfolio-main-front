@@ -1,22 +1,23 @@
-/** @jsx jsx */
-import {jsx} from '@emotion/react'
+import * as React from 'react'
 
 import {ErrorBoundary} from 'react-error-boundary'
-import * as colors from '../styles/colors.js'
+import * as colors from 'styles/colors'
 import {useReducer} from 'react'
 import {HiddenMenu} from 'components/menu/hidden-menu'
 import styled from '@emotion/styled/macro'
 import {
+  HiddenMenuAction,
   hiddenMenuInitialState,
-  hiddenMenuReducer,
+  hiddenMenuReducer, HiddenMenuState,
 } from '../reducers/hidden-menu-reducer'
 import {
   ErrorFallback,
   FullPageErrorFallback,
-} from 'components/error/error-fallback.js'
+} from 'components/error/error-fallback'
 import {
+  SubMenuAction,
   subMenuInitialState,
-  subMenuReducer,
+  subMenuReducer, SubMenuState,
 } from '../reducers/sub-menu-reducer'
 import {AppRoutes, MainNav} from './navigation/main-navigation'
 
@@ -24,7 +25,7 @@ const StyledContainer = styled.div`
   height: 100vh;
 `
 
-const StyledSubNavDivContainer = styled.div`
+const StyledSubNavDivContainer = styled.div<{totalHeight: number}>`
   position: fixed;
   top: ${({totalHeight}) => `${totalHeight}px`};
   height: ${({totalHeight}) => `calc(100vh - ${totalHeight}px)`};
@@ -34,7 +35,7 @@ const StyledSubNavDivContainer = styled.div`
   padding: 20px;
 `
 
-const StyledMainContent = styled.main`
+const StyledMainContent = styled.main<{hasSubNav: boolean, totalHeight: number}>`
   position: relative;
   margin-left: ${({hasSubNav}) => (hasSubNav ? '200px' : '0')};
   padding-top: ${({totalHeight}) => `${totalHeight}px`};
@@ -42,12 +43,12 @@ const StyledMainContent = styled.main`
   overflow-y: auto;
 `
 
-function MainApp() {
-  const [subMenuState, subMenuDispatch] = useReducer(
+const MainApp: React.FC = () => {
+  const [subMenuState, subMenuDispatch] = useReducer<React.Reducer<SubMenuState, SubMenuAction>>(
     subMenuReducer,
     subMenuInitialState,
   )
-  const [hiddenMenuState, hiddenMenuDispatch] = useReducer(
+  const [hiddenMenuState, hiddenMenuDispatch] = useReducer<React.Reducer<HiddenMenuState, HiddenMenuAction>>(
     hiddenMenuReducer,
     hiddenMenuInitialState,
   )
@@ -61,7 +62,6 @@ function MainApp() {
   return (
     <ErrorBoundary
       FallbackComponent={FullPageErrorFallback}
-      fallback={<FullPageErrorFallback />}
     >
       <StyledContainer>
         <MainNav
@@ -88,10 +88,7 @@ function MainApp() {
           hasSubNav={subMenuState.shouldRenderSubNav}
           totalHeight={totalHeight}
         >
-          <ErrorBoundary
-            FallbackComponent={ErrorFallback}
-            fallback={<ErrorFallback />}
-          >
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
             <AppRoutes
               subMenuDispatch={subMenuDispatch}
               hiddenMenuDispatch={hiddenMenuDispatch}
