@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const domain = 'http://localhost:4000'
+const domain = process.env.REACT_APP_API_URL
 
 const usePostApi = (endpoint, body) => {
   const completeEndpoint = domain + endpoint

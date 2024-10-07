@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
 
-
-const domain = 'http://localhost:4000'
+const domain = process.env.REACT_APP_API_URL
 
 interface IntroResponse {
   status: string,

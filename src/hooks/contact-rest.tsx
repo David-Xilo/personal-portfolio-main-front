@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-const domain = 'http://localhost:4000'
+const domain = process.env.REACT_APP_API_URL
 
 interface ContactRest {
   name: string
@@ -51,4 +51,4 @@ const useContactGetApi = (endpoint: string): ContactResponse => {
   return data
 }
 
-export {useContactGetApi}
+export {useContactGetApi, ContactRest}

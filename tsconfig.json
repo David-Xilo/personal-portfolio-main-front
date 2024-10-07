@@ -17,9 +17,9 @@
       "styles/*": ["styles/*"]
     }
   },
-  "include": ["src/**/*"], // Include all files in the src directory
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts",
     "**/*.test.tsx",
     "**/__tests__/**",
-    "src/setup-tests.ts"] // Exclude node_modules and dist directories
+    "src/setup-tests.ts", "src/mocks"] // Exclude node_modules and dist directories
 }

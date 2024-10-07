@@ -13,6 +13,14 @@ RUN npm install
 # Copy the application code to the container
 COPY . .
 
+# Define build-time environment variables
+ARG REACT_APP_API_URL=http://localhost:4000
+ARG NODE_ENV=production
+
+# Make the build arguments available as environment variables
+ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+ENV NODE_ENV=${NODE_ENV}
+
 # Build the React app for production
 RUN npm run build
 

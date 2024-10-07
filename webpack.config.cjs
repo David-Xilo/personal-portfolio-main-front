@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+// const {IgnorePlugin} = require('ignore-webpack-plugin');
+const {DefinePlugin, IgnorePlugin} = require('webpack');
+// const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.tsx', // Entry point of your application
@@ -25,10 +28,10 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, 'public/assets'),
     },
-    historyApiFallback: true, // Enable for routing
-    port: 3000, // Development server port
-    open: true, // Open browser on server start
-    hot: true, // Enable hot module replacement
+    historyApiFallback: true,
+    port: 3000,
+    open: true,
+    hot: true,
   },
   module: {
     rules: [
@@ -67,11 +70,13 @@ module.exports = {
         removeRedundantAttributes: true,
       },
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     { from: 'manifest.json', to: '' }, // Copy manifest.json to the output directory
-    //     { from: 'src/assets', to: 'assets' }, // Copy assets to 'assets' folder in the output directory
-    //   ],
-    // }),
+    new IgnorePlugin({
+      resourceRegExp: /mocks/,   // The resource to ignore (regex to match file or folder name)
+      contextRegExp: /src/,      // (optional) Context directory (regex)
+    }),
+    new DefinePlugin({
+      'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL || 'http://localhost:4000'),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
   ],
 }
