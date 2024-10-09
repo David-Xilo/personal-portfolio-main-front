@@ -1,19 +1,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {DefinePlugin} = require('webpack');
 
 module.exports = {
-  entry: './src/index.tsx', // Entry point of your application
+  entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'), // Output directory
-    filename: 'bundle.[contenthash].js', // Output bundle name with content hashing
-    publicPath: '/', // Necessary for routing
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.[contenthash].js',
+    publicPath: '/',
   },
   mode: 'development', // Use 'production' for production builds
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'], // Resolve these extensions
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
@@ -21,10 +21,10 @@ module.exports = {
       // Add other aliases as needed
     },
   },
-  devtool: 'source-map', // Generate source maps
+  devtool: 'source-map',
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'public/assets'),
+      directory: path.resolve(__dirname, 'public'),
     },
     historyApiFallback: true, // Enable for routing
     port: 3000, // Development server port
@@ -70,6 +70,13 @@ module.exports = {
     }),
     new DefinePlugin({
       'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL || 'http://localhost:4000'),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public', to: '', globOptions: {
+            ignore: ['**/index.html'], // Ignore index.html, HtmlWebpackPlugin will handle it
+          }, }, // Copy everything from public folder to the output folder (dist)
+      ],
     }),
   ],
 }

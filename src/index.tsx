@@ -4,14 +4,29 @@ import {createRoot} from 'react-dom/client'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {FullApp} from './app'
 
-const rootElement = document.getElementById('root')
+async function enableMocking() {
+  if (process.env.NODE_ENV !== 'development') {
+    console.log("not development")
+    return
+  }
 
-if (rootElement) {
-  createRoot(rootElement).render(
-    <Router>
-      <FullApp />
-    </Router>,
-  );
-} else {
-  console.error('Root element not found');
+  const { worker } = await import('./mocks/browser')
+
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start()
 }
+
+enableMocking().then(() => {
+  const rootElement = document.getElementById('root')
+  if (rootElement) {
+    createRoot(rootElement).render(
+      <Router>
+        <FullApp />
+      </Router>,
+    );
+  } else {
+    console.error('Root element not found');
+  }
+})
+
