@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {DefinePlugin} = require('webpack');
 
 module.exports = {
   entry: './src/index.tsx', // Entry point of your application
@@ -67,11 +68,8 @@ module.exports = {
         removeRedundantAttributes: true,
       },
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     { from: 'manifest.json', to: '' }, // Copy manifest.json to the output directory
-    //     { from: 'src/assets', to: 'assets' }, // Copy assets to 'assets' folder in the output directory
-    //   ],
-    // }),
+    new DefinePlugin({
+      'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL || 'http://localhost:4000'),
+    }),
   ],
 }
