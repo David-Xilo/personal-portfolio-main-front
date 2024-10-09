@@ -77,6 +77,7 @@
   },
   "scripts": {
     "start": "webpack serve --mode development",
+    "start:prod": "webpack serve --mode production NODE_ENV=production",
     "build": "webpack --mode production",
     "lint": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
