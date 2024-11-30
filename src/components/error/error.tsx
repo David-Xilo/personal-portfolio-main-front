@@ -1,38 +1,47 @@
 import * as React from 'react'
-
-import styled from '@emotion/styled/macro'
 import * as colors from 'styles/colors'
 import {ErrorProps} from 'components/error/error-fallback'
 
 interface ErrorMessageProps {
+  // Change this line - error should be of type Error, not ErrorProps
   error: ErrorProps,
   variant?: keyof typeof errorMessageVariants,
-
+  className?: string,
 }
-
-const StyledErrorMessageContainer = styled.div<{ variant: keyof typeof errorMessageVariants }>`
-    role: alert;
-    color: ${colors.danger};
-    ${({ variant }) => errorMessageVariants[variant]};
-`;
-
-const StyledErrorPre = styled.pre<{ variant: keyof typeof errorMessageVariants }>`
-    white-space: break-spaces;
-    margin: 0 0 -5px;
-    ${({ variant }) => errorMessageVariants[variant]};
-`;
 
 const errorMessageVariants = {
-  stacked: {display: 'block'},
-  inline: {display: 'inline-block'},
-}
+  stacked: 'block',
+  inline: 'inline-block',
+} as const
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({error, variant = 'stacked', ...props}) => {
+const ErrorMessage: React.FC<ErrorMessageProps> = ({
+                                                     error,
+                                                     variant = 'stacked',
+                                                     className = '',
+                                                     ...props
+                                                   }) => {
   return (
-    <StyledErrorMessageContainer variant={variant} {...props}>
+    <div
+      role="alert"
+      className={`
+        text-[${colors.danger}]
+        ${errorMessageVariants[variant]}
+        ${className}
+      `.trim()}
+      {...props}
+    >
       <span>There was an error: </span>
-      <StyledErrorPre variant={variant}>{error.message}</StyledErrorPre>
-    </StyledErrorMessageContainer>
+      <pre
+        className={`
+          whitespace-break-spaces
+          -mb-[5px]
+          m-0
+          ${errorMessageVariants[variant]}
+        `.trim()}
+      >
+        {error.error.message}
+      </pre>
+    </div>
   )
 }
 

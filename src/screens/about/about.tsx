@@ -9,8 +9,8 @@ import {NotFoundScreen} from 'components/error/not-found'
 import {AboutIntroScreen} from './about-intro'
 import {AboutContactsScreen} from './about-contacts'
 import {
-  StyledMenuTableCellDiv,
-  StyledMenuTableDiv,
+  MenuTableCell,
+  MenuTable,
 } from 'components/menu/menu-display'
 import {SubMenuList, SubMenuListItem, SubMenuNavigation} from '../navigation/nav-commons'
 
@@ -20,13 +20,13 @@ const AboutApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}
   }, [subMenuDispatch])
 
   return (
-    <StyledMenuTableDiv>
-      <StyledMenuTableCellDiv>
+    <MenuTable>
+      <MenuTableCell>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <AboutAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
-      </StyledMenuTableCellDiv>
-    </StyledMenuTableDiv>
+      </MenuTableCell>
+    </MenuTable>
   )
 }
 

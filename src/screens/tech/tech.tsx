@@ -15,8 +15,8 @@ import {
   SubMenuList,
 } from '../navigation/nav-commons'
 import {
-  StyledMenuTableCellDiv,
-  StyledMenuTableDiv,
+  MenuTableCell,
+  MenuTable,
 } from 'components/menu/menu-display'
 import {TechSideProjectsScreen} from './tech-side-projects'
 
@@ -26,13 +26,13 @@ const TechApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch})
   }, [subMenuDispatch])
 
   return (
-    <StyledMenuTableDiv>
-      <StyledMenuTableCellDiv>
+    <MenuTable>
+      <MenuTableCell>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <TechAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
-      </StyledMenuTableCellDiv>
-    </StyledMenuTableDiv>
+      </MenuTableCell>
+    </MenuTable>
   )
 }
 

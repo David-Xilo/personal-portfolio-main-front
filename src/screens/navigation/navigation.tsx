@@ -2,7 +2,6 @@ import * as React from 'react'
 
 import * as colors from 'styles/colors'
 import {Link as RouterLink, useLocation, useMatch} from 'react-router-dom'
-import styled from '@emotion/styled/macro'
 import type {PathMatch} from '@remix-run/router'
 
 interface NavLinkProps {
@@ -14,44 +13,30 @@ interface MatchProps {
   match: boolean | PathMatch<any> | null
 }
 
-const StyledRouterLink = styled(RouterLink)<MatchProps>`
-  display: block;
-  padding: 8px 15px 8px 10px;
-  margin: 5px 0;
-  color: ${colors.text};
-  border-radius: 2px;
-  border-left: 5px solid transparent;
-  text-decoration: none;
-
-  &:hover {
-    color: ${colors.indigo};
-    background: ${colors.gray10};
-    text-decoration: none;
-  }
-
-  &:focus {
-    ${({match}) =>
-      match &&
-      `
-          color: ${colors.indigo};
-          background: ${colors.gray10};
-          text-decoration: none;
-        `}
-  }
-
-  ${({match}) =>
-    match &&
-    `
-        border-left: 5px solid ${colors.indigo};
-        background: ${colors.gray10};
-        font-weight: bold;
-
-        &:hover,
-        &:focus {
-          background: ${colors.gray10};
-        }
-    `}
-`
+const subNavLinkStyles = (match: boolean | PathMatch<any> | null) => `
+  block
+  px-[15px]
+  py-[8px]
+  pl-[10px]
+  my-[5px]
+  text-[${colors.text}]
+  rounded-[2px]
+  border-l-[5px]
+  border-transparent
+  no-underline
+  list-none
+  hover:text-black
+  hover:bg-[${colors.gray10}]
+  hover:no-underline
+  focus:no-underline
+  ${match ? `
+    border-l-black
+    bg-[${colors.gray10}]
+    font-bold
+    hover:bg-[${colors.gray10}]
+    focus:bg-[${colors.gray10}]
+  ` : ''}
+`.trim()
 
 const MainNavLink: React.FC<NavLinkProps> = ({to, children}) => {
   const location = useLocation()
@@ -63,13 +48,18 @@ const MainNavLink: React.FC<NavLinkProps> = ({to, children}) => {
     location.pathname !== `${to}/`
   const match = matchExactly || matchBeginning
 
-  return <StyledRouterLink to={to} match={match}>{children}</StyledRouterLink>
+  return <RouterLink className={subNavLinkStyles(match)} to={to}>{children}</RouterLink>
 }
 
 const SubNavLink: React.FC<NavLinkProps> = ({to, children}) => {
-  const match = useMatch(to)
+  const matchExactly = location.pathname === to
+  const matchBeginning =
+    !matchExactly &&
+    location.pathname.startsWith(`${to}/`) &&
+    location.pathname !== `${to}/`
+  const match = matchExactly || matchBeginning
 
-  return <StyledRouterLink to={to} match={match}>{children}</StyledRouterLink>
+  return <RouterLink className={subNavLinkStyles(match)} to={to}>{children}</RouterLink>
 }
 
 export {MainNavLink, SubNavLink}

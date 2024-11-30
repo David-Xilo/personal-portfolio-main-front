@@ -1,11 +1,9 @@
 import * as React from 'react'
-
 import {MainNavLink} from './navigation'
 import {Route, Routes} from 'react-router-dom'
 import {AboutApp} from '../about/about'
 import {NotFoundScreen} from 'components/error/not-found'
-import styled from '@emotion/styled/macro'
-import * as colors from 'styles/colors'
+import * as colors from '../../styles/colors'
 import {TechApp} from '../tech/tech'
 import {WelcomeScreen} from '../welcome/welcome'
 import {GamesApp} from '../games/games'
@@ -19,53 +17,56 @@ interface MainNavigationProps {
   navBorder: number,
 }
 
-const StyledMainNav = styled.nav<{topHeight: number, navHeight: number, navPadding: number, navBorder: number}>`
-  position: fixed;
-  top: ${({topHeight}) => `${topHeight}px`};
-  height: ${({navHeight}) => `${navHeight}px`};
-  padding: ${({navPadding}) => `${navPadding}px 30px`};
-  border-bottom: ${({navBorder}) => `${navBorder}px solid ${colors.gray10}`};
-  background-color: cyan;
-  border: 1px solid black;
-  width: 100%;
-  z-index: 1000;
-`
+const MainNav: React.FC<MainNavigationProps> = ({
+                                                  topHeight,
+                                                  navHeight,
+                                                  navPadding,
+                                                  navBorder
+                                                }) => {
+  const navStyles = `
+    fixed
+    top-[${topHeight}px]
+    h-[${navHeight}px]
+    px-[30px]
+    py-[${navPadding}px]
+    border-b-[${navBorder}px]
+    border-b-[${colors.gray10}]
+    bg-cyan-500
+    border
+    border-black
+    w-full
+    z-[1000]
+  `.trim()
 
-const StyledMainNavList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 1em;
-`
+  const navListStyles = `
+    list-none
+    p-0
+    m-0
+    flex
+    gap-4
+  `.trim()
 
-const StyledMainNavItem = styled.li`
-  display: inline-flex;
-`
+  const navItemStyles = `
+    inline-flex
+  `.trim()
 
-const MainNav: React.FC<MainNavigationProps> = ({topHeight, navHeight, navPadding, navBorder}) => {
   return (
-    <StyledMainNav
-      topHeight={topHeight}
-      navHeight={navHeight}
-      navPadding={navPadding}
-      navBorder={navBorder}
-    >
-      <StyledMainNavList>
-        <StyledMainNavItem>
+    <nav className={navStyles}>
+      <ul className={navListStyles}>
+        <li className={navItemStyles}>
           <MainNavLink to={'/about'}>About</MainNavLink>
-        </StyledMainNavItem>
-        <StyledMainNavItem>
+        </li>
+        <li className={navItemStyles}>
           <MainNavLink to={'/tech'}>Technology</MainNavLink>
-        </StyledMainNavItem>
-        <StyledMainNavItem>
+        </li>
+        <li className={navItemStyles}>
           <MainNavLink to={'/games'}>Games</MainNavLink>
-        </StyledMainNavItem>
-        <StyledMainNavItem>
+        </li>
+        <li className={navItemStyles}>
           <MainNavLink to={'/finance'}>Finance</MainNavLink>
-        </StyledMainNavItem>
-      </StyledMainNavList>
-    </StyledMainNav>
+        </li>
+      </ul>
+    </nav>
   )
 }
 

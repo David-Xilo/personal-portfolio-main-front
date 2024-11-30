@@ -16,8 +16,8 @@ import {
   SubMenuList,
 } from '../navigation/nav-commons'
 import {
-  StyledMenuTableCellDiv,
-  StyledMenuTableDiv,
+  MenuTableCell,
+  MenuTable,
 } from 'components/menu/menu-display'
 
 const GamesApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
@@ -26,13 +26,13 @@ const GamesApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}
   }, [subMenuDispatch])
 
   return (
-    <StyledMenuTableDiv>
-      <StyledMenuTableCellDiv>
+    <MenuTable>
+      <MenuTableCell>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <GamesAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
         </ErrorBoundary>
-      </StyledMenuTableCellDiv>
-    </StyledMenuTableDiv>
+      </MenuTableCell>
+    </MenuTable>
   )
 }
 

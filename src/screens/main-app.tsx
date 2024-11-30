@@ -1,14 +1,13 @@
 import * as React from 'react'
-
 import {ErrorBoundary} from 'react-error-boundary'
 import * as colors from 'styles/colors'
 import {useReducer} from 'react'
 import {HiddenMenu} from 'components/menu/hidden-menu'
-import styled from '@emotion/styled/macro'
 import {
   HiddenMenuAction,
   hiddenMenuInitialState,
-  hiddenMenuReducer, HiddenMenuState,
+  hiddenMenuReducer,
+  HiddenMenuState,
 } from '../reducers/hidden-menu-reducer'
 import {
   ErrorFallback,
@@ -17,31 +16,10 @@ import {
 import {
   SubMenuAction,
   subMenuInitialState,
-  subMenuReducer, SubMenuState,
+  subMenuReducer,
+  SubMenuState,
 } from '../reducers/sub-menu-reducer'
 import {AppRoutes, MainNav} from './navigation/main-navigation'
-
-const StyledContainer = styled.div`
-  height: 100vh;
-`
-
-const StyledSubNavDivContainer = styled.div<{totalHeight: number}>`
-  position: fixed;
-  top: ${({totalHeight}) => `${totalHeight}px`};
-  height: ${({totalHeight}) => `calc(100vh - ${totalHeight}px)`};
-  border-right: 2px solid ${colors.gray10};
-  background: white;
-  overflow-y: auto;
-  padding: 20px;
-`
-
-const StyledMainContent = styled.main<{hasSubNav: boolean, totalHeight: number}>`
-  position: relative;
-  margin-left: ${({hasSubNav}) => (hasSubNav ? '200px' : '0')};
-  padding-top: ${({totalHeight}) => `${totalHeight}px`};
-  height: ${({totalHeight}) => `calc(100vh - ${totalHeight}px)`};
-  overflow-y: auto;
-`
 
 const MainApp: React.FC = () => {
   const [subMenuState, subMenuDispatch] = useReducer<React.Reducer<SubMenuState, SubMenuAction>>(
@@ -59,11 +37,29 @@ const MainApp: React.FC = () => {
   const navBorder = 2
   const totalHeight = 99
 
+  const subNavStyles = `
+    fixed
+    top-[99px]
+    h-[calc(100vh-99px)]
+    border-r-2
+    border-r-[${colors.gray10}]
+    bg-white
+    overflow-y-auto
+    p-5
+    w-[200px]
+  `.trim()
+
+  const mainContentStyles = (hasSubNav: boolean) => `
+    relative
+    ${hasSubNav ? 'ml-[200px]' : 'ml-0'}
+    pt-[99px]
+    h-[calc(100vh-99px)]
+    overflow-y-auto
+  `.trim()
+
   return (
-    <ErrorBoundary
-      FallbackComponent={FullPageErrorFallback}
-    >
-      <StyledContainer>
+    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
+      <div className="h-screen">
         <MainNav
           navHeight={navHeight}
           topHeight={topHeight}
@@ -72,9 +68,9 @@ const MainApp: React.FC = () => {
         />
 
         {subMenuState.shouldRenderSubNav && (
-          <StyledSubNavDivContainer totalHeight={totalHeight}>
+          <div className={subNavStyles}>
             <subMenuState.SubNavComponent />
-          </StyledSubNavDivContainer>
+          </div>
         )}
 
         {hiddenMenuState.shouldRenderHiddenMenu && (
@@ -84,18 +80,15 @@ const MainApp: React.FC = () => {
           />
         )}
 
-        <StyledMainContent
-          hasSubNav={subMenuState.shouldRenderSubNav}
-          totalHeight={totalHeight}
-        >
+        <main className={mainContentStyles(subMenuState.shouldRenderSubNav)}>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <AppRoutes
               subMenuDispatch={subMenuDispatch}
               hiddenMenuDispatch={hiddenMenuDispatch}
             />
           </ErrorBoundary>
-        </StyledMainContent>
-      </StyledContainer>
+        </main>
+      </div>
     </ErrorBoundary>
   )
 }
