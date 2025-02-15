@@ -16,7 +16,11 @@
 }
 
 .nav {
-    @apply fixed w-full bg-cyan-500 border border-black z-[1000];
+    @apply fixed w-full bg-cyan-800 text-white z-[1000];
+    top: 5px;
+    height: 60px;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid black;
 }
 
 .nav-list {
@@ -25,5 +29,20 @@
 
 .nav-item {
     @apply inline-flex;
+}
+
+.sub-nav-link {
+    @apply block px-[15px] py-[8px] pl-[10px] my-[5px] rounded-[2px] border-l-[5px] border-transparent no-underline list-none hover:text-black hover:no-underline focus:no-underline;
+    color: #333333; /* substitute for colors.text */
+}
+
+.sub-nav-link--active {
+    @apply border-l-black font-bold;
+    background-color: #f0f2f5; /* substitute for colors.gray10 */
+}
+
+.sub-nav-link--active:hover,
+.sub-nav-link--active:focus {
+    background-color: #f0f2f5;
 }
 

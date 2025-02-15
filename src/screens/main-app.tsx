@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {ErrorBoundary} from 'react-error-boundary'
-import * as colors from 'styles/colors'
+import './main-app.css'
 import {useReducer} from 'react'
 import {HiddenMenu} from 'components/menu/hidden-menu'
 import {
@@ -31,35 +31,13 @@ const MainApp: React.FC = () => {
     hiddenMenuInitialState,
   )
 
-  const totalHeight = 99
-
-  const subNavStyles = `
-    fixed
-    top-[99px]
-    h-[calc(100vh-99px)]
-    border-r-2
-    border-r-[${colors.gray10}]
-    bg-white
-    overflow-y-auto
-    p-5
-    w-[200px]
-  `.trim()
-
-  const mainContentStyles = (hasSubNav: boolean) => `
-    relative
-    ${hasSubNav ? 'ml-[200px]' : 'ml-0'}
-    pt-[99px]
-    h-[calc(100vh-99px)]
-    overflow-y-auto
-  `.trim()
-
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div className="h-screen">
         <MainNav />
 
         {subMenuState.shouldRenderSubNav && (
-          <div className={subNavStyles}>
+          <div className="sub-nav">
             <subMenuState.SubNavComponent />
           </div>
         )}
@@ -67,11 +45,10 @@ const MainApp: React.FC = () => {
         {hiddenMenuState.shouldRenderHiddenMenu && (
           <HiddenMenu
             content={hiddenMenuState.HiddenMenuComponent}
-            menuHeight={totalHeight}
           />
         )}
 
-        <main className={mainContentStyles(subMenuState.shouldRenderSubNav)}>
+        <main className={`main-content ${subMenuState.shouldRenderSubNav ? 'with-sub-nav' : 'without-sub-nav'}`}>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <AppRoutes
               subMenuDispatch={subMenuDispatch}

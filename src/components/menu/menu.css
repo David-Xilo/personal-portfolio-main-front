@@ -4,7 +4,8 @@
 }
 
 .hidden-menu-container {
-    @apply fixed overflow-y-auto transition-[right] duration-500 ease-in-out bg-white border-l-2 border-l-neutral-800 text-black z-[1001];
+    @apply fixed overflow-y-auto transition-all duration-500 ease-in-out bg-white border-l-2 border-l-neutral-800 text-black z-[1001];
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .hidden-menu-content {

@@ -3,10 +3,9 @@ import './menu.css';
 
 interface HiddenMenuProps {
   content: React.ComponentType<any> | null
-  menuHeight: number
 }
 
-const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content, menuHeight }) => {
+const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -19,7 +18,7 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content, menuHeight })
         onClick={toggleMenu}
         className="hidden-menu-button"
         style={{
-          top: `${menuHeight}px`,
+          top: `99px`,
           right: isOpen ? '300px' : '0',
         }}
       >
@@ -27,9 +26,9 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content, menuHeight })
       </button>
 
       <div className="hidden-menu-container" style={{
-        top: `${menuHeight}px`,
+        top: `99px`,
         right: isOpen ? '0' : '-300px',
-        height: `calc(100vh - ${menuHeight}px)`,
+        height: `calc(100vh - 99px)`,
         width: '300px',
       }}>
         <div className="hidden-menu-content">
