@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './menu.css';
 
 interface HiddenMenuProps {
   content: React.ComponentType<any> | null
@@ -12,53 +13,26 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content, menuHeight })
     setIsOpen(!isOpen)
   }
 
-  const buttonStyles = `
-    fixed
-    top-[${menuHeight}px]
-    ${isOpen ? 'right-[300px]' : 'right-0'}
-    bg-neutral-800
-    text-white
-    border-none
-    cursor-pointer
-    p-[10px]
-    transition-[right]
-    duration-500
-    ease-in-out
-    z-[1002]
-  `.trim()
-
-  const containerStyles = `
-    fixed
-    top-[${menuHeight}px]
-    ${isOpen ? 'right-0' : '-right-[300px]'}
-    h-[calc(100vh-${menuHeight}px)]
-    w-[300px]
-    overflow-y-auto
-    transition-[right]
-    duration-500
-    ease-in-out
-    bg-white
-    border-l-2
-    border-l-neutral-800
-    text-black
-    z-[1001]
-  `.trim()
-
-  const contentWrapperStyles = `
-    p-[8px_16px]
-  `.trim()
-
   return (
     <>
       <button
         onClick={toggleMenu}
-        className={buttonStyles}
+        className="hidden-menu-button"
+        style={{
+          top: `${menuHeight}px`,
+          right: isOpen ? '300px' : '0',
+        }}
       >
         {isOpen ? 'Close' : 'Open'}
       </button>
 
-      <div className={containerStyles}>
-        <div className={contentWrapperStyles}>
+      <div className="hidden-menu-container" style={{
+        top: `${menuHeight}px`,
+        right: isOpen ? '0' : '-300px',
+        height: `calc(100vh - ${menuHeight}px)`,
+        width: '300px',
+      }}>
+        <div className="hidden-menu-content">
           {Content && <Content />}
         </div>
       </div>

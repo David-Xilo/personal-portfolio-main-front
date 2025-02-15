@@ -1,5 +1,5 @@
 .sub-menu-nav {
-    /*@apply bg-gray-100 p-5 rounded-lg shadow-md;*/
+    @apply bg-gray-100 p-5 rounded-lg shadow-md;
 }
 
 .sub-menu-ul {
@@ -7,11 +7,23 @@
 }
 
 .sub-menu-li {
-    /*@apply mb-2;*/
+    @apply mb-2;
 }
 
-/*.sub-menu-li {*/
-/*    @apply block w-full p-3 rounded hover:bg-gray-200 transition-colors;*/
-/*    text-decoration: none; !* Remove underline from links *!*/
-/*}*/
+.sub-menu-li {
+    @apply block w-full p-3 rounded hover:bg-gray-200 transition-colors;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.nav {
+    @apply fixed w-full bg-cyan-500 border border-black z-[1000];
+}
+
+.nav-list {
+    @apply list-none p-0 m-0 flex gap-4;
+}
+
+.nav-item {
+    @apply inline-flex;
+}
 

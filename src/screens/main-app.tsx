@@ -31,10 +31,6 @@ const MainApp: React.FC = () => {
     hiddenMenuInitialState,
   )
 
-  const topHeight = 5
-  const navHeight = 60
-  const navPadding = 16
-  const navBorder = 2
   const totalHeight = 99
 
   const subNavStyles = `
@@ -60,12 +56,7 @@ const MainApp: React.FC = () => {
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div className="h-screen">
-        <MainNav
-          navHeight={navHeight}
-          topHeight={topHeight}
-          navPadding={navPadding}
-          navBorder={navBorder}
-        />
+        <MainNav />
 
         {subMenuState.shouldRenderSubNav && (
           <div className={subNavStyles}>

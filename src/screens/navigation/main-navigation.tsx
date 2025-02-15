@@ -3,7 +3,7 @@ import {MainNavLink} from './navigation'
 import {Route, Routes} from 'react-router-dom'
 import {AboutApp} from '../about/about'
 import {NotFoundScreen} from 'components/error/not-found'
-import * as colors from '../../styles/colors'
+import './navigation.css'
 import {TechApp} from '../tech/tech'
 import {WelcomeScreen} from '../welcome/welcome'
 import {GamesApp} from '../games/games'
@@ -17,52 +17,21 @@ interface MainNavigationProps {
   navBorder: number,
 }
 
-const MainNav: React.FC<MainNavigationProps> = ({
-                                                  topHeight,
-                                                  navHeight,
-                                                  navPadding,
-                                                  navBorder
-                                                }) => {
-  const navStyles = `
-    fixed
-    top-[${topHeight}px]
-    h-[${navHeight}px]
-    px-[30px]
-    py-[${navPadding}px]
-    border-b-[${navBorder}px]
-    border-b-[${colors.gray10}]
-    bg-cyan-500
-    border
-    border-black
-    w-full
-    z-[1000]
-  `.trim()
-
-  const navListStyles = `
-    list-none
-    p-0
-    m-0
-    flex
-    gap-4
-  `.trim()
-
-  const navItemStyles = `
-    inline-flex
-  `.trim()
+const MainNav: React.FC = () => {
 
   return (
-    <nav className={navStyles}>
-      <ul className={navListStyles}>
-        <li className={navItemStyles}>
+    <nav className="nav">
+      <ul className="nav-list">
+        <li className="nav-item">
           <MainNavLink to={'/about'}>About</MainNavLink>
         </li>
-        <li className={navItemStyles}>
+        <li className="nav-item">
           <MainNavLink to={'/tech'}>Technology</MainNavLink>
         </li>
-        <li className={navItemStyles}>
+        <li className="nav-item">
           <MainNavLink to={'/games'}>Games</MainNavLink>
         </li>
-        <li className={navItemStyles}>
+        <li className="nav-item">
           <MainNavLink to={'/finance'}>Finance</MainNavLink>
         </li>
       </ul>

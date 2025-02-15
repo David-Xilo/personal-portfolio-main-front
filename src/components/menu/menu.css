@@ -1,0 +1,20 @@
+
+.hidden-menu-button {
+    @apply fixed bg-neutral-800 text-white border-none cursor-pointer p-[10px] transition-[right] duration-500 ease-in-out z-[1002];
+}
+
+.hidden-menu-container {
+    @apply fixed overflow-y-auto transition-[right] duration-500 ease-in-out bg-white border-l-2 border-l-neutral-800 text-black z-[1001];
+}
+
+.hidden-menu-content {
+    @apply p-[8px_16px];
+}
+
+.menu-table {
+    @apply table w-full;
+}
+
+.menu-table-cell {
+    @apply table-cell w-[90%];
+}

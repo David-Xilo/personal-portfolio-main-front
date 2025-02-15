@@ -6,7 +6,7 @@ interface MenuTableProps {
 
 const MenuTable: React.FC<MenuTableProps> = ({ children }) => {
   return (
-    <div className="table w-full">
+    <div className="menu-table">
       {children}
       </div>
   );
@@ -14,7 +14,7 @@ const MenuTable: React.FC<MenuTableProps> = ({ children }) => {
 
 const MenuTableCell: React.FC<MenuTableProps> = ({ children }) => {
   return (
-    <div className="table-cell w-[90%]">
+    <div className="menu-table-cell">
       {children}
       </div>
   );
