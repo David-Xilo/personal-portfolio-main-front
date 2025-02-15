@@ -38,7 +38,7 @@ const AboutNav: React.FC = () => {
           <SubNavLink to={'/about'}>Introduction</SubNavLink>
         </SubMenuListItem>
         <SubMenuListItem>
-          <SubNavLink to={'/about/contacts'}>Contacts</SubNavLink>
+          <SubNavLink to={'/about/contact'}>Contacts</SubNavLink>
         </SubMenuListItem>
       </SubMenuList>
     </SubMenuNavigation>
@@ -53,7 +53,7 @@ const AboutAppRoutes: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
         element={<AboutIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
       />
       <Route
-        path="/contacts"
+        path="/contact"
         element={
           <AboutContactsScreen hiddenMenuDispatch={hiddenMenuDispatch} />
         }
