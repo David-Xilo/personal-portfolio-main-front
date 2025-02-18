@@ -1,11 +1,15 @@
 
 .hidden-menu-button {
     @apply fixed bg-neutral-800 text-white border-none cursor-pointer p-[10px] transition-[right] duration-500 ease-in-out z-[1002];
+    top: 60px;
 }
 
 .hidden-menu-container {
     @apply fixed overflow-y-auto transition-all duration-500 ease-in-out bg-white border-l-2 border-l-neutral-800 text-black z-[1001];
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    top: 60px;
+    height: calc(100vh - 99px);
+    width: 300px;
 }
 
 .hidden-menu-content {
@@ -17,5 +21,5 @@
 }
 
 .menu-table-cell {
-    @apply table-cell w-[90%];
+    @apply p-[8px_16px] table-cell w-[90%];
 }

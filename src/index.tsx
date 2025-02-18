@@ -4,31 +4,52 @@ import {createRoot} from 'react-dom/client'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {FullApp} from './app'
 
-async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development') {
-    console.log("not development")
-    return
-  } else {
-    console.log("is development")
-  }
-
-  const { worker } = await import('./mocks/browser')
-
-  // `worker.start()` returns a Promise that resolves
-  // once the Service Worker is up and ready to intercept requests.
-  return worker.start()
-}
-
-enableMocking().then(() => {
-  const rootElement = document.getElementById('root')
+function renderApp() {
+  const rootElement = document.getElementById('root');
   if (rootElement) {
     createRoot(rootElement).render(
       <Router>
         <FullApp />
-      </Router>,
+      </Router>
     );
   } else {
     console.error('Root element not found');
   }
-})
+}
 
+if (process.env.NODE_ENV === 'development') {
+  async function clearServiceWorkers() {
+    if ('serviceWorker' in navigator) {
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map(registration => registration.unregister()));
+        console.log('Service workers unregistered');
+      } catch (err) {
+        console.error('Error unregistering service workers:', err);
+      }
+    }
+  }
+
+  async function enableMocking() {
+    console.log('Development mode: enabling MSW');
+    const { worker } = await import('./mocks/browser');
+    // Force a fresh fetch by appending a timestamp
+    return worker.start({
+      serviceWorker: { url: `/mockServiceWorker.js?v=${Date.now()}` },
+      onUnhandledRequest: 'bypass',
+    });
+  }
+
+  async function initApp() {
+    await clearServiceWorkers();
+    await enableMocking();
+    renderApp();
+  }
+
+  initApp().catch((err) => {
+    console.error('Error initializing app:', err);
+  });
+} else {
+  // In production, simply render the app.
+  renderApp();
+}

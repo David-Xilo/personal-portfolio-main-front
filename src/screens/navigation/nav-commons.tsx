@@ -7,13 +7,13 @@ interface SubMenuProps {
 }
 
 const SubMenuNavigation: React.FC<SubMenuProps> = ({ children }) => (
-  <nav>
+  <nav className="sub-menu-nav">
     {children}
   </nav>
 );
 
 const SubMenuList: React.FC<SubMenuProps> = ({ children }) => (
-  <ul>
+  <ul className="sub-menu-ul">
     {children}
   </ul>
 );

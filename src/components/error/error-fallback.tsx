@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as colors from 'styles/colors'
 import {ErrorMessage} from './error'
 
 interface ErrorProps {
@@ -9,10 +8,7 @@ interface ErrorProps {
 
 const FullPageErrorFallback: React.FC<ErrorProps> = ({error}) => {
   return (
-    <div
-      role="alert"
-      className="text-red-600 h-screen flex flex-col justify-center items-center"
-    >
+    <div role="alert" className="fullpage-error-fallback">
       <p>Uh oh... There&apos;s a problem. Try refreshing the app.</p>
       <pre>{error.message}</pre>
     </div>
@@ -21,10 +17,7 @@ const FullPageErrorFallback: React.FC<ErrorProps> = ({error}) => {
 
 const ErrorFallback: React.FC<ErrorProps> = (error) => {
   return (
-    <ErrorMessage
-      error={error}
-      className="h-full flex flex-col justify-center items-center"
-    />
+    <ErrorMessage error={error} className="error-fallback" />
   )
 }
 

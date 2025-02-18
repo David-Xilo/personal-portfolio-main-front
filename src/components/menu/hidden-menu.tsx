@@ -17,20 +17,15 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content }) => {
       <button
         onClick={toggleMenu}
         className="hidden-menu-button"
-        style={{
-          top: `99px`,
-          right: isOpen ? '300px' : '0',
-        }}
+        style={{right: isOpen ? '300px' : '0',}}
       >
         {isOpen ? 'Close' : 'Open'}
       </button>
 
-      <div className="hidden-menu-container" style={{
-        top: `99px`,
-        right: isOpen ? '0' : '-300px',
-        height: `calc(100vh - 99px)`,
-        width: '300px',
-      }}>
+      <div
+        className="hidden-menu-container"
+        style={{right: isOpen ? '0' : '-300px',}}
+      >
         <div className="hidden-menu-content">
           {Content && <Content />}
         </div>
