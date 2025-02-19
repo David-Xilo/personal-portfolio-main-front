@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import {Games,useGamesGetApi} from '../hooks/games-rest'
+import {Games,useGamesGetApi} from '../../hooks/games-rest'
 
 const GamesItem: React.FC<{ games: Games }> = ({ games }) => {
   return (

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import {useContactGetApi} from '../hooks/contact-rest'
+import {useContactGetApi} from '../../hooks/contact-rest'
 
 
 const ContactScreen: React.FC = () => {
