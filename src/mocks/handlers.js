@@ -224,26 +224,6 @@ export const handlers = [
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro);
   }),
-  http.get(`${domain}/finance/news`, () => {
-    const news = { message: [
-      {
-        "headline": "tech headline",
-        "link_to_source": "https://www.linkedin.com/in/john",
-        "description": "tech news description",
-        "sentiment": "indifferent",
-        "genre": "tech"
-      },
-      {
-        "headline": "tech headline",
-        "link_to_source": "https://www.linkedin.com/in/johndoe",
-        "description": "tech news description",
-        "sentiment": "undefined",
-        "genre": "tech"
-      }
-    ] }
-    // Return mocked response when the request hits /about/contact
-    return HttpResponse.json(news);
-  }),
   http.get(`${domain}/finance/news/topic-of-the-season`, () => {
     const topic = { message: {
       "news_list": [

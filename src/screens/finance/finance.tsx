@@ -6,8 +6,7 @@ import {NotFoundScreen} from 'components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useEffect} from 'react'
 import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
-import {FinanceNewsScreen} from './finance-news'
-import {FinanceGraphsScreen} from './finance-graphs'
+import {FinanceProjectsScreen} from './finance-projects'
 import {FinanceIntroScreen} from './finance-intro'
 import {ErrorFallback} from 'components/error/error-fallback'
 import {
@@ -44,10 +43,7 @@ const FinanceNav: React.FC = () => {
           <SubNavLink to={'/finance'}>Introduction</SubNavLink>
         </SubMenuListItem>
         <SubMenuListItem>
-          <SubNavLink to={'/finance/news'}>News</SubNavLink>
-        </SubMenuListItem>
-        <SubMenuListItem>
-          <SubNavLink to={'/finance/graphs'}>Graphs</SubNavLink>
+          <SubNavLink to={'/finance/projects'}>Projects</SubNavLink>
         </SubMenuListItem>
       </SubMenuList>
     </SubMenuNavigation>
@@ -62,13 +58,9 @@ const FinanceAppRoutes: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
         element={<FinanceIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
       />
       <Route
-        path="/news"
-        element={<FinanceNewsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
-      />
-      <Route
-        path="/graphs"
+        path="/projects"
         element={
-          <FinanceGraphsScreen hiddenMenuDispatch={hiddenMenuDispatch} />
+          <FinanceProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />
         }
       />
       <Route path="/*" element={<NotFoundScreen />} />
