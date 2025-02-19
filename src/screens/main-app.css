@@ -1,21 +1,19 @@
 /* Sub-navigation styles */
 .sub-nav {
-    @apply fixed bg-white overflow-y-auto p-5 w-[200px];
-    top: 99px;
+    @apply fixed overflow-y-auto p-10 w-[100px];
+    top: var(--menu-height);
     height: calc(100vh - 99px);
-    border-right-width: 2px;
-    /* Replace the hex below with your actual gray10 value */
-    border-right-color: #e2e8f0;
 }
 
 /* Main content styles common to both cases */
 .main-content {
-    @apply relative pt-[99px] h-[calc(100vh-99px)] overflow-y-auto;
+    @apply relative h-[calc(100vh-99px)] overflow-y-auto;
+    padding-top: var(--menu-height);
 }
 
 /* When the sub-nav is present, add left margin */
 .main-content.with-sub-nav {
-    @apply ml-[200px];
+    margin-left: var(--sub-menu-width);
 }
 
 /* When the sub-nav is absent, no left margin */

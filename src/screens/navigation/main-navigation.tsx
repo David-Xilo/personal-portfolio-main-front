@@ -10,13 +10,6 @@ import {GamesApp} from '../games/games'
 import {FinanceApp} from '../finance/finance'
 import {MainMenuProps} from '../../reducers/sub-menu-reducer'
 
-interface MainNavigationProps {
-  topHeight: number,
-  navHeight: number,
-  navPadding: number,
-  navBorder: number,
-}
-
 const MainNav: React.FC = () => {
 
   return (
