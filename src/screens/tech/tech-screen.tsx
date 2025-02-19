@@ -1,5 +1,5 @@
 import React from 'react'
-import {TechProjects, useTechProjectsGetApi} from '../hooks/tech-rest'
+import {TechProjects, useTechProjectsGetApi} from '../../hooks/tech-rest'
 
 
 const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
@@ -12,7 +12,7 @@ const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
   )
 }
 
-const TechProjectsScreen: React.FC = () => {
+const TechProjectsItemScreen: React.FC = () => {
   const projectsPath = '/tech/projects'
   const {status, message, error} = useTechProjectsGetApi(projectsPath)
   if (status !== 'success') {
@@ -29,5 +29,5 @@ const TechProjectsScreen: React.FC = () => {
 }
 
 
-export {TechProjectsScreen}
+export {TechProjectsItemScreen}
 

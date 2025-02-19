@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
-import {TechProjectsScreen} from 'components/tech-screen'
+import {TechProjectsItemScreen} from './tech-screen'
 import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 
@@ -12,7 +12,7 @@ function TechProjectsHiddenMenu() {
   return <p>{data.message}</p>
 }
 
-const TechSideProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
+const TechProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {
     hiddenMenuDispatch({
       type: SET_HIDDEN_NAV,
@@ -20,7 +20,7 @@ const TechSideProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) =>
     })
   }, [hiddenMenuDispatch])
 
-  return (<TechProjectsScreen />)
+  return (<TechProjectsItemScreen />)
 }
 
-export {TechSideProjectsScreen}
+export {TechProjectsScreen}

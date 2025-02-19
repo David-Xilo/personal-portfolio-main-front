@@ -6,7 +6,6 @@ import {NotFoundScreen} from 'components/error/not-found'
 import {useEffect} from 'react'
 import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
 import {TechIntroScreen} from './tech-intro'
-import {TechNewsScreen} from './tech-news'
 import {ErrorBoundary} from 'react-error-boundary'
 import {ErrorFallback} from 'components/error/error-fallback'
 import {
@@ -18,7 +17,7 @@ import {
   MenuTableCell,
   MenuTable,
 } from 'components/menu/menu-display'
-import {TechSideProjectsScreen} from './tech-side-projects'
+import {TechProjectsScreen} from './tech-projects'
 
 const TechApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
   useEffect(() => {
@@ -44,9 +43,6 @@ const TechNav: React.FC = () => {
           <SubNavLink to={'/tech'}>Introduction</SubNavLink>
         </SubMenuListItem>
         <SubMenuListItem>
-          <SubNavLink to={'/tech/news'}>News</SubNavLink>
-        </SubMenuListItem>
-        <SubMenuListItem>
           <SubNavLink to={'/tech/projects'}>Projects</SubNavLink>
         </SubMenuListItem>
       </SubMenuList>
@@ -62,12 +58,8 @@ const TechAppRoutes: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
         element={<TechIntroScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
       />
       <Route
-        path="/news"
-        element={<TechNewsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
-      />
-      <Route
         path="/projects"
-        element={<TechSideProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
+        element={<TechProjectsScreen hiddenMenuDispatch={hiddenMenuDispatch} />}
       />
       <Route path="/*" element={<NotFoundScreen />} />
     </Routes>
