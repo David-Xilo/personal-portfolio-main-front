@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './menu.css';
+import {ArrowLeftIcon} from 'components/menu/arrow-left-icon'
+import {ArrowRightIcon} from 'components/menu/arrow-right-icon'
 
 interface HiddenMenuProps {
   content: React.ComponentType<any> | null
@@ -19,7 +21,7 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content }) => {
         className="hidden-menu-button"
         style={{right: isOpen ? '300px' : '0',}}
       >
-        {isOpen ? 'Close' : 'Open'}
+        {isOpen ? <ArrowRightIcon /> : <ArrowLeftIcon />}
       </button>
 
       <div
