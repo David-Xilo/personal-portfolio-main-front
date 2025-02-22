@@ -9,6 +9,7 @@ import {WelcomeScreen} from '../welcome/welcome'
 import {GamesApp} from '../games/games'
 import {FinanceApp} from '../finance/finance'
 import {MainMenuProps} from '../../reducers/sub-menu-reducer'
+import {HomeIcon} from '../welcome/home-icon'
 
 const MainNav: React.FC = () => {
 
@@ -16,6 +17,9 @@ const MainNav: React.FC = () => {
     <nav className="nav">
       <ul className="nav-list">
         <li className="nav-item">
+          <MainNavLink to={'/'}><HomeIcon/></MainNavLink>
+        </li>
+        <li className="nav-item" style={{marginLeft: "50px"}}>
           <MainNavLink to={'/about'}>About</MainNavLink>
         </li>
         <li className="nav-item">
