@@ -61,7 +61,7 @@ module.exports = {
     new CleanWebpackPlugin(), // Clean output directory before each build
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      favicon: './public/assets/dnd-goku-hair-goku-ssj.png',
+      favicon: './public/assets/safehouse.png',
       minify: {
         collapseWhitespace: true,
         removeComments: true,
