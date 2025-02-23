@@ -14,10 +14,6 @@ import {
   SubMenuNavigation,
   SubMenuList,
 } from '../navigation/nav-commons'
-import {
-  MenuTableCell,
-  MenuTable,
-} from 'components/menu/menu-display'
 
 const FinanceApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
   useEffect(() => {
@@ -25,13 +21,9 @@ const FinanceApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatc
   }, [subMenuDispatch])
 
   return (
-    <MenuTable>
-      <MenuTableCell>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <FinanceAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
-        </ErrorBoundary>
-      </MenuTableCell>
-    </MenuTable>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <FinanceAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
+    </ErrorBoundary>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import {TechProjects, useTechProjectsGetApi} from '../../hooks/tech-rest'
+import {ContentListItem} from 'components/menu/content-list-item'
 
 
 const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
@@ -19,10 +20,20 @@ const TechProjectsItemScreen: React.FC = () => {
     return <div>Found error {error}</div>
   }
 
+  // return (
+  //   <div>
+  //     {message.map(item => (
+  //       <TechProject project={item} key={item.link_to_git} />
+  //     ))}
+  //   </div>
+  // )
+
   return (
     <div>
       {message.map(item => (
-        <TechProject project={item} key={item.link_to_git} />
+        <ContentListItem title={item.title} description={item.description}>
+          some more content
+        </ContentListItem>
       ))}
     </div>
   )

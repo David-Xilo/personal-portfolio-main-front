@@ -8,10 +8,6 @@ import {Route, Routes} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found'
 import {AboutIntroScreen} from './about-intro'
 import {AboutContactsScreen} from './about-contacts'
-import {
-  MenuTableCell,
-  MenuTable,
-} from 'components/menu/menu-display'
 import {SubMenuList, SubMenuListItem, SubMenuNavigation} from '../navigation/nav-commons'
 
 const AboutApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
@@ -20,13 +16,9 @@ const AboutApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}
   }, [subMenuDispatch])
 
   return (
-    <MenuTable>
-      <MenuTableCell>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <AboutAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
-        </ErrorBoundary>
-      </MenuTableCell>
-    </MenuTable>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <AboutAppRoutes hiddenMenuDispatch={hiddenMenuDispatch} />
+    </ErrorBoundary>
   )
 }
 
