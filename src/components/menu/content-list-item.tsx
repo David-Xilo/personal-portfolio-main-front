@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import {ArrowUpIcon} from 'components/menu/arrow-up-icon'
+import {ArrowDownIcon} from 'components/menu/arrow-down-icon'
 
 interface ContentListItemProps {
   title: string;
@@ -19,23 +21,21 @@ children
 
   return(
     <div
-      className={`
-      relative mx-auto my-4 bg-cyan-950 shadow-custom rounded w-[90%] p-8 text-white
-        ${expanded ? 'h-full' : 'h-[90%]'}`}
+      className="content-list-item"
     >
       <button
         onClick={toggleExpanded}
-        className="absolute top-2 right-2 bg-blue-500 text-white rounded p-1 hover:bg-blue-600"
+        className="content-list-item-button"
       >
-        {expanded ? 'Collapse' : 'Open'}
+        {expanded ? <ArrowUpIcon /> : <ArrowDownIcon />}
       </button>
       <div>
-        <h1 className="text-3xl font-bold">{title}</h1>
-        <p className="text-sm">{description}</p>
+        <h1 className="content-list-item-title">{title}</h1>
+        <p className="content-list-item-description">{description}</p>
       </div>
 
       {expanded && children && (
-        <div className="mt-4">
+        <div className="content-list-item-children">
           {children}
         </div>
       )}

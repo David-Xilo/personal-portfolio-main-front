@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Games,useGamesGetApi} from '../../hooks/games-rest'
+import {ContentListItem} from 'components/menu/content-list-item'
 
 const GamesItem: React.FC<{ games: Games }> = ({ games }) => {
   return (
@@ -21,10 +22,20 @@ const GamesScreen: React.FC = () => {
     return <div>Found error {error}</div>
   }
 
+  // return (
+  //   <div>
+  //     {message.map(item => (
+  //       <GamesItem games={item} key={item.link_to_git} />
+  //     ))}
+  //   </div>
+  // )
+
   return (
-    <div>
+    <div className="flex flex-col space-y-4">
       {message.map(item => (
-        <GamesItem games={item} key={item.link_to_git} />
+        <ContentListItem title={item.title} description={item.description}>
+          <GamesItem games={item} />
+        </ContentListItem>
       ))}
     </div>
   )

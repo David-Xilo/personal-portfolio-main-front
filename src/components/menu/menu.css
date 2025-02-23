@@ -23,3 +23,24 @@
 .menu-table-cell {
     @apply p-[8px_16px] table-cell;
 }
+
+
+.content-list-item {
+    @apply relative mx-auto my-4 p-8 bg-cyan-950 shadow-custom rounded w-[90%] text-white;
+}
+
+.content-list-item-button {
+    @apply absolute top-4 right-4;
+}
+
+.content-list-item-title {
+    @apply text-3xl font-bold;
+}
+
+.content-list-item-description {
+    @apply text-sm;
+}
+
+.content-list-item-children {
+    @apply mt-4;
+}
