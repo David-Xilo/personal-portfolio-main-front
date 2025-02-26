@@ -2,4 +2,5 @@
 :root {
     --menu-height: 60px;
     --sub-menu-width: 150px;
+    --hidden-menu-width: 300px;
 }

@@ -20,3 +20,7 @@
 .main-content.without-sub-nav {
     @apply ml-0;
 }
+
+.hidden-menu-open {
+    padding-right: var(--hidden-menu-width);
+}

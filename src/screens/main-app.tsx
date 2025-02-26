@@ -60,7 +60,7 @@ const MainApp: React.FC = () => {
 
           <main className={`main-content flex-1 
           ${subMenuState.shouldRenderSubNav ? 'with-sub-nav' : 'without-sub-nav'}
-          ${hiddenMenuState.isHiddenMenuExpanded ? 'pr-[300px]' : ''}`}>
+          ${hiddenMenuState.isHiddenMenuExpanded ? 'hidden-menu-open' : ''}`}>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
               <AppRoutes
                 subMenuDispatch={subMenuDispatch}
