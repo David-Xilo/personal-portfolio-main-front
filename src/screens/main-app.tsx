@@ -7,7 +7,7 @@ import {
   HiddenMenuAction,
   hiddenMenuInitialState,
   hiddenMenuReducer,
-  HiddenMenuState,
+  HiddenMenuState, TOGGLE_HIDDEN_MENU,
 } from '../reducers/hidden-menu-reducer'
 import {
   ErrorFallback,
@@ -31,6 +31,13 @@ const MainApp: React.FC = () => {
     hiddenMenuInitialState,
   )
 
+  const toggleHiddenMenu = (isOpen: boolean) => {
+    hiddenMenuDispatch({
+      type: TOGGLE_HIDDEN_MENU,
+      isExpanded: isOpen,
+    })
+  }
+
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div className="h-screen">
@@ -42,20 +49,27 @@ const MainApp: React.FC = () => {
           </div>
         )}
 
-        {hiddenMenuState.shouldRenderHiddenMenu && (
-          <HiddenMenu
-            content={hiddenMenuState.HiddenMenuComponent}
-          />
-        )}
-
-        <main className={`main-content ${subMenuState.shouldRenderSubNav ? 'with-sub-nav' : 'without-sub-nav'}`}>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <AppRoutes
-              subMenuDispatch={subMenuDispatch}
-              hiddenMenuDispatch={hiddenMenuDispatch}
+        <div className="flex transition-all duration-500">
+          {hiddenMenuState.shouldRenderHiddenMenu && (
+            <HiddenMenu
+              content={hiddenMenuState.HiddenMenuComponent}
+              isOpen={hiddenMenuState.isHiddenMenuExpanded}
+              onToggle={toggleHiddenMenu}
             />
-          </ErrorBoundary>
-        </main>
+          )}
+
+          <main className={`main-content flex-1 
+          ${subMenuState.shouldRenderSubNav ? 'with-sub-nav' : 'without-sub-nav'}
+          ${hiddenMenuState.isHiddenMenuExpanded ? 'pr-[300px]' : ''}`}>
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <AppRoutes
+                subMenuDispatch={subMenuDispatch}
+                hiddenMenuDispatch={hiddenMenuDispatch}
+              />
+            </ErrorBoundary>
+          </main>
+        </div>
+
       </div>
     </ErrorBoundary>
   )

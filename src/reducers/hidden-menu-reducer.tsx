@@ -2,17 +2,20 @@ import * as React from 'react'
 
 const SET_HIDDEN_NAV = 'SET_HIDDEN_NAV'
 const CLEAR_HIDDEN_NAV = 'CLEAR_HIDDEN_NAV'
+const TOGGLE_HIDDEN_MENU = 'TOGGLE_HIDDEN_MENU'
 
 type HiddenMenuComponentType = React.ComponentType
 
 interface HiddenMenuState {
-  HiddenMenuComponent: React.ComponentType<any>,
+  HiddenMenuComponent: React.ComponentType<any> | undefined,
   shouldRenderHiddenMenu: boolean,
+  isHiddenMenuExpanded: boolean,
 }
 
 interface HiddenMenuAction {
   type: string,
-  component: HiddenMenuComponentType,
+  component?: HiddenMenuComponentType,
+  isExpanded: boolean,
 }
 
 const EmptyComponent: React.FC = () => {
@@ -22,6 +25,7 @@ const EmptyComponent: React.FC = () => {
 const hiddenMenuInitialState = {
   HiddenMenuComponent: EmptyComponent,
   shouldRenderHiddenMenu: false,
+  isHiddenMenuExpanded: false,
 }
 
 function hiddenMenuReducer(state: HiddenMenuState, action: HiddenMenuAction) {
@@ -37,6 +41,12 @@ function hiddenMenuReducer(state: HiddenMenuState, action: HiddenMenuAction) {
         ...state,
         HiddenMenuComponent: EmptyComponent,
         shouldRenderHiddenMenu: false,
+        isHiddenMenuExpanded: false,
+      }
+    case TOGGLE_HIDDEN_MENU:
+      return {
+        ...state,
+        isHiddenMenuExpanded: action.isExpanded,
       }
     default:
       return state
@@ -48,6 +58,7 @@ export {
   hiddenMenuReducer,
   SET_HIDDEN_NAV,
   CLEAR_HIDDEN_NAV,
+  TOGGLE_HIDDEN_MENU,
   HiddenMenuState,
   HiddenMenuAction,
 }

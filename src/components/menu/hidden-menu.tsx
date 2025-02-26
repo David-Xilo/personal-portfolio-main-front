@@ -4,14 +4,14 @@ import {ArrowLeftIcon} from 'components/menu/arrow-left-icon'
 import {ArrowRightIcon} from 'components/menu/arrow-right-icon'
 
 interface HiddenMenuProps {
-  content: React.ComponentType<any> | null
+  content: React.ComponentType<any> | undefined,
+  isOpen: boolean,
+  onToggle: (isOpen: boolean) => void,
 }
 
-const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content }) => {
-  const [isOpen, setIsOpen] = useState(false)
-
+const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content, isOpen, onToggle }) => {
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
+    onToggle(!isOpen)
   }
 
   return (
