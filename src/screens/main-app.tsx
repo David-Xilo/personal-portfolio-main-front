@@ -20,6 +20,7 @@ import {
   SubMenuState,
 } from '../reducers/sub-menu-reducer'
 import {AppRoutes, MainNav} from './navigation/main-navigation'
+import {ThemeToggle} from '../theme/ThemeToggle'
 
 const MainApp: React.FC = () => {
   const [subMenuState, subMenuDispatch] = useReducer<React.Reducer<SubMenuState, SubMenuAction>>(
@@ -41,6 +42,11 @@ const MainApp: React.FC = () => {
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div className="h-screen">
+        {/*<div className="flex justify-between items-center">*/}
+        {/*  <MainNav />*/}
+        {/*  <ThemeToggle className="mr-4" />*/}
+        {/*</div>*/}
+
         <MainNav />
 
         {subMenuState.shouldRenderSubNav && (

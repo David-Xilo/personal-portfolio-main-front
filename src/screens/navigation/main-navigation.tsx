@@ -10,28 +10,33 @@ import {GamesApp} from '../games/games'
 import {FinanceApp} from '../finance/finance'
 import {MainMenuProps} from '../../reducers/sub-menu-reducer'
 import {HomeIcon} from '../welcome/home-icon'
+import {ThemeToggle} from '../../theme/ThemeToggle'
 
 const MainNav: React.FC = () => {
 
   return (
     <nav className="nav">
-      <ul className="nav-list">
-        <li className="nav-item">
-          <MainNavLink to={'/'}><HomeIcon/></MainNavLink>
-        </li>
-        <li className="nav-item" style={{marginLeft: "50px"}}>
-          <MainNavLink to={'/about'}>About</MainNavLink>
-        </li>
-        <li className="nav-item">
-          <MainNavLink to={'/tech'}>Technology</MainNavLink>
-        </li>
-        <li className="nav-item">
-          <MainNavLink to={'/games'}>Games</MainNavLink>
-        </li>
-        <li className="nav-item">
-          <MainNavLink to={'/finance'}>Finance</MainNavLink>
-        </li>
-      </ul>
+      <div className="flex items-center justify-between w-full">
+        <ul className="nav-list">
+          <li className="nav-item">
+            <MainNavLink to={'/'}><HomeIcon/></MainNavLink>
+          </li>
+          <li className="nav-item" style={{marginLeft: "50px"}}>
+            <MainNavLink to={'/about'}>About</MainNavLink>
+          </li>
+          <li className="nav-item">
+            <MainNavLink to={'/tech'}>Technology</MainNavLink>
+          </li>
+          <li className="nav-item">
+            <MainNavLink to={'/games'}>Games</MainNavLink>
+          </li>
+          <li className="nav-item">
+            <MainNavLink to={'/finance'}>Finance</MainNavLink>
+          </li>
+        </ul>
+        <ThemeToggle/>
+      </div>
+
     </nav>
   )
 }

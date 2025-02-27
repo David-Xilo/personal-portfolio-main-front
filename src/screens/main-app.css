@@ -1,14 +1,41 @@
+/* Base application styling */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+a {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
 /* Sub-navigation styles */
 .sub-nav {
     @apply fixed overflow-y-auto p-10 w-[100px];
     top: var(--menu-height);
-    height: calc(100vh - 99px);
+    height: calc(100vh - var(--menu-height));
+    background-color: var(--color-nav-background);
+    color: var(--color-nav-text);
+    border-right: 1px solid var(--color-border);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Main content styles common to both cases */
 .main-content {
-    @apply relative h-[calc(100vh-99px)] overflow-y-auto;
+    @apply relative overflow-y-auto;
+    height: calc(100vh - var(--menu-height));
     padding-top: var(--menu-height);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    transition: all 0.3s ease;
 }
 
 /* When the sub-nav is present, add left margin */
@@ -21,6 +48,75 @@
     @apply ml-0;
 }
 
+/* When hidden menu is open, add right padding */
 .hidden-menu-open {
     padding-right: var(--hidden-menu-width);
+}
+
+/* Card styles for content sections */
+.card {
+    @apply p-6 rounded-lg mb-6;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-header {
+    @apply mb-4 pb-4;
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.card-title {
+    @apply text-xl font-bold;
+    color: var(--color-text-primary);
+}
+
+.card-subtitle {
+    @apply text-sm mt-1;
+    color: var(--color-text-tertiary);
+}
+
+.card-content {
+    color: var(--color-text-secondary);
+}
+
+.card-footer {
+    @apply mt-4 pt-4;
+    border-top: 1px solid var(--color-divider);
+}
+
+/* Section dividers */
+.divider {
+    @apply my-8 h-px w-full;
+    background-color: var(--color-divider);
+}
+
+/* Loading states */
+.loading-spinner {
+    @apply flex justify-center items-center py-8;
+    color: var(--color-primary);
+}
+
+.skeleton {
+    @apply animate-pulse rounded;
+    background-color: var(--color-divider);
+}
+
+/* Page containers */
+.page-container {
+    @apply max-w-6xl mx-auto p-4;
+}
+
+.page-header {
+    @apply mb-8;
+}
+
+.page-title {
+    @apply text-3xl font-bold mb-2;
+    color: var(--color-text-primary);
+}
+
+.page-description {
+    color: var(--color-text-secondary);
 }

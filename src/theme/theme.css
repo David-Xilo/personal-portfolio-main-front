@@ -1,0 +1,32 @@
+.hidden-menu-button:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Content list items */
+.content-list-item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.content-list-item-button {
+    color: var(--color-text-secondary);
+}
+
+.content-list-item-title {
+    color: var(--color-text-primary);
+}
+
+.content-list-item-description {
+    color: var(--color-text-tertiary);
+}
+
+/* Main content area */
+.main-content {
+    background-color: var(--color-background);
+}
+
+.main-content-with-hidden-menu {
+    padding-right: var(--hidden-menu-width);
+}

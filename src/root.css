@@ -3,4 +3,55 @@
     --menu-height: 60px;
     --sub-menu-width: 150px;
     --hidden-menu-width: 300px;
+
+    /* Light theme (default) */
+    --color-primary: #3b82f6;          /* Blue */
+    --color-primary-hover: #2563eb;    /* Darker Blue */
+    --color-secondary: #10b981;        /* Green */
+    --color-secondary-hover: #059669;  /* Darker Green */
+    --color-accent: #8b5cf6;           /* Purple */
+    --color-accent-hover: #7c3aed;     /* Darker Purple */
+
+    --color-background: #ffffff;
+    --color-surface: #f3f4f6;
+    --color-border: #e5e7eb;
+    --color-divider: #d1d5db;
+
+    --color-text-primary: #111827;
+    --color-text-secondary: #4b5563;
+    --color-text-tertiary: #6b7280;
+    --color-text-disabled: #9ca3af;
+
+    --color-nav-background: #f8fafc;
+    --color-nav-text: #334155;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme {
+    --color-primary: #3b82f6;          /* Same Blue */
+    --color-primary-hover: #60a5fa;    /* Lighter Blue for hover in dark mode */
+    --color-secondary: #10b981;        /* Same Green */
+    --color-secondary-hover: #34d399;  /* Lighter Green for hover in dark mode */
+    --color-accent: #8b5cf6;           /* Same Purple */
+    --color-accent-hover: #a78bfa;     /* Lighter Purple for hover in dark mode */
+
+    --color-background: #111827;
+    --color-surface: #1f2937;
+    --color-border: #374151;
+    --color-divider: #4b5563;
+
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #e5e7eb;
+    --color-text-tertiary: #d1d5db;
+    --color-text-disabled: #9ca3af;
+
+    --color-nav-background: #0f172a;
+    --color-nav-text: #e2e8f0;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.9);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
 }
