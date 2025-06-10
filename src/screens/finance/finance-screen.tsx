@@ -3,17 +3,7 @@ import {TechProjects, useTechProjectsGetApi} from '../../hooks/tech-rest'
 import {ContentListItem} from 'components/menu/content-list-item'
 
 
-// const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
-//   return (
-//     <div>
-//       <h2>{project.title}</h2>
-//       <p>{project.description}</p>
-//       <a href={project.link_to_git}>Git</a>
-//     </div>
-//   )
-// }
-
-const TechEmptyProjectsScreen: React.FC = () => {
+const FinanceEmptyProjectsScreen: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center">
       <div className="mb-4">
@@ -21,22 +11,22 @@ const TechEmptyProjectsScreen: React.FC = () => {
           No Projects Available
         </h2>
         <p className="text-gray-500">
-          There are currently no tech projects to display. Check back later for updates!
+          There are currently no finance projects to display. Check back later for updates!
         </p>
       </div>
     </div>
   )
 }
 
-const TechProjectsItemScreen: React.FC = () => {
-  const projectsPath = '/tech/projects'
+const FinanceProjectsItemScreen: React.FC = () => {
+  const projectsPath = '/finance/projects'
   const {status, message, error} = useTechProjectsGetApi(projectsPath)
   if (status !== 'success') {
     return <div>Found error {error}</div>
   }
 
   if (!message || message.length === 0) {
-    return <TechEmptyProjectsScreen />
+    return <FinanceEmptyProjectsScreen />
   }
 
   return (
@@ -51,5 +41,5 @@ const TechProjectsItemScreen: React.FC = () => {
 }
 
 
-export {TechProjectsItemScreen}
+export {FinanceProjectsItemScreen}
 
