@@ -3,15 +3,13 @@ import {TechProjects, useTechProjectsGetApi} from '../../hooks/tech-rest'
 import {ContentListItem} from 'components/menu/content-list-item'
 
 
-// const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
-//   return (
-//     <div>
-//       <h2>{project.title}</h2>
-//       <p>{project.description}</p>
-//       <a href={project.link_to_git}>Git</a>
-//     </div>
-//   )
-// }
+const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
+  return (
+    <div>
+      <a href={project.link_to_git}>Project Git Link</a>
+    </div>
+  )
+}
 
 const TechEmptyProjectsScreen: React.FC = () => {
   return (
@@ -43,7 +41,7 @@ const TechProjectsItemScreen: React.FC = () => {
     <div>
       {message.map(item => (
         <ContentListItem title={item.title} description={item.description}>
-          some more content
+          <TechProject project={item} />
         </ContentListItem>
       ))}
     </div>
