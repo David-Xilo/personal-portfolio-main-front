@@ -106,20 +106,24 @@ const ContactScreen: React.FC = () => {
   const contactPath = '/about/contact'
   const {status, message, error} = useContactGetApi(contactPath)
 
-  // Error handling with theme integration
+  // Handle API error states with layout-conscious error display
   if (status !== 'success') {
     return (
-      <div className="message-error">
-        <p className="message-error-text">
-          Unable to load contact information: {error}
-        </p>
+      // Use extracted class that works within the layout system
+      <div className="contact-screen-container">
+        <div className="error-message-container">
+          <p className="error-message-text">
+            Unable to load contact information: {error}
+          </p>
+        </div>
       </div>
     )
   }
 
+  // Successful state with layout-conscious container
   return (
     <div className="contact-screen-container">
-      <ContactItem contact={message} />
+      <ContactItem contact={message}/>
     </div>
   )
 }

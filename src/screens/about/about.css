@@ -175,18 +175,6 @@
 }
 
 /* ========================================
-   LAYOUT COMPONENTS
-   ======================================== */
-
-/*
- * Screen container - using your theme background
- */
-.contact-screen-container {
-  @apply min-h-screen py-8;
-  background-color: var(--color-surface);
-}
-
-/* ========================================
    DEBUG AND UTILITY CLASSES
    ======================================== */
 
@@ -197,3 +185,82 @@
   @apply text-sm;
   color: var(--color-text-primary);
 }
+
+/* ========================================
+   LAYOUT COMPONENTS - SCREEN CONTAINERS
+   ======================================== */
+
+/*
+ * Contact screen container - designed to work within existing layout hierarchy
+ * Uses padding for spacing instead of trying to control viewport height
+ * This respects the main-content container's height management
+ */
+.contact-screen-container {
+  @apply py-8 px-4;
+}
+
+/*
+ * Alternative screen container for components that need more generous spacing
+ * Useful for screens with multiple content sections
+ */
+.screen-container-generous {
+  @apply py-12 px-6;
+}
+
+/*
+ * Minimal screen container for dense content layouts
+ * Provides just enough breathing room without overwhelming the content
+ */
+.screen-container-minimal {
+  @apply py-4 px-4;
+}
+
+/* ========================================
+   CENTERED CONTENT CONTAINERS
+   ======================================== */
+
+/*
+ * Error message container that works within any screen container
+ * Uses relative positioning instead of trying to control overall layout
+ */
+.error-message-container {
+  @apply max-w-md mx-auto mt-8 p-6 rounded-lg;
+  background-color: color-mix(in srgb, #fef2f2 90%, var(--color-background) 10%);
+  border: 1px solid #fecaca;
+}
+
+/*
+ * Error message text with theme-aware coloring
+ */
+.error-message-text {
+  color: color-mix(in srgb, #991b1b 80%, var(--color-text-primary) 20%);
+}
+
+/*
+ * Generic centered content container for any type of primary content
+ * Provides consistent width constraints and centering across the application
+ */
+.centered-content {
+  @apply max-w-4xl mx-auto;
+}
+
+/* ========================================
+   RESPONSIVE SPACING UTILITIES
+   ======================================== */
+
+/*
+ * Responsive padding that adapts to screen size
+ * Smaller padding on mobile, more generous on larger screens
+ */
+.responsive-container-padding {
+  @apply px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12;
+}
+
+/*
+ * Content spacing that maintains good rhythm across different screen sizes
+ */
+.content-spacing {
+  @apply space-y-4 sm:space-y-6 lg:space-y-8;
+}
+
+
