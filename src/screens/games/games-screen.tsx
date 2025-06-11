@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import {Games,useGamesGetApi} from '../../hooks/games-rest'
+import {Games, useGamesGetApi} from '../../hooks/games-rest'
 import {ContentListItem} from 'components/menu/content-list-item'
 
 const GamesEmptyProjectsScreen: React.FC = () => {
@@ -18,7 +18,7 @@ const GamesEmptyProjectsScreen: React.FC = () => {
   )
 }
 
-const GamesItem: React.FC<{ games: Games }> = ({ games }) => {
+const GamesItem: React.FC<{games: Games}> = ({games}) => {
   return (
     <div>
       <h2>{games.title}</h2>

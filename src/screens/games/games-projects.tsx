@@ -19,7 +19,7 @@ const GamesProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
     })
   }, [hiddenMenuDispatch])
 
-  return (<GamesScreen />)
+  return <GamesScreen />
 }
 
 export {GamesProjectsScreen}

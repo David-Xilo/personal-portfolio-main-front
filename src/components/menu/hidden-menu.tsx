@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import './menu.css';
+import React, {useState} from 'react'
+import './menu.css'
 import {ArrowLeftIcon} from 'components/menu/arrow-left-icon'
 import {ArrowRightIcon} from 'components/menu/arrow-right-icon'
 
 interface HiddenMenuProps {
-  content: React.ComponentType<any> | undefined,
-  isOpen: boolean,
-  onToggle: (isOpen: boolean) => void,
+  content: React.ComponentType<any> | undefined
+  isOpen: boolean
+  onToggle: (isOpen: boolean) => void
 }
 
-const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content, isOpen, onToggle }) => {
+const HiddenMenu: React.FC<HiddenMenuProps> = ({
+  content: Content,
+  isOpen,
+  onToggle,
+}) => {
   const toggleMenu = () => {
     onToggle(!isOpen)
   }
@@ -19,21 +23,19 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({ content: Content, isOpen, onTog
       <button
         onClick={toggleMenu}
         className="hidden-menu-button"
-        style={{right: isOpen ? 'var(--hidden-menu-width)' : '0',}}
+        style={{right: isOpen ? 'var(--hidden-menu-width)' : '0'}}
       >
         {isOpen ? <ArrowRightIcon /> : <ArrowLeftIcon />}
       </button>
 
       <div
         className="hidden-menu-container"
-        style={{right: isOpen ? '0' : 'calc(-1 * var(--hidden-menu-width))',}}
+        style={{right: isOpen ? '0' : 'calc(-1 * var(--hidden-menu-width))'}}
       >
-        <div className="hidden-menu-content">
-          {Content && <Content />}
-        </div>
+        <div className="hidden-menu-content">{Content && <Content />}</div>
       </div>
     </>
   )
 }
 
-export { HiddenMenu }
+export {HiddenMenu}

@@ -12,7 +12,9 @@ function FinanceProjectsHiddenMenu() {
   return <p>{data.message}</p>
 }
 
-const FinanceProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
+const FinanceProjectsScreen: React.FC<SubMenuProps> = ({
+  hiddenMenuDispatch,
+}) => {
   useEffect(() => {
     hiddenMenuDispatch({
       type: SET_HIDDEN_NAV,
@@ -20,7 +22,7 @@ const FinanceProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => 
     })
   }, [hiddenMenuDispatch])
 
-  return (<FinanceProjectsItemScreen />)
+  return <FinanceProjectsItemScreen />
 }
 
 export {FinanceProjectsScreen}

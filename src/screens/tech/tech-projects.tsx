@@ -20,7 +20,7 @@ const TechProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
     })
   }, [hiddenMenuDispatch])
 
-  return (<TechProjectsItemScreen />)
+  return <TechProjectsItemScreen />
 }
 
 export {TechProjectsScreen}

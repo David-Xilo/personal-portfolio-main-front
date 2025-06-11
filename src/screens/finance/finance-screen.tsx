@@ -2,7 +2,6 @@ import React from 'react'
 import {TechProjects, useTechProjectsGetApi} from '../../hooks/tech-rest'
 import {ContentListItem} from 'components/menu/content-list-item'
 
-
 const FinanceEmptyProjectsScreen: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center">
@@ -11,7 +10,8 @@ const FinanceEmptyProjectsScreen: React.FC = () => {
           No Projects Available
         </h2>
         <p className="text-gray-500">
-          There are currently no finance projects to display. Check back later for updates!
+          There are currently no finance projects to display. Check back later
+          for updates!
         </p>
       </div>
     </div>
@@ -40,6 +40,4 @@ const FinanceProjectsItemScreen: React.FC = () => {
   )
 }
 
-
 export {FinanceProjectsItemScreen}
-

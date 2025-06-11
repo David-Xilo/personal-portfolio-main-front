@@ -7,7 +7,8 @@ import {
   HiddenMenuAction,
   hiddenMenuInitialState,
   hiddenMenuReducer,
-  HiddenMenuState, TOGGLE_HIDDEN_MENU,
+  HiddenMenuState,
+  TOGGLE_HIDDEN_MENU,
 } from '../reducers/hidden-menu-reducer'
 import {
   ErrorFallback,
@@ -23,14 +24,12 @@ import {AppRoutes, MainNav} from './navigation/main-navigation'
 import {ThemeToggle} from '../theme/ThemeToggle'
 
 const MainApp: React.FC = () => {
-  const [subMenuState, subMenuDispatch] = useReducer<React.Reducer<SubMenuState, SubMenuAction>>(
-    subMenuReducer,
-    subMenuInitialState,
-  )
-  const [hiddenMenuState, hiddenMenuDispatch] = useReducer<React.Reducer<HiddenMenuState, HiddenMenuAction>>(
-    hiddenMenuReducer,
-    hiddenMenuInitialState,
-  )
+  const [subMenuState, subMenuDispatch] = useReducer<
+    React.Reducer<SubMenuState, SubMenuAction>
+  >(subMenuReducer, subMenuInitialState)
+  const [hiddenMenuState, hiddenMenuDispatch] = useReducer<
+    React.Reducer<HiddenMenuState, HiddenMenuAction>
+  >(hiddenMenuReducer, hiddenMenuInitialState)
 
   const toggleHiddenMenu = (isOpen: boolean) => {
     hiddenMenuDispatch({
@@ -64,9 +63,11 @@ const MainApp: React.FC = () => {
             />
           )}
 
-          <main className={`main-content flex-1 
+          <main
+            className={`main-content flex-1 
           ${subMenuState.shouldRenderSubNav ? 'with-sub-nav' : 'without-sub-nav'}
-          ${hiddenMenuState.isHiddenMenuExpanded ? 'hidden-menu-open' : ''}`}>
+          ${hiddenMenuState.isHiddenMenuExpanded ? 'hidden-menu-open' : ''}`}
+          >
             <ErrorBoundary FallbackComponent={ErrorFallback}>
               <AppRoutes
                 subMenuDispatch={subMenuDispatch}
@@ -75,7 +76,6 @@ const MainApp: React.FC = () => {
             </ErrorBoundary>
           </main>
         </div>
-
       </div>
     </ErrorBoundary>
   )

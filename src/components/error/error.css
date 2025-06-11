@@ -1,47 +1,47 @@
 .notfound-container {
-    @apply h-full grid place-items-center;
+  @apply h-full grid place-items-center;
 }
 
 .notfound-message {
-    @apply text-center;
+  @apply text-center;
 }
 
 .notfound-home-link {
-    @apply text-black hover:text-black hover:underline;
+  @apply text-black hover:text-black hover:underline;
 }
 
 .error-message {
-    /* Set the text color to your danger color */
-    color: #e53e3e;
+  /* Set the text color to your danger color */
+  color: #e53e3e;
 }
 
 /* Variants for the container */
 .error-message-stacked {
-    @apply block;
+  @apply block;
 }
 
 .error-message-inline {
-    @apply inline-block;
+  @apply inline-block;
 }
 
 /* Base styling for the error message preformatted text */
 .error-message-pre {
-    @apply whitespace-break-spaces m-0 -mb-[5px];
+  @apply whitespace-break-spaces m-0 -mb-[5px];
 }
 
 /* Variants for the preformatted text */
 .error-message-pre-stacked {
-    @apply block;
+  @apply block;
 }
 
 .error-message-pre-inline {
-    @apply inline-block;
+  @apply inline-block;
 }
 
 .fullpage-error-fallback {
-    @apply text-red-600 h-screen flex flex-col justify-center items-center;
+  @apply text-red-600 h-screen flex flex-col justify-center items-center;
 }
 
 .error-fallback {
-    @apply h-full flex flex-col justify-center items-center;
+  @apply h-full flex flex-col justify-center items-center;
 }

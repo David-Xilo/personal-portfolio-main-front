@@ -6,26 +6,26 @@ const CLEAR_SUB_NAV = 'CLEAR_SUB_NAV'
 type SubMenuComponentType = React.ComponentType
 
 interface MainMenuProps {
-  subMenuDispatch: React.Dispatch<any>,
-  hiddenMenuDispatch: React.Dispatch<any>,
+  subMenuDispatch: React.Dispatch<any>
+  hiddenMenuDispatch: React.Dispatch<any>
 }
 
 interface SubMenuProps {
-  hiddenMenuDispatch: React.Dispatch<any>,
+  hiddenMenuDispatch: React.Dispatch<any>
 }
 
 interface SubMenuState {
-  SubNavComponent: React.ComponentType<any>,
-  shouldRenderSubNav: boolean,
+  SubNavComponent: React.ComponentType<any>
+  shouldRenderSubNav: boolean
 }
 
 interface SubMenuAction {
-  type: string,
-  component: SubMenuComponentType,
+  type: string
+  component: SubMenuComponentType
 }
 
 const EmptyComponent: React.FC = () => {
-  return (<div></div>)
+  return <div></div>
 }
 
 const subMenuInitialState = {
@@ -52,4 +52,13 @@ function subMenuReducer(state: SubMenuState, action: SubMenuAction) {
   }
 }
 
-export {subMenuInitialState, subMenuReducer, SET_SUB_NAV, CLEAR_SUB_NAV, SubMenuProps, MainMenuProps, SubMenuState, SubMenuAction}
+export {
+  subMenuInitialState,
+  subMenuReducer,
+  SET_SUB_NAV,
+  CLEAR_SUB_NAV,
+  SubMenuProps,
+  MainMenuProps,
+  SubMenuState,
+  SubMenuAction,
+}

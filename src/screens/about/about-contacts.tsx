@@ -1,20 +1,20 @@
 import * as React from 'react'
 
 import {useEffect} from 'react'
-import {CLEAR_HIDDEN_NAV, SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
+import {
+  CLEAR_HIDDEN_NAV,
+  SET_HIDDEN_NAV,
+} from '../../reducers/hidden-menu-reducer'
 import {ContactScreen} from './contact-screen'
 import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
-
 
 const AboutContactsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {
     hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
   }, [hiddenMenuDispatch])
 
-  return (
-    <ContactScreen />
-  )
+  return <ContactScreen />
 }
 
 export {AboutContactsScreen}

@@ -3,7 +3,10 @@ import {useEffect} from 'react'
 import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {CLEAR_SUB_NAV, MainMenuProps} from '../../reducers/sub-menu-reducer'
 
-const WelcomeScreen: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
+const WelcomeScreen: React.FC<MainMenuProps> = ({
+  subMenuDispatch,
+  hiddenMenuDispatch,
+}) => {
   useEffect(() => {
     hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
     subMenuDispatch({type: CLEAR_SUB_NAV})

@@ -1,9 +1,8 @@
 # safehouse-main-front
+
 Main frontend for safehouse
 
-
 # to start the servers:
-
 
 npm run start:mock-server
 
@@ -22,7 +21,6 @@ docker run --name safehouse-front-container -p 3000:3000 -d safehouse-front
 docker stop safehouse-front-container
 
 docker rm safehouse-front-container
-
 
 ## see logs
 

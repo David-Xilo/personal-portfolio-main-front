@@ -1,58 +1,67 @@
 .sub-menu-nav {
-    @apply p-3 h-full;
-    width: var(--sub-menu-width);
-    position: fixed;
-    left: 0;
-    top: var(--menu-height);
-    background-color: var(--color-nav-background);
-    color: var(--color-nav-text);
-    border-right: 1px solid var(--color-border);
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  @apply p-3 h-full;
+  width: var(--sub-menu-width);
+  position: fixed;
+  left: 0;
+  top: var(--menu-height);
+  background-color: var(--color-nav-background);
+  color: var(--color-nav-text);
+  border-right: 1px solid var(--color-border);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .sub-menu-ul {
-    @apply list-none m-0 p-0;
+  @apply list-none m-0 p-0;
 }
 
 .nav {
-    @apply fixed w-full p-[4px_32px] z-[1000];
-    top: 0;
-    height: var(--menu-height);
-    background-color: var(--color-nav-background);
-    color: var(--color-nav-text);
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: var(--shadow-sm);
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  @apply fixed w-full p-[4px_32px] z-[1000];
+  top: 0;
+  height: var(--menu-height);
+  background-color: var(--color-nav-background);
+  color: var(--color-nav-text);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .nav-list {
-    @apply list-none p-0 m-0 flex gap-4;
+  @apply list-none p-0 m-0 flex gap-4;
 }
 
 .nav-item {
-    @apply inline-flex;
+  @apply inline-flex;
 }
 
 .sub-nav-link {
-    @apply block px-[15px] py-[8px] my-[5px] rounded-[5px] border-l-[5px] border-transparent no-underline list-none;
-    color: var(--color-nav-text);
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  @apply block px-[15px] py-[8px] my-[5px] rounded-[5px] border-l-[5px] border-transparent no-underline list-none;
+  color: var(--color-nav-text);
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .sub-nav-link:hover {
-    background-color: var(--color-surface);
-    color: var(--color-primary);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
 }
 
 .sub-nav-link--active {
-    @apply font-bold;
-    border-left-color: var(--color-primary);
-    background-color: var(--color-surface);
-    color: var(--color-primary);
+  @apply font-bold;
+  border-left-color: var(--color-primary);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
 }
 
 .sub-nav-link--active:hover,
 .sub-nav-link--active:focus {
-    background-color: var(--color-surface);
-    opacity: 0.9;
+  background-color: var(--color-surface);
+  opacity: 0.9;
 }

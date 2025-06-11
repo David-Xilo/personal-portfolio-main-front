@@ -2,8 +2,7 @@ import React from 'react'
 import {TechProjects, useTechProjectsGetApi} from '../../hooks/tech-rest'
 import {ContentListItem} from 'components/menu/content-list-item'
 
-
-const TechProject: React.FC<{ project: TechProjects }> = ({project}) => {
+const TechProject: React.FC<{project: TechProjects}> = ({project}) => {
   return (
     <div>
       <a href={project.link_to_git}>Project Git Link</a>
@@ -19,7 +18,8 @@ const TechEmptyProjectsScreen: React.FC = () => {
           No Projects Available
         </h2>
         <p className="text-gray-500">
-          There are currently no tech projects to display. Check back later for updates!
+          There are currently no tech projects to display. Check back later for
+          updates!
         </p>
       </div>
     </div>
@@ -48,6 +48,4 @@ const TechProjectsItemScreen: React.FC = () => {
   )
 }
 
-
 export {TechProjectsItemScreen}
-

@@ -8,14 +8,21 @@ import {GamesProjectsScreen} from './games-projects'
 import {GamesIntroScreen} from './games-intro'
 import {ErrorFallback} from 'components/error/error-fallback'
 import {useEffect} from 'react'
-import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
+import {
+  MainMenuProps,
+  SET_SUB_NAV,
+  SubMenuProps,
+} from '../../reducers/sub-menu-reducer'
 import {
   SubMenuListItem,
   SubMenuNavigation,
   SubMenuList,
 } from '../navigation/nav-commons'
 
-const GamesApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
+const GamesApp: React.FC<MainMenuProps> = ({
+  subMenuDispatch,
+  hiddenMenuDispatch,
+}) => {
   useEffect(() => {
     subMenuDispatch({type: SET_SUB_NAV, component: GamesNav})
   }, [subMenuDispatch])

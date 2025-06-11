@@ -7,19 +7,19 @@ const TOGGLE_HIDDEN_MENU = 'TOGGLE_HIDDEN_MENU'
 type HiddenMenuComponentType = React.ComponentType
 
 interface HiddenMenuState {
-  HiddenMenuComponent: React.ComponentType<any> | undefined,
-  shouldRenderHiddenMenu: boolean,
-  isHiddenMenuExpanded: boolean,
+  HiddenMenuComponent: React.ComponentType<any> | undefined
+  shouldRenderHiddenMenu: boolean
+  isHiddenMenuExpanded: boolean
 }
 
 interface HiddenMenuAction {
-  type: string,
-  component?: HiddenMenuComponentType,
-  isExpanded: boolean,
+  type: string
+  component?: HiddenMenuComponentType
+  isExpanded: boolean
 }
 
 const EmptyComponent: React.FC = () => {
-  return (<div></div>)
+  return <div></div>
 }
 
 const hiddenMenuInitialState = {

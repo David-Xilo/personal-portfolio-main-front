@@ -2,8 +2,8 @@ import * as React from 'react'
 import {ErrorMessage} from './error'
 
 interface ErrorProps {
-  error: Error,
-  resetErrorBoundary: () => void,
+  error: Error
+  resetErrorBoundary: () => void
 }
 
 const FullPageErrorFallback: React.FC<ErrorProps> = ({error}) => {
@@ -15,10 +15,8 @@ const FullPageErrorFallback: React.FC<ErrorProps> = ({error}) => {
   )
 }
 
-const ErrorFallback: React.FC<ErrorProps> = (error) => {
-  return (
-    <ErrorMessage error={error} className="error-fallback" />
-  )
+const ErrorFallback: React.FC<ErrorProps> = error => {
+  return <ErrorMessage error={error} className="error-fallback" />
 }
 
 export {FullPageErrorFallback, ErrorFallback, ErrorProps}

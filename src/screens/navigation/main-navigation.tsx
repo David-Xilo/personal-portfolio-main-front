@@ -13,15 +13,16 @@ import {HomeIcon} from '../welcome/home-icon'
 import {ThemeToggle} from '../../theme/ThemeToggle'
 
 const MainNav: React.FC = () => {
-
   return (
     <nav className="nav">
       <div className="flex items-center justify-between w-full">
         <ul className="nav-list">
           <li className="nav-item">
-            <MainNavLink to={'/'}><HomeIcon/></MainNavLink>
+            <MainNavLink to={'/'}>
+              <HomeIcon />
+            </MainNavLink>
           </li>
-          <li className="nav-item" style={{marginLeft: "50px"}}>
+          <li className="nav-item" style={{marginLeft: '50px'}}>
             <MainNavLink to={'/about'}>About</MainNavLink>
           </li>
           <li className="nav-item">
@@ -34,14 +35,16 @@ const MainNav: React.FC = () => {
             <MainNavLink to={'/finance'}>Finance</MainNavLink>
           </li>
         </ul>
-        <ThemeToggle/>
+        <ThemeToggle />
       </div>
-
     </nav>
   )
 }
 
-const AppRoutes: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
+const AppRoutes: React.FC<MainMenuProps> = ({
+  subMenuDispatch,
+  hiddenMenuDispatch,
+}) => {
   return (
     <Routes>
       <Route

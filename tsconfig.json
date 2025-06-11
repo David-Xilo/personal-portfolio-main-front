@@ -18,7 +18,10 @@
     }
   },
   "include": ["src/**/*"], // Include all files in the src directory
-  "exclude": ["node_modules", "dist", "**/*.test.ts",
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
     "**/*.test.tsx",
     "**/__tests__/**",
     "setup-tests.ts"

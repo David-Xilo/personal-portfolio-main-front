@@ -3,14 +3,14 @@ import {useState, useEffect} from 'react'
 const domain = process.env.REACT_APP_API_URL
 
 interface TechProjects {
-  title: string,
-  description: string,
-  link_to_git: string,
+  title: string
+  description: string
+  link_to_git: string
 }
 
 interface TechProjectsResponse {
-  status: string,
-  message: TechProjects[],
+  status: string
+  message: TechProjects[]
   error: string | null
 }
 
@@ -48,6 +48,5 @@ const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
   })
   return data
 }
-
 
 export {useTechProjectsGetApi, TechProjects}

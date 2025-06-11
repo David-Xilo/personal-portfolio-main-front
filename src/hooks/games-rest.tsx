@@ -53,4 +53,3 @@ const useGamesGetApi = (endpoint: string): GamesResponse => {
 }
 
 export {useGamesGetApi, Games}
-

@@ -5,7 +5,11 @@ import {Routes, Route} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found'
 import {ErrorBoundary} from 'react-error-boundary'
 import {useEffect} from 'react'
-import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
+import {
+  MainMenuProps,
+  SET_SUB_NAV,
+  SubMenuProps,
+} from '../../reducers/sub-menu-reducer'
 import {FinanceProjectsScreen} from './finance-projects'
 import {FinanceIntroScreen} from './finance-intro'
 import {ErrorFallback} from 'components/error/error-fallback'
@@ -15,7 +19,10 @@ import {
   SubMenuList,
 } from '../navigation/nav-commons'
 
-const FinanceApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
+const FinanceApp: React.FC<MainMenuProps> = ({
+  subMenuDispatch,
+  hiddenMenuDispatch,
+}) => {
   useEffect(() => {
     subMenuDispatch({type: SET_SUB_NAV, component: FinanceNav})
   }, [subMenuDispatch])

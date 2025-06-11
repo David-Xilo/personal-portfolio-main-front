@@ -3,27 +3,30 @@ import {ErrorProps} from 'components/error/error-fallback'
 
 interface ErrorMessageProps {
   // Change this line - error should be of type Error, not ErrorProps
-  error: ErrorProps,
-  variant?: 'stacked' | 'inline',
-  className?: string,
+  error: ErrorProps
+  variant?: 'stacked' | 'inline'
+  className?: string
 }
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({
-                                                     error,
-                                                     variant = 'stacked',
-                                                     className = '',
-                                                     ...props
-                                                   }) => {
+  error,
+  variant = 'stacked',
+  className = '',
+  ...props
+}) => {
   const containerVariantClass =
-    variant === 'inline' ? 'error-message-inline' : 'error-message-stacked';
+    variant === 'inline' ? 'error-message-inline' : 'error-message-stacked'
   const preVariantClass =
-    variant === 'inline' ? 'error-message-pre-inline' : 'error-message-pre-stacked';
+    variant === 'inline'
+      ? 'error-message-pre-inline'
+      : 'error-message-pre-stacked'
 
   return (
     <div
       role="alert"
       className={`error-message ${containerVariantClass} ${className}`.trim()}
-      {...props}>
+      {...props}
+    >
       <span>There was an error: </span>
       <pre className={`error-message-pre ${preVariantClass}`.trim()}>
         {error.error.message}

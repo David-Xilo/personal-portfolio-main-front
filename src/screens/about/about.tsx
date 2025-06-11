@@ -1,6 +1,10 @@
 import * as React from 'react'
 import {useEffect} from 'react'
-import {MainMenuProps, SET_SUB_NAV, SubMenuProps} from '../../reducers/sub-menu-reducer'
+import {
+  MainMenuProps,
+  SET_SUB_NAV,
+  SubMenuProps,
+} from '../../reducers/sub-menu-reducer'
 import {ErrorBoundary} from 'react-error-boundary'
 import {ErrorFallback} from 'components/error/error-fallback'
 import {SubNavLink} from '../navigation/navigation'
@@ -8,9 +12,16 @@ import {Route, Routes} from 'react-router-dom'
 import {NotFoundScreen} from 'components/error/not-found'
 import {AboutIntroScreen} from './about-intro'
 import {AboutContactsScreen} from './about-contacts'
-import {SubMenuList, SubMenuListItem, SubMenuNavigation} from '../navigation/nav-commons'
+import {
+  SubMenuList,
+  SubMenuListItem,
+  SubMenuNavigation,
+} from '../navigation/nav-commons'
 
-const AboutApp: React.FC<MainMenuProps> = ({subMenuDispatch, hiddenMenuDispatch}) => {
+const AboutApp: React.FC<MainMenuProps> = ({
+  subMenuDispatch,
+  hiddenMenuDispatch,
+}) => {
   useEffect(() => {
     subMenuDispatch({type: SET_SUB_NAV, component: AboutNav})
   }, [subMenuDispatch])

@@ -9,9 +9,9 @@
  * Uses CSS custom properties from your root.css for theme consistency
  */
 .contact-card {
-    @apply max-w-md mx-auto rounded-xl overflow-hidden;
-    background-color: var(--color-background);
-    box-shadow: var(--shadow-lg);
+  @apply max-w-md mx-auto rounded-xl overflow-hidden;
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-lg);
 }
 
 /*
@@ -19,15 +19,19 @@
  * Preserves your exact gradient while allowing for theme integration
  */
 .contact-card-header {
-    @apply px-6 py-8;
-    background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  @apply px-6 py-8;
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-accent)
+  );
 }
 
 /*
  * Contact card body - maintains exact spacing from original
  */
 .contact-card-body {
-    @apply px-6 py-6 space-y-4;
+  @apply px-6 py-6 space-y-4;
 }
 
 /* ========================================
@@ -38,36 +42,36 @@
  * Profile section container - exactly as original
  */
 .contact-profile-section {
-    @apply text-center;
+  @apply text-center;
 }
 
 /*
  * Profile avatar circle - maintains exact dimensions and styling
  */
 .contact-profile-avatar {
-    @apply w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center;
-    background-color: rgba(255, 255, 255, 0.2);
+  @apply w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /*
  * Avatar text - preserves exact typography
  */
 .contact-profile-avatar-text {
-    @apply text-2xl font-bold text-white;
+  @apply text-2xl font-bold text-white;
 }
 
 /*
  * Profile name - exactly as original
  */
 .contact-profile-name {
-    @apply text-2xl font-bold text-white mb-2;
+  @apply text-2xl font-bold text-white mb-2;
 }
 
 /*
  * Profile subtitle - using theme color for consistency
  */
 .contact-profile-subtitle {
-    @apply text-blue-100;
+  @apply text-blue-100;
 }
 
 /* ========================================
@@ -78,50 +82,50 @@
  * Contact row container - exactly preserves original flex layout
  */
 .contact-info-row {
-    @apply flex items-center space-x-3;
+  @apply flex items-center space-x-3;
 }
 
 /*
  * Contact icon container - maintains exact styling
  */
 .contact-info-icon {
-    @apply w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0;
-    background-color: var(--color-surface);
+  @apply w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0;
+  background-color: var(--color-surface);
 }
 
 /*
  * Contact icon text - using theme colors
  */
 .contact-info-icon-text {
-    @apply text-sm font-medium;
-    color: var(--color-text-secondary);
+  @apply text-sm font-medium;
+  color: var(--color-text-secondary);
 }
 
 /*
  * Contact info container - preserves exact flex behavior
  */
 .contact-info-content {
-    @apply flex-1 min-w-0;
+  @apply flex-1 min-w-0;
 }
 
 /*
  * Contact label - using theme typography
  */
 .contact-info-label {
-    @apply text-sm font-medium;
-    color: var(--color-text-primary);
+  @apply text-sm font-medium;
+  color: var(--color-text-primary);
 }
 
 /*
  * Contact link - enhanced with theme colors and exact transition
  */
 .contact-info-link {
-    @apply block cursor-pointer transition-colors duration-200;
-    color: var(--color-primary);
+  @apply block cursor-pointer transition-colors duration-200;
+  color: var(--color-primary);
 }
 
 .contact-info-link:hover {
-    color: var(--color-primary-hover);
+  color: var(--color-primary-hover);
 }
 
 /* ========================================
@@ -132,38 +136,42 @@
  * Base message container - using theme properties
  */
 .message-container {
-    @apply max-w-md mx-auto mt-8 p-6 rounded-lg;
-    border: 1px solid var(--color-border);
+  @apply max-w-md mx-auto mt-8 p-6 rounded-lg;
+  border: 1px solid var(--color-border);
 }
 
 /*
  * Warning message - maintains your exact yellow styling
  */
 .message-warning {
-    @apply message-container bg-yellow-50 border-yellow-200;
+  @apply message-container bg-yellow-50 border-yellow-200;
 }
 
 /*
  * Warning text - exactly as original but adaptable to dark theme
  */
 .message-warning-text {
-    @apply text-yellow-800;
+  @apply text-yellow-800;
 }
 
 /*
  * Error message - using theme-aware colors
  */
 .message-error {
-    @apply message-container;
-    background-color: color-mix(in srgb, #fef2f2 90%, var(--color-background) 10%);
-    border-color: #fecaca;
+  @apply message-container;
+  background-color: color-mix(
+    in srgb,
+    #fef2f2 90%,
+    var(--color-background) 10%
+  );
+  border-color: #fecaca;
 }
 
 /*
  * Error text - theme-aware red
  */
 .message-error-text {
-    color: color-mix(in srgb, #991b1b 80%, var(--color-text-primary) 20%);
+  color: color-mix(in srgb, #991b1b 80%, var(--color-text-primary) 20%);
 }
 
 /* ========================================
@@ -174,8 +182,8 @@
  * Screen container - using your theme background
  */
 .contact-screen-container {
-    @apply min-h-screen py-8;
-    background-color: var(--color-surface);
+  @apply min-h-screen py-8;
+  background-color: var(--color-surface);
 }
 
 /* ========================================
@@ -186,6 +194,6 @@
  * Debug text - ensures visibility in both light and dark themes
  */
 .debug-text {
-    @apply text-sm;
-    color: var(--color-text-primary);
+  @apply text-sm;
+  color: var(--color-text-primary);
 }
