@@ -32,9 +32,7 @@ const FinanceProjectsItemScreen: React.FC = () => {
   return (
     <div>
       {message.map(item => (
-        <ContentListItem title={item.title} description={item.description}>
-          some more content
-        </ContentListItem>
+        <ContentListItem title={item.title} description={item.description} />
       ))}
     </div>
   )

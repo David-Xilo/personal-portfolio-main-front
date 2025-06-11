@@ -90,4 +90,11 @@ export const handlers = [
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
   }),
+  http.get(`${domain}/finance/projects`, () => {
+    const projects = {
+      message: [],
+    }
+    // Return mocked response when the request hits /about/contact
+    return HttpResponse.json(projects)
+  }),
 ]
