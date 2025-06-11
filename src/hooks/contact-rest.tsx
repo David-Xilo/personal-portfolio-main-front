@@ -33,7 +33,7 @@ const useContactGetApi = (endpoint: string): ContactResponse => {
       .then(data => {
         const normalizedData: ContactResponse = {
           status: 'success',
-          message: Array.isArray(data.message) ? data.message : [],
+          message: data.message,
           error: null,
         }
         setData(normalizedData)
