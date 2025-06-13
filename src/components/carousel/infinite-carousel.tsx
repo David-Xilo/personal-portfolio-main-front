@@ -41,11 +41,13 @@ function InfiniteCarousel<T>({
 
   useEffect(() => {
     if (trackRef.current) {
-      // Get the actual item width from CSS variable
-      const itemWidth = parseInt(getComputedStyle(document.documentElement)
-        .getPropertyValue('--carousel-item-width'))
-      const translateX = -currentIndex * itemWidth // Move by actual item width in pixels
-      trackRef.current.style.transform = `translateX(${translateX}px)`
+      // Get the actual computed width of the first carousel item
+      const firstItem = trackRef.current.querySelector('.carousel-item-infinite')
+      if (firstItem) {
+        const itemWidth = firstItem.getBoundingClientRect().width
+        const translateX = -currentIndex * itemWidth
+        trackRef.current.style.transform = `translateX(${translateX}px)`
+      }
     }
   }, [currentIndex])
 
@@ -149,7 +151,7 @@ function InfiniteCarousel<T>({
           ref={trackRef}
           className="carousel-track-infinite"
           style={{
-            width: `calc(${items.length} * var(--carousel-item-width))`
+            width: `${items.length * 100}%`
           }}
         >
           {items.map((item, index) => (

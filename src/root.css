@@ -3,11 +3,33 @@
   --sub-menu-width: 150px;
   --hidden-menu-width: 300px;
 
-  /*carousel vars*/
-  --carousel-item-width: 350px;
-  --carousel-content-height: 200px;
+  /*carousel vars - responsive*/
+  --carousel-item-width: min(350px, 85vw);
+  --carousel-content-height: min(200px, 25vh);
   --carousel-total-height: calc(var(--carousel-content-height) + 40px);
   --carousel-total-width: calc(var(--carousel-item-width) + 150px);
+
+  /* Responsive breakpoints for carousel */
+  @media (max-width: 768px) {
+    :root {
+      --carousel-item-width: min(300px, 90vw);
+      --carousel-content-height: min(180px, 30vh);
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --carousel-item-width: min(280px, 95vw);
+      --carousel-content-height: min(160px, 25vh);
+    }
+  }
+
+  @media (max-width: 480px) {
+    :root {
+      --carousel-item-width: min(260px, 95vw);
+      --carousel-content-height: min(140px, 22vh);
+    }
+  }
 
   /* Light theme (default) */
   --color-primary: #3b82f6; /* Blue */

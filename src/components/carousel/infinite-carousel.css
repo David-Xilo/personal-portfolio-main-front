@@ -11,17 +11,21 @@
     @apply relative w-full flex items-center justify-center;
     height: var(--carousel-total-height);
     max-width: var(--carousel-total-width);
+    width: 100%;
     margin: 0 auto;
+    /* Ensure it never gets too small */
+    min-width: 300px;
 }
 
 /*
  * Carousel content area - the space between arrows
  */
 .carousel-content-area {
-    @apply flex-1 mx-6 overflow-hidden;
+    @apply flex-1 overflow-hidden;
     height: var(--carousel-content-height);
-    width: var(--carousel-item-width);
-    /* Remove width: var(--carousel-content-width); */
+    /* Responsive margins */
+    margin-left: clamp(16px, 4vw, 24px);
+    margin-right: clamp(16px, 4vw, 24px);
 }
 
 /*
@@ -40,14 +44,17 @@
     height: var(--carousel-content-height);
     width: var(--carousel-item-width);
     box-sizing: border-box;
-    padding: 0;
+    padding: 0 12px;
 }
 
 /*
  * Navigation arrows for infinite carousel - always enabled
  */
 .carousel-nav-arrow-infinite {
-    @apply w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 z-10;
+    @apply rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 z-10;
+    /* Responsive arrow size */
+    width: clamp(40px, 8vw, 48px);
+    height: clamp(40px, 8vw, 48px);
     background-color: var(--color-background);
     border: 2px solid var(--color-border);
     color: var(--color-text-primary);
