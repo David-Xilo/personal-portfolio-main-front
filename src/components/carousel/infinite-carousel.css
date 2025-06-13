@@ -1,0 +1,136 @@
+/* infinite-carousel.css - REVERT to your original working version */
+
+/* ========================================
+   INFINITE CAROUSEL COMPONENTS (Single Item)
+   ======================================== */
+
+/*
+ * Main infinite carousel container - optimized for single item display
+ */
+.infinite-carousel {
+    @apply relative w-full flex items-center justify-center;
+    height: 220px; /* Total height including indicators */
+    max-width: 600px; /* Reasonable max width for single items */
+    margin: 0 auto; /* Center the entire carousel */
+}
+
+/*
+ * Carousel content area - the space between arrows
+ */
+.carousel-content-area {
+    @apply flex-1 mx-4 overflow-hidden;
+    height: 200px; /* Content height */
+}
+
+/*
+ * Carousel track for infinite single items
+ */
+.carousel-track-infinite {
+    @apply flex transition-transform duration-300 ease-in-out h-full;
+    /* Transform controlled by JavaScript for smooth sliding */
+}
+
+/*
+ * Individual carousel item for infinite display
+ */
+.carousel-item-infinite {
+    @apply flex-shrink-0 w-full h-full px-4;
+    /* Each item takes full width of the content area */
+}
+
+/*
+ * Navigation arrows for infinite carousel - always enabled
+ */
+.carousel-nav-arrow-infinite {
+    @apply w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 z-10;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-border);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.carousel-nav-arrow-infinite:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.carousel-nav-arrow-infinite:active {
+    transform: scale(1.05);
+}
+
+/*
+ * Position indicators for infinite carousel
+ */
+.infinite-carousel-indicators {
+    @apply absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-3;
+}
+
+/*
+ * Individual position indicator (dot) - larger for single-item
+ */
+.infinite-carousel-indicator {
+    @apply w-3 h-3 rounded-full cursor-pointer transition-all duration-200;
+    background-color: var(--color-text-disabled);
+}
+
+.infinite-carousel-indicator.active {
+    background-color: var(--color-primary);
+    transform: scale(1.2);
+}
+
+.infinite-carousel-indicator:hover {
+    background-color: var(--color-primary-hover);
+    transform: scale(1.1);
+}
+
+/*
+ * Different size options for infinite carousel
+ */
+.infinite-carousel-small {
+    height: 180px;
+    max-width: 400px;
+}
+
+.infinite-carousel-small .carousel-content-area {
+    height: 160px;
+}
+
+.infinite-carousel-medium {
+    height: 220px;
+    max-width: 500px;
+}
+
+.infinite-carousel-medium .carousel-content-area {
+    height: 200px;
+}
+
+.infinite-carousel-large {
+    height: 280px;
+    max-width: 600px;
+}
+
+.infinite-carousel-large .carousel-content-area {
+    height: 260px;
+}
+
+/*
+ * Responsive adjustments for mobile
+ */
+@media (max-width: 640px) {
+    .infinite-carousel {
+        height: 200px;
+        max-width: 350px;
+    }
+
+    .carousel-content-area {
+        height: 180px;
+        margin: 0 2rem;
+    }
+
+    .carousel-nav-arrow-infinite {
+        @apply w-10 h-10;
+    }
+}
+
