@@ -3,6 +3,12 @@
   --sub-menu-width: 150px;
   --hidden-menu-width: 300px;
 
+  /*carousel vars*/
+  --carousel-item-width: 350px;
+  --carousel-content-height: 200px;
+  --carousel-total-height: calc(var(--carousel-content-height) + 40px);
+  --carousel-total-width: calc(var(--carousel-item-width) + 150px);
+
   /* Light theme (default) */
   --color-primary: #3b82f6; /* Blue */
   --color-primary-hover: #2563eb; /* Darker Blue */

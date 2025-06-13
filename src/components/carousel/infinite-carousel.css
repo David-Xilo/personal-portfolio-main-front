@@ -9,9 +9,9 @@
  */
 .infinite-carousel {
     @apply relative w-full flex items-center justify-center;
-    height: 220px; /* Total height including indicators */
-    max-width: 600px; /* Reasonable max width for single items */
-    margin: 0 auto; /* Center the entire carousel */
+    height: var(--carousel-total-height);
+    max-width: var(--carousel-total-width);
+    margin: 0 auto;
 }
 
 /*
@@ -19,7 +19,8 @@
  */
 .carousel-content-area {
     @apply flex-1 mx-4 overflow-hidden;
-    height: 200px; /* Content height */
+    height: var(--carousel-content-height);
+    /* Remove width: var(--carousel-content-width); */
 }
 
 /*
@@ -34,8 +35,11 @@
  * Individual carousel item for infinite display
  */
 .carousel-item-infinite {
-    @apply flex-shrink-0 w-full h-full px-4;
-    /* Each item takes full width of the content area */
+    @apply flex-shrink-0;
+    height: var(--carousel-content-height);
+    width: var(--carousel-item-width);
+    box-sizing: border-box;
+    padding: 0 8px;
 }
 
 /*

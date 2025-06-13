@@ -1,28 +1,33 @@
-/* games.css - MINIMAL SAFE changes only */
+/* games.css - Fixed horizontal sizing */
 
 /* ========================================
-   GAME CARD COMPONENTS (Safe Version)
+   GAME CARD COMPONENTS (Proper Width)
    ======================================== */
 
 /*
- * Game card for infinite carousel - minimal changes to fit carousel
+ * Game card for infinite carousel - properly sized for available space
  */
 .infinite-game-card {
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 1px solid #e5e7eb;
-    /* ONLY change the max-width to fit better in carousel */
-    max-width: 350px;
+    max-width: calc(var(--carousel-item-width) - 16px); /* 16px = 8px padding on each side */
+    width: 100%;
     margin: 0 auto;
-    height: 180px; /* Fixed height to fit in 200px content area */
+    height: 180px;
     overflow: hidden;
     transition: all 0.3s ease;
+    /* Prevent layout shift on hover */
+    position: relative;
 }
 
 .infinite-game-card:hover {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    /* Use transform with translate instead of translateY to avoid layout shift */
+    transform: scale(1.02);
+    /* OR if you want the upward movement, use position instead */
+    /* top: -2px; */
 }
 
 /*
@@ -30,7 +35,7 @@
  */
 .infinite-game-image {
     width: 100%;
-    height: 100px; /* Fixed height */
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,18 +47,22 @@
  */
 .infinite-game-content {
     padding: 12px;
-    height: 80px; /* Remaining space */
+    height: 80px;
 }
 
 /*
  * Game card title
  */
 .infinite-game-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     margin-bottom: 4px;
     text-align: center;
     color: #111827;
+    /* Prevent text overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*
@@ -62,19 +71,18 @@
 .infinite-game-genre {
     font-size: 12px;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #6b7280;
 }
 
 /*
- * Game card description - shorter for space
+ * Game card description - constrained for narrow card
  */
 .infinite-game-description {
     font-size: 10px;
     line-height: 1.3;
     text-align: center;
     color: #6b7280;
-    /* Hide overflow */
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -82,12 +90,25 @@
 }
 
 /*
- * Game card year - smaller
+ * Game card year
  */
 .infinite-game-year {
     font-size: 9px;
     text-align: center;
     margin-top: 4px;
     color: #9ca3af;
+}
+
+/*
+ * Responsive adjustments
+ */
+@media (max-width: 640px) {
+    .infinite-game-card {
+        max-width: 240px;
+    }
+
+    .infinite-game-title {
+        font-size: 14px;
+    }
 }
 

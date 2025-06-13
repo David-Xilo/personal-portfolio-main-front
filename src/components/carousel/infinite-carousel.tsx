@@ -39,11 +39,13 @@ function InfiniteCarousel<T>({
   const trackRef = useRef<HTMLDivElement>(null)
   const autoAdvanceRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Update transform when currentIndex changes
   useEffect(() => {
     if (trackRef.current) {
-      const translateX = -currentIndex * 100 // Move by 100% for each item
-      trackRef.current.style.transform = `translateX(${translateX}%)`
+      // Get the actual item width from CSS variable
+      const itemWidth = parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--carousel-item-width'))
+      const translateX = -currentIndex * itemWidth // Move by actual item width in pixels
+      trackRef.current.style.transform = `translateX(${translateX}px)`
     }
   }, [currentIndex])
 
@@ -146,7 +148,9 @@ function InfiniteCarousel<T>({
         <div
           ref={trackRef}
           className="carousel-track-infinite"
-          style={{ width: `${items.length * 100}%` }}
+          style={{
+            width: `calc(${items.length} * var(--carousel-item-width))`
+          }}
         >
           {items.map((item, index) => (
             <div key={index} className="carousel-item-infinite">
