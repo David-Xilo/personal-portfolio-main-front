@@ -7,7 +7,7 @@
   --carousel-item-width: 350px;
   --carousel-content-height: 200px;
   --carousel-total-height: calc(var(--carousel-content-height) + 40px);
-  --carousel-total-width: calc(var(--carousel-item-width) + 150px);
+  --carousel-total-width: calc(var(--carousel-item-width) + 0px);
 
   /* Light theme (default) */
   --color-primary: #3b82f6; /* Blue */

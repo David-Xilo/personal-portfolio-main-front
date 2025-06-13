@@ -18,8 +18,9 @@
  * Carousel content area - the space between arrows
  */
 .carousel-content-area {
-    @apply flex-1 mx-4 overflow-hidden;
+    @apply flex-1 mx-6 overflow-hidden;
     height: var(--carousel-content-height);
+    width: var(--carousel-item-width);
     /* Remove width: var(--carousel-content-width); */
 }
 
@@ -39,7 +40,7 @@
     height: var(--carousel-content-height);
     width: var(--carousel-item-width);
     box-sizing: border-box;
-    padding: 0 8px;
+    padding: 0;
 }
 
 /*
