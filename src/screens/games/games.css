@@ -8,15 +8,18 @@
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 1px solid #e5e7eb;
-    /* Account for the 24px total padding (12px each side) */
-    max-width: calc(100% - 24px);
+    /* Ensure card always fits completely within its container */
     width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     height: calc(var(--carousel-content-height) - 20px);
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
+    /* Prevent any overflow */
+    box-sizing: border-box;
 }
+
 
 /*
  * Game card image - responsive height
@@ -35,26 +38,43 @@
  * Game card content - responsive spacing
  */
 .infinite-game-content {
-    /* Content takes remaining 40% */
     height: 40%;
-    padding: clamp(8px, 2vw, 12px);
+    padding: clamp(4px, 1.5vw, 12px);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Prevent overflow */
+    overflow: hidden;
 }
 
 /*
  * Responsive typography
  */
 .infinite-game-title {
-    font-size: clamp(12px, 2.5vw, 15px);
+    font-size: clamp(10px, 2.2vw, 15px);
     font-weight: bold;
-    margin-bottom: 4px;
+    margin-bottom: clamp(2px, 0.5vw, 4px);
     text-align: center;
     color: #111827;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* Ensure it fits */
+    max-width: 100%;
+}
+
+.infinite-game-description {
+    font-size: clamp(7px, 1.2vw, 10px);
+    line-height: 1.2;
+    text-align: center;
+    color: #6b7280;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    /* Ensure it fits */
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .infinite-game-genre {
@@ -62,17 +82,6 @@
     text-align: center;
     margin-bottom: 6px;
     color: #6b7280;
-}
-
-.infinite-game-description {
-    font-size: clamp(8px, 1.5vw, 10px);
-    line-height: 1.3;
-    text-align: center;
-    color: #6b7280;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
 }
 
 .infinite-game-year {

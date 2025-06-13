@@ -13,8 +13,9 @@
     max-width: var(--carousel-total-width);
     width: 100%;
     margin: 0 auto;
-    /* Ensure it never gets too small */
-    min-width: 300px;
+    /* Prevent overflow */
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 /*
@@ -23,9 +24,11 @@
 .carousel-content-area {
     @apply flex-1 overflow-hidden;
     height: var(--carousel-content-height);
-    /* Responsive margins */
-    margin-left: clamp(16px, 4vw, 24px);
-    margin-right: clamp(16px, 4vw, 24px);
+    /* Use percentage-based margins that scale with container */
+    margin-left: 5%;
+    margin-right: 5%;
+    /* Ensure it never overflows */
+    max-width: 90%;
 }
 
 /*
@@ -44,7 +47,8 @@
     height: var(--carousel-content-height);
     width: var(--carousel-item-width);
     box-sizing: border-box;
-    padding: 0 12px;
+    /* Responsive padding that scales with screen size */
+    padding: 0 clamp(4px, 1.5vw, 12px);
 }
 
 /*
