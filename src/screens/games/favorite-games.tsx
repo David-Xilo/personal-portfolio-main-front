@@ -1,31 +1,64 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import './games.css'
 import {InfiniteCarousel} from 'components/carousel/infinite-carousel'
+import {useGamesPlayedGetApi} from '../../hooks/games-rest'
 
-// Game interface
+interface FavoriteGameVisuals {
+  emoji: string
+  color: string
+}
+
 interface FavoriteGame {
   title: string
   genre: string
   description?: string
-  rating?: number,
-  emoji?: string
-  color?: string
+  rating?: number
 }
 
-const InfiniteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
-  console.log('Rendering game card:', game.title)
+const GENRE_VISUAL_MAP: Record<string, FavoriteGameVisuals> = {
+  "rpg": {
+    emoji: "⚔️",
+    color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  },
+  "strategy": {
+    emoji: "🏛️",
+    color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+  },
+  "tabletop": {
+    emoji: "🧭",
+    color: "linear-gradient(135deg, #feca57 0%, #ff9ff3 100%)"
+  },
+  "default": {
+    emoji: "🎮",
+    color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  }
+}
 
+const useGameVisuals = (genre: string): FavoriteGameVisuals => {
+  // Use useMemo to avoid recalculating on every render
+  // This is a pure computation, so we don't need useEffect
+  return React.useMemo(() => {
+    // Normalize genre string to handle case sensitivity and extra spaces
+    const normalizedGenre = genre.trim()
+
+    // Return the mapped visuals or fall back to default
+    return GENRE_VISUAL_MAP[normalizedGenre] || GENRE_VISUAL_MAP["default"]
+  }, [genre])
+}
+
+const FavoriteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
+  const visuals = useGameVisuals(game.genre)
   return (
     <div className="infinite-game-card">
       {/* Image section with gradient background */}
       <div
         className="infinite-game-image"
         style={{
-          background: game.color || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+          background: visuals.color
         }}
       >
         <span style={{ fontSize: '2.5rem' }}>
-          {game.emoji || '🎮'}
+          {visuals.emoji}
         </span>
       </div>
 
@@ -49,49 +82,10 @@ const InfiniteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
 
 const FavoriteGamesCarousel: React.FC = () => {
 
-  // Your favorite games with detailed descriptions
-  const favoriteGames: FavoriteGame[] = [
-    {
-      title: "The Witcher 3: Wild Hunt",
-      genre: "Open World RPG",
-      description: "An incredible narrative-driven RPG that taught me the importance of meaningful player choices and world-building in game design.",
-      rating: 4,
-      emoji: "⚔️",
-      color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    },
-    {
-      title: "Civilization VI",
-      genre: "Turn-Based Strategy",
-      rating: 4,
-      emoji: "🏛️",
-      color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-      description: "The perfect blend of complexity and accessibility. Every decision feels important and strategic - great inspiration for UI design.",
-    },
-    {
-      title: "Hollow Knight",
-      genre: "Metroidvania",
-      rating: 4,
-      emoji: "🗡️",
-      color: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      description: "A masterclass in atmospheric design and tight gameplay mechanics. Every area feels unique and memorable.",
-    },
-    {
-      title: "Portal 2",
-      genre: "Puzzle Platformer",
-      rating: 4,
-      emoji: "🔵",
-      color: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-      description: "Brilliant puzzle design that gradually introduces complexity. The perfect example of 'easy to learn, hard to master.'",
-    },
-    {
-      title: "Factorio",
-      genre: "Automation & Management",
-      rating: 4,
-      emoji: "⚙️",
-      color: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-      description: "The ultimate game for systematic thinkers. Building efficient systems mirrors good software architecture principles.",
-    }
-  ]
+  const {status, message, error} = useGamesPlayedGetApi('/games/played/carousel')
+  if (status !== 'success') {
+    return <div>Found error {error}</div>
+  }
 
   return (
     <div className="py-8 px-4">
@@ -99,13 +93,13 @@ const FavoriteGamesCarousel: React.FC = () => {
       {/* Infinite games carousel */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-center mb-6" style={{color: 'var(--color-text-primary)'}}>
-          Games That Shape My Development Philosophy 🎮
+          Games that left a mark on me
         </h2>
         <InfiniteCarousel
-          items={favoriteGames}
+          items={message}
           renderItem={(game, index) => {
             console.log('Rendering item at index:', index, game.title)
-            return <InfiniteGameCard game={game} />
+            return <FavoriteGameCard game={game} />
           }}
           size="medium"
           className="mb-4"
