@@ -4,6 +4,7 @@ import {useEffect} from 'react'
 import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
+import {AboutReviewCarousel} from './about-reviews'
 
 const AboutIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {
@@ -31,6 +32,7 @@ const AboutIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
           </div>
         </div>
       )}
+      <AboutReviewCarousel />
     </div>
   )
 }

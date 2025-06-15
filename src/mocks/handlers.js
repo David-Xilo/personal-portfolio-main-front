@@ -26,6 +26,39 @@ export const handlers = [
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(contact)
   }),
+  http.get(`${domain}/about/reviews/carousel`, () => {
+    const contact = {
+      message: [
+        {
+          author: 'John Doe',
+          rating: 5,
+          description: 'always fun',
+        },
+        {
+          author: 'John Doe',
+          rating: 4,
+          description: 'always fun',
+        },
+        {
+          author: 'John Doe',
+          rating: 3,
+          description: 'always fun',
+        },
+        {
+          author: 'John Doe',
+          rating: 2,
+          description: 'always fun',
+        },
+        {
+          author: 'John Doe',
+          rating: 1,
+          description: 'always fun',
+        },
+      ]
+    }
+    // Return mocked response when the request hits /about/contact
+    return HttpResponse.json(contact)
+  }),
   http.get(`${domain}/about/contact-text`, () => {
     const contactText = {
       message: 'contact-text',
