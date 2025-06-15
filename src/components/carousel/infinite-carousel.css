@@ -1,68 +1,62 @@
-/* infinite-carousel.css - REVERT to your original working version */
-
-/* ========================================
-   INFINITE CAROUSEL COMPONENTS (Single Item)
-   ======================================== */
-
-/*
- * Main infinite carousel container - optimized for single item display
- */
 .infinite-carousel {
     @apply relative w-full flex items-center justify-center;
     height: var(--carousel-total-height);
     max-width: var(--carousel-total-width);
     width: 100%;
     margin: 0 auto;
-    /* Prevent overflow */
-    overflow: hidden;
     box-sizing: border-box;
 }
 
-/*
- * Carousel content area - the space between arrows
- */
 .carousel-content-area {
-    @apply flex-1 overflow-hidden;
+    @apply overflow-hidden;
     height: var(--carousel-content-height);
-    /* Use percentage-based margins that scale with container */
-    margin-left: 5%;
-    margin-right: 5%;
-    /* Ensure it never overflows */
-    max-width: 90%;
+    /* Simple approach: take most of the width, leaving space for arrows */
+    width: calc(100% - 100px); /* 50px on each side for arrows */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    margin: 0 auto;
+    background: rgba(255, 0, 0, 0.1); /* Temporary red tint to see boundaries */
 }
 
-/*
- * Carousel track for infinite single items
- */
 .carousel-track-infinite {
     @apply flex transition-transform duration-300 ease-in-out h-full;
-    /* Transform controlled by JavaScript for smooth sliding */
+    /* Track will be sized by JavaScript based on actual content area width */
 }
 
-/*
- * Individual carousel item for infinite display
- */
 .carousel-item-infinite {
     @apply flex-shrink-0;
-    height: var(--carousel-content-height);
-    width: var(--carousel-item-width);
+    height: 100%;
+    /* Width will be set by JavaScript to match content area exactly */
     box-sizing: border-box;
-    /* Responsive padding that scales with screen size */
-    padding: 0 clamp(4px, 1.5vw, 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 255, 0, 0.1); /* Temporary green tint to see item boundaries */
 }
 
-/*
- * Navigation arrows for infinite carousel - always enabled
- */
 .carousel-nav-arrow-infinite {
     @apply rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 z-10;
-    /* Responsive arrow size */
     width: clamp(40px, 8vw, 48px);
     height: clamp(40px, 8vw, 48px);
     background-color: var(--color-background);
     border: 2px solid var(--color-border);
     color: var(--color-text-primary);
     box-shadow: var(--shadow-md);
+    position: absolute;
+}
+
+/* Position left arrow */
+.carousel-nav-arrow-infinite:first-of-type {
+    left: 10px;
+}
+
+/* Position right arrow */
+.carousel-nav-arrow-infinite:last-of-type {
+    right: 10px;
 }
 
 .carousel-nav-arrow-infinite:hover {
@@ -72,20 +66,10 @@
     box-shadow: var(--shadow-lg);
 }
 
-.carousel-nav-arrow-infinite:active {
-    transform: scale(1.05);
-}
-
-/*
- * Position indicators for infinite carousel
- */
 .infinite-carousel-indicators {
     @apply absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-3;
 }
 
-/*
- * Individual position indicator (dot) - larger for single-item
- */
 .infinite-carousel-indicator {
     @apply w-3 h-3 rounded-full cursor-pointer transition-all duration-200;
     background-color: var(--color-text-disabled);
@@ -101,52 +85,17 @@
     transform: scale(1.1);
 }
 
-/*
- * Different size options for infinite carousel
- */
-.infinite-carousel-small {
-    height: 180px;
-    max-width: 400px;
-}
-
-.infinite-carousel-small .carousel-content-area {
-    height: 160px;
-}
-
-.infinite-carousel-medium {
-    height: 220px;
-    max-width: 500px;
-}
-
-.infinite-carousel-medium .carousel-content-area {
-    height: 200px;
-}
-
-.infinite-carousel-large {
-    height: 280px;
-    max-width: 600px;
-}
-
-.infinite-carousel-large .carousel-content-area {
-    height: 260px;
-}
-
-/*
- * Responsive adjustments for mobile
- */
-@media (max-width: 640px) {
-    .infinite-carousel {
-        height: 200px;
-        max-width: 350px;
-    }
-
+/* Mobile adjustments */
+@media (max-width: 480px) {
     .carousel-content-area {
-        height: 180px;
-        margin: 0 2rem;
+        width: calc(100% - 80px); /* Smaller arrow space on mobile */
     }
 
-    .carousel-nav-arrow-infinite {
-        @apply w-10 h-10;
+    .carousel-nav-arrow-infinite:first-of-type {
+        left: 5px;
+    }
+
+    .carousel-nav-arrow-infinite:last-of-type {
+        right: 5px;
     }
 }
-

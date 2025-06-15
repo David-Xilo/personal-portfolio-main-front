@@ -3,34 +3,39 @@
   --sub-menu-width: 150px;
   --hidden-menu-width: 300px;
 
-  /*carousel vars - improved responsive scaling*/
-  --carousel-item-width: min(350px, 80vw);
-  --carousel-content-height: min(200px, 25vh);
+  /*carousel vars - simplified approach*/
+  --carousel-content-height: min(250px, 25vh);
   --carousel-total-height: calc(var(--carousel-content-height) + 40px);
-  --carousel-total-width: min(500px, 95vw);
+  --carousel-total-width: min(600px, 95vw);
 
-  /* More aggressive scaling on smaller screens */
+  /* Arrow space - reserve 60px on each side for arrows */
+  --carousel-arrow-space: 120px;
+
+  /* Calculate the actual content area width (total minus arrow space) */
+  --carousel-content-width: calc(var(--carousel-total-width) - var(--carousel-arrow-space));
+
   @media (max-width: 768px) {
     :root {
-      --carousel-item-width: min(280px, 85vw);
-      --carousel-content-height: min(180px, 30vh);
-      --carousel-total-width: min(400px, 95vw);
+      --carousel-content-height: min(220px, 30vh);
+      --carousel-total-width: min(480px, 95vw);
+      --carousel-content-width: calc(var(--carousel-total-width) - var(--carousel-arrow-space));
     }
   }
 
   @media (max-width: 640px) {
     :root {
-      --carousel-item-width: min(240px, 90vw);
-      --carousel-content-height: min(160px, 25vh);
-      --carousel-total-width: min(320px, 95vw);
+      --carousel-content-height: min(200px, 25vh);
+      --carousel-total-width: min(380px, 95vw);
+      --carousel-content-width: calc(var(--carousel-total-width) - var(--carousel-arrow-space));
     }
   }
 
   @media (max-width: 480px) {
     :root {
-      --carousel-item-width: min(200px, 90vw);
-      --carousel-content-height: min(140px, 22vh);
-      --carousel-total-width: min(280px, 95vw);
+      --carousel-content-height: min(180px, 22vh);
+      --carousel-total-width: min(340px, 95vw);
+      --carousel-arrow-space: 100px; /* Smaller arrows on mobile */
+      --carousel-content-width: calc(var(--carousel-total-width) - var(--carousel-arrow-space));
     }
   }
 
@@ -57,9 +62,9 @@
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .dark-theme {
@@ -85,7 +90,7 @@
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.9);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5),
-    0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  0 2px 4px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5),
-    0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  0 4px 6px -2px rgba(0, 0, 0, 0.4);
 }
