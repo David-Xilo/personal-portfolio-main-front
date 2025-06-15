@@ -18,7 +18,6 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
 
   return (
     <div>
-      {/* API content from backend */}
       {data.message && (
         <div className="mb-8">
           <div className="max-w-3xl mx-auto text-center">

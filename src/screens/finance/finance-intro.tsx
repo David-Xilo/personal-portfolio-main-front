@@ -10,9 +10,22 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
     hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
   }, [hiddenMenuDispatch])
 
-  const data = useIntroGetApi('/tech/intro')
+  const data = useIntroGetApi('/finance/intro')
 
-  return <div>{data.message}</div>
+  // TODO extract intro component
+  return (
+    <div>
+      {data.message && (
+        <div className="mb-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="text-lg leading-relaxed" style={{color: 'var(--color-text-primary)'}}>
+              {data.message}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 export {FinanceIntroScreen}

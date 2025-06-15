@@ -20,7 +20,19 @@ const AboutIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   // The component should show the stars filled according to the punctuation
   // The backend call will return a description for my intro and a list of random
   // sentences with corresponding rating
-  return <div>{data.message}</div>
+  return (
+    <div>
+      {data.message && (
+        <div className="mb-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="text-lg leading-relaxed" style={{color: 'var(--color-text-primary)'}}>
+              {data.message}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 export {AboutIntroScreen}
