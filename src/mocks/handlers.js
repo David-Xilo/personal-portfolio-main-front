@@ -5,7 +5,11 @@ const domain = process.env.REACT_APP_API_URL
 export const handlers = [
   http.get(`${domain}/about/intro`, () => {
     const intro = {
-      message: 'intro about',
+      message: "Hey! I’m David—great to see you here!\n " +
+        "I built a simple portfolio page a while back but kept postponing it—well, it’s finally live!\n " +
+        "I’m a Senior Software Engineer specializing in backend. " +
+        "I have a LOT of interests and tend to explore them fully, so expect to see some interesting projects here!\n " +
+        "You’ll also find my contact info and a peek into my passions. Enjoy exploring!",
     }
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
@@ -31,7 +35,11 @@ export const handlers = [
   }),
   http.get(`${domain}/tech/intro`, () => {
     const intro = {
-      message: 'intro tech',
+      message: "Technology is always improving — and so am I.\n " +
+        "Technology is my bread and butter. I've grown around it, worked with it, and played with it — " +
+        "It's part of my personality and I try to learn and explore it as much as I can.\n " +
+        "I'll post my personal projects here as a way to keep myself accountable.\n" +
+        " Have fun exploring them!",
     }
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
@@ -51,7 +59,10 @@ export const handlers = [
   }),
   http.get(`${domain}/games/intro`, () => {
     const intro = {
-      message: 'intro games',
+      message: "This section is all about games.\n " +
+        "Since I was a kid I've loved video games, in fact, they were one of the main reasons I got interested in computers.\n " +
+        "This page might be empty (it is for sure emptier than I'd like), but I'll keep adding new games I've made here. " +
+        "Who knows — maybe one day you'll recognize one of the names!",
     }
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
@@ -117,7 +128,10 @@ export const handlers = [
   }),
   http.get(`${domain}/finance/intro`, () => {
     const intro = {
-      message: 'intro finance',
+      message: "Finance is one of my passions. I read about it, study it, and pay attention to it in my daily life.\n " +
+        "Since I was young, I’ve followed the stock market and economic news. " +
+        "During my master’s thesis, I finally combined my passions for technology and finance—and I loved it.\n " +
+        "Now, I’ll post my finance-related personal projects here, along with any certifications or extra courses I complete in my free time.",
     }
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
