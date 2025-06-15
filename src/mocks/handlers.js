@@ -83,6 +83,38 @@ export const handlers = [
     // Return mocked response when the request hits /about/contact
     return HttpResponse.json(projects)
   }),
+  http.get(`${domain}/games/played/carousel`, () => {
+    const games_played_carousel = {
+      message: [
+        {
+          "title": "Skyrim",
+          "genre": "rpg",
+          "description": "A sprawling, snow-drenched Nordic realm to freely explore, brimming with epic dragon battles, rich lore, unforgettable quests, dynamic combat, and endless mod-friendly adventures.",
+          "rating": 5
+        },
+        {
+          "title": "DnD",
+          "genre": "table top",
+          "description": "Dungeons & Dragons is a boundless fantasy role-playing game full of imaginative storytelling, camaraderie, problem-solving, and epic quests—empowering creativity, teamwork, and adventure at every roll of the dice.",
+          "rating": 5
+        },
+        {
+          "title": "Age of Empires II",
+          "genre": "strategy",
+          "description": "Age of Empires II is a legendary real-time strategy game set in the Middle Ages—build thriving empires across 13 civilizations, master resource economy, epic battles, historic campaigns, and deep multiplayer—timeless classic",
+          "rating": 4
+        },
+        {
+          "title": "Final Fantasy 7",
+          "genre": "rpg",
+          "description": "Final Fantasy VII is a timeless, genre‑defining RPG—rich with unforgettable characters, sweeping eco‑drama, cinematic twists, iconic music, and deep, emotion‑driven storytelling that still enthralls",
+          "rating": 4
+        }
+      ],
+    }
+    // Return mocked response when the request hits /about/contact
+    return HttpResponse.json(games_played_carousel)
+  }),
   http.get(`${domain}/finance/intro`, () => {
     const intro = {
       message: 'intro finance',

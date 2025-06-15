@@ -6,10 +6,10 @@ import {InfiniteCarousel} from 'components/carousel/infinite-carousel'
 interface FavoriteGame {
   title: string
   genre: string
+  description?: string
+  rating?: number,
   emoji?: string
   color?: string
-  description?: string
-  yearPlayed?: string
 }
 
 const InfiniteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
@@ -42,11 +42,6 @@ const InfiniteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
             {game.description}
           </p>
         )}
-        {game.yearPlayed && (
-          <p className="infinite-game-year">
-            Played in {game.yearPlayed}
-          </p>
-        )}
       </div>
     </div>
   )
@@ -59,50 +54,42 @@ const FavoriteGamesCarousel: React.FC = () => {
     {
       title: "The Witcher 3: Wild Hunt",
       genre: "Open World RPG",
+      description: "An incredible narrative-driven RPG that taught me the importance of meaningful player choices and world-building in game design.",
+      rating: 4,
       emoji: "⚔️",
       color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      description: "An incredible narrative-driven RPG that taught me the importance of meaningful player choices and world-building in game design.",
-      yearPlayed: "2020"
     },
     {
       title: "Civilization VI",
       genre: "Turn-Based Strategy",
+      rating: 4,
       emoji: "🏛️",
       color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       description: "The perfect blend of complexity and accessibility. Every decision feels important and strategic - great inspiration for UI design.",
-      yearPlayed: "2019"
     },
     {
       title: "Hollow Knight",
       genre: "Metroidvania",
+      rating: 4,
       emoji: "🗡️",
       color: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       description: "A masterclass in atmospheric design and tight gameplay mechanics. Every area feels unique and memorable.",
-      yearPlayed: "2021"
     },
     {
       title: "Portal 2",
       genre: "Puzzle Platformer",
+      rating: 4,
       emoji: "🔵",
       color: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
       description: "Brilliant puzzle design that gradually introduces complexity. The perfect example of 'easy to learn, hard to master.'",
-      yearPlayed: "2018"
     },
     {
       title: "Factorio",
       genre: "Automation & Management",
+      rating: 4,
       emoji: "⚙️",
       color: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
       description: "The ultimate game for systematic thinkers. Building efficient systems mirrors good software architecture principles.",
-      yearPlayed: "2022"
-    },
-    {
-      title: "Kerbal Space Program",
-      genre: "Physics Simulation",
-      emoji: "🚀",
-      color: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
-      description: "Teaches you to embrace failure as a learning tool. Every crash leads to better understanding and improved design.",
-      yearPlayed: "2020"
     }
   ]
 
