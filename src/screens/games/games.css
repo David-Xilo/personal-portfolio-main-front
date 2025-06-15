@@ -1,11 +1,14 @@
 /*
- * Main game card container - maintains existing responsive behavior
+ * Main game card container - now uses theme-aware colors
  */
 .infinite-game-card {
-    background-color: white;
+    /* Use surface color for card background - adapts to light/dark theme */
+    background-color: var(--color-surface);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+
+    /* Use theme-aware shadow and border */
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
 
     /* Inherit exact size from parent container */
     width: 100%;
@@ -23,7 +26,8 @@
 }
 
 .infinite-game-card:hover {
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    /* Enhanced shadow on hover using theme variables */
+    box-shadow: var(--shadow-lg);
     transform: scale(1.02);
 }
 
@@ -41,14 +45,16 @@
 }
 
 /*
- * Game title - now the primary focal point
+ * Game title - uses theme-aware text color for better accessibility
  */
 .infinite-game-title {
     font-size: clamp(0.8rem, 3.5vw, 1.2rem);
     font-weight: bold;
     margin: 0;
     text-align: center;
-    color: #111827;
+
+    /* Use primary text color that adapts to theme */
+    color: var(--color-text-primary);
     line-height: 1.2;
 
     /* Handle overflow gracefully */
@@ -99,26 +105,31 @@
 }
 
 /*
- * Genre text - secondary information
+ * Genre text - uses secondary text color for proper hierarchy
  */
 .infinite-game-genre {
     font-size: clamp(0.65rem, 2.8vw, 0.9rem);
     text-align: center;
     margin: 0;
-    color: #6b7280;
+
+    /* Secondary text color that adapts to theme */
+    color: var(--color-text-secondary);
     font-weight: 500;
+
+    text-transform: capitalize;
 }
 
 /*
- * Description - hides automatically when space is constrained
- * This uses a combination of container sizing and CSS to show/hide intelligently
+ * Description - uses secondary text color and hides when space is constrained
  */
 .infinite-game-description {
-    font-size: clamp(0.55rem, 2.2vw, 0.75rem);
+    font-size: clamp(0.75rem, 2.5vw, 0.95rem);
     line-height: 1.4;
     text-align: center;
-    color: #6b7280;
     margin: 0;
+
+    /* Secondary text color for supporting information */
+    color: var(--color-text-secondary);
 
     /* Allow text to expand naturally, but hide overflow */
     flex: 1;

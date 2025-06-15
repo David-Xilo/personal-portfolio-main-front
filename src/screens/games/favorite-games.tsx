@@ -16,7 +16,7 @@ interface FavoriteGame {
 }
 
 const GENRE_VISUAL_MAP: Record<string, FavoriteGameVisuals> = {
-  "rpg": {
+  "RPG": {
     emoji: "⚔️",
     color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
   },
@@ -24,7 +24,7 @@ const GENRE_VISUAL_MAP: Record<string, FavoriteGameVisuals> = {
     emoji: "🏛️",
     color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
   },
-  "tabletop": {
+  "table top": {
     emoji: "🧭",
     color: "linear-gradient(135deg, #feca57 0%, #ff9ff3 100%)"
   },

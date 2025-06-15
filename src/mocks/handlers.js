@@ -88,7 +88,7 @@ export const handlers = [
       message: [
         {
           "title": "Skyrim",
-          "genre": "rpg",
+          "genre": "RPG",
           "description": "A sprawling, snow-drenched Nordic realm to freely explore, brimming with epic dragon battles, rich lore, unforgettable quests, dynamic combat, and endless mod-friendly adventures.",
           "rating": 5
         },
@@ -106,7 +106,7 @@ export const handlers = [
         },
         {
           "title": "Final Fantasy 7",
-          "genre": "rpg",
+          "genre": "RPG",
           "description": "Final Fantasy VII is a timeless, genre‑defining RPG—rich with unforgettable characters, sweeping eco‑drama, cinematic twists, iconic music, and deep, emotion‑driven storytelling that still enthralls",
           "rating": 4
         }
