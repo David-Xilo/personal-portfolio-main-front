@@ -1,5 +1,5 @@
 /*
- * Game card - fits exactly within available carousel space
+ * Main game card container - maintains existing responsive behavior
  */
 .infinite-game-card {
     background-color: white;
@@ -7,16 +7,16 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 1px solid #e5e7eb;
 
-    /* The key: inherit the exact size of the parent container */
+    /* Inherit exact size from parent container */
     width: 100%;
     height: 100%;
 
-    /* Center content within the card */
+    /* Vertical layout with better space distribution */
     display: flex;
     flex-direction: column;
 
     margin: 0;
-    padding: 0;
+    padding: clamp(8px, 3%, 16px);
     box-sizing: border-box;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -27,67 +27,137 @@
     transform: scale(1.02);
 }
 
-/* Image area takes a portion of the card */
-.infinite-game-image {
-    width: 100%;
-    flex: 0 0 60%; /* Take exactly 60% of card height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-/* Content area takes the remaining portion */
-.infinite-game-content {
-    flex: 1; /* Take remaining space */
-    padding: clamp(4px, 2%, 12px);
+/*
+ * Header section - contains title and small emoji circle
+ * Takes minimal space needed, allows content to expand
+ */
+.infinite-game-header {
+    flex: 0 0 auto; /* Don't grow or shrink, use natural size */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
+    align-items: center;
+    gap: clamp(4px, 2%, 8px);
+    margin-bottom: clamp(6px, 3%, 12px);
 }
 
 /*
- * Typography using clamp for responsive scaling
+ * Game title - now the primary focal point
  */
 .infinite-game-title {
-    font-size: clamp(0.7rem, 3vw, 1.1rem);
+    font-size: clamp(0.8rem, 3.5vw, 1.2rem);
     font-weight: bold;
-    margin-bottom: 4px;
+    margin: 0;
     text-align: center;
     color: #111827;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.2;
+
+    /* Handle overflow gracefully */
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
 }
 
+/*
+ * Small circular container for emoji - decorative accent piece
+ */
+.infinite-game-emoji-circle {
+    width: clamp(24px, 8%, 32px);
+    height: clamp(24px, 8%, 32px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Subtle shadow to make it pop */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* Default gradient - will be overridden by style prop */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/*
+ * Emoji sizing within the circle
+ */
+.infinite-game-emoji {
+    font-size: clamp(0.8rem, 4vw, 1.1rem);
+    line-height: 1;
+    display: block;
+}
+
+/*
+ * Content area - expands to fill remaining space
+ */
+.infinite-game-content {
+    flex: 1; /* Take all remaining space */
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 2%, 8px);
+
+    /* Ensure content doesn't overflow the card */
+    overflow: hidden;
+    min-height: 0; /* Important for flex child overflow behavior */
+}
+
+/*
+ * Genre text - secondary information
+ */
 .infinite-game-genre {
-    font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+    font-size: clamp(0.65rem, 2.8vw, 0.9rem);
     text-align: center;
-    margin-bottom: 6px;
+    margin: 0;
     color: #6b7280;
+    font-weight: 500;
 }
 
+/*
+ * Description - hides automatically when space is constrained
+ * This uses a combination of container sizing and CSS to show/hide intelligently
+ */
 .infinite-game-description {
-    font-size: clamp(0.5rem, 2vw, 0.7rem);
-    line-height: 1.3;
+    font-size: clamp(0.55rem, 2.2vw, 0.75rem);
+    line-height: 1.4;
     text-align: center;
     color: #6b7280;
+    margin: 0;
+
+    /* Allow text to expand naturally, but hide overflow */
+    flex: 1;
     overflow: hidden;
+
+    /* Multi-line text truncation */
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Show up to 3 lines */
 }
 
-.infinite-game-year {
-    font-size: clamp(0.4rem, 1.5vw, 0.6rem);
-    text-align: center;
-    margin-top: 4px;
-    color: #9ca3af;
+/*
+ * Media query approach for hiding description on very small containers
+ * This works well for most responsive scenarios
+ */
+@media (max-height: 200px) {
+    .infinite-game-description {
+        display: none;
+    }
 }
 
-/* Emoji scales with container */
-.infinite-game-image span {
-    font-size: clamp(1.5rem, 5vw, 2.5rem) !important;
+/*
+ * Container query approach (modern browsers) - more precise control
+ * Uncomment this if you want more sophisticated space detection
+ */
+/*
+@container (max-height: 180px) {
+    .infinite-game-description {
+        display: none;
+    }
 }
+*/
 
+/*
+ * Alternative approach: Use min-height thresholds to hide description
+ * You can adjust these values based on your carousel's typical sizes
+ */
+.infinite-game-card[style*="height: 150px"] .infinite-game-description,
+.infinite-game-card[style*="height: 160px"] .infinite-game-description,
+.infinite-game-card[style*="height: 170px"] .infinite-game-description {
+    display: none;
+}

@@ -48,28 +48,35 @@ const useGameVisuals = (genre: string): FavoriteGameVisuals => {
 
 const FavoriteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
   const visuals = useGameVisuals(game.genre)
+
   return (
     <div className="infinite-game-card">
-      {/* Image section with gradient background */}
-      <div
-        className="infinite-game-image"
-        style={{
-          background: visuals.color
-        }}
-      >
-        <span style={{ fontSize: '2.5rem' }}>
-          {visuals.emoji}
-        </span>
-      </div>
-
-      {/* Content section */}
-      <div className="infinite-game-content">
+      {/* Header section with title and emoji */}
+      <div className="infinite-game-header">
         <h3 className="infinite-game-title">
           {game.title}
         </h3>
+
+        {/* Small circular emoji container */}
+        <div
+          className="infinite-game-emoji-circle"
+          style={{
+            background: visuals.color
+          }}
+        >
+          <span className="infinite-game-emoji">
+            {visuals.emoji}
+          </span>
+        </div>
+      </div>
+
+      {/* Content section with genre and conditional description */}
+      <div className="infinite-game-content">
         <p className="infinite-game-genre">
           {game.genre}
         </p>
+
+        {/* Description that will hide on smaller containers */}
         {game.description && (
           <p className="infinite-game-description">
             {game.description}
