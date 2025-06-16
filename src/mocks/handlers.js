@@ -30,29 +30,29 @@ export const handlers = [
     const contact = {
       message: [
         {
-          author: 'John Doe',
+          author: 'My Mom',
           rating: 5,
-          description: 'always fun',
+          description: 'The most handsome!',
         },
         {
-          author: 'John Doe',
+          author: 'My Girlfriend',
+          rating: 5,
+          description: 'He can be a sweetie',
+        },
+        {
+          author: 'My Best Friend',
           rating: 4,
-          description: 'always fun',
+          description: 'He\'s alright ',
         },
         {
-          author: 'John Doe',
+          author: 'My Third Grade Teacher',
           rating: 3,
-          description: 'always fun',
+          description: 'Could have been worse',
         },
         {
-          author: 'John Doe',
-          rating: 2,
-          description: 'always fun',
-        },
-        {
-          author: 'John Doe',
+          author: 'My Siblings',
           rating: 1,
-          description: 'always fun',
+          description: 'Pure annoyance',
         },
       ]
     }
