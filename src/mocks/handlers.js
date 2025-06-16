@@ -19,7 +19,7 @@ export const handlers = [
       message: {
         name: 'John Doe',
         email: 'johndoe@example.com',
-        linkedin: '',
+        linkedin: 'linkedin/johndoe',
         github: 'https://github.com/johndoe',
       },
     }

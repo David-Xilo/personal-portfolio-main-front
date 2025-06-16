@@ -264,3 +264,105 @@
 }
 
 
+/*------------------------------*/
+
+/* ========================================
+   COMPONENT VARIANT STYLES
+   ======================================== */
+
+/*
+ * Compact variant - reduced spacing and sizing for sidebar use
+ */
+.contact-card--compact {
+  /* Smaller maximum width for compact layouts */
+  max-width: 20rem; /* 320px */
+}
+
+.contact-card--compact .contact-card-header {
+  /* Reduced padding for compact version */
+  padding: clamp(0.75rem, 3vw, 1.25rem) clamp(0.75rem, 4vw, 1rem);
+}
+
+.contact-card--compact .contact-card-body {
+  /* Tighter spacing in compact mode */
+  padding: clamp(0.75rem, 3vw, 1rem) clamp(0.75rem, 4vw, 1rem);
+  gap: clamp(0.5rem, 2vw, 0.75rem);
+}
+
+.contact-card--compact .contact-profile-name {
+  /* Slightly smaller name in compact mode */
+  font-size: clamp(1rem, 4vw, 1.5rem);
+}
+
+.contact-card--compact .contact-profile-avatar {
+  /* Smaller avatar for compact cards */
+  width: clamp(3rem, 6vw, 4rem);
+  height: clamp(3rem, 6vw, 4rem);
+}
+
+/*
+ * Minimal variant - bare essentials only
+ */
+.contact-card--minimal {
+  /* Even smaller for minimal use */
+  max-width: 16rem; /* 256px */
+  min-width: 200px;
+}
+
+.contact-card--minimal .contact-card-header {
+  /* Minimal padding */
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(0.5rem, 3vw, 0.75rem);
+}
+
+.contact-card--minimal .contact-card-body {
+  /* Minimal spacing */
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.5rem, 3vw, 0.75rem);
+  gap: clamp(0.375rem, 1.5vw, 0.5rem);
+}
+
+.contact-card--minimal .contact-profile-name {
+  /* Smaller name for minimal cards */
+  font-size: clamp(0.875rem, 3.5vw, 1.25rem);
+}
+
+.contact-card--minimal .contact-profile-avatar {
+  /* Tiny avatar for minimal cards */
+  width: clamp(2.5rem, 5vw, 3rem);
+  height: clamp(2.5rem, 5vw, 3rem);
+  margin-bottom: clamp(0.375rem, 1.5vw, 0.5rem);
+}
+
+/*
+ * Narrow container handling - when component is squeezed
+ */
+.contact-card--narrow .contact-info-link {
+  /* Break long text more aggressively in narrow containers */
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.contact-card--narrow .contact-profile-name {
+  /* Ensure name doesn't break the layout when very narrow */
+  font-size: clamp(0.875rem, 3vw, 1.125rem);
+  word-break: break-word;
+}
+
+/*
+ * Compact warning message variant
+ */
+.message-warning--compact {
+  /* Reduced padding for compact warnings */
+  padding: clamp(0.5rem, 2vw, 0.75rem);
+  margin-top: clamp(0.5rem, 2vw, 1rem);
+}
+
+.message-warning--compact .message-warning-text {
+  /* Smaller warning text in compact mode */
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
+}
+
+.message-warning--compact .debug-text {
+  /* Even smaller debug text in compact mode */
+  font-size: clamp(0.625rem, 2.5vw, 0.75rem);
+}
+

@@ -10,7 +10,7 @@ const GamesProjectsHiddenMenu: React.FC = () => {
   // const data = useIntroGetApi('/tech/intro')
   //
   // return <p>{data.message}</p>
-  return (<ContactScreen />)
+  return (<ContactScreen variant="compact" maxWidth="500px" />)
 }
 
 const GamesProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {

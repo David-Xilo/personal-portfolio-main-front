@@ -10,7 +10,7 @@ import {ContactScreen} from '../about/contact-screen'
 function FinanceProjectsHiddenMenu() {
   // TODO
   // adjust the font size so the contact info always fits the card
-  return <ContactScreen />
+  return <ContactScreen variant="compact" maxWidth="500px" />
 }
 
 const FinanceProjectsScreen: React.FC<SubMenuProps> = ({

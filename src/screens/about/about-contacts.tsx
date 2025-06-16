@@ -14,7 +14,7 @@ const AboutContactsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
     hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
   }, [hiddenMenuDispatch])
 
-  return <ContactScreen />
+  return <ContactScreen variant="default" />
 }
 
 export {AboutContactsScreen}
