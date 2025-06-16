@@ -1,0 +1,164 @@
+/* welcome.css - Tailwind-based styles for the Welcome component */
+
+/* Container and Layout Classes */
+.welcome-container {
+    @apply max-w-7xl mx-auto p-0 min-h-screen;
+    background-color: var(--color-background);
+}
+
+/* Hero Section */
+.welcome-hero {
+    @apply relative h-52 overflow-hidden rounded-b-2xl;
+    /* Using CSS variables for theme-aware gradient */
+    background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-accent) 100%
+    );
+}
+
+.welcome-overlay {
+    @apply absolute bottom-0 left-0 right-0 p-10;
+    background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.4),
+            transparent
+    );
+}
+
+.welcome-title {
+    @apply text-5xl font-bold m-0 text-white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Content Section */
+.welcome-content {
+    @apply py-16 px-12;
+}
+
+.welcome-intro {
+    @apply text-xl leading-relaxed mb-8;
+    color: var(--color-text-primary);
+}
+
+.welcome-navigation {
+    @apply text-lg mb-10;
+    color: var(--color-text-secondary);
+}
+
+/* Card Grid */
+.welcome-cards {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10;
+}
+
+/* Base Card Styles */
+.welcome-card {
+    @apply flex flex-col items-center p-8 rounded-2xl no-underline;
+    @apply transition-all duration-300 ease-in-out cursor-pointer;
+    @apply border-2 border-transparent;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.welcome-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Card-specific hover states using theme colors */
+.tech-card:hover {
+    border-color: var(--color-primary);
+}
+
+.games-card:hover {
+    border-color: var(--color-accent);
+}
+
+.finance-card:hover {
+    border-color: var(--color-secondary);
+}
+
+/* Dark theme card enhancements */
+.dark-theme .tech-card {
+    @apply bg-gradient-to-b;
+    background-image: linear-gradient(
+            to bottom,
+            var(--color-surface),
+            rgba(59, 130, 246, 0.05)
+    );
+}
+
+.dark-theme .games-card {
+    @apply bg-gradient-to-b;
+    background-image: linear-gradient(
+            to bottom,
+            var(--color-surface),
+            rgba(139, 92, 246, 0.05)
+    );
+}
+
+.dark-theme .finance-card {
+    @apply bg-gradient-to-b;
+    background-image: linear-gradient(
+            to bottom,
+            var(--color-surface),
+            rgba(16, 185, 129, 0.05)
+    );
+}
+
+/* Card Content */
+.welcome-icon {
+    @apply text-5xl mb-4;
+}
+
+.welcome-card-title {
+    @apply text-2xl font-semibold mb-2;
+    color: var(--color-text-primary);
+}
+
+.welcome-card-text {
+    @apply text-center;
+    color: var(--color-text-secondary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .welcome-hero {
+        @apply h-40;
+    }
+
+    .welcome-title {
+        @apply text-3xl;
+    }
+
+    .welcome-overlay {
+        @apply p-5;
+    }
+
+    .welcome-content {
+        @apply py-10 px-5;
+    }
+
+    .welcome-intro {
+        @apply text-lg;
+    }
+
+    .welcome-navigation {
+        @apply text-base;
+    }
+
+    .welcome-card {
+        @apply p-6;
+    }
+}
+
+/* Animation for smooth theme transitions */
+.welcome-container,
+.welcome-card,
+.welcome-intro,
+.welcome-navigation,
+.welcome-card-title,
+.welcome-card-text {
+    @apply transition-colors duration-300;
+}
