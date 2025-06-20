@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import {RepositoryInfo} from 'components/projects/repository'
 
 const domain = process.env.REACT_APP_API_URL
 
@@ -6,7 +7,7 @@ interface Games {
   title: string
   genre: string
   description: string
-  link_to_git: string
+  repositories: RepositoryInfo[]
   link_to_store: string
 }
 

@@ -3,21 +3,21 @@ import {RepositoryInfo} from 'components/projects/repository'
 
 const domain = process.env.REACT_APP_API_URL
 
-interface TechProjects {
+interface FinanceProjects {
   title: string
   description: string
   projects: RepositoryInfo[]
 }
 
-interface TechProjectsResponse {
+interface FinanceProjectsResponse {
   status: string
-  message: TechProjects[]
+  message: FinanceProjects[]
   error: string | null
 }
 
-const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
+const useFinanceProjectsGetApi = (path: string): FinanceProjectsResponse => {
   const completeEndpoint = domain + path
-  const [data, setData] = useState<TechProjectsResponse>({
+  const [data, setData] = useState<FinanceProjectsResponse>({
     status: '',
     message: [],
     error: null,
@@ -32,7 +32,7 @@ const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
         return res.json()
       })
       .then(data => {
-        const normalizedData: TechProjectsResponse = {
+        const normalizedData: FinanceProjectsResponse = {
           status: 'success',
           message: Array.isArray(data.message) ? data.message : [],
           error: null,
@@ -52,4 +52,4 @@ const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
   return data
 }
 
-export {useTechProjectsGetApi, TechProjects}
+export {useFinanceProjectsGetApi, FinanceProjects}

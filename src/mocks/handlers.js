@@ -11,7 +11,6 @@ export const handlers = [
         "I have a LOT of interests and tend to explore them fully, so expect to see some interesting projects here!\n " +
         "You’ll also find my contact info and a peek into my passions. Enjoy exploring!",
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
   }),
   http.get(`${domain}/about/contact`, () => {
@@ -23,7 +22,6 @@ export const handlers = [
         github: 'https://github.com/johndoe',
       },
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(contact)
   }),
   http.get(`${domain}/about/reviews/carousel`, () => {
@@ -56,14 +54,12 @@ export const handlers = [
         },
       ]
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(contact)
   }),
   http.get(`${domain}/about/contact-text`, () => {
     const contactText = {
       message: 'contact-text',
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(contactText)
   }),
   http.get(`${domain}/tech/intro`, () => {
@@ -74,7 +70,6 @@ export const handlers = [
         "I'll post my personal projects here as a way to keep myself accountable.\n" +
         " Have fun exploring them!",
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
   }),
   http.get(`${domain}/tech/projects`, () => {
@@ -83,7 +78,7 @@ export const handlers = [
         {
           title: 'tech project title',
           description: 'project description',
-          projects: [
+          repositories: [
             {
               title: 'repo 1',
               description: 'repo 1 description',
@@ -129,11 +124,10 @@ export const handlers = [
         {
           title: 'tech project title 2',
           description: 'project description 2',
-          projects: []
+          repositories: []
         },
       ],
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(projects)
   }),
   http.get(`${domain}/games/intro`, () => {
@@ -143,12 +137,10 @@ export const handlers = [
         "This page might be empty (it is for sure emptier than I'd like), but I'll keep adding new games I've made here. " +
         "Who knows — maybe one day you'll recognize one of the names!",
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
   }),
   http.get(`${domain}/games/genres`, () => {
     const genres = ['undefined', 'strategy', 'table top']
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(genres)
   }),
   http.get(`${domain}/games/projects`, () => {
@@ -158,19 +150,59 @@ export const handlers = [
           title: 'game with rating title',
           genre: 'table top',
           description: 'game with rating description',
-          link_to_git: '',
           link_to_store: 'https://github.com/othergame',
+          repositories: [
+            {
+              title: 'repo 1',
+              description: 'repo 1 description',
+              link_to_git: 'https://github.com/johndoe/1',
+            },
+            {
+              title: 'repo 2',
+              description: 'repo 2 description',
+              link_to_git: 'https://github.com/johndoe/2',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+          ]
         },
         {
           title: 'game title',
           genre: 'strategy',
           description: 'game description',
-          link_to_git: 'https://github.com/johndoe',
           link_to_store: 'https://github.com/game',
+          repositories: [],
         },
       ],
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(projects)
   }),
   http.get(`${domain}/games/played/carousel`, () => {
@@ -202,7 +234,6 @@ export const handlers = [
         }
       ],
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(games_played_carousel)
   }),
   http.get(`${domain}/finance/intro`, () => {
@@ -212,14 +243,12 @@ export const handlers = [
         "During my master’s thesis, I finally combined my passions for technology and finance—and I loved it.\n " +
         "Now, I’ll post my finance-related personal projects here, along with any certifications or extra courses I complete in my free time.",
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(intro)
   }),
   http.get(`${domain}/finance/projects`, () => {
     const projects = {
       message: [],
     }
-    // Return mocked response when the request hits /about/contact
     return HttpResponse.json(projects)
   }),
 ]

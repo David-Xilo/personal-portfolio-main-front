@@ -1,14 +1,11 @@
 import * as React from 'react'
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
-import {GamesScreen} from './games-screen'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 import {ContactScreen} from '../about/contact-screen'
+import {GenericProjectsScreen} from 'components/projects/project'
 
 const GamesProjectsHiddenMenu: React.FC = () => {
-  // const data = useIntroGetApi('/tech/intro')
-  //
-  // return <p>{data.message}</p>
   return (<ContactScreen variant="compact" maxWidth="500px" />)
 }
 
@@ -20,7 +17,7 @@ const GamesProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
     })
   }, [hiddenMenuDispatch])
 
-  return <GamesScreen />
+  return <GenericProjectsScreen projectsPath={'/games/projects'} projectName={'Games Projects'} />
 }
 
 export {GamesProjectsScreen}

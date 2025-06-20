@@ -1,23 +1,25 @@
-import {useState, useEffect} from 'react'
 import {RepositoryInfo} from 'components/projects/repository'
+import {useEffect, useState} from 'react'
 
 const domain = process.env.REACT_APP_API_URL
 
-interface TechProjects {
+interface Project {
   title: string
   description: string
-  projects: RepositoryInfo[]
+  repositories: RepositoryInfo[]
+  genre?: string
+  link_to_store?: string
 }
 
-interface TechProjectsResponse {
+interface ProjectsResponse {
   status: string
-  message: TechProjects[]
+  message: Project[]
   error: string | null
 }
 
-const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
+const useProjectsGetApi = (path: string): ProjectsResponse => {
   const completeEndpoint = domain + path
-  const [data, setData] = useState<TechProjectsResponse>({
+  const [data, setData] = useState<ProjectsResponse>({
     status: '',
     message: [],
     error: null,
@@ -32,7 +34,7 @@ const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
         return res.json()
       })
       .then(data => {
-        const normalizedData: TechProjectsResponse = {
+        const normalizedData: ProjectsResponse = {
           status: 'success',
           message: Array.isArray(data.message) ? data.message : [],
           error: null,
@@ -52,4 +54,4 @@ const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
   return data
 }
 
-export {useTechProjectsGetApi, TechProjects}
+export {useProjectsGetApi, Project}

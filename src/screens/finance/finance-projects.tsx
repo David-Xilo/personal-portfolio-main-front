@@ -2,14 +2,11 @@ import * as React from 'react'
 
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
-import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
-import {FinanceProjectsItemScreen} from './finance-screen'
 import {ContactScreen} from '../about/contact-screen'
+import {GenericProjectsScreen} from 'components/projects/project'
 
 function FinanceProjectsHiddenMenu() {
-  // TODO
-  // adjust the font size so the contact info always fits the card
   return <ContactScreen variant="compact" maxWidth="500px" />
 }
 
@@ -23,7 +20,7 @@ const FinanceProjectsScreen: React.FC<SubMenuProps> = ({
     })
   }, [hiddenMenuDispatch])
 
-  return <FinanceProjectsItemScreen />
+  return <GenericProjectsScreen projectsPath={'/finance/projects'} projectName={'Finance Projects'} />
 }
 
 export {FinanceProjectsScreen}
