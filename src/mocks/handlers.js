@@ -126,6 +126,11 @@ export const handlers = [
             },
             ]
         },
+        {
+          title: 'tech project title 2',
+          description: 'project description 2',
+          projects: []
+        },
       ],
     }
     // Return mocked response when the request hits /about/contact

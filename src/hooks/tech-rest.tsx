@@ -1,17 +1,12 @@
 import {useState, useEffect} from 'react'
+import {RepositoryInfo} from 'components/repository/repository'
 
 const domain = process.env.REACT_APP_API_URL
-
-interface TechProjectRepository {
-  title: string
-  description: string
-  link_to_git: string
-}
 
 interface TechProjects {
   title: string
   description: string
-  projects: TechProjectRepository[]
+  projects: RepositoryInfo[]
 }
 
 interface TechProjectsResponse {
@@ -57,4 +52,4 @@ const useTechProjectsGetApi = (path: string): TechProjectsResponse => {
   return data
 }
 
-export {useTechProjectsGetApi, TechProjects, TechProjectRepository}
+export {useTechProjectsGetApi, TechProjects}
