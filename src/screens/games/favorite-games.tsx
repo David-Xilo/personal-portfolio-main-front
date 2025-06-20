@@ -100,7 +100,7 @@ const FavoriteGamesCarousel: React.FC = () => {
       {/* Infinite games carousel */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-center mb-6" style={{color: 'var(--color-text-primary)'}}>
-          Games that left a mark on me
+          Games I love
         </h2>
         <InfiniteCarousel
           items={message}
