@@ -39,6 +39,13 @@
     }
   }
 
+  /* Surface state variations */
+  --color-surface-hover: rgba(59, 130, 246, 0.02);
+  --color-surface-active: rgba(59, 130, 246, 0.05);
+
+  /* Primary color variations */
+  --color-primary-light: rgba(59, 130, 246, 0.1);
+
   /* Light theme (default) */
   --color-primary: #3b82f6; /* Blue */
   --color-primary-hover: #2563eb; /* Darker Blue */
@@ -68,6 +75,11 @@
 }
 
 .dark-theme {
+
+  --color-surface-hover: rgba(255, 255, 255, 0.02);
+  --color-surface-active: rgba(255, 255, 255, 0.05);
+  --color-primary-light: rgba(96, 165, 250, 0.1);
+
   --color-primary: #3b82f6; /* Same Blue */
   --color-primary-hover: #60a5fa; /* Lighter Blue for hover in dark mode */
   --color-secondary: #10b981; /* Same Green */

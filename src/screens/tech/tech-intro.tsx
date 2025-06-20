@@ -11,7 +11,7 @@ const TechIntroScreen = ({ hiddenMenuDispatch = () => {} }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div className="flex items-center justify-center p-8">
       <div className="max-w-4xl mx-auto">
         {/* Hero Section */}
         <div className="relative">

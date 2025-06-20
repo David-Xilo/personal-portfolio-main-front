@@ -1,0 +1,150 @@
+
+/* Updated ContentListItem Styles */
+.content-list-item {
+  @apply relative mx-auto my-4 p-8 shadow-custom rounded w-[90%] cursor-pointer;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+/* Hover effects - make it clear the component is interactive */
+.content-list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary);
+  background-color: var(--color-surface-hover, rgba(59, 130, 246, 0.02));
+}
+
+/* Focus state for accessibility */
+.content-list-item:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Active state when clicking */
+.content-list-item:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
+}
+
+/* Expanded state styling */
+.content-list-item.expanded {
+  background-color: var(--color-surface-active, var(--color-surface));
+  border-color: var(--color-primary);
+}
+
+.content-list-item.expanded:hover {
+  background-color: var(--color-surface-active, var(--color-surface));
+}
+
+/* Arrow positioning - now just a visual indicator */
+.content-list-item-arrow {
+  @apply absolute top-4 right-4 p-2 rounded-full;
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Arrow hover effects */
+.content-list-item:hover .content-list-item-arrow {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light, rgba(59, 130, 246, 0.1));
+  transform: scale(1.1);
+}
+
+/* Content area styling */
+.content-list-item-content {
+  @apply pr-16; /* Make room for the arrow */
+}
+
+.content-list-item-title {
+  @apply text-3xl font-bold mb-2;
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.content-list-item:hover .content-list-item-title {
+  color: var(--color-primary);
+}
+
+.content-list-item-description {
+  @apply text-sm;
+  color: var(--color-text-tertiary);
+  transition: color 0.3s ease;
+}
+
+.content-list-item:hover .content-list-item-description {
+  color: var(--color-text-secondary);
+}
+
+/* Children content with smooth expand/collapse */
+.content-list-item-children {
+  @apply mt-4 pt-4;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border);
+  animation: expandContent 0.3s ease-out;
+}
+
+/* Smooth expand animation */
+@keyframes expandContent {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode specific hover effects */
+@media (prefers-color-scheme: dark) {
+  .content-list-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--color-surface-hover, rgba(255, 255, 255, 0.02));
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .content-list-item {
+    @apply w-[95%] p-6;
+  }
+
+  .content-list-item-content {
+    @apply pr-12;
+  }
+
+  .content-list-item-arrow {
+    @apply top-3 right-3 p-1;
+  }
+
+  .content-list-item-title {
+    @apply text-2xl;
+  }
+}
+
+/* Optional: Add a subtle pulse effect on first load */
+.content-list-item {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add staggered animation delay for multiple items */
+.content-list-item:nth-child(1) { animation-delay: 0.1s; }
+.content-list-item:nth-child(2) { animation-delay: 0.2s; }
+.content-list-item:nth-child(3) { animation-delay: 0.3s; }
+.content-list-item:nth-child(4) { animation-delay: 0.4s; }
+.content-list-item:nth-child(5) { animation-delay: 0.5s; }
