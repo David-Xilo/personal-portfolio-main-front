@@ -83,7 +83,48 @@ export const handlers = [
         {
           title: 'tech project title',
           description: 'project description',
-          link_to_git: 'https://github.com/johndoe',
+          projects: [
+            {
+              title: 'repo 1',
+              description: 'repo 1 description',
+              link_to_git: 'https://github.com/johndoe/1',
+            },
+            {
+              title: 'repo 2',
+              description: 'repo 2 description',
+              link_to_git: 'https://github.com/johndoe/2',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            {
+              title: 'repo 3',
+              description: 'repo 3 description',
+              link_to_git: 'https://github.com/johndoe/3',
+            },
+            ]
         },
       ],
     }
