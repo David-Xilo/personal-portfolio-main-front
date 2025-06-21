@@ -6,10 +6,24 @@
 
 .intro-card__icon-container {
     @apply w-12 h-12 rounded-xl flex items-center justify-center mb-4;
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Dark background for high contrast */
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .intro-card__icon {
     @apply w-6 h-6;
+    color: #ffffff !important; /* White icons for maximum contrast */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.dark-theme .intro-card__icon-container {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Light background in dark mode */
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .intro-card__icon {
+    color: #000000 !important; /* Black icons in dark mode for contrast */
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5));
 }
 
 .intro-card__title {
@@ -36,13 +50,7 @@
     @apply hover:shadow-xl hover:shadow-purple-200/50;
 }
 
-.intro-card--purple .intro-card__icon-container {
-    @apply bg-purple-100;
-}
-
-.intro-card--purple .intro-card__icon {
-    @apply text-purple-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -52,13 +60,7 @@
     @apply hover:shadow-xl hover:shadow-purple-500/20;
 }
 
-.dark-theme .intro-card--purple .intro-card__icon-container {
-    @apply bg-purple-500/30;
-}
-
-.dark-theme .intro-card--purple .intro-card__icon {
-    @apply text-purple-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
@@ -68,13 +70,7 @@
     @apply hover:shadow-xl hover:shadow-pink-200/50;
 }
 
-.intro-card--pink .intro-card__icon-container {
-    @apply bg-pink-100;
-}
-
-.intro-card--pink .intro-card__icon {
-    @apply text-pink-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -84,13 +80,7 @@
     @apply hover:shadow-xl hover:shadow-pink-500/20;
 }
 
-.dark-theme .intro-card--pink .intro-card__icon-container {
-    @apply bg-pink-500/30;
-}
-
-.dark-theme .intro-card--pink .intro-card__icon {
-    @apply text-pink-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
@@ -100,13 +90,7 @@
     @apply hover:shadow-xl hover:shadow-cyan-200/50;
 }
 
-.intro-card--cyan .intro-card__icon-container {
-    @apply bg-cyan-100;
-}
-
-.intro-card--cyan .intro-card__icon {
-    @apply text-cyan-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -116,13 +100,7 @@
     @apply hover:shadow-xl hover:shadow-cyan-500/20;
 }
 
-.dark-theme .intro-card--cyan .intro-card__icon-container {
-    @apply bg-cyan-500/30;
-}
-
-.dark-theme .intro-card--cyan .intro-card__icon {
-    @apply text-cyan-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
@@ -132,13 +110,7 @@
     @apply hover:shadow-xl hover:shadow-violet-200/50;
 }
 
-.intro-card--violet .intro-card__icon-container {
-    @apply bg-violet-100;
-}
-
-.intro-card--violet .intro-card__icon {
-    @apply text-violet-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -148,13 +120,7 @@
     @apply hover:shadow-xl hover:shadow-violet-500/20;
 }
 
-.dark-theme .intro-card--violet .intro-card__icon-container {
-    @apply bg-violet-500/30;
-}
-
-.dark-theme .intro-card--violet .intro-card__icon {
-    @apply text-violet-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
@@ -164,13 +130,7 @@
     @apply hover:shadow-xl hover:shadow-emerald-200/50;
 }
 
-.intro-card--emerald .intro-card__icon-container {
-    @apply bg-emerald-100;
-}
-
-.intro-card--emerald .intro-card__icon {
-    @apply text-emerald-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -180,13 +140,7 @@
     @apply hover:shadow-xl hover:shadow-emerald-500/20;
 }
 
-.dark-theme .intro-card--emerald .intro-card__icon-container {
-    @apply bg-emerald-500/30;
-}
-
-.dark-theme .intro-card--emerald .intro-card__icon {
-    @apply text-emerald-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
@@ -196,13 +150,7 @@
     @apply hover:shadow-xl hover:shadow-teal-200/50;
 }
 
-.intro-card--teal .intro-card__icon-container {
-    @apply bg-teal-100;
-}
-
-.intro-card--teal .intro-card__icon {
-    @apply text-teal-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -212,13 +160,7 @@
     @apply hover:shadow-xl hover:shadow-teal-500/20;
 }
 
-.dark-theme .intro-card--teal .intro-card__icon-container {
-    @apply bg-teal-500/30;
-}
-
-.dark-theme .intro-card--teal .intro-card__icon {
-    @apply text-teal-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
@@ -228,13 +170,7 @@
     @apply hover:shadow-xl hover:shadow-blue-200/50;
 }
 
-.intro-card--blue .intro-card__icon-container {
-    @apply bg-blue-100;
-}
-
-.intro-card--blue .intro-card__icon {
-    @apply text-blue-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -244,13 +180,7 @@
     @apply hover:shadow-xl hover:shadow-blue-500/20;
 }
 
-.dark-theme .intro-card--blue .intro-card__icon-container {
-    @apply bg-blue-500/30;
-}
-
-.dark-theme .intro-card--blue .intro-card__icon {
-    @apply text-blue-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
@@ -260,13 +190,7 @@
     @apply hover:shadow-xl hover:shadow-green-200/50;
 }
 
-.intro-card--green .intro-card__icon-container {
-    @apply bg-green-100;
-}
-
-.intro-card--green .intro-card__icon {
-    @apply text-green-600;
-}
+/* Icon styling handled by base .intro-card__icon-container and .intro-card__icon classes for maximum contrast */
 
 /* Title color handled by base .intro-card__title class for consistent high contrast */
 
@@ -276,13 +200,7 @@
     @apply hover:shadow-xl hover:shadow-green-500/20;
 }
 
-.dark-theme .intro-card--green .intro-card__icon-container {
-    @apply bg-green-500/30;
-}
-
-.dark-theme .intro-card--green .intro-card__icon {
-    @apply text-green-400;
-}
+/* Icon styling handled by base dark theme classes for maximum contrast */
 
 /* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
