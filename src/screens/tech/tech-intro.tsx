@@ -6,6 +6,9 @@ import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 import {IntroductionCard} from 'components/intro/intro-cards'
 import {IntroHeader} from 'components/intro/intro-header'
+import {ThunderIcon} from 'components/icons/thunder-icon'
+import {FoldersIcon} from 'components/icons/folders-icon'
+import {HeartIcon} from 'components/icons/heart-icon'
 
 const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   useEffect(() => {
@@ -39,11 +42,8 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <IntroductionCard
                 color="cyan"
                 title="Always Evolving"
-                size="small"
                 icon={
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+                  <ThunderIcon />
                 }
               >
                 Technology is always improving — and so am I.
@@ -52,11 +52,8 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <IntroductionCard
                 color="blue"
                 title="My Passion"
-                size="small"
                 icon={
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
+                  <HeartIcon />
                 }
               >
                 Technology is my bread and butter — it's part of my personality.
@@ -65,11 +62,8 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <IntroductionCard
                 color="violet"
                 title="Personal Projects"
-                size="small"
                 icon={
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
+                  <FoldersIcon />
                 }
               >
                 Explore my projects

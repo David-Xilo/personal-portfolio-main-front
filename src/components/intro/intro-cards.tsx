@@ -5,10 +5,7 @@ type ColorOption = 'purple' | 'pink' | 'cyan' | 'violet' | 'emerald' | 'teal' | 
 interface IntroductionCardProps {
   color: ColorOption
   title: string
-  emoji?: string // For emoji icons
-  icon?: React.ReactNode // For SVG icons
-  variant?: 'gradient' | 'solid' // Background style
-  size?: 'small' | 'large' // Icon container size
+  icon: React.ReactNode
   children: React.ReactNode // Description text
 }
 
@@ -98,27 +95,20 @@ const colorClasses = {
 const IntroductionCard: React.FC<IntroductionCardProps> = ({
                                                              color,
                                                              title,
-                                                             emoji,
                                                              icon,
-                                                             size = 'large',
                                                              children
                                                            }) => {
-  // Size classes
-  const iconSizeClasses = size === 'small' ? 'w-8 h-8' : 'w-12 h-12'
-  const iconTextSize = size === 'small' ? 'w-4 h-4' : 'text-2xl'
+  const iconSizeClasses = 'w-12 h-12'
+  const iconTextSize = 'w-6 h-6'
 
   const colors = colorClasses[color]
 
-  // Background classes based on variant
   const backgroundClasses = colors.gradient
 
-  // Border classes
   const borderClasses = colors.border
 
-  // Shadow classes (only for gradient variant)
   const shadowClasses = colors.shadow
 
-  // Icon background classes
   const iconBgClasses = colors.iconBg
 
   return (
@@ -132,18 +122,14 @@ const IntroductionCard: React.FC<IntroductionCardProps> = ({
         ${shadowClasses}
       `}
     >
-      {/* Icon Container */}
       <div
         className={`
           ${iconSizeClasses} 
           ${iconBgClasses} 
-          ${size === 'small' ? 'rounded-lg' : 'rounded-xl'} 
+          rounded-xl
           flex items-center justify-center mb-4
         `}
       >
-        {emoji && (
-          <span className={iconTextSize}>{emoji}</span>
-        )}
         {icon && (
           <div className={`${iconTextSize} ${colors.icon}`}>
             {icon}
@@ -151,12 +137,10 @@ const IntroductionCard: React.FC<IntroductionCardProps> = ({
         )}
       </div>
 
-      {/* Title */}
       <h3 className={`text-lg font-bold ${colors.title} mb-3`}>
         {title}
       </h3>
 
-      {/* Description */}
       <div className="text-slate-300 text-sm leading-relaxed">
         {children}
       </div>

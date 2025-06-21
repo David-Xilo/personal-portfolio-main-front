@@ -7,6 +7,10 @@ import {FavoriteGamesCarousel} from './favorite-games'
 import {IntroductionCard} from 'components/intro/intro-cards'
 import {IntroHeader} from 'components/intro/intro-header'
 import './games.css'
+import {StarIcon} from 'components/icons/star-icon'
+import {BirthdayCakeIcon} from 'components/icons/birthday-cake-icon'
+import {ComputerIcon} from 'components/icons/computer-icon'
+import {WrenchScrewdriverIcon} from 'components/icons/wrench-screwdriver-icon'
 
 
 
@@ -44,8 +48,8 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <div className="lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:self-start">
                 <IntroductionCard
                   color="purple"
-                  title="Since Childhood"
-                  emoji="🧒"
+                  title="Since a Youngster"
+                  icon={<BirthdayCakeIcon />}
                 >
                   Since I was a kid I've loved video games
                 </IntroductionCard>
@@ -55,7 +59,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 <IntroductionCard
                   color="pink"
                   title="Gateway to Tech"
-                  emoji="💻"
+                  icon={<ComputerIcon />}
                 >
                   One of the main reasons I got interested in computers
                 </IntroductionCard>
@@ -71,7 +75,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 <IntroductionCard
                   color="cyan"
                   title="Creating Games"
-                  emoji="🛠️"
+                  icon={<WrenchScrewdriverIcon />}
                 >
                   I'll keep adding new games I've made here
                 </IntroductionCard>
@@ -81,7 +85,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 <IntroductionCard
                   color="violet"
                   title="Big Dreams"
-                  emoji="⭐"
+                  icon={< StarIcon />}
                 >
                   Maybe one day you'll recognize one of the names!
                 </IntroductionCard>

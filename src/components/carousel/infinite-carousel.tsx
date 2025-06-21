@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import './infinite-carousel.css'
-import {ChevronLeft} from 'components/icons/chevron-left'
-import {ChevronRight} from 'components/icons/chevron-right'
+import {ChevronLeftIcon} from 'components/icons/chevron-left-icon'
+import {ChevronRightIcon} from 'components/icons/chevron-right-icon'
 
 
 // Infinite carousel component - loops seamlessly
@@ -151,7 +151,7 @@ function InfiniteCarousel<T>({
           className="carousel-nav-arrow-infinite"
           aria-label="Previous item"
         >
-          <ChevronLeft />
+          <ChevronLeftIcon />
         </button>
       )}
 
@@ -178,7 +178,7 @@ function InfiniteCarousel<T>({
           className="carousel-nav-arrow-infinite"
           aria-label="Next item"
         >
-          <ChevronRight />
+          <ChevronRightIcon />
         </button>
       )}
 

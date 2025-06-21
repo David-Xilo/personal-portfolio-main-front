@@ -6,6 +6,10 @@ import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 import { IntroductionCard } from 'components/intro/intro-cards'
 import {IntroHeader} from 'components/intro/intro-header'
+import {RocketIcon} from 'components/icons/rocket-icon'
+import {AcademicCapIcon} from 'components/icons/academic-cap-icon'
+import {BeakerIcon} from 'components/icons/beaker-icon'
+import {BirthdayCakeIcon} from 'components/icons/birthday-cake-icon'
 
 const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   useEffect(() => {
@@ -52,7 +56,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <IntroductionCard
                 color="green"
                 title="Early Beginnings"
-                emoji="👶"
+                icon={<BirthdayCakeIcon />}
                 variant="gradient"
               >
                 Since I was young, I've followed the stock market and economic news
@@ -61,7 +65,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <IntroductionCard
                 color="emerald"
                 title="Study"
-                emoji="📚"
+                icon={<BeakerIcon />}
                 variant="gradient"
               >
                 Reading, studying, and staying informed about financial markets whenever possible
@@ -70,7 +74,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <IntroductionCard
                 color="teal"
                 title="Academic Fusion"
-                emoji="🎓"
+                icon={<AcademicCapIcon />}
               >
                 Combined technology and finance in my master's thesis
               </IntroductionCard>
@@ -78,7 +82,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <IntroductionCard
                 color="cyan"
                 title="Projects & Growth"
-                emoji="🚀"
+                icon={<RocketIcon />}
               >
                 Finance projects, certifications, and continuous learning
               </IntroductionCard>
