@@ -48,10 +48,8 @@ function InfiniteCarousel<T>({
       const areaWidth = contentAreaRef.current.offsetWidth
       setContentAreaWidth(areaWidth)
 
-      // Set track width explicitly
       trackRef.current.style.width = `${areaWidth * items.length}px`
 
-      // Set each item width explicitly
       itemRefs.current.forEach((itemRef) => {
         if (itemRef) {
           itemRef.style.width = `${areaWidth}px`
@@ -132,7 +130,6 @@ function InfiniteCarousel<T>({
     }
   }
 
-  // Don't render if no items
   if (!items || items.length === 0) {
     return (
       <div className={`infinite-carousel infinite-carousel-${size}`}>
@@ -145,7 +142,6 @@ function InfiniteCarousel<T>({
     )
   }
 
-  // Single item - no navigation needed
   if (items.length === 1) {
     return (
       <div className={`infinite-carousel infinite-carousel-${size} ${className}`}>
@@ -164,7 +160,6 @@ function InfiniteCarousel<T>({
       tabIndex={0}
       onKeyDown={handleKeyDown}
     >
-      {/* Left arrow */}
       {showArrows && (
         <button
           onClick={goToPrevious}
@@ -175,7 +170,6 @@ function InfiniteCarousel<T>({
         </button>
       )}
 
-      {/* Main content area */}
       <div className="carousel-content-area" ref={contentAreaRef}>
         <div
           ref={trackRef}
@@ -193,7 +187,6 @@ function InfiniteCarousel<T>({
         </div>
       </div>
 
-      {/* Right arrow */}
       {showArrows && (
         <button
           onClick={goToNext}
@@ -204,7 +197,6 @@ function InfiniteCarousel<T>({
         </button>
       )}
 
-      {/* Position indicators */}
       {showIndicators && items.length > 1 && (
         <div className="infinite-carousel-indicators">
           {items.map((_, index) => (

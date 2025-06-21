@@ -38,10 +38,8 @@ const useGameVisuals = (genre: string): FavoriteGameVisuals => {
   // Use useMemo to avoid recalculating on every render
   // This is a pure computation, so we don't need useEffect
   return React.useMemo(() => {
-    // Normalize genre string to handle case sensitivity and extra spaces
     const normalizedGenre = genre.trim()
 
-    // Return the mapped visuals or fall back to default
     return GENRE_VISUAL_MAP[normalizedGenre] || GENRE_VISUAL_MAP["default"]
   }, [genre])
 }
@@ -51,13 +49,11 @@ const FavoriteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
 
   return (
     <div className="infinite-game-card">
-      {/* Header section with title and emoji */}
       <div className="infinite-game-header">
         <h3 className="infinite-game-title">
           {game.title}
         </h3>
 
-        {/* Small circular emoji container */}
         <div
           className="infinite-game-emoji-circle"
           style={{
@@ -70,13 +66,11 @@ const FavoriteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
         </div>
       </div>
 
-      {/* Content section with genre and conditional description */}
       <div className="infinite-game-content">
         <p className="infinite-game-genre">
           {game.genre}
         </p>
 
-        {/* Description that will hide on smaller containers */}
         {game.description && (
           <p className="infinite-game-description">
             {game.description}

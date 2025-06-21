@@ -31,8 +31,6 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
             <div className="absolute bottom-1/3 left-1/3 w-16 h-12 border-2 border-teal-500/20 rounded transform -rotate-6"></div>
           </div>
 
-          {/*<div className="relative bg-slate-900/90 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">*/}
-
             <IntroHeader
               title="Finance & Economics"
               colorScheme={{ primary: 'emerald', secondary: 'teal', tertiary: 'blue' }}
@@ -60,7 +58,6 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 Since I was young, I've followed the stock market and economic news
               </IntroductionCard>
 
-              {/* Daily Practice */}
               <IntroductionCard
                 color="emerald"
                 title="Study"
@@ -86,7 +83,6 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 Finance projects, certifications, and continuous learning
               </IntroductionCard>
             </div>
-          {/*</div>*/}
         </div>
       </div>
     </div>

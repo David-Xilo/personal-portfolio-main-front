@@ -30,41 +30,41 @@ interface GamesPlayedResponse {
   error: string | null
 }
 
-const useGamesGetApi = (endpoint: string): GamesResponse => {
-  const completeEndpoint = domain + endpoint
-  const [data, setData] = useState<GamesResponse>({
-    status: '',
-    message: [],
-    error: null,
-  })
-  useEffect(() => {
-    fetch(completeEndpoint)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Error using endpoint ' + completeEndpoint)
-        }
-        return res.json()
-      })
-      .then(data => {
-        const normalizedData: GamesResponse = {
-          status: 'success',
-          message: Array.isArray(data.message) ? data.message : [],
-          error: null,
-        }
-        setData(normalizedData)
-      })
-      .catch(err => {
-        const errorData = {
-          status: 'error',
-          message: [],
-          error: err.message,
-        }
-        setData(errorData)
-      })
-  }, [completeEndpoint])
-
-  return data
-}
+// const useGamesGetApi = (endpoint: string): GamesResponse => {
+//   const completeEndpoint = domain + endpoint
+//   const [data, setData] = useState<GamesResponse>({
+//     status: '',
+//     message: [],
+//     error: null,
+//   })
+//   useEffect(() => {
+//     fetch(completeEndpoint)
+//       .then(res => {
+//         if (!res.ok) {
+//           throw new Error('Error using endpoint ' + completeEndpoint)
+//         }
+//         return res.json()
+//       })
+//       .then(data => {
+//         const normalizedData: GamesResponse = {
+//           status: 'success',
+//           message: Array.isArray(data.message) ? data.message : [],
+//           error: null,
+//         }
+//         setData(normalizedData)
+//       })
+//       .catch(err => {
+//         const errorData = {
+//           status: 'error',
+//           message: [],
+//           error: err.message,
+//         }
+//         setData(errorData)
+//       })
+//   }, [completeEndpoint])
+//
+//   return data
+// }
 
 const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
   const completeEndpoint = domain + endpoint
@@ -102,4 +102,4 @@ const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
   return data
 }
 
-export {useGamesGetApi, useGamesPlayedGetApi, Games, GamesPlayed}
+export {useGamesPlayedGetApi, Games, GamesPlayed}
