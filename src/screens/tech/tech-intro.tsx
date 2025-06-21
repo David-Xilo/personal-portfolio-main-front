@@ -9,6 +9,7 @@ import {IntroHeader} from 'components/intro/intro-header'
 import {ThunderIcon} from 'components/icons/thunder-icon'
 import {FoldersIcon} from 'components/icons/folders-icon'
 import {HeartIcon} from 'components/icons/heart-icon'
+import {CodeIcon} from 'components/icons/code-icon'
 
 const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   useEffect(() => {
@@ -30,11 +31,8 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
             <IntroHeader
               title="Technology & Innovation"
               colorScheme={{ primary: 'cyan', secondary: 'blue' }}
-              variant="simple"
               leftIcon={
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
+                <CodeIcon />
               }
             />
 
@@ -74,13 +72,6 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <p className="text-xl leading-relaxed text-slate-200 mb-6">
                 I've grown around it, worked with it, and played with it. I try to learn and explore it as much as I can.
               </p>
-
-              <div className="inline-flex items-center gap-2 text-cyan-400 font-medium">
-                <span>Have fun exploring them!</span>
-                <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
             </div>
 
             <div className="flex justify-center mt-8 gap-4">

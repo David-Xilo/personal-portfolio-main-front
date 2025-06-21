@@ -11,6 +11,8 @@ import {StarIcon} from 'components/icons/star-icon'
 import {BirthdayCakeIcon} from 'components/icons/birthday-cake-icon'
 import {ComputerIcon} from 'components/icons/computer-icon'
 import {WrenchScrewdriverIcon} from 'components/icons/wrench-screwdriver-icon'
+import {PuzzlePieceIcon} from 'components/icons/puzzle-piece-icon'
+import {TrophyIcon} from 'components/icons/trophy-icon'
 
 
 
@@ -39,8 +41,8 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
             title="Games & Creation"
             colorScheme={{ primary: 'purple', secondary: 'pink', tertiary: 'cyan' }}
             variant="enhanced"
-            leftIcon="🎮"
-            rightIcon="👾"
+            leftIcon={<PuzzlePieceIcon />}
+            rightIcon={<TrophyIcon />}
           />
 
           <div className="mb-10">
@@ -101,7 +103,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 <IntroductionCard
                   color="purple"
                   title="Since Childhood"
-                  emoji="🧒"
+                  icon={<BirthdayCakeIcon />}
                 >
                   Since I was a kid I've loved video games
                 </IntroductionCard>
@@ -109,7 +111,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 <IntroductionCard
                   color="pink"
                   title="Gateway to Tech"
-                  emoji="💻"
+                  icon={<ComputerIcon />}
                 >
                   One of the main reasons I got interested in computers
                 </IntroductionCard>
@@ -117,7 +119,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 <IntroductionCard
                   color="cyan"
                   title="Creating Games"
-                  emoji="🛠️"
+                  icon={<WrenchScrewdriverIcon />}
                 >
                   I'll keep adding new games I've made here
                 </IntroductionCard>
@@ -125,7 +127,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 <IntroductionCard
                   color="violet"
                   title="Big Dreams"
-                  emoji="⭐"
+                  icon={< StarIcon />}
                 >
                   Maybe one day you'll recognize one of the names!
                 </IntroductionCard>

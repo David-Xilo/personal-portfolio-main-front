@@ -10,6 +10,8 @@ import {RocketIcon} from 'components/icons/rocket-icon'
 import {AcademicCapIcon} from 'components/icons/academic-cap-icon'
 import {BeakerIcon} from 'components/icons/beaker-icon'
 import {BirthdayCakeIcon} from 'components/icons/birthday-cake-icon'
+import {ChartBarIcon} from 'components/icons/chart-bar-icon'
+import {BankNoteIcon} from 'components/icons/bank-note-icon'
 
 const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   useEffect(() => {
@@ -39,8 +41,8 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               title="Finance & Economics"
               colorScheme={{ primary: 'emerald', secondary: 'teal', tertiary: 'blue' }}
               variant="enhanced"
-              leftIcon="📈"
-              rightIcon="💰"
+              leftIcon={<ChartBarIcon />}
+              rightIcon={<BankNoteIcon />}
             />
 
             <div className="flex justify-center items-end gap-2 mb-4">
@@ -57,7 +59,6 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 color="green"
                 title="Early Beginnings"
                 icon={<BirthdayCakeIcon />}
-                variant="gradient"
               >
                 Since I was young, I've followed the stock market and economic news
               </IntroductionCard>
@@ -66,7 +67,6 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 color="emerald"
                 title="Study"
                 icon={<BeakerIcon />}
-                variant="gradient"
               >
                 Reading, studying, and staying informed about financial markets whenever possible
               </IntroductionCard>
