@@ -108,9 +108,9 @@
  * Genre text - uses secondary text color for proper hierarchy
  */
 .infinite-game-genre {
-    font-size: clamp(0.65rem, 2.8vw, 0.9rem);
+    font-size: clamp(0.75rem, 2.8vw, 1.0rem);
     text-align: center;
-    margin: 0;
+    margin: 1px;
 
     /* Secondary text color that adapts to theme */
     color: var(--color-text-secondary);
@@ -151,17 +151,24 @@
     }
 }
 
-/*
- * Container query approach (modern browsers) - more precise control
- * Uncomment this if you want more sophisticated space detection
- */
-/*
-@container (max-height: 180px) {
-    .infinite-game-description {
-        display: none;
-    }
+.infinite-game-icon-circle {
+    /* Your existing circle styles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-*/
+
+.infinite-game-icon {
+    width: 24px;  /* Adjust size as needed */
+    height: 24px;
+    color: white; /* Or whatever color you want for the icons */
+}
+
+/* If you want the icons to inherit the current color */
+.infinite-game-icon svg {
+    width: 100%;
+    height: 100%;
+}
 
 /*
  * Alternative approach: Use min-height thresholds to hide description

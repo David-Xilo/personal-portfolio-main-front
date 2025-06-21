@@ -23,22 +23,8 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
       <div className="max-w-6xl mx-auto">
 
         <div className="relative">
-
-          <div className="absolute inset-0 -z-10">
-
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-teal-900/20 to-blue-900/20 rounded-3xl"></div>
-
-            <div className="absolute top-10 left-10 text-3xl animate-pulse text-emerald-400/60">📈</div>
-            <div className="absolute top-20 right-16 text-2xl animate-pulse text-blue-400/60" style={{animationDelay: '0.5s'}}>💰</div>
-            <div className="absolute bottom-16 left-20 text-3xl animate-pulse text-teal-400/60" style={{animationDelay: '1s'}}>📊</div>
-            <div className="absolute bottom-10 right-10 text-2xl animate-pulse text-emerald-400/60" style={{animationDelay: '1.5s'}}>💡</div>
-
-            <div className="absolute top-1/4 right-1/4 w-20 h-16 border-2 border-emerald-500/20 rounded-lg transform rotate-12"></div>
-            <div className="absolute bottom-1/3 left-1/3 w-16 h-12 border-2 border-teal-500/20 rounded transform -rotate-6"></div>
-          </div>
-
             <IntroHeader
-              title="Finance & Economics"
+              title="Finance"
               colorScheme={{ primary: 'emerald', secondary: 'teal', tertiary: 'blue' }}
               variant="enhanced"
               leftIcon={<ChartBarIcon />}

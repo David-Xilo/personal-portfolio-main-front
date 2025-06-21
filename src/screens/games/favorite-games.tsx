@@ -2,9 +2,13 @@ import React from 'react'
 import './games.css'
 import {InfiniteCarousel} from 'components/carousel/infinite-carousel'
 import {useGamesPlayedGetApi} from '../../hooks/games-rest'
+import {UserGroupIcon} from 'components/icons/user-group-icon'
+import {BuildingLibraryIcon} from 'components/icons/building-library-icon'
+import {PuzzlePieceIcon} from 'components/icons/puzzle-piece-icon'
+import {TrophyIcon} from 'components/icons/trophy-icon'
 
 interface FavoriteGameVisuals {
-  emoji: string
+  emoji: React.ReactNode
   color: string
 }
 
@@ -17,19 +21,19 @@ interface FavoriteGame {
 
 const GENRE_VISUAL_MAP: Record<string, FavoriteGameVisuals> = {
   "RPG": {
-    emoji: "⚔️",
+    emoji: <UserGroupIcon />,
     color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
   },
   "strategy": {
-    emoji: "🏛️",
+    emoji: <BuildingLibraryIcon />,
     color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
   },
   "table top": {
-    emoji: "🧭",
+    emoji: <PuzzlePieceIcon />,
     color: "linear-gradient(135deg, #feca57 0%, #ff9ff3 100%)"
   },
   "default": {
-    emoji: "🎮",
+    emoji: <TrophyIcon />,
     color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
   }
 }
@@ -54,16 +58,9 @@ const FavoriteGameCard: React.FC<{ game: FavoriteGame }> = ({ game }) => {
           {game.title}
         </h3>
 
-        <div
-          className="infinite-game-emoji-circle"
-          style={{
-            background: visuals.color
-          }}
-        >
-          <span className="infinite-game-emoji">
+          <div className="infinite-game-icon">
             {visuals.emoji}
-          </span>
-        </div>
+          </div>
       </div>
 
       <div className="infinite-game-content">

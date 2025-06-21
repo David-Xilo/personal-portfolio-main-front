@@ -20,16 +20,9 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
     <div className="flex items-center justify-center p-12">
       <div className="max-w-4xl mx-auto">
         <div className="relative">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20 rounded-3xl"></div>
-
-            <div className="absolute top-10 left-10 w-20 h-20 border border-cyan-500/30 rounded-lg rotate-12 animate-pulse"></div>
-            <div className="absolute bottom-10 right-10 w-16 h-16 border border-blue-500/30 rounded-full animate-bounce"></div>
-            <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-purple-500/20 rounded-full animate-ping"></div>
-          </div>
 
             <IntroHeader
-              title="Technology & Innovation"
+              title="Technology"
               colorScheme={{ primary: 'cyan', secondary: 'blue' }}
               leftIcon={
                 <CodeIcon />

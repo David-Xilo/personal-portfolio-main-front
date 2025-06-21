@@ -25,20 +25,9 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
     <div className="min-h-screen p-12">
       <div className="max-w-6xl mx-auto">
         <div className="relative mb-12">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-cyan-900/20 rounded-3xl"></div>
-
-            <div className="absolute top-8 left-8 text-4xl animate-bounce" style={{animationDelay: '0s'}}>🎮</div>
-            <div className="absolute top-16 right-16 text-3xl animate-bounce" style={{animationDelay: '0.5s'}}>🕹️</div>
-            <div className="absolute bottom-8 left-16 text-3xl animate-bounce" style={{animationDelay: '1s'}}>👾</div>
-            <div className="absolute bottom-16 right-8 text-4xl animate-bounce" style={{animationDelay: '1.5s'}}>🎯</div>
-
-            <div className="absolute top-1/4 left-1/4 w-16 h-16 border-2 border-purple-500/30 rotate-45 animate-pulse"></div>
-            <div className="absolute bottom-1/3 right-1/3 w-12 h-12 border-2 border-pink-500/30 rotate-12 animate-ping"></div>
-          </div>
 
           <IntroHeader
-            title="Games & Creation"
+            title="Games"
             colorScheme={{ primary: 'purple', secondary: 'pink', tertiary: 'cyan' }}
             variant="enhanced"
             leftIcon={<PuzzlePieceIcon />}
