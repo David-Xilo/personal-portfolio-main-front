@@ -9,6 +9,7 @@ import {IntroductionCard} from 'components/intro/intro-cards'
 import {IntroHeader} from 'components/intro/intro-header'
 
 
+
 const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   useEffect(() => {
     hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
@@ -35,70 +36,118 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
             <div className="absolute bottom-1/3 right-1/3 w-12 h-12 border-2 border-pink-500/30 rotate-12 animate-ping"></div>
           </div>
 
-          {/* Main Content Container */}
-          {/*<div className="relative bg-slate-900/90 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">*/}
+          {/* Header Section */}
+          <IntroHeader
+            title="Games & Creation"
+            colorScheme={{ primary: 'purple', secondary: 'pink', tertiary: 'cyan' }}
+            variant="enhanced"
+            leftIcon="🎮"
+            rightIcon="👾"
+          />
 
-            {/* Header Section */}
-            <IntroHeader
-              title="Games & Creation"
-              colorScheme={{ primary: 'purple', secondary: 'pink', tertiary: 'cyan' }}
-              variant="enhanced"
-              leftIcon="🎮"
-              rightIcon="👾"
-            />
+          {/* Carousel with Cards Layout */}
+          <div className="mb-10">
+            {/* Desktop Layout: Cards around carousel */}
+            <div className="hidden lg:grid lg:grid-cols-5 lg:grid-rows-2 lg:gap-6">
+              {/* Top Row Cards */}
+              <div className="lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:self-start">
+                <IntroductionCard
+                  color="purple"
+                  title="Since Childhood"
+                  emoji="🧒"
+                >
+                  Since I was a kid I've loved video games
+                </IntroductionCard>
+              </div>
 
-            <div className="mb-8">
-              <FavoriteGamesCarousel />
+              <div className="lg:col-start-5 lg:col-end-6 lg:row-start-1 lg:self-start">
+                <IntroductionCard
+                  color="pink"
+                  title="Gateway to Tech"
+                  emoji="💻"
+                >
+                  One of the main reasons I got interested in computers
+                </IntroductionCard>
+              </div>
+
+              {/* Center - Carousel */}
+              <div className="lg:col-start-2 lg:col-end-5 lg:row-start-1 lg:row-end-3 lg:flex lg:items-center lg:justify-center">
+                <div className="w-full">
+                  <FavoriteGamesCarousel />
+                </div>
+              </div>
+
+              {/* Bottom Row Cards */}
+              <div className="lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:self-end">
+                <IntroductionCard
+                  color="cyan"
+                  title="Creating Games"
+                  emoji="🛠️"
+                >
+                  I'll keep adding new games I've made here
+                </IntroductionCard>
+              </div>
+
+              <div className="lg:col-start-5 lg:col-end-6 lg:row-start-2 lg:self-end">
+                <IntroductionCard
+                  color="violet"
+                  title="Big Dreams"
+                  emoji="⭐"
+                >
+                  Maybe one day you'll recognize one of the names!
+                </IntroductionCard>
+              </div>
             </div>
 
-            {/* Story Cards */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            {/* Mobile/Tablet Layout: Traditional stacked */}
+            <div className="lg:hidden">
+              <div className="mb-8">
+                <FavoriteGamesCarousel />
+              </div>
 
-              {/* Childhood Gaming */}
-              <IntroductionCard
-                color="purple"
-                title="Since Childhood"
-                emoji="🧒"
-              >
-                Since I was a kid I've loved video games
-              </IntroductionCard>
+              <div className="grid md:grid-cols-2 gap-6">
+                <IntroductionCard
+                  color="purple"
+                  title="Since Childhood"
+                  emoji="🧒"
+                >
+                  Since I was a kid I've loved video games
+                </IntroductionCard>
 
-              {/* Gateway to Tech */}
-              <IntroductionCard
-                color="pink"
-                title="Gateway to Tech"
-                emoji="💻"
-              >
-                One of the main reasons I got interested in computers
-              </IntroductionCard>
+                <IntroductionCard
+                  color="pink"
+                  title="Gateway to Tech"
+                  emoji="💻"
+                >
+                  One of the main reasons I got interested in computers
+                </IntroductionCard>
 
-              {/* Game Development */}
-              <IntroductionCard
-                color="cyan"
-                title="Creating Games"
-                emoji="🛠️"
-              >
-                I'll keep adding new games I've made here
-              </IntroductionCard>
+                <IntroductionCard
+                  color="cyan"
+                  title="Creating Games"
+                  emoji="🛠️"
+                >
+                  I'll keep adding new games I've made here
+                </IntroductionCard>
 
-              {/* Future Dreams */}
-              <IntroductionCard
-                color="violet"
-                title="Big Dreams"
-                emoji="⭐"
-              >
-                Maybe one day you'll recognize one of the names!
-              </IntroductionCard>
+                <IntroductionCard
+                  color="violet"
+                  title="Big Dreams"
+                  emoji="⭐"
+                >
+                  Maybe one day you'll recognize one of the names!
+                </IntroductionCard>
+              </div>
             </div>
+          </div>
 
-            {/* Retro Gaming Dots */}
-            <div className="flex justify-center mt-8 gap-3">
-              <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse"></div>
-              <div className="w-4 h-4 bg-pink-500 rounded-full animate-pulse" style={{animationDelay: '0.3s'}}></div>
-              <div className="w-4 h-4 bg-cyan-500 rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
-              <div className="w-4 h-4 bg-violet-500 rounded-full animate-pulse" style={{animationDelay: '0.9s'}}></div>
-            </div>
-          {/*</div>*/}
+          {/* Retro Gaming Dots */}
+          <div className="flex justify-center mt-8 gap-3">
+            <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse"></div>
+            <div className="w-4 h-4 bg-pink-500 rounded-full animate-pulse" style={{animationDelay: '0.3s'}}></div>
+            <div className="w-4 h-4 bg-cyan-500 rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
+            <div className="w-4 h-4 bg-violet-500 rounded-full animate-pulse" style={{animationDelay: '0.9s'}}></div>
+          </div>
         </div>
       </div>
     </div>
