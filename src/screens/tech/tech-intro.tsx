@@ -61,12 +61,6 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               </IntroductionCard>
             </div>
 
-            <div className="text-center">
-              <p className="text-xl leading-relaxed text-slate-200 mb-6">
-                I've grown around it, worked with it, and played with it. I try to learn and explore it as much as I can.
-              </p>
-            </div>
-
             <div className="flex justify-center mt-8 gap-4">
               <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
               <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>

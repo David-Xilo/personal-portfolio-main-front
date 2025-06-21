@@ -5,9 +5,7 @@ import './about.css'
 
 interface ContactItemProps {
   contact: ContactRest | null;
-  /** Optional size variant for different use cases */
   variant?: 'default' | 'compact' | 'minimal';
-  /** Optional width constraint for specific layouts */
   maxWidth?: string;
 }
 

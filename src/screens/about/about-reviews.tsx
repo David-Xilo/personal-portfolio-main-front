@@ -23,7 +23,7 @@ const AboutReviewCard: React.FC<{ review: AboutReview }> = ({ review }) => {
       stars.push(
         <span
           key={i}
-          className={`text-lg ${i <= rating ? 'text-amber-400' : 'text-gray-600'}`}
+          className={i <= rating ? 'about-review-star-filled' : 'about-review-star-empty'}
         >
           ★
         </span>
@@ -33,30 +33,30 @@ const AboutReviewCard: React.FC<{ review: AboutReview }> = ({ review }) => {
   }
 
   return (
-    <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 w-full">
-      <div className="mb-6 text-center">
-        <div className="bg-gradient-to-r from-amber-400/10 via-orange-400/10 to-red-400/10 rounded-lg p-4 border-l-4 border-amber-400">
-          <p className="text-slate-100 text-xl font-bold leading-relaxed">
+    <div className="about-review-card">
+      <div className="about-review-content">
+        <div className="about-review-quote-container">
+          <p className="about-review-text">
             {review.description}
           </p>
         </div>
       </div>
 
-      <div className="flex justify-center mb-4">
-        <div className="flex items-center gap-1">
+      <div className="about-review-rating-container">
+        <div className="about-review-stars">
           {renderStars(review.rating)}
         </div>
       </div>
 
-      <div className="text-center">
-        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mb-3"></div>
-        <p className="text-amber-300 font-semibold text-sm uppercase tracking-wide">
+      <div className="about-review-author-section">
+        <div className="about-review-divider"></div>
+        <p className="about-review-author">
           {review.author}
         </p>
       </div>
 
-      <div className="flex justify-center mt-4">
-        <div className="text-xs text-amber-400/40">✦</div>
+      <div className="about-review-decoration">
+        <div className="about-review-decoration-icon">✦</div>
       </div>
     </div>
   )
@@ -69,21 +69,21 @@ const AboutReviewCarousel: React.FC = () => {
   }
 
   return (
-    <div className="py-6 px-4">
-      <div className="mb-6">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-500 rounded-lg flex items-center justify-center">
-              <span className="text-sm">🎬</span>
+    <div className="about-reviews-container">
+      <div className="about-reviews-section">
+        <div className="about-reviews-header">
+          <div className="about-reviews-title-container">
+            <div className="about-reviews-icon-left">
+              <span>🎬</span>
             </div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+            <h2 className="about-reviews-title">
               Reviews
             </h2>
-            <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-              <span className="text-sm">⭐</span>
+            <div className="about-reviews-icon-right">
+              <span>⭐</span>
             </div>
           </div>
-          <p className="text-slate-400 text-sm italic">
+          <p className="about-reviews-subtitle">
             What the VIP have to say
           </p>
         </div>
@@ -94,7 +94,7 @@ const AboutReviewCarousel: React.FC = () => {
             return <AboutReviewCard review={review} />
           }}
           size="medium"
-          className="mb-4"
+          className="about-reviews-carousel"
           showArrows={true}
           showIndicators={true}
         />

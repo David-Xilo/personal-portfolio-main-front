@@ -263,6 +263,285 @@
   @apply space-y-4 sm:space-y-6 lg:space-y-8;
 }
 
+/* ========================================
+   ABOUT INTRO COMPONENTS
+   ======================================== */
+
+/*
+ * Main about intro container
+ */
+.about-intro-container {
+  @apply min-h-screen p-8;
+  background-color: var(--color-background);
+}
+
+/*
+ * About intro wrapper
+ */
+.about-intro-wrapper {
+  @apply max-w-5xl mx-auto;
+}
+
+/*
+ * About intro section with background
+ */
+.about-intro-section {
+  @apply relative;
+}
+
+/*
+ * Background overlay container
+ */
+.about-intro-background {
+  @apply absolute inset-0 -z-10;
+}
+
+/*
+ * Main gradient background
+ */
+.about-intro-gradient {
+  @apply absolute inset-0 rounded-3xl;
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--color-primary) 15%, transparent),
+    color-mix(in srgb, var(--color-secondary) 15%, transparent),
+    color-mix(in srgb, var(--color-accent) 15%, transparent)
+  );
+}
+
+/*
+ * Animated decorative elements
+ */
+.about-intro-star-1 {
+  @apply absolute top-12 left-12 text-3xl animate-pulse;
+  color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
+.about-intro-star-2 {
+  @apply absolute top-20 right-20 text-2xl animate-pulse;
+  color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  animation-delay: 1s;
+}
+
+.about-intro-star-3 {
+  @apply absolute bottom-16 left-20 text-2xl animate-pulse;
+  color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  animation-delay: 2s;
+}
+
+.about-intro-star-4 {
+  @apply absolute bottom-12 right-16 text-3xl animate-pulse;
+  color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  animation-delay: 0.5s;
+}
+
+.about-intro-circle {
+  @apply absolute top-1/4 right-1/4 w-16 h-16 rounded-full animate-pulse;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.about-intro-square {
+  @apply absolute bottom-1/3 left-1/3 w-12 h-12 rounded-lg rotate-45 animate-ping;
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 20%, transparent);
+}
+
+/*
+ * Header section
+ */
+.about-intro-header {
+  @apply text-center mb-8;
+}
+
+.about-intro-title-container {
+  @apply inline-flex items-center gap-4 mb-4;
+}
+
+.about-intro-title {
+  @apply text-5xl font-bold bg-clip-text text-transparent;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+}
+
+.about-intro-underline {
+  @apply w-32 h-1 mx-auto rounded-full;
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+}
+
+/*
+ * Content section
+ */
+.about-intro-content {
+  @apply mb-6;
+}
+
+.about-intro-text-container {
+  @apply max-w-4xl mx-auto mb-4;
+}
+
+.about-intro-text-content {
+  @apply space-y-4;
+  color: var(--color-text-primary);
+}
+
+.about-intro-text-center {
+  @apply text-center;
+}
+
+.about-intro-greeting {
+  @apply text-xl font-medium mb-2;
+  color: var(--color-primary);
+}
+
+.about-intro-description {
+  @apply text-lg leading-relaxed;
+  color: var(--color-text-primary);
+}
+
+.about-intro-role-highlight {
+  @apply font-semibold;
+  color: var(--color-secondary);
+}
+
+.about-intro-interests {
+  @apply text-lg leading-relaxed text-center;
+  color: var(--color-text-primary);
+}
+
+.about-intro-lot-highlight {
+  @apply font-semibold;
+  color: var(--color-accent);
+}
+
+.about-intro-carousel-container {
+  @apply max-w-4xl mx-auto;
+}
+
+/* ========================================
+   ABOUT REVIEWS COMPONENTS
+   ======================================== */
+
+/*
+ * Review carousel container
+ */
+.about-reviews-container {
+  @apply py-6 px-4;
+}
+
+.about-reviews-section {
+  @apply mb-6;
+}
+
+.about-reviews-header {
+  @apply text-center mb-8;
+}
+
+.about-reviews-title-container {
+  @apply inline-flex items-center gap-3 mb-4;
+}
+
+.about-reviews-icon-left {
+  @apply w-8 h-8 rounded-lg flex items-center justify-center text-sm;
+  background: linear-gradient(to bottom right, var(--color-primary), var(--color-secondary));
+}
+
+.about-reviews-title {
+  @apply text-2xl font-bold bg-clip-text text-transparent;
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+}
+
+.about-reviews-icon-right {
+  @apply w-8 h-8 rounded-lg flex items-center justify-center text-sm;
+  background: linear-gradient(to bottom right, var(--color-secondary), var(--color-accent));
+}
+
+.about-reviews-subtitle {
+  @apply text-sm italic;
+  color: var(--color-text-tertiary);
+}
+
+.about-reviews-carousel {
+  @apply mb-4;
+}
+
+/*
+ * Individual review card
+ */
+.about-review-card {
+  @apply backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 w-full;
+  background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+}
+
+.about-review-content {
+  @apply mb-6 text-center;
+}
+
+.about-review-quote-container {
+  @apply rounded-lg p-4 border-l-4;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-primary) 10%, transparent),
+    color-mix(in srgb, var(--color-secondary) 10%, transparent),
+    color-mix(in srgb, var(--color-accent) 10%, transparent)
+  );
+  border-left-color: var(--color-primary);
+}
+
+.about-review-text {
+  @apply text-xl font-bold leading-relaxed;
+  color: var(--color-text-primary);
+}
+
+.about-review-rating-container {
+  @apply flex justify-center mb-4;
+}
+
+.about-review-stars {
+  @apply flex items-center gap-1;
+}
+
+.about-review-star-filled {
+  @apply text-lg;
+  color: var(--color-primary);
+}
+
+.about-review-star-empty {
+  @apply text-lg;
+  color: var(--color-text-disabled);
+}
+
+.about-review-author-section {
+  @apply text-center;
+}
+
+.about-review-divider {
+  @apply w-16 h-0.5 mx-auto mb-3;
+  background: linear-gradient(to right, transparent, var(--color-primary), transparent);
+}
+
+.about-review-author {
+  @apply font-semibold text-sm uppercase tracking-wide;
+  color: var(--color-primary);
+}
+
+.about-review-decoration {
+  @apply flex justify-center mt-4;
+}
+
+.about-review-decoration-icon {
+  @apply text-xs;
+  color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
 
 /*------------------------------*/
 
