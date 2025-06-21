@@ -1,3 +1,122 @@
+/* ========================================
+   GAMES SECTION - PURPLE THEME
+   ======================================== */
+
+/*
+ * Games-specific color scheme using purple variants
+ * Integrates with root.css theme variables
+ */
+
+/* ========================================
+   GAMES THEME COLORS
+   ======================================== */
+
+/* Light theme games colors */
+:root {
+  --games-primary: color-mix(in srgb, var(--color-accent) 90%, #8b5cf6 10%);
+  --games-secondary: color-mix(in srgb, var(--color-accent) 80%, #a855f7 20%);
+  --games-tertiary: color-mix(in srgb, var(--color-accent) 70%, #ec4899 30%);
+  --games-light: color-mix(in srgb, var(--color-accent) 20%, var(--color-surface) 80%);
+}
+
+/* Dark theme games colors */
+.dark-theme {
+  --games-primary: color-mix(in srgb, var(--color-accent) 85%, #a78bfa 15%);
+  --games-secondary: color-mix(in srgb, var(--color-accent) 75%, #c084fc 25%);
+  --games-tertiary: color-mix(in srgb, var(--color-accent) 65%, #f472b6 35%);
+  --games-light: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface) 85%);
+}
+
+/* ========================================
+   GAMES INTRO COMPONENTS
+   ======================================== */
+
+/*
+ * Main games intro container
+ */
+.games-intro-container {
+  @apply min-h-screen p-12;
+  background-color: var(--color-background);
+}
+
+.games-intro-wrapper {
+  @apply max-w-6xl mx-auto;
+}
+
+.games-intro-section {
+  @apply relative mb-12;
+}
+
+/*
+ * Games intro layout grids
+ */
+.games-intro-desktop-grid {
+  @apply hidden lg:grid lg:grid-cols-5 lg:grid-rows-2 lg:gap-6;
+}
+
+.games-intro-mobile-section {
+  @apply lg:hidden;
+}
+
+.games-intro-mobile-carousel {
+  @apply mb-8;
+}
+
+.games-intro-mobile-cards {
+  @apply grid md:grid-cols-2 gap-6;
+}
+
+/*
+ * Games intro grid positioning
+ */
+.games-intro-card-1 {
+  @apply lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:self-start;
+}
+
+.games-intro-card-2 {
+  @apply lg:col-start-5 lg:col-end-6 lg:row-start-1 lg:self-start;
+}
+
+.games-intro-carousel-center {
+  @apply lg:col-start-2 lg:col-end-5 lg:row-start-1 lg:row-end-3 lg:flex lg:items-center lg:justify-center;
+}
+
+.games-intro-carousel-wrapper {
+  @apply w-full;
+}
+
+.games-intro-card-3 {
+  @apply lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:self-end;
+}
+
+.games-intro-card-4 {
+  @apply lg:col-start-5 lg:col-end-6 lg:row-start-2 lg:self-end;
+}
+
+/* ========================================
+   FAVORITE GAMES CAROUSEL COMPONENTS
+   ======================================== */
+
+/*
+ * Favorite games carousel container
+ */
+.favorite-games-container {
+  @apply py-8 px-4;
+}
+
+.favorite-games-section {
+  @apply mb-8;
+}
+
+.favorite-games-title {
+  @apply text-2xl font-bold text-center mb-6;
+  color: var(--color-text-primary);
+}
+
+.favorite-games-carousel {
+  @apply mb-4;
+}
+
 /*
  * Main game card container - now uses theme-aware colors
  */
@@ -178,4 +297,88 @@
 .infinite-game-card[style*="height: 160px"] .infinite-game-description,
 .infinite-game-card[style*="height: 170px"] .infinite-game-description {
     display: none;
+}
+
+/* ========================================
+   GAMES THEME APPLICATIONS
+   ======================================== */
+
+/*
+ * Apply games theme to intro cards when in games section
+ * Text colors are now handled by the base intro-card components for maximum readability
+ */
+.games-intro-section .intro-card--purple {
+  background: linear-gradient(135deg, var(--games-primary) 0%, var(--games-secondary) 100%);
+  border-color: var(--games-tertiary);
+}
+
+.games-intro-section .intro-card--pink {
+  background: linear-gradient(135deg, var(--games-secondary) 0%, var(--games-tertiary) 100%);
+  border-color: var(--games-primary);
+}
+
+.games-intro-section .intro-card--cyan {
+  background: linear-gradient(135deg, var(--games-tertiary) 0%, var(--games-light) 100%);
+  border-color: var(--games-secondary);
+}
+
+.games-intro-section .intro-card--violet {
+  background: linear-gradient(135deg, var(--games-light) 0%, var(--games-primary) 100%);
+  border-color: var(--games-tertiary);
+}
+
+/*
+ * Games header styling
+ */
+.games-intro-section .intro-header {
+  --header-primary-color: var(--games-primary);
+  --header-secondary-color: var(--games-secondary);
+  --header-accent-color: var(--games-tertiary);
+}
+
+/* ========================================
+   GAMES PROJECTS COMPONENTS
+   ======================================== */
+
+/*
+ * Games projects theme application
+ */
+.games-projects-container {
+  --project-primary-color: var(--games-primary);
+  --project-secondary-color: var(--games-secondary);
+  --project-accent-color: var(--games-tertiary);
+  --project-light-color: var(--games-light);
+}
+
+/* ========================================
+   RESPONSIVE GAMES COMPONENTS
+   ======================================== */
+
+/*
+ * Responsive adjustments for games layout
+ */
+@media (max-width: 1024px) {
+  .games-intro-desktop-grid {
+    @apply hidden;
+  }
+  
+  .games-intro-mobile-section {
+    @apply block;
+  }
+}
+
+@media (max-width: 768px) {
+  .games-intro-container {
+    @apply p-6;
+  }
+  
+  .games-intro-mobile-cards {
+    @apply grid-cols-1 gap-4;
+  }
+}
+
+@media (max-width: 480px) {
+  .games-intro-container {
+    @apply p-4;
+  }
 }

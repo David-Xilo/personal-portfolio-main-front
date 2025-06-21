@@ -14,14 +14,20 @@
 
 .intro-card__title {
     @apply text-lg font-bold mb-3;
+    color: #000000 !important; /* Pure black for maximum contrast on light backgrounds */
 }
 
 .intro-card__description {
-    @apply text-sm leading-relaxed text-slate-600;
+    @apply text-sm leading-relaxed;
+    color: #1f2937 !important; /* Dark gray for excellent readability on light backgrounds */
+}
+
+.dark-theme .intro-card__title {
+    color: #ffffff !important; /* Pure white for maximum contrast on dark backgrounds */
 }
 
 .dark-theme .intro-card__description {
-    @apply text-slate-300;
+    color: #f3f4f6 !important; /* Light gray for excellent readability on dark backgrounds */
 }
 
 .intro-card--purple {
@@ -38,9 +44,7 @@
     @apply text-purple-600;
 }
 
-.intro-card--purple .intro-card__title {
-    @apply text-purple-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--purple {
     @apply bg-gradient-to-br from-purple-800/50 to-purple-900/50;
@@ -56,9 +60,7 @@
     @apply text-purple-400;
 }
 
-.dark-theme .intro-card--purple .intro-card__title {
-    @apply text-purple-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 .intro-card--pink {
     @apply bg-gradient-to-br from-pink-50 to-pink-100;
@@ -74,9 +76,7 @@
     @apply text-pink-600;
 }
 
-.intro-card--pink .intro-card__title {
-    @apply text-pink-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--pink {
     @apply bg-gradient-to-br from-pink-800/50 to-pink-900/50;
@@ -92,9 +92,7 @@
     @apply text-pink-400;
 }
 
-.dark-theme .intro-card--pink .intro-card__title {
-    @apply text-pink-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 .intro-card--cyan {
     @apply bg-gradient-to-br from-cyan-50 to-cyan-100;
@@ -110,9 +108,7 @@
     @apply text-cyan-600;
 }
 
-.intro-card--cyan .intro-card__title {
-    @apply text-cyan-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--cyan {
     @apply bg-gradient-to-br from-cyan-800/50 to-cyan-900/50;
@@ -128,9 +124,7 @@
     @apply text-cyan-400;
 }
 
-.dark-theme .intro-card--cyan .intro-card__title {
-    @apply text-cyan-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 .intro-card--violet {
     @apply bg-gradient-to-br from-violet-50 to-violet-100;
@@ -146,9 +140,7 @@
     @apply text-violet-600;
 }
 
-.intro-card--violet .intro-card__title {
-    @apply text-violet-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--violet {
     @apply bg-gradient-to-br from-violet-800/50 to-violet-900/50;
@@ -164,9 +156,7 @@
     @apply text-violet-400;
 }
 
-.dark-theme .intro-card--violet .intro-card__title {
-    @apply text-violet-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 .intro-card--emerald {
     @apply bg-gradient-to-br from-emerald-50 to-emerald-100;
@@ -182,9 +172,7 @@
     @apply text-emerald-600;
 }
 
-.intro-card--emerald .intro-card__title {
-    @apply text-emerald-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--emerald {
     @apply bg-gradient-to-br from-emerald-800/50 to-emerald-900/50;
@@ -200,9 +188,7 @@
     @apply text-emerald-400;
 }
 
-.dark-theme .intro-card--emerald .intro-card__title {
-    @apply text-emerald-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 .intro-card--teal {
     @apply bg-gradient-to-br from-teal-50 to-teal-100;
@@ -218,9 +204,7 @@
     @apply text-teal-600;
 }
 
-.intro-card--teal .intro-card__title {
-    @apply text-teal-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--teal {
     @apply bg-gradient-to-br from-teal-800/50 to-teal-900/50;
@@ -236,9 +220,7 @@
     @apply text-teal-400;
 }
 
-.dark-theme .intro-card--teal .intro-card__title {
-    @apply text-teal-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 .intro-card--blue {
     @apply bg-gradient-to-br from-blue-50 to-blue-100;
@@ -254,9 +236,7 @@
     @apply text-blue-600;
 }
 
-.intro-card--blue .intro-card__title {
-    @apply text-blue-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--blue {
     @apply bg-gradient-to-br from-blue-800/50 to-blue-900/50;
@@ -272,9 +252,7 @@
     @apply text-blue-400;
 }
 
-.dark-theme .intro-card--blue .intro-card__title {
-    @apply text-blue-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 .intro-card--green {
     @apply bg-gradient-to-br from-green-50 to-green-100;
@@ -290,9 +268,7 @@
     @apply text-green-600;
 }
 
-.intro-card--green .intro-card__title {
-    @apply text-green-800;
-}
+/* Title color handled by base .intro-card__title class for consistent high contrast */
 
 .dark-theme .intro-card--green {
     @apply bg-gradient-to-br from-green-800/50 to-green-900/50;
@@ -308,9 +284,7 @@
     @apply text-green-400;
 }
 
-.dark-theme .intro-card--green .intro-card__title {
-    @apply text-green-300;
-}
+/* Title color handled by base dark theme .intro-card__title class for consistent high contrast */
 
 @media (max-width: 640px) {
     .intro-card {

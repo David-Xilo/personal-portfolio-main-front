@@ -1,3 +1,28 @@
+/* ========================================
+   NAVIGATION COMPONENTS - THEME AWARE
+   ======================================== */
+
+/*
+ * Navigation styles that adapt to light and dark themes
+ * Uses CSS custom properties from root.css
+ */
+
+/* ========================================
+   MAIN NAVIGATION
+   ======================================== */
+
+.nav-container {
+  @apply flex items-center justify-between w-full;
+}
+
+.nav-item--spaced {
+  margin-left: 50px;
+}
+
+/* ========================================
+   SUB NAVIGATION
+   ======================================== */
+
 .sub-menu-nav {
   @apply p-3 h-full;
   width: var(--sub-menu-width);

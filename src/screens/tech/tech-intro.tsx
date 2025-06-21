@@ -10,6 +10,7 @@ import {ThunderIcon} from 'components/icons/thunder-icon'
 import {FoldersIcon} from 'components/icons/folders-icon'
 import {HeartIcon} from 'components/icons/heart-icon'
 import {CodeIcon} from 'components/icons/code-icon'
+import './tech.css'
 
 const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   useEffect(() => {
@@ -17,9 +18,9 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="flex items-center justify-center p-12">
-      <div className="max-w-4xl mx-auto">
-        <div className="relative">
+    <div className="tech-intro-container">
+      <div className="tech-intro-wrapper">
+        <div className="tech-intro-section">
 
             <IntroHeader
               title="Technology"
@@ -29,7 +30,7 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               }
             />
 
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="tech-intro-cards-grid">
               <IntroductionCard
                 color="cyan"
                 title="Always Evolving"
@@ -61,10 +62,10 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               </IntroductionCard>
             </div>
 
-            <div className="flex justify-center mt-8 gap-4">
-              <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-              <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+            <div className="tech-indicators-container">
+              <div className="tech-indicator-1"></div>
+              <div className="tech-indicator-2"></div>
+              <div className="tech-indicator-3"></div>
             </div>
           </div>
       </div>

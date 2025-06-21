@@ -1,0 +1,175 @@
+/* ========================================
+   FINANCE SECTION - GREEN THEME
+   ======================================== */
+
+/*
+ * Finance-specific color scheme using green variants
+ * Integrates with root.css theme variables
+ */
+
+/* ========================================
+   FINANCE INTRO COMPONENTS
+   ======================================== */
+
+/*
+ * Main finance intro container
+ */
+.finance-intro-container {
+  @apply p-12;
+  background-color: var(--color-background);
+}
+
+.finance-intro-wrapper {
+  @apply max-w-6xl mx-auto;
+}
+
+.finance-intro-section {
+  @apply relative;
+}
+
+/*
+ * Finance bar chart component
+ */
+.finance-chart-container {
+  @apply flex justify-center items-end gap-2 mb-4;
+}
+
+.finance-chart-bar-1 {
+  @apply w-4 h-8 rounded-t;
+  background-color: color-mix(in srgb, var(--color-secondary) 90%, #10b981 10%);
+}
+
+.finance-chart-bar-2 {
+  @apply w-4 h-12 rounded-t;
+  background-color: color-mix(in srgb, var(--color-secondary) 80%, #10b981 20%);
+}
+
+.finance-chart-bar-3 {
+  @apply w-4 h-16 rounded-t;
+  background-color: color-mix(in srgb, var(--color-secondary) 70%, #10b981 30%);
+}
+
+.finance-chart-bar-4 {
+  @apply w-4 h-20 rounded-t;
+  background-color: color-mix(in srgb, var(--color-secondary) 60%, #14b8a6 40%);
+}
+
+.finance-chart-bar-5 {
+  @apply w-4 h-24 rounded-t animate-pulse;
+  background-color: color-mix(in srgb, var(--color-secondary) 50%, #14b8a6 50%);
+}
+
+/*
+ * Finance intro cards grid
+ */
+.finance-intro-cards-grid {
+  @apply grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10;
+}
+
+/* ========================================
+   FINANCE THEME OVERRIDES
+   ======================================== */
+
+/*
+ * Finance-specific theme colors that blend with the base theme
+ * These create a green financial aesthetic while maintaining theme consistency
+ */
+
+/* Light theme finance colors */
+:root {
+  --finance-primary: color-mix(in srgb, var(--color-secondary) 90%, #059669 10%);
+  --finance-secondary: color-mix(in srgb, var(--color-secondary) 80%, #14b8a6 20%);
+  --finance-accent: color-mix(in srgb, var(--color-secondary) 70%, #0d9488 30%);
+  --finance-light: color-mix(in srgb, var(--color-secondary) 20%, var(--color-surface) 80%);
+}
+
+/* Dark theme finance colors */
+.dark-theme {
+  --finance-primary: color-mix(in srgb, var(--color-secondary) 85%, #34d399 15%);
+  --finance-secondary: color-mix(in srgb, var(--color-secondary) 75%, #2dd4bf 25%);
+  --finance-accent: color-mix(in srgb, var(--color-secondary) 65%, #5eead4 35%);
+  --finance-light: color-mix(in srgb, var(--color-secondary) 15%, var(--color-surface) 85%);
+}
+
+/* ========================================
+   FINANCE COMPONENT THEME APPLICATIONS
+   ======================================== */
+
+/*
+ * Apply finance theme to intro cards when in finance section
+ * Text colors are now handled by the base intro-card components for maximum readability
+ */
+.finance-intro-section .intro-card--green {
+  background: linear-gradient(135deg, var(--finance-primary) 0%, var(--finance-secondary) 100%);
+  border-color: var(--finance-accent);
+}
+
+.finance-intro-section .intro-card--emerald {
+  background: linear-gradient(135deg, var(--finance-secondary) 0%, var(--finance-accent) 100%);
+  border-color: var(--finance-primary);
+}
+
+.finance-intro-section .intro-card--teal {
+  background: linear-gradient(135deg, var(--finance-accent) 0%, var(--finance-light) 100%);
+  border-color: var(--finance-secondary);
+}
+
+.finance-intro-section .intro-card--cyan {
+  background: linear-gradient(135deg, var(--finance-light) 0%, var(--finance-primary) 100%);
+  border-color: var(--finance-accent);
+}
+
+/*
+ * Finance header styling
+ */
+.finance-intro-section .intro-header {
+  --header-primary-color: var(--finance-primary);
+  --header-secondary-color: var(--finance-secondary);
+  --header-accent-color: var(--finance-accent);
+}
+
+/* ========================================
+   FINANCE PROJECTS COMPONENTS
+   ======================================== */
+
+/*
+ * Finance projects are handled by GenericProjectsScreen
+ * Theme colors will be applied through CSS custom properties
+ */
+.finance-projects-container {
+  --project-primary-color: var(--finance-primary);
+  --project-secondary-color: var(--finance-secondary);
+  --project-accent-color: var(--finance-accent);
+  --project-light-color: var(--finance-light);
+}
+
+/* ========================================
+   RESPONSIVE FINANCE COMPONENTS
+   ======================================== */
+
+/*
+ * Responsive adjustments for finance chart
+ */
+@media (max-width: 768px) {
+  .finance-chart-container {
+    @apply gap-1;
+  }
+  
+  .finance-chart-bar-1,
+  .finance-chart-bar-2,
+  .finance-chart-bar-3,
+  .finance-chart-bar-4,
+  .finance-chart-bar-5 {
+    @apply w-3;
+  }
+}
+
+@media (max-width: 480px) {
+  .finance-intro-container {
+    @apply p-6;
+  }
+  
+  .finance-intro-cards-grid {
+    @apply grid-cols-1 gap-4;
+  }
+}

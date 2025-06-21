@@ -86,10 +86,10 @@ const FavoriteGamesCarousel: React.FC = () => {
   }
 
   return (
-    <div className="py-8 px-4">
+    <div className="favorite-games-container">
 
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-center mb-6" style={{color: 'var(--color-text-primary)'}}>
+      <div className="favorite-games-section">
+        <h2 className="favorite-games-title">
           Games I love
         </h2>
         <InfiniteCarousel
@@ -99,7 +99,7 @@ const FavoriteGamesCarousel: React.FC = () => {
             return <FavoriteGameCard game={game} />
           }}
           size="medium"
-          className="mb-4"
+          className="favorite-games-carousel"
           showArrows={true}
           showIndicators={true}
         />

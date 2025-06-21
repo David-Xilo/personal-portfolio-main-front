@@ -15,14 +15,14 @@ import {ThemeToggle} from '../../theme/ThemeToggle'
 const MainNav: React.FC = () => {
   return (
     <nav className="nav">
-      <div className="flex items-center justify-between w-full">
+      <div className="nav-container">
         <ul className="nav-list">
           <li className="nav-item">
             <MainNavLink to={'/'}>
               <HomeIcon />
             </MainNavLink>
           </li>
-          <li className="nav-item" style={{marginLeft: '50px'}}>
+          <li className="nav-item nav-item--spaced">
             <MainNavLink to={'/about'}>About</MainNavLink>
           </li>
           <li className="nav-item">

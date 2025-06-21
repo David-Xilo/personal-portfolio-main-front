@@ -22,9 +22,9 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="min-h-screen p-12">
-      <div className="max-w-6xl mx-auto">
-        <div className="relative mb-12">
+    <div className="games-intro-container">
+      <div className="games-intro-wrapper">
+        <div className="games-intro-section">
 
           <IntroHeader
             title="Games"
@@ -35,8 +35,8 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
           />
 
           <div className="mb-10">
-            <div className="hidden lg:grid lg:grid-cols-5 lg:grid-rows-2 lg:gap-6">
-              <div className="lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:self-start">
+            <div className="games-intro-desktop-grid">
+              <div className="games-intro-card-1">
                 <IntroductionCard
                   color="purple"
                   title="Since a Youngster"
@@ -46,7 +46,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 </IntroductionCard>
               </div>
 
-              <div className="lg:col-start-5 lg:col-end-6 lg:row-start-1 lg:self-start">
+              <div className="games-intro-card-2">
                 <IntroductionCard
                   color="pink"
                   title="Gateway to Tech"
@@ -56,13 +56,13 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 </IntroductionCard>
               </div>
 
-              <div className="lg:col-start-2 lg:col-end-5 lg:row-start-1 lg:row-end-3 lg:flex lg:items-center lg:justify-center">
-                <div className="w-full">
+              <div className="games-intro-carousel-center">
+                <div className="games-intro-carousel-wrapper">
                   <FavoriteGamesCarousel />
                 </div>
               </div>
 
-              <div className="lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:self-end">
+              <div className="games-intro-card-3">
                 <IntroductionCard
                   color="cyan"
                   title="Creating Games"
@@ -72,7 +72,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 </IntroductionCard>
               </div>
 
-              <div className="lg:col-start-5 lg:col-end-6 lg:row-start-2 lg:self-end">
+              <div className="games-intro-card-4">
                 <IntroductionCard
                   color="violet"
                   title="Big Dreams"
@@ -83,12 +83,12 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               </div>
             </div>
 
-            <div className="lg:hidden">
-              <div className="mb-8">
+            <div className="games-intro-mobile-section">
+              <div className="games-intro-mobile-carousel">
                 <FavoriteGamesCarousel />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="games-intro-mobile-cards">
                 <IntroductionCard
                   color="purple"
                   title="Since Childhood"

@@ -12,6 +12,20 @@ import {BeakerIcon} from 'components/icons/beaker-icon'
 import {BirthdayCakeIcon} from 'components/icons/birthday-cake-icon'
 import {ChartBarIcon} from 'components/icons/chart-bar-icon'
 import {BankNoteIcon} from 'components/icons/bank-note-icon'
+import './finance.css'
+
+
+const BarChartPulsating: React.FC = () => {
+  return (
+    <div className="finance-chart-container">
+      <div className="finance-chart-bar-1"></div>
+      <div className="finance-chart-bar-2"></div>
+      <div className="finance-chart-bar-3"></div>
+      <div className="finance-chart-bar-4"></div>
+      <div className="finance-chart-bar-5"></div>
+    </div>
+  )
+}
 
 const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   useEffect(() => {
@@ -19,10 +33,10 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="p-12">
-      <div className="max-w-6xl mx-auto">
+    <div className="finance-intro-container">
+      <div className="finance-intro-wrapper">
 
-        <div className="relative">
+        <div className="finance-intro-section">
             <IntroHeader
               title="Finance"
               colorScheme={{ primary: 'emerald', secondary: 'teal', tertiary: 'blue' }}
@@ -31,15 +45,9 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               rightIcon={<BankNoteIcon />}
             />
 
-            <div className="flex justify-center items-end gap-2 mb-4">
-              <div className="w-4 h-8 bg-emerald-500 rounded-t"></div>
-              <div className="w-4 h-12 bg-emerald-400 rounded-t"></div>
-              <div className="w-4 h-16 bg-emerald-300 rounded-t"></div>
-              <div className="w-4 h-20 bg-teal-400 rounded-t"></div>
-              <div className="w-4 h-24 bg-teal-300 rounded-t animate-pulse"></div>
-            </div>
+            <BarChartPulsating />
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <div className="finance-intro-cards-grid">
 
               <IntroductionCard
                 color="green"
