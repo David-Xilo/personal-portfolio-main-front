@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './menu.css'
-import {ArrowLeftIcon} from 'components/menu/arrow-left-icon'
-import {ArrowRightIcon} from 'components/menu/arrow-right-icon'
+import {ArrowLeftIcon} from 'components/icons/arrow-left-icon'
+import {ArrowRightIcon} from 'components/icons/arrow-right-icon'
 
 interface HiddenMenuProps {
   content: React.ComponentType<any> | undefined

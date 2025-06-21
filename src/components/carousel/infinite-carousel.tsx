@@ -1,17 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import './infinite-carousel.css'
+import {ChevronLeft} from 'components/icons/chevron-left'
+import {ChevronRight} from 'components/icons/chevron-right'
 
-const ChevronLeft: React.FC = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polyline points="15,18 9,12 15,6"></polyline>
-  </svg>
-)
-
-const ChevronRight: React.FC = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polyline points="9,18 15,12 9,6"></polyline>
-  </svg>
-)
 
 // Infinite carousel component - loops seamlessly
 interface InfiniteCarouselProps<T> {
@@ -55,10 +46,6 @@ function InfiniteCarousel<T>({
           itemRef.style.width = `${areaWidth}px`
         }
       })
-
-      console.log('Content area width:', areaWidth)
-      console.log('Track width:', areaWidth * items.length)
-      console.log('Item width:', areaWidth)
     }
   }, [items.length])
 
@@ -66,7 +53,6 @@ function InfiniteCarousel<T>({
     if (trackRef.current && contentAreaWidth > 0) {
       const translateX = -currentIndex * contentAreaWidth
       trackRef.current.style.transform = `translateX(${translateX}px)`
-      console.log('Moving to index:', currentIndex, 'translateX:', translateX)
     }
   }, [currentIndex, contentAreaWidth])
 
@@ -119,7 +105,6 @@ function InfiniteCarousel<T>({
     }
   }
 
-  // Keyboard navigation
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'ArrowLeft') {
       event.preventDefault()

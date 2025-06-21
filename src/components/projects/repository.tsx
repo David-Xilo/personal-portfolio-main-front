@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
-import {ArrowLeftIcon} from 'components/menu/arrow-left-icon'
-import {ArrowRightIcon} from 'components/menu/arrow-right-icon'
+import {ArrowLeftIcon} from 'components/icons/arrow-left-icon'
+import {ArrowRightIcon} from 'components/icons/arrow-right-icon'
 import './repository.css'
 
 

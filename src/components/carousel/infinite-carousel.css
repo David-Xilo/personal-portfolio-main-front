@@ -10,32 +10,29 @@
 .carousel-content-area {
     @apply overflow-hidden;
     height: var(--carousel-content-height);
-    /* Simple approach: take most of the width, leaving space for arrows */
-    width: calc(100% - 100px); /* 50px on each side for arrows */
+    width: calc(100% - 100px);
     display: flex;
     align-items: center;
     justify-content: flex-start;
     position: relative;
     margin: 0 auto;
-    background: rgba(255, 0, 0, 0.1); /* Temporary red tint to see boundaries */
+    background: rgba(255, 0, 0, 0.1);
 }
 
 .carousel-track-infinite {
     @apply flex transition-transform duration-300 ease-in-out h-full;
-    /* Track will be sized by JavaScript based on actual content area width */
 }
 
 .carousel-item-infinite {
     @apply flex-shrink-0;
     height: 100%;
-    /* Width will be set by JavaScript to match content area exactly */
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
     margin: 0;
-    background: rgba(0, 255, 0, 0.1); /* Temporary green tint to see item boundaries */
+    background: rgba(0, 255, 0, 0.1);
 }
 
 .carousel-nav-arrow-infinite {
@@ -49,12 +46,10 @@
     position: absolute;
 }
 
-/* Position left arrow */
 .carousel-nav-arrow-infinite:first-of-type {
     left: 10px;
 }
 
-/* Position right arrow */
 .carousel-nav-arrow-infinite:last-of-type {
     right: 10px;
 }
@@ -88,7 +83,7 @@
 /* Mobile adjustments */
 @media (max-width: 480px) {
     .carousel-content-area {
-        width: calc(100% - 80px); /* Smaller arrow space on mobile */
+        width: calc(100% - 80px);
     }
 
     .carousel-nav-arrow-infinite:first-of-type {

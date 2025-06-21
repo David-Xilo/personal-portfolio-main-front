@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {ArrowUpIcon} from 'components/menu/arrow-up-icon'
-import {ArrowDownIcon} from 'components/menu/arrow-down-icon'
+import {ArrowUpIcon} from 'components/icons/arrow-up-icon'
+import {ArrowDownIcon} from 'components/icons/arrow-down-icon'
 import './content-list.css'
 
 interface ContentListItemProps {
