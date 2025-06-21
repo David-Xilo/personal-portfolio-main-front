@@ -11,7 +11,7 @@ const FinanceIntroScreen = ({ hiddenMenuDispatch = () => {} }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="p-8">
       <div className="max-w-6xl mx-auto">
 
         {/* Enhanced Finance Hero Section */}
@@ -52,28 +52,15 @@ const FinanceIntroScreen = ({ hiddenMenuDispatch = () => {} }) => {
               <div className="w-32 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Main Passion Statement */}
-            <div className="text-center bg-slate-800/50 rounded-2xl p-8 border border-slate-600/30 mb-10">
-              <h2 className="text-2xl font-bold text-emerald-300 mb-4">
-                One of My Core Passions
-              </h2>
-              <p className="text-xl leading-relaxed text-slate-200 mb-6">
-                Finance is one of my passions. I read about it, study it, and pay attention to it in my daily life.
-              </p>
-
-              {/* Growth visualization */}
-              <div className="flex justify-center items-end gap-2 mb-6">
+            {/*<div className="text-center bg-slate-800/50 rounded-2xl p-8 border border-slate-600/30 mb-10">*/}
+              <div className="flex justify-center items-end gap-2 mb-4">
                 <div className="w-4 h-8 bg-emerald-500 rounded-t"></div>
                 <div className="w-4 h-12 bg-emerald-400 rounded-t"></div>
                 <div className="w-4 h-16 bg-emerald-300 rounded-t"></div>
                 <div className="w-4 h-20 bg-teal-400 rounded-t"></div>
                 <div className="w-4 h-24 bg-teal-300 rounded-t animate-pulse"></div>
               </div>
-
-              <p className="text-lg text-slate-300">
-                Continuous learning and growth in financial markets
-              </p>
-            </div>
+            {/*</div>*/}
 
             {/* Journey Cards */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
