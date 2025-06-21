@@ -9,7 +9,7 @@ interface ErrorProps {
 const FullPageErrorFallback: React.FC<ErrorProps> = ({error}) => {
   return (
     <div role="alert" className="fullpage-error-fallback">
-      <p>Uh oh... There&apos;s a problem. Try refreshing the app.</p>
+      <p>Uh oh... There is a problem. Try refreshing the app.</p>
       <pre>{error.message}</pre>
     </div>
   )

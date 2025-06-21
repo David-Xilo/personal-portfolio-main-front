@@ -2,7 +2,6 @@ import * as React from 'react'
 import {ErrorProps} from 'components/error/error-fallback'
 
 interface ErrorMessageProps {
-  // Change this line - error should be of type Error, not ErrorProps
   error: ErrorProps
   variant?: 'stacked' | 'inline'
   className?: string
