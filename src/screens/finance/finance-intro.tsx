@@ -13,7 +13,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="p-8">
+    <div className="p-12">
       <div className="max-w-6xl mx-auto">
 
         <div className="relative">
@@ -31,7 +31,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
             <div className="absolute bottom-1/3 left-1/3 w-16 h-12 border-2 border-teal-500/20 rounded transform -rotate-6"></div>
           </div>
 
-          <div className="relative bg-slate-900/90 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">
+          {/*<div className="relative bg-slate-900/90 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">*/}
 
             <IntroHeader
               title="Finance & Economics"
@@ -86,7 +86,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 Finance projects, certifications, and continuous learning
               </IntroductionCard>
             </div>
-          </div>
+          {/*</div>*/}
         </div>
       </div>
     </div>

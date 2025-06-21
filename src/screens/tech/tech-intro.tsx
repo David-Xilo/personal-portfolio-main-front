@@ -13,7 +13,7 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="flex items-center justify-center p-8">
+    <div className="flex items-center justify-center p-12">
       <div className="max-w-4xl mx-auto">
         {/* Hero Section */}
         <div className="relative">
@@ -29,7 +29,7 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
           </div>
 
           {/* Main Content */}
-          <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">
+          {/*<div className="relative bg-slate-900/80 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">*/}
             {/* Header Section */}
             {/*<div className="text-center mb-8">*/}
             {/*  <div className="inline-flex items-center gap-3 mb-4">*/}
@@ -123,7 +123,7 @@ const TechIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
             </div>
           </div>
-        </div>
+        {/*</div>*/}
       </div>
     </div>
   );

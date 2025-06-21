@@ -15,7 +15,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   }, [hiddenMenuDispatch]);
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-12">
       <div className="max-w-6xl mx-auto">
         {/* Enhanced Hero Section */}
         <div className="relative mb-12">
@@ -36,7 +36,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
           </div>
 
           {/* Main Content Container */}
-          <div className="relative bg-slate-900/90 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">
+          {/*<div className="relative bg-slate-900/90 backdrop-blur-sm rounded-3xl p-12 border border-slate-700/50 shadow-2xl">*/}
 
             {/* Header Section */}
             <IntroHeader
@@ -98,7 +98,7 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
               <div className="w-4 h-4 bg-cyan-500 rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
               <div className="w-4 h-4 bg-violet-500 rounded-full animate-pulse" style={{animationDelay: '0.9s'}}></div>
             </div>
-          </div>
+          {/*</div>*/}
         </div>
       </div>
     </div>
