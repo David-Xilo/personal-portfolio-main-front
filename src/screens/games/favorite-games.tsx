@@ -97,7 +97,6 @@ const FavoriteGamesCarousel: React.FC = () => {
   return (
     <div className="py-8 px-4">
 
-      {/* Infinite games carousel */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-center mb-6" style={{color: 'var(--color-text-primary)'}}>
           Games I love
@@ -113,10 +112,6 @@ const FavoriteGamesCarousel: React.FC = () => {
           showArrows={true}
           showIndicators={true}
         />
-        <p className="text-center text-sm max-w-lg mx-auto" style={{color: 'var(--color-text-secondary)'}}>
-          Navigate infinitely with arrows or click the dots below • Use keyboard arrow keys for quick browsing •
-          From first to last, last to first - it never ends!
-        </p>
       </div>
     </div>
   )

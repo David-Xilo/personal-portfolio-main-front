@@ -42,7 +42,7 @@ function InfiniteCarousel<T>({
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
   const autoAdvanceRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Measure content area and set dimensions
+
   const updateDimensions = useCallback(() => {
     if (contentAreaRef.current && trackRef.current) {
       const areaWidth = contentAreaRef.current.offsetWidth
@@ -64,7 +64,6 @@ function InfiniteCarousel<T>({
     }
   }, [items.length])
 
-  // Update positioning based on current index
   useEffect(() => {
     if (trackRef.current && contentAreaWidth > 0) {
       const translateX = -currentIndex * contentAreaWidth
@@ -73,7 +72,6 @@ function InfiniteCarousel<T>({
     }
   }, [currentIndex, contentAreaWidth])
 
-  // Set up dimensions on mount and resize
   useEffect(() => {
     updateDimensions()
 
@@ -85,7 +83,6 @@ function InfiniteCarousel<T>({
     return () => window.removeEventListener('resize', handleResize)
   }, [updateDimensions])
 
-  // Auto-advance functionality (optional)
   useEffect(() => {
     if (autoAdvance && items.length > 1) {
       autoAdvanceRef.current = setInterval(() => {
@@ -100,7 +97,6 @@ function InfiniteCarousel<T>({
     }
   }, [autoAdvance, autoAdvanceInterval, items.length])
 
-  // Navigation functions - infinite looping
   const goToPrevious = () => {
     setCurrentIndex(prev => prev === 0 ? items.length - 1 : prev - 1)
     resetAutoAdvance()
