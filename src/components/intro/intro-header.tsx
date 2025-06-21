@@ -61,18 +61,17 @@ const IntroHeader: React.FC<SectionHeaderProps> = ({
   const underlineGradient = colorClasses.underlineGradients[titleGradientKey] || colorClasses.underlineGradients['cyan-blue']
 
   // Conditional classes based on variant
-  const containerClasses = isSimple ? 'text-center mb-8' : 'text-center mb-10'
-  const headerFlexClasses = isSimple ? 'inline-flex items-center gap-3 mb-4' : 'inline-flex items-center gap-4 mb-6'
-  const iconSizeClasses = isSimple ? 'w-12 h-12' : 'w-16 h-16'
+  const containerClasses = 'text-center mb-8'
+  const headerFlexClasses = 'inline-flex items-center gap-3 mb-4'
+  const iconSizeClasses = 'w-12 h-12'
   const iconRoundingClasses = isSimple ? 'rounded-xl' : 'rounded-2xl'
   const iconContentClasses = isSimple ? 'w-6 h-6' : 'text-2xl'
-  const titleSizeClasses = isSimple ? 'text-4xl' : 'text-5xl'
-  const underlineSizeClasses = isSimple ? 'w-24' : 'w-32'
+  const titleSizeClasses = 'text-4xl'
+  const underlineSizeClasses = 'w-24'
 
   return (
     <div className={containerClasses}>
       <div className={headerFlexClasses}>
-        {/* Left Icon */}
         {leftIcon && (
           <div className={`
             ${iconSizeClasses} 
@@ -91,19 +90,17 @@ const IntroHeader: React.FC<SectionHeaderProps> = ({
           </div>
         )}
 
-        {/* Title */}
         <h1 className={`
           ${titleSizeClasses} 
           font-bold 
           ${titleGradient} 
           bg-clip-text text-transparent
-          ${!isSimple ? 'inline-flex' : ''}
+          inline-flex
         `}>
           {title}
         </h1>
 
-        {/* Right Icon (Enhanced variant only) */}
-        {!isSimple && rightIcon && (
+        {rightIcon && (
           <div className={`
             ${iconSizeClasses} 
             ${rightIconGradient} 
