@@ -1,17 +1,3 @@
-/* ========================================
-   TECH SECTION - BLUE THEME
-   ======================================== */
-
-/*
- * Tech-specific color scheme using blue variants
- * Integrates with root.css theme variables
- */
-
-/* ========================================
-   TECH THEME COLORS
-   ======================================== */
-
-/* Light theme tech colors */
 :root {
   --tech-primary: color-mix(in srgb, var(--color-primary) 90%, #3b82f6 10%);
   --tech-secondary: color-mix(in srgb, var(--color-primary) 80%, #0ea5e9 20%);
@@ -19,7 +5,6 @@
   --tech-light: color-mix(in srgb, var(--color-primary) 20%, var(--color-surface) 80%);
 }
 
-/* Dark theme tech colors */
 .dark-theme {
   --tech-primary: color-mix(in srgb, var(--color-primary) 85%, #60a5fa 15%);
   --tech-secondary: color-mix(in srgb, var(--color-primary) 75%, #38bdf8 25%);
@@ -27,13 +12,6 @@
   --tech-light: color-mix(in srgb, var(--color-primary) 15%, var(--color-surface) 85%);
 }
 
-/* ========================================
-   TECH INTRO COMPONENTS
-   ======================================== */
-
-/*
- * Main tech intro container
- */
 .tech-intro-container {
   @apply flex items-center justify-center p-12;
   background-color: var(--color-background);
@@ -47,16 +25,10 @@
   @apply relative;
 }
 
-/*
- * Tech intro cards grid
- */
 .tech-intro-cards-grid {
   @apply grid md:grid-cols-3 gap-6 mb-8;
 }
 
-/*
- * Tech decorative indicators
- */
 .tech-indicators-container {
   @apply flex justify-center mt-8 gap-4;
 }
@@ -78,14 +50,6 @@
   animation-delay: 0.4s;
 }
 
-/* ========================================
-   TECH THEME APPLICATIONS
-   ======================================== */
-
-/*
- * Apply tech theme to intro cards when in tech section
- * Text colors are now handled by the base intro-card components for maximum readability
- */
 .tech-intro-section .intro-card--cyan {
   background: linear-gradient(135deg, var(--tech-primary) 0%, var(--tech-secondary) 100%);
   border-color: var(--tech-tertiary);
@@ -101,22 +65,12 @@
   border-color: var(--tech-secondary);
 }
 
-/*
- * Tech header styling
- */
 .tech-intro-section .intro-header {
   --header-primary-color: var(--tech-primary);
   --header-secondary-color: var(--tech-secondary);
   --header-accent-color: var(--tech-tertiary);
 }
 
-/* ========================================
-   TECH PROJECTS COMPONENTS
-   ======================================== */
-
-/*
- * Tech projects theme application
- */
 .tech-projects-container {
   --project-primary-color: var(--tech-primary);
   --project-secondary-color: var(--tech-secondary);
@@ -124,7 +78,6 @@
   --project-light-color: var(--tech-light);
 }
 
-/* Tech Project Header */
 .tech-project {
     @apply w-full;
 }
@@ -139,9 +92,6 @@
     color: var(--color-text-secondary);
 }
 
-/* ========================================
-   TECH ANIMATIONS
-   ======================================== */
 
 @keyframes fadeInUp {
     from {
@@ -158,13 +108,6 @@
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* ========================================
-   RESPONSIVE TECH COMPONENTS
-   ======================================== */
-
-/*
- * Responsive adjustments for tech layout
- */
 @media (max-width: 768px) {
   .tech-intro-container {
     @apply p-6;

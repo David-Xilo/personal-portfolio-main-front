@@ -14,7 +14,7 @@ const RepositoryCard: React.FC<{ repository: RepositoryInfo }> = ({ repository }
   return (
     <div
       className="repository-card"
-      onClick={(e) => e.stopPropagation()} // Prevent card clicks from bubbling up
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="repository-card-content">
         <h3 className="repository-card-title">{repository.title}</h3>
@@ -39,18 +39,16 @@ const RepositoryCard: React.FC<{ repository: RepositoryInfo }> = ({ repository }
   )
 }
 
-// Repository Carousel Component
 const RepositoryCarousel: React.FC<{ repositories: RepositoryInfo[] }> = ({ repositories }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [cardsPerView, setCardsPerView] = useState(3)
   const carouselRef = useRef<HTMLDivElement>(null)
 
-  // Calculate how many cards fit in the viewport
   useEffect(() => {
     const updateCardsPerView = () => {
       if (carouselRef.current) {
-        const containerWidth = carouselRef.current.offsetWidth - 80 // Account for arrow space
-        const cardWidth = 300 // Base card width + gap
+        const containerWidth = carouselRef.current.offsetWidth - 80
+        const cardWidth = 300
         const newCardsPerView = Math.floor(containerWidth / cardWidth)
         setCardsPerView(Math.max(1, Math.min(newCardsPerView, repositories.length)))
       }
@@ -61,12 +59,10 @@ const RepositoryCarousel: React.FC<{ repositories: RepositoryInfo[] }> = ({ repo
     return () => window.removeEventListener('resize', updateCardsPerView)
   }, [repositories.length])
 
-// Fix the maxIndex calculation to prevent over-scrolling
   const maxIndex = Math.max(0, repositories.length - cardsPerView)
   const canGoLeft = currentIndex > 0
   const canGoRight = currentIndex < maxIndex && repositories.length > cardsPerView
 
-// Ensure currentIndex doesn't exceed maxIndex
   useEffect(() => {
     if (currentIndex > maxIndex) {
       setCurrentIndex(maxIndex)
@@ -106,7 +102,7 @@ const RepositoryCarousel: React.FC<{ repositories: RepositoryInfo[] }> = ({ repo
       className="repository-carousel"
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      onClick={(e) => e.stopPropagation()} // Prevent any clicks within carousel from bubbling up
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="repository-carousel-container" ref={carouselRef}>
         {canGoLeft && (

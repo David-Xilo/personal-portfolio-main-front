@@ -7,7 +7,7 @@ interface IntroductionCardProps {
   color: ColorOption
   title: string
   icon: React.ReactNode
-  children: React.ReactNode // Description text
+  children: React.ReactNode
 }
 
 const IntroductionCard: React.FC<IntroductionCardProps> = ({

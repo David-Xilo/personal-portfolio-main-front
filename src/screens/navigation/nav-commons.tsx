@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {ReactNode} from 'react'
 
-// Define the type for components that accept children
 interface SubMenuProps {
   children: ReactNode
 }

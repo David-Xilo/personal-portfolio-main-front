@@ -35,7 +35,6 @@ if (process.env.NODE_ENV === 'development') {
   async function enableMocking() {
     console.log('Development mode: enabling MSW')
     const {worker} = await import('./mocks/browser')
-    // Force a fresh fetch by appending a timestamp
     return worker.start({
       serviceWorker: {url: `/mockServiceWorker.js?v=${Date.now()}`},
       onUnhandledRequest: 'bypass',
@@ -52,6 +51,5 @@ if (process.env.NODE_ENV === 'development') {
     console.error('Error initializing app:', err)
   })
 } else {
-  // In production, simply render the app.
   renderApp()
 }

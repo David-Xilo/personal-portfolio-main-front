@@ -39,8 +39,6 @@ const GENRE_VISUAL_MAP: Record<string, FavoriteGameVisuals> = {
 }
 
 const useGameVisuals = (genre: string): FavoriteGameVisuals => {
-  // Use useMemo to avoid recalculating on every render
-  // This is a pure computation, so we don't need useEffect
   return React.useMemo(() => {
     const normalizedGenre = genre.trim()
 
@@ -95,7 +93,6 @@ const FavoriteGamesCarousel: React.FC = () => {
         <InfiniteCarousel
           items={message}
           renderItem={(game, index) => {
-            console.log('Rendering item at index:', index, game.title)
             return <FavoriteGameCard game={game} />
           }}
           size="medium"

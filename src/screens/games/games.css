@@ -1,17 +1,3 @@
-/* ========================================
-   GAMES SECTION - PURPLE THEME
-   ======================================== */
-
-/*
- * Games-specific color scheme using purple variants
- * Integrates with root.css theme variables
- */
-
-/* ========================================
-   GAMES THEME COLORS
-   ======================================== */
-
-/* Light theme games colors */
 :root {
   --games-primary: color-mix(in srgb, var(--color-accent) 90%, #8b5cf6 10%);
   --games-secondary: color-mix(in srgb, var(--color-accent) 80%, #a855f7 20%);
@@ -19,7 +5,6 @@
   --games-light: color-mix(in srgb, var(--color-accent) 20%, var(--color-surface) 80%);
 }
 
-/* Dark theme games colors */
 .dark-theme {
   --games-primary: color-mix(in srgb, var(--color-accent) 85%, #a78bfa 15%);
   --games-secondary: color-mix(in srgb, var(--color-accent) 75%, #c084fc 25%);
@@ -27,13 +12,6 @@
   --games-light: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface) 85%);
 }
 
-/* ========================================
-   GAMES INTRO COMPONENTS
-   ======================================== */
-
-/*
- * Main games intro container
- */
 .games-intro-container {
   @apply min-h-screen p-12;
   background-color: var(--color-background);
@@ -47,9 +25,6 @@
   @apply relative mb-12;
 }
 
-/*
- * Games intro layout grids
- */
 .games-intro-desktop-grid {
   @apply hidden lg:grid lg:grid-cols-5 lg:grid-rows-2 lg:gap-6;
 }
@@ -66,9 +41,6 @@
   @apply grid md:grid-cols-2 gap-6;
 }
 
-/*
- * Games intro grid positioning
- */
 .games-intro-card-1 {
   @apply lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:self-start;
 }
@@ -93,13 +65,6 @@
   @apply lg:col-start-5 lg:col-end-6 lg:row-start-2 lg:self-end;
 }
 
-/* ========================================
-   FAVORITE GAMES CAROUSEL COMPONENTS
-   ======================================== */
-
-/*
- * Favorite games carousel container
- */
 .favorite-games-container {
   @apply py-8 px-4;
 }
@@ -117,23 +82,16 @@
   @apply mb-4;
 }
 
-/*
- * Main game card container - now uses theme-aware colors
- */
 .infinite-game-card {
-    /* Use surface color for card background - adapts to light/dark theme */
     background-color: var(--color-surface);
     border-radius: 12px;
 
-    /* Use theme-aware shadow and border */
     box-shadow: var(--shadow-md);
     border: 1px solid var(--color-border);
 
-    /* Inherit exact size from parent container */
     width: 100%;
     height: 100%;
 
-    /* Vertical layout with better space distribution */
     display: flex;
     flex-direction: column;
 
@@ -145,17 +103,12 @@
 }
 
 .infinite-game-card:hover {
-    /* Enhanced shadow on hover using theme variables */
     box-shadow: var(--shadow-lg);
     transform: scale(1.02);
 }
 
-/*
- * Header section - contains title and small emoji circle
- * Takes minimal space needed, allows content to expand
- */
 .infinite-game-header {
-    flex: 0 0 auto; /* Don't grow or shrink, use natural size */
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,28 +116,20 @@
     margin-bottom: clamp(6px, 3%, 12px);
 }
 
-/*
- * Game title - uses theme-aware text color for better accessibility
- */
 .infinite-game-title {
     font-size: clamp(0.8rem, 3.5vw, 1.2rem);
     font-weight: bold;
     margin: 0;
     text-align: center;
 
-    /* Use primary text color that adapts to theme */
     color: var(--color-text-primary);
     line-height: 1.2;
 
-    /* Handle overflow gracefully */
     word-wrap: break-word;
     hyphens: auto;
     max-width: 100%;
 }
 
-/*
- * Small circular container for emoji - decorative accent piece
- */
 .infinite-game-emoji-circle {
     width: clamp(24px, 8%, 32px);
     height: clamp(24px, 8%, 32px);
@@ -193,77 +138,54 @@
     align-items: center;
     justify-content: center;
 
-    /* Subtle shadow to make it pop */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-    /* Default gradient - will be overridden by style prop */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-/*
- * Emoji sizing within the circle
- */
 .infinite-game-emoji {
     font-size: clamp(0.8rem, 4vw, 1.1rem);
     line-height: 1;
     display: block;
 }
 
-/*
- * Content area - expands to fill remaining space
- */
 .infinite-game-content {
-    flex: 1; /* Take all remaining space */
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: clamp(4px, 2%, 8px);
 
-    /* Ensure content doesn't overflow the card */
     overflow: hidden;
-    min-height: 0; /* Important for flex child overflow behavior */
+    min-height: 0;
 }
 
-/*
- * Genre text - uses secondary text color for proper hierarchy
- */
 .infinite-game-genre {
     font-size: clamp(0.75rem, 2.8vw, 1.0rem);
     text-align: center;
     margin: 1px;
 
-    /* Secondary text color that adapts to theme */
     color: var(--color-text-secondary);
     font-weight: 500;
 
     text-transform: capitalize;
 }
 
-/*
- * Description - uses secondary text color and hides when space is constrained
- */
 .infinite-game-description {
     font-size: clamp(0.75rem, 2.5vw, 0.95rem);
     line-height: 1.4;
     text-align: center;
     margin: 0;
 
-    /* Secondary text color for supporting information */
     color: var(--color-text-secondary);
 
-    /* Allow text to expand naturally, but hide overflow */
     flex: 1;
     overflow: hidden;
 
-    /* Multi-line text truncation */
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Show up to 3 lines */
+    -webkit-line-clamp: 3;
 }
 
-/*
- * Media query approach for hiding description on very small containers
- * This works well for most responsive scenarios
- */
 @media (max-height: 200px) {
     .infinite-game-description {
         display: none;
@@ -271,16 +193,14 @@
 }
 
 .infinite-game-icon-circle {
-    /* Your existing circle styles */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .infinite-game-icon {
-    width: 32px;  /* Increased size for better visibility */
+    width: 32px;
     height: 32px;
-    /* High contrast background for maximum visibility */
     background-color: rgba(0, 0, 0, 0.8) !important;
     border-radius: 8px;
     display: flex;
@@ -288,7 +208,7 @@
     justify-content: center;
     padding: 6px;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff !important; /* White icons for contrast */
+    color: #ffffff !important;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
@@ -298,32 +218,19 @@
     color: inherit;
 }
 
-/* Dark theme adjustments */
 .dark-theme .infinite-game-icon {
     background-color: rgba(255, 255, 255, 0.9) !important;
     border: 2px solid rgba(0, 0, 0, 0.3);
-    color: #000000 !important; /* Black icons in dark mode */
+    color: #000000 !important;
     filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.3));
 }
 
-/*
- * Alternative approach: Use min-height thresholds to hide description
- * You can adjust these values based on your carousel's typical sizes
- */
 .infinite-game-card[style*="height: 150px"] .infinite-game-description,
 .infinite-game-card[style*="height: 160px"] .infinite-game-description,
 .infinite-game-card[style*="height: 170px"] .infinite-game-description {
     display: none;
 }
 
-/* ========================================
-   GAMES THEME APPLICATIONS
-   ======================================== */
-
-/*
- * Apply games theme to intro cards when in games section
- * Text colors are now handled by the base intro-card components for maximum readability
- */
 .games-intro-section .intro-card--purple {
   background: linear-gradient(135deg, var(--games-primary) 0%, var(--games-secondary) 100%);
   border-color: var(--games-tertiary);
@@ -344,22 +251,12 @@
   border-color: var(--games-tertiary);
 }
 
-/*
- * Games header styling
- */
 .games-intro-section .intro-header {
   --header-primary-color: var(--games-primary);
   --header-secondary-color: var(--games-secondary);
   --header-accent-color: var(--games-tertiary);
 }
 
-/* ========================================
-   GAMES PROJECTS COMPONENTS
-   ======================================== */
-
-/*
- * Games projects theme application
- */
 .games-projects-container {
   --project-primary-color: var(--games-primary);
   --project-secondary-color: var(--games-secondary);
@@ -367,13 +264,6 @@
   --project-light-color: var(--games-light);
 }
 
-/* ========================================
-   RESPONSIVE GAMES COMPONENTS
-   ======================================== */
-
-/*
- * Responsive adjustments for games layout
- */
 @media (max-width: 1024px) {
   .games-intro-desktop-grid {
     @apply hidden;

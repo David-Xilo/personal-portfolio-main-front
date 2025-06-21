@@ -7,14 +7,13 @@ const ProjectComponent: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <div
       className="project-component"
-      onClick={(e) => e.stopPropagation()} // Prevent clicks within project from bubbling up
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="project-header">
         <p className="project-count">
           {project.repositories.length} {project.repositories.length === 1 ? 'repository' : 'repositories'}
         </p>
 
-        {/* Optional fields - only render if they exist */}
         {(project.genre || project.link_to_store) && (
           <div className="project-optional-fields">
             {project.genre && (

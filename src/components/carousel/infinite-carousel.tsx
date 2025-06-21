@@ -4,7 +4,6 @@ import {ChevronLeftIcon} from 'components/icons/chevron-left-icon'
 import {ChevronRightIcon} from 'components/icons/chevron-right-icon'
 
 
-// Infinite carousel component - loops seamlessly
 interface InfiniteCarouselProps<T> {
   items: T[]
   renderItem: (item: T, index: number) => React.ReactNode

@@ -19,14 +19,12 @@ const WelcomeScreen: React.FC<MainMenuProps> = ({
 const WelcomeContent: React.FC = () => {
   return (
     <div className="welcome-container">
-      {/* Hero section with gradient background */}
       <div className="welcome-hero">
         <div className="welcome-overlay">
           <h1 className="welcome-title">Welcome!</h1>
         </div>
       </div>
 
-      {/* Main content section */}
       <div className="welcome-content">
         <p className="welcome-intro">
           Hello! Welcome to my personal page. I've made this to hold myself accountable
@@ -37,7 +35,6 @@ const WelcomeContent: React.FC = () => {
           You can navigate through my interests and discover something that resonates with you:
         </p>
 
-        {/* Interest cards grid */}
         <div className="welcome-cards">
           <Link to="/tech" className="welcome-card tech-card">
             <div className="welcome-icon">💻</div>

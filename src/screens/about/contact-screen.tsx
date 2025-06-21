@@ -17,7 +17,6 @@ const ContactItem: React.FC<ContactItemProps> = ({
   const cardRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState<number>(0)
 
-  // Monitor container width changes for additional responsive behavior
   useEffect(() => {
     const updateWidth = () => {
       if (cardRef.current) {
@@ -25,15 +24,12 @@ const ContactItem: React.FC<ContactItemProps> = ({
       }
     }
 
-    // Set initial width
     updateWidth()
 
-    // Update on resize
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [])
 
-  // Handle incomplete contact data with responsive error display
   if (!contact || !contact.name || !contact.email) {
     return (
       <div
@@ -53,10 +49,8 @@ const ContactItem: React.FC<ContactItemProps> = ({
     )
   }
 
-  // Safe extraction of first letter
   const firstLetter = contact.name?.charAt(0)?.toUpperCase() || '?'
 
-  // Dynamic class names based on variant and container width
   const getCardClasses = () => {
     let classes = 'contact-card'
 
@@ -67,14 +61,11 @@ const ContactItem: React.FC<ContactItemProps> = ({
     return classes
   }
 
-  // Determine what contact info to show based on variant and space
   const shouldShowField = (field: keyof ContactRest): boolean => {
     if (variant === 'minimal') {
-      // In minimal mode, only show email
       return field === 'email'
     }
     if (variant === 'compact' && containerWidth < 280) {
-      // In very narrow compact mode, prioritize email and one social link
       return field === 'email' || (field === 'github')
     }
     return true
@@ -86,10 +77,8 @@ const ContactItem: React.FC<ContactItemProps> = ({
       className={getCardClasses()}
       style={{ maxWidth }}
     >
-      {/* Header section with conditional content based on variant */}
       <div className="contact-card-header">
         <div className="contact-profile-section">
-          {/* Avatar - hide in minimal variant when very narrow */}
           {!(variant === 'minimal' && containerWidth < 250) && (
             <div className="contact-profile-avatar">
               <span className="contact-profile-avatar-text">{firstLetter}</span>
@@ -98,16 +87,13 @@ const ContactItem: React.FC<ContactItemProps> = ({
 
           <h2 className="contact-profile-name">{contact.name}</h2>
 
-          {/* Subtitle - hide in compact/minimal variants when space is tight */}
           {variant === 'default' || containerWidth > 300 ? (
             <p className="contact-profile-subtitle">Casual Human</p>
           ) : null}
         </div>
       </div>
 
-      {/* Contact information with smart field filtering */}
       <div className="contact-card-body">
-        {/* Email row - always show if data exists */}
         {contact.email && shouldShowField('email') && (
           <div className="contact-info-row">
             <div className="contact-info-icon">
@@ -118,9 +104,8 @@ const ContactItem: React.FC<ContactItemProps> = ({
               <a
                 href={`mailto:${contact.email}`}
                 className="contact-info-link"
-                title={contact.email} // Tooltip for truncated text
+                title={contact.email}
               >
-                {/* Truncate long emails in narrow containers */}
                 {containerWidth < 280 && contact.email.length > 25
                   ? `${contact.email.substring(0, 22)}...`
                   : contact.email
@@ -130,7 +115,6 @@ const ContactItem: React.FC<ContactItemProps> = ({
           </div>
         )}
 
-        {/* GitHub row - conditionally shown */}
         {contact.github && shouldShowField('github') && (
           <div className="contact-info-row">
             <div className="contact-info-icon">
@@ -151,7 +135,6 @@ const ContactItem: React.FC<ContactItemProps> = ({
           </div>
         )}
 
-        {/* LinkedIn row - conditionally shown */}
         {contact.linkedin && shouldShowField('linkedin') && (
           <div className="contact-info-row">
             <div className="contact-info-icon">
@@ -177,11 +160,8 @@ const ContactItem: React.FC<ContactItemProps> = ({
 }
 
 interface ContactScreenProps {
-  /** Optional variant to control how the contact card renders */
   variant?: 'default' | 'compact' | 'minimal';
-  /** Optional class name for the container */
   className?: string;
-  /** Optional maximum width constraint */
   maxWidth?: string;
 }
 
@@ -193,7 +173,6 @@ const ContactScreen: React.FC<ContactScreenProps> = ({
   const contactPath = '/about/contact'
   const { status, message, error } = useContactGetApi(contactPath)
 
-  // Handle API error states with responsive error display
   if (status !== 'success') {
     return (
       <div className={`contact-screen-container ${className}`}>
@@ -206,7 +185,6 @@ const ContactScreen: React.FC<ContactScreenProps> = ({
     )
   }
 
-  // Successful state with responsive container
   return (
     <div className={`contact-screen-container ${className}`}>
       <ContactItem
@@ -218,5 +196,4 @@ const ContactScreen: React.FC<ContactScreenProps> = ({
   )
 }
 
-// Export both components for different use cases
 export { ContactScreen, ContactItem }

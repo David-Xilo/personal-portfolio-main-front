@@ -1,23 +1,9 @@
-/* components.css - Custom component styles integrated with existing theme */
-
-/* ========================================
-   CONTACT CARD COMPONENTS
-   ======================================== */
-
-/*
- * Main contact card - exactly matches your original styling
- * Uses CSS custom properties from your root.css for theme consistency
- */
 .contact-card {
   @apply max-w-md mx-auto rounded-xl overflow-hidden;
   background-color: var(--color-background);
   box-shadow: var(--shadow-lg);
 }
 
-/*
- * Contact card header with warm gradient
- * Uses about section's warm color palette
- */
 .contact-card-header {
   @apply px-6 py-8;
   background: linear-gradient(
@@ -27,98 +13,54 @@
   );
 }
 
-/*
- * Contact card body - maintains exact spacing from original
- */
 .contact-card-body {
   @apply px-6 py-6 space-y-4;
 }
 
-/* ========================================
-   PROFILE SECTION COMPONENTS
-   ======================================== */
-
-/*
- * Profile section container - exactly as original
- */
 .contact-profile-section {
   @apply text-center;
 }
 
-/*
- * Profile avatar circle - maintains exact dimensions and styling
- */
 .contact-profile-avatar {
   @apply w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center;
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/*
- * Avatar text - preserves exact typography
- */
 .contact-profile-avatar-text {
   @apply text-2xl font-bold text-white;
 }
 
-/*
- * Profile name - exactly as original
- */
 .contact-profile-name {
   @apply text-2xl font-bold text-white mb-2;
 }
 
-/*
- * Profile subtitle - using theme color for consistency
- */
 .contact-profile-subtitle {
   @apply text-blue-100;
 }
 
-/* ========================================
-   CONTACT INFORMATION ROWS
-   ======================================== */
-
-/*
- * Contact row container - exactly preserves original flex layout
- */
 .contact-info-row {
   @apply flex items-center space-x-3;
 }
 
-/*
- * Contact icon container - maintains exact styling
- */
 .contact-info-icon {
   @apply w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0;
   background-color: var(--color-surface);
 }
 
-/*
- * Contact icon text - using theme colors
- */
 .contact-info-icon-text {
   @apply text-sm font-medium;
   color: var(--color-text-secondary);
 }
 
-/*
- * Contact info container - preserves exact flex behavior
- */
 .contact-info-content {
   @apply flex-1 min-w-0;
 }
 
-/*
- * Contact label - using theme typography
- */
 .contact-info-label {
   @apply text-sm font-medium;
   color: var(--color-text-primary);
 }
 
-/*
- * Contact link - enhanced with warm theme colors and exact transition
- */
 .contact-info-link {
   @apply block cursor-pointer transition-colors duration-200;
   color: var(--about-primary);
@@ -128,35 +70,19 @@
   color: var(--about-secondary);
 }
 
-/* ========================================
-   MESSAGE COMPONENTS WITH THEME INTEGRATION
-   ======================================== */
-
-/*
- * Base message container - using theme properties
- */
 .message-container {
   @apply max-w-md mx-auto mt-8 p-6 rounded-lg;
   border: 1px solid var(--color-border);
 }
 
-/*
- * Warning message - maintains your exact yellow styling
- */
 .message-warning {
   @apply message-container bg-yellow-50 border-yellow-200;
 }
 
-/*
- * Warning text - exactly as original but adaptable to dark theme
- */
 .message-warning-text {
   @apply text-yellow-800;
 }
 
-/*
- * Error message - using theme-aware colors
- */
 .message-error {
   @apply message-container;
   background-color: color-mix(
@@ -167,112 +93,49 @@
   border-color: #fecaca;
 }
 
-/*
- * Error text - theme-aware red
- */
 .message-error-text {
   color: color-mix(in srgb, #991b1b 80%, var(--color-text-primary) 20%);
 }
 
-/* ========================================
-   DEBUG AND UTILITY CLASSES
-   ======================================== */
-
-/*
- * Debug text - ensures visibility in both light and dark themes
- */
 .debug-text {
   @apply text-sm;
   color: var(--color-text-primary);
 }
 
-/* ========================================
-   LAYOUT COMPONENTS - SCREEN CONTAINERS
-   ======================================== */
-
-/*
- * Contact screen container - designed to work within existing layout hierarchy
- * Uses padding for spacing instead of trying to control viewport height
- * This respects the main-content container's height management
- */
 .contact-screen-container {
   @apply py-8 px-4;
 }
 
-/*
- * Alternative screen container for components that need more generous spacing
- * Useful for screens with multiple content sections
- */
 .screen-container-generous {
   @apply py-12 px-6;
 }
 
-/*
- * Minimal screen container for dense content layouts
- * Provides just enough breathing room without overwhelming the content
- */
 .screen-container-minimal {
   @apply py-4 px-4;
 }
 
-/* ========================================
-   CENTERED CONTENT CONTAINERS
-   ======================================== */
-
-/*
- * Error message container that works within any screen container
- * Uses relative positioning instead of trying to control overall layout
- */
 .error-message-container {
   @apply max-w-md mx-auto mt-8 p-6 rounded-lg;
   background-color: color-mix(in srgb, #fef2f2 90%, var(--color-background) 10%);
   border: 1px solid #fecaca;
 }
 
-/*
- * Error message text with theme-aware coloring
- */
 .error-message-text {
   color: color-mix(in srgb, #991b1b 80%, var(--color-text-primary) 20%);
 }
 
-/*
- * Generic centered content container for any type of primary content
- * Provides consistent width constraints and centering across the application
- */
 .centered-content {
   @apply max-w-4xl mx-auto;
 }
 
-/* ========================================
-   RESPONSIVE SPACING UTILITIES
-   ======================================== */
-
-/*
- * Responsive padding that adapts to screen size
- * Smaller padding on mobile, more generous on larger screens
- */
 .responsive-container-padding {
   @apply px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12;
 }
 
-/*
- * Content spacing that maintains good rhythm across different screen sizes
- */
 .content-spacing {
   @apply space-y-4 sm:space-y-6 lg:space-y-8;
 }
 
-/* ========================================
-   ABOUT SECTION - WARM COLORS THEME
-   ======================================== */
-
-/*
- * About-specific warm color scheme using brown, yellow, orange, red variants
- * Ensures excellent readability in both light and dark modes
- */
-
-/* Light theme about colors - warm palette with high contrast */
 :root {
   --about-primary: #dc2626;    /* Strong red for high contrast */
   --about-secondary: #ea580c;  /* Vibrant orange */
@@ -282,7 +145,6 @@
   --about-text-warm: #451a03;  /* Dark brown for text */
 }
 
-/* Dark theme about colors - adjusted for dark backgrounds */
 .dark-theme {
   --about-primary: #f87171;    /* Softer red for dark mode */
   --about-secondary: #fb923c;  /* Lighter orange */
@@ -292,42 +154,23 @@
   --about-text-warm: #fef3c7;  /* Light warm text */
 }
 
-/* ========================================
-   ABOUT INTRO COMPONENTS
-   ======================================== */
-
-/*
- * Main about intro container
- */
 .about-intro-container {
   @apply min-h-screen p-8;
   background-color: var(--color-background);
 }
 
-/*
- * About intro wrapper
- */
 .about-intro-wrapper {
   @apply max-w-5xl mx-auto;
 }
 
-/*
- * About intro section with background
- */
 .about-intro-section {
   @apply relative;
 }
 
-/*
- * Background overlay container
- */
 .about-intro-background {
   @apply absolute inset-0 -z-10;
 }
 
-/*
- * Main gradient background with warm colors
- */
 .about-intro-gradient {
   @apply absolute inset-0 rounded-3xl;
   background: linear-gradient(
@@ -338,9 +181,6 @@
   );
 }
 
-/*
- * Animated decorative elements with warm colors
- */
 .about-intro-star-1 {
   @apply absolute top-12 left-12 text-3xl animate-pulse;
   color: color-mix(in srgb, var(--about-primary) 60%, transparent);
@@ -374,9 +214,6 @@
   border: 1px solid color-mix(in srgb, var(--about-secondary) 40%, transparent);
 }
 
-/*
- * Header section with warm color gradient
- */
 .about-intro-header {
   @apply text-center mb-8;
 }
@@ -405,9 +242,6 @@
   );
 }
 
-/*
- * Content section with readable warm colors
- */
 .about-intro-content {
   @apply mb-6;
 }
@@ -454,13 +288,6 @@
   @apply max-w-4xl mx-auto;
 }
 
-/* ========================================
-   ABOUT REVIEWS COMPONENTS
-   ======================================== */
-
-/*
- * Review carousel container
- */
 .about-reviews-container {
   @apply py-6 px-4;
 }
@@ -501,9 +328,6 @@
   @apply mb-4;
 }
 
-/*
- * Individual review card
- */
 .about-review-card {
   @apply backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 w-full;
   background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
@@ -572,14 +396,6 @@
 }
 
 
-/* ========================================
-   ABOUT THEME APPLICATIONS FOR INTRO CARDS
-   ======================================== */
-
-/*
- * Apply warm theme to intro cards when in about section
- * These override the default intro card colors with warm palette
- */
 .about-intro-section .intro-card--red {
   background: linear-gradient(135deg, var(--about-primary) 0%, var(--about-secondary) 100%);
   border-color: var(--about-tertiary);
@@ -605,114 +421,78 @@
   border-color: var(--about-quaternary);
 }
 
-/*
- * About header styling with warm colors
- */
 .about-intro-section .intro-header {
   --header-primary-color: var(--about-primary);
   --header-secondary-color: var(--about-secondary);
   --header-accent-color: var(--about-tertiary);
 }
 
-/*------------------------------*/
-
-/* ========================================
-   COMPONENT VARIANT STYLES
-   ======================================== */
-
-/*
- * Compact variant - reduced spacing and sizing for sidebar use
- */
 .contact-card--compact {
-  /* Smaller maximum width for compact layouts */
   max-width: 20rem; /* 320px */
 }
 
 .contact-card--compact .contact-card-header {
-  /* Reduced padding for compact version */
   padding: clamp(0.75rem, 3vw, 1.25rem) clamp(0.75rem, 4vw, 1rem);
 }
 
 .contact-card--compact .contact-card-body {
-  /* Tighter spacing in compact mode */
   padding: clamp(0.75rem, 3vw, 1rem) clamp(0.75rem, 4vw, 1rem);
   gap: clamp(0.5rem, 2vw, 0.75rem);
 }
 
 .contact-card--compact .contact-profile-name {
-  /* Slightly smaller name in compact mode */
   font-size: clamp(1rem, 4vw, 1.5rem);
 }
 
 .contact-card--compact .contact-profile-avatar {
-  /* Smaller avatar for compact cards */
   width: clamp(3rem, 6vw, 4rem);
   height: clamp(3rem, 6vw, 4rem);
 }
 
-/*
- * Minimal variant - bare essentials only
- */
 .contact-card--minimal {
-  /* Even smaller for minimal use */
   max-width: 16rem; /* 256px */
   min-width: 200px;
 }
 
 .contact-card--minimal .contact-card-header {
-  /* Minimal padding */
   padding: clamp(0.5rem, 2vw, 1rem) clamp(0.5rem, 3vw, 0.75rem);
 }
 
 .contact-card--minimal .contact-card-body {
-  /* Minimal spacing */
   padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.5rem, 3vw, 0.75rem);
   gap: clamp(0.375rem, 1.5vw, 0.5rem);
 }
 
 .contact-card--minimal .contact-profile-name {
-  /* Smaller name for minimal cards */
   font-size: clamp(0.875rem, 3.5vw, 1.25rem);
 }
 
 .contact-card--minimal .contact-profile-avatar {
-  /* Tiny avatar for minimal cards */
   width: clamp(2.5rem, 5vw, 3rem);
   height: clamp(2.5rem, 5vw, 3rem);
   margin-bottom: clamp(0.375rem, 1.5vw, 0.5rem);
 }
 
-/*
- * Narrow container handling - when component is squeezed
- */
 .contact-card--narrow .contact-info-link {
-  /* Break long text more aggressively in narrow containers */
   word-break: break-all;
   overflow-wrap: anywhere;
 }
 
 .contact-card--narrow .contact-profile-name {
-  /* Ensure name doesn't break the layout when very narrow */
   font-size: clamp(0.875rem, 3vw, 1.125rem);
   word-break: break-word;
 }
 
-/*
- * Compact warning message variant
- */
 .message-warning--compact {
-  /* Reduced padding for compact warnings */
   padding: clamp(0.5rem, 2vw, 0.75rem);
   margin-top: clamp(0.5rem, 2vw, 1rem);
 }
 
 .message-warning--compact .message-warning-text {
-  /* Smaller warning text in compact mode */
   font-size: clamp(0.75rem, 3vw, 0.875rem);
 }
 
 .message-warning--compact .debug-text {
-  /* Even smaller debug text in compact mode */
   font-size: clamp(0.625rem, 2.5vw, 0.75rem);
 }
 

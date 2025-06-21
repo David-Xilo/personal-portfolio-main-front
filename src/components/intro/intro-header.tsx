@@ -21,7 +21,6 @@ const IntroHeader: React.FC<SectionHeaderProps> = ({
                                                      leftIcon,
                                                      rightIcon
                                                    }) => {
-  // Helper function to generate gradient class names
   const getGradientKey = (primary: string, secondary: string, tertiary?: string): string => {
     if (tertiary) {
       return `${primary}-${secondary}-${tertiary}`
@@ -29,7 +28,6 @@ const IntroHeader: React.FC<SectionHeaderProps> = ({
     return `${primary}-${secondary}`
   }
 
-  // Helper function to get reverse gradient for right icon
   const getReverseGradientKey = (primary: string, secondary: string, tertiary?: string): string => {
     if (tertiary) {
       return `${tertiary}-${primary}`

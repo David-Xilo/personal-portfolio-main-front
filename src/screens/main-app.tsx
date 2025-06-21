@@ -41,10 +41,6 @@ const MainApp: React.FC = () => {
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div className="h-screen">
-        {/*<div className="flex justify-between items-center">*/}
-        {/*  <MainNav />*/}
-        {/*  <ThemeToggle className="mr-4" />*/}
-        {/*</div>*/}
 
         <MainNav />
 

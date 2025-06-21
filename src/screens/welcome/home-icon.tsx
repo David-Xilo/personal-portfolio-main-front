@@ -1,6 +1,5 @@
 import React from 'react'
 
-// from https://heroicons.com/outline
 const HomeIcon: React.FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
