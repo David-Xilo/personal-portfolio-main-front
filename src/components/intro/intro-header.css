@@ -1,0 +1,245 @@
+/* Introduction Header Component Styles */
+
+/* Base container styles */
+.intro-header {
+    @apply text-center mb-8;
+}
+
+/* Header flex container */
+.intro-header__content {
+    @apply inline-flex items-center gap-3 mb-4;
+}
+
+/* Icon base styles */
+.intro-header__icon {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center;
+}
+
+.intro-header__icon-content {
+    @apply text-2xl text-white;
+}
+
+/* Title styles */
+.intro-header__title {
+    @apply text-4xl font-bold bg-clip-text text-transparent inline-flex;
+}
+
+/* Underline styles */
+.intro-header__underline {
+    @apply w-24 h-1 mx-auto rounded-full;
+}
+
+/* Icon gradient combinations - Light mode */
+.intro-header__icon--cyan-blue {
+    @apply bg-gradient-to-br from-cyan-400 to-blue-500;
+}
+
+.intro-header__icon--emerald-teal {
+    @apply bg-gradient-to-br from-emerald-400 to-teal-500;
+}
+
+.intro-header__icon--blue-emerald {
+    @apply bg-gradient-to-br from-blue-400 to-emerald-500;
+}
+
+.intro-header__icon--purple-pink {
+    @apply bg-gradient-to-br from-purple-400 to-pink-500;
+}
+
+.intro-header__icon--cyan-purple {
+    @apply bg-gradient-to-br from-cyan-400 to-purple-500;
+}
+
+.intro-header__icon--teal-cyan {
+    @apply bg-gradient-to-br from-teal-400 to-cyan-500;
+}
+
+.intro-header__icon--pink-purple {
+    @apply bg-gradient-to-br from-pink-400 to-purple-500;
+}
+
+/* Icon gradient combinations - Dark mode */
+.dark-theme .intro-header__icon--cyan-blue {
+    @apply bg-gradient-to-br from-cyan-500 to-blue-500;
+}
+
+.dark-theme .intro-header__icon--emerald-teal {
+    @apply bg-gradient-to-br from-emerald-500 to-teal-500;
+}
+
+.dark-theme .intro-header__icon--blue-emerald {
+    @apply bg-gradient-to-br from-blue-500 to-emerald-500;
+}
+
+.dark-theme .intro-header__icon--purple-pink {
+    @apply bg-gradient-to-br from-purple-500 to-pink-500;
+}
+
+.dark-theme .intro-header__icon--cyan-purple {
+    @apply bg-gradient-to-br from-cyan-500 to-purple-500;
+}
+
+.dark-theme .intro-header__icon--teal-cyan {
+    @apply bg-gradient-to-br from-teal-500 to-cyan-500;
+}
+
+.dark-theme .intro-header__icon--pink-purple {
+    @apply bg-gradient-to-br from-pink-500 to-purple-500;
+}
+
+/* Title gradient combinations - Light mode */
+.intro-header__title--cyan-blue {
+    @apply bg-gradient-to-r from-cyan-600 to-blue-600;
+}
+
+.intro-header__title--emerald-teal-blue {
+    @apply bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600;
+}
+
+.intro-header__title--purple-pink-cyan {
+    @apply bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600;
+}
+
+.intro-header__title--emerald-teal {
+    @apply bg-gradient-to-r from-emerald-600 to-teal-600;
+}
+
+.intro-header__title--blue-emerald {
+    @apply bg-gradient-to-r from-blue-600 to-emerald-600;
+}
+
+.intro-header__title--purple-pink {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600;
+}
+
+.intro-header__title--cyan-purple {
+    @apply bg-gradient-to-r from-cyan-600 to-purple-600;
+}
+
+/* Title gradient combinations - Dark mode */
+.dark-theme .intro-header__title--cyan-blue {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-400;
+}
+
+.dark-theme .intro-header__title--emerald-teal-blue {
+    @apply bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-400;
+}
+
+.dark-theme .intro-header__title--purple-pink-cyan {
+    @apply bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400;
+}
+
+.dark-theme .intro-header__title--emerald-teal {
+    @apply bg-gradient-to-r from-emerald-400 to-teal-400;
+}
+
+.dark-theme .intro-header__title--blue-emerald {
+    @apply bg-gradient-to-r from-blue-400 to-emerald-400;
+}
+
+.dark-theme .intro-header__title--purple-pink {
+    @apply bg-gradient-to-r from-purple-400 to-pink-400;
+}
+
+.dark-theme .intro-header__title--cyan-purple {
+    @apply bg-gradient-to-r from-cyan-400 to-purple-400;
+}
+
+/* Underline gradient combinations - Light mode */
+.intro-header__underline--cyan-blue {
+    @apply bg-gradient-to-r from-cyan-500 to-blue-500;
+}
+
+.intro-header__underline--emerald-teal-blue {
+    @apply bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500;
+}
+
+.intro-header__underline--purple-pink-cyan {
+    @apply bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500;
+}
+
+.intro-header__underline--emerald-teal {
+    @apply bg-gradient-to-r from-emerald-500 to-teal-500;
+}
+
+.intro-header__underline--blue-emerald {
+    @apply bg-gradient-to-r from-blue-500 to-emerald-500;
+}
+
+.intro-header__underline--purple-pink {
+    @apply bg-gradient-to-r from-purple-500 to-pink-500;
+}
+
+.intro-header__underline--cyan-purple {
+    @apply bg-gradient-to-r from-cyan-500 to-purple-500;
+}
+
+/* Underline gradient combinations - Dark mode (same as light mode for underlines) */
+.dark-theme .intro-header__underline--cyan-blue {
+    @apply bg-gradient-to-r from-cyan-500 to-blue-500;
+}
+
+.dark-theme .intro-header__underline--emerald-teal-blue {
+    @apply bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500;
+}
+
+.dark-theme .intro-header__underline--purple-pink-cyan {
+    @apply bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500;
+}
+
+.dark-theme .intro-header__underline--emerald-teal {
+    @apply bg-gradient-to-r from-emerald-500 to-teal-500;
+}
+
+.dark-theme .intro-header__underline--blue-emerald {
+    @apply bg-gradient-to-r from-blue-500 to-emerald-500;
+}
+
+.dark-theme .intro-header__underline--purple-pink {
+    @apply bg-gradient-to-r from-purple-500 to-pink-500;
+}
+
+.dark-theme .intro-header__underline--cyan-purple {
+    @apply bg-gradient-to-r from-cyan-500 to-purple-500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .intro-header__content {
+        @apply gap-2;
+    }
+
+    .intro-header__icon {
+        @apply w-10 h-10;
+    }
+
+    .intro-header__icon-content {
+        @apply text-xl;
+    }
+
+    .intro-header__title {
+        @apply text-3xl;
+    }
+
+    .intro-header__underline {
+        @apply w-20;
+    }
+}
+
+@media (max-width: 640px) {
+    .intro-header__title {
+        @apply text-2xl;
+    }
+
+    .intro-header__icon {
+        @apply w-8 h-8;
+    }
+
+    .intro-header__icon-content {
+        @apply text-lg;
+    }
+
+    .intro-header__underline {
+        @apply w-16;
+    }
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import './intro-header.css'
 
 type ColorScheme = {
   primary: string
@@ -14,96 +15,60 @@ interface SectionHeaderProps {
   rightIcon?: React.ReactNode
 }
 
-const colorClasses = {
-  iconGradients: {
-    'cyan-blue': 'bg-gradient-to-br from-cyan-500 to-blue-500',
-    'emerald-teal': 'bg-gradient-to-br from-emerald-500 to-teal-500',
-    'blue-emerald': 'bg-gradient-to-br from-blue-500 to-emerald-500',
-    'purple-pink': 'bg-gradient-to-br from-purple-500 to-pink-500',
-    'cyan-purple': 'bg-gradient-to-br from-cyan-500 to-purple-500'
-  },
-  // Title text gradients
-  titleGradients: {
-    'cyan-blue': 'bg-gradient-to-r from-cyan-400 to-blue-400',
-    'emerald-teal-blue': 'bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-400',
-    'purple-pink-cyan': 'bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400'
-  },
-  // Underline gradients
-  underlineGradients: {
-    'cyan-blue': 'bg-gradient-to-r from-cyan-500 to-blue-500',
-    'emerald-teal-blue': 'bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500',
-    'purple-pink-cyan': 'bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500'
-  }
-}
-
 const IntroHeader: React.FC<SectionHeaderProps> = ({
-                                                       title,
-                                                       colorScheme,
-                                                       leftIcon,
-                                                       rightIcon
-                                                     }) => {
+                                                     title,
+                                                     colorScheme,
+                                                     leftIcon,
+                                                     rightIcon
+                                                   }) => {
+  // Helper function to generate gradient class names
+  const getGradientKey = (primary: string, secondary: string, tertiary?: string): string => {
+    if (tertiary) {
+      return `${primary}-${secondary}-${tertiary}`
+    }
+    return `${primary}-${secondary}`
+  }
 
-  const iconGradientKey = `${colorScheme.primary}-${colorScheme.secondary}` as keyof typeof colorClasses.iconGradients
-  const titleGradientKey = colorScheme.tertiary
-    ? `${colorScheme.primary}-${colorScheme.secondary}-${colorScheme.tertiary}` as keyof typeof colorClasses.titleGradients
-    : `${colorScheme.primary}-${colorScheme.secondary}` as keyof typeof colorClasses.titleGradients
+  // Helper function to get reverse gradient for right icon
+  const getReverseGradientKey = (primary: string, secondary: string, tertiary?: string): string => {
+    if (tertiary) {
+      return `${tertiary}-${primary}`
+    }
+    return `${secondary}-${primary}`
+  }
 
-  const leftIconGradient = colorClasses.iconGradients[iconGradientKey] || colorClasses.iconGradients['cyan-blue']
+  const leftIconGradient = getGradientKey(colorScheme.primary, colorScheme.secondary)
   const rightIconGradient = rightIcon && colorScheme.tertiary
-    ? colorClasses.iconGradients[`${colorScheme.tertiary}-${colorScheme.primary}` as keyof typeof colorClasses.iconGradients] || colorClasses.iconGradients['cyan-blue']
-    : ''
-  const titleGradient = colorClasses.titleGradients[titleGradientKey] || colorClasses.titleGradients['cyan-blue']
-  const underlineGradient = colorClasses.underlineGradients[titleGradientKey] || colorClasses.underlineGradients['cyan-blue']
-
-  const containerClasses = 'text-center mb-8'
-  const headerFlexClasses = 'inline-flex items-center gap-3 mb-4'
-  const iconSizeClasses = 'w-12 h-12'
-  const iconRoundingClasses = 'rounded-2xl'
-  const iconContentClasses = 'text-2xl'
-  const titleSizeClasses = 'text-4xl'
-  const underlineSizeClasses = 'w-24'
+    ? getReverseGradientKey(colorScheme.primary, colorScheme.secondary, colorScheme.tertiary)
+    : leftIconGradient
+  const titleGradient = getGradientKey(colorScheme.primary, colorScheme.secondary, colorScheme.tertiary)
+  const underlineGradient = titleGradient
 
   return (
-    <div className={containerClasses}>
-      <div className={headerFlexClasses}>
+    <div className="intro-header">
+      <div className="intro-header__content">
         {leftIcon && (
-          <div className={`
-            ${iconSizeClasses} 
-            ${leftIconGradient} 
-            ${iconRoundingClasses} 
-            flex items-center justify-center
-          `}>
-            <div className={`${iconContentClasses} text-white`}>
+          <div className={`intro-header__icon intro-header__icon--${leftIconGradient}`}>
+            <div className="intro-header__icon-content">
               {leftIcon}
             </div>
           </div>
         )}
 
-        <h1 className={`
-          ${titleSizeClasses} 
-          font-bold 
-          ${titleGradient} 
-          bg-clip-text text-transparent
-          inline-flex
-        `}>
+        <h1 className={`intro-header__title intro-header__title--${titleGradient}`}>
           {title}
         </h1>
 
         {rightIcon && (
-          <div className={`
-            ${iconSizeClasses} 
-            ${rightIconGradient} 
-            ${iconRoundingClasses} 
-            flex items-center justify-center
-          `}>
-            <div className={`${iconContentClasses} text-white`}>
+          <div className={`intro-header__icon intro-header__icon--${rightIconGradient}`}>
+            <div className="intro-header__icon-content">
               {rightIcon}
             </div>
           </div>
         )}
       </div>
 
-      <div className={`${underlineSizeClasses} h-1 ${underlineGradient} mx-auto rounded-full`}></div>
+      <div className={`intro-header__underline intro-header__underline--${underlineGradient}`}></div>
     </div>
   )
 }
