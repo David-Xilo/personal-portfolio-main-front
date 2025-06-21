@@ -1,0 +1,336 @@
+
+.intro-card {
+    @apply rounded-xl p-6 border transition-all duration-300;
+    @apply hover:transform hover:scale-105;
+}
+
+.intro-card__icon-container {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center mb-4;
+}
+
+.intro-card__icon {
+    @apply w-6 h-6;
+}
+
+.intro-card__title {
+    @apply text-lg font-bold mb-3;
+}
+
+.intro-card__description {
+    @apply text-sm leading-relaxed text-slate-600;
+}
+
+.dark-theme .intro-card__description {
+    @apply text-slate-300;
+}
+
+.intro-card--purple {
+    @apply bg-gradient-to-br from-purple-50 to-purple-100;
+    @apply border-purple-200 hover:border-purple-300;
+    @apply hover:shadow-xl hover:shadow-purple-200/50;
+}
+
+.intro-card--purple .intro-card__icon-container {
+    @apply bg-purple-100;
+}
+
+.intro-card--purple .intro-card__icon {
+    @apply text-purple-600;
+}
+
+.intro-card--purple .intro-card__title {
+    @apply text-purple-800;
+}
+
+.dark-theme .intro-card--purple {
+    @apply bg-gradient-to-br from-purple-800/50 to-purple-900/50;
+    @apply border-purple-500/30 hover:border-purple-400/60;
+    @apply hover:shadow-xl hover:shadow-purple-500/20;
+}
+
+.dark-theme .intro-card--purple .intro-card__icon-container {
+    @apply bg-purple-500/30;
+}
+
+.dark-theme .intro-card--purple .intro-card__icon {
+    @apply text-purple-400;
+}
+
+.dark-theme .intro-card--purple .intro-card__title {
+    @apply text-purple-300;
+}
+
+.intro-card--pink {
+    @apply bg-gradient-to-br from-pink-50 to-pink-100;
+    @apply border-pink-200 hover:border-pink-300;
+    @apply hover:shadow-xl hover:shadow-pink-200/50;
+}
+
+.intro-card--pink .intro-card__icon-container {
+    @apply bg-pink-100;
+}
+
+.intro-card--pink .intro-card__icon {
+    @apply text-pink-600;
+}
+
+.intro-card--pink .intro-card__title {
+    @apply text-pink-800;
+}
+
+.dark-theme .intro-card--pink {
+    @apply bg-gradient-to-br from-pink-800/50 to-pink-900/50;
+    @apply border-pink-500/30 hover:border-pink-400/60;
+    @apply hover:shadow-xl hover:shadow-pink-500/20;
+}
+
+.dark-theme .intro-card--pink .intro-card__icon-container {
+    @apply bg-pink-500/30;
+}
+
+.dark-theme .intro-card--pink .intro-card__icon {
+    @apply text-pink-400;
+}
+
+.dark-theme .intro-card--pink .intro-card__title {
+    @apply text-pink-300;
+}
+
+.intro-card--cyan {
+    @apply bg-gradient-to-br from-cyan-50 to-cyan-100;
+    @apply border-cyan-200 hover:border-cyan-300;
+    @apply hover:shadow-xl hover:shadow-cyan-200/50;
+}
+
+.intro-card--cyan .intro-card__icon-container {
+    @apply bg-cyan-100;
+}
+
+.intro-card--cyan .intro-card__icon {
+    @apply text-cyan-600;
+}
+
+.intro-card--cyan .intro-card__title {
+    @apply text-cyan-800;
+}
+
+.dark-theme .intro-card--cyan {
+    @apply bg-gradient-to-br from-cyan-800/50 to-cyan-900/50;
+    @apply border-cyan-500/30 hover:border-cyan-400/60;
+    @apply hover:shadow-xl hover:shadow-cyan-500/20;
+}
+
+.dark-theme .intro-card--cyan .intro-card__icon-container {
+    @apply bg-cyan-500/30;
+}
+
+.dark-theme .intro-card--cyan .intro-card__icon {
+    @apply text-cyan-400;
+}
+
+.dark-theme .intro-card--cyan .intro-card__title {
+    @apply text-cyan-300;
+}
+
+.intro-card--violet {
+    @apply bg-gradient-to-br from-violet-50 to-violet-100;
+    @apply border-violet-200 hover:border-violet-300;
+    @apply hover:shadow-xl hover:shadow-violet-200/50;
+}
+
+.intro-card--violet .intro-card__icon-container {
+    @apply bg-violet-100;
+}
+
+.intro-card--violet .intro-card__icon {
+    @apply text-violet-600;
+}
+
+.intro-card--violet .intro-card__title {
+    @apply text-violet-800;
+}
+
+.dark-theme .intro-card--violet {
+    @apply bg-gradient-to-br from-violet-800/50 to-violet-900/50;
+    @apply border-violet-500/30 hover:border-violet-400/60;
+    @apply hover:shadow-xl hover:shadow-violet-500/20;
+}
+
+.dark-theme .intro-card--violet .intro-card__icon-container {
+    @apply bg-violet-500/30;
+}
+
+.dark-theme .intro-card--violet .intro-card__icon {
+    @apply text-violet-400;
+}
+
+.dark-theme .intro-card--violet .intro-card__title {
+    @apply text-violet-300;
+}
+
+.intro-card--emerald {
+    @apply bg-gradient-to-br from-emerald-50 to-emerald-100;
+    @apply border-emerald-200 hover:border-emerald-300;
+    @apply hover:shadow-xl hover:shadow-emerald-200/50;
+}
+
+.intro-card--emerald .intro-card__icon-container {
+    @apply bg-emerald-100;
+}
+
+.intro-card--emerald .intro-card__icon {
+    @apply text-emerald-600;
+}
+
+.intro-card--emerald .intro-card__title {
+    @apply text-emerald-800;
+}
+
+.dark-theme .intro-card--emerald {
+    @apply bg-gradient-to-br from-emerald-800/50 to-emerald-900/50;
+    @apply border-emerald-500/30 hover:border-emerald-400/60;
+    @apply hover:shadow-xl hover:shadow-emerald-500/20;
+}
+
+.dark-theme .intro-card--emerald .intro-card__icon-container {
+    @apply bg-emerald-500/30;
+}
+
+.dark-theme .intro-card--emerald .intro-card__icon {
+    @apply text-emerald-400;
+}
+
+.dark-theme .intro-card--emerald .intro-card__title {
+    @apply text-emerald-300;
+}
+
+.intro-card--teal {
+    @apply bg-gradient-to-br from-teal-50 to-teal-100;
+    @apply border-teal-200 hover:border-teal-300;
+    @apply hover:shadow-xl hover:shadow-teal-200/50;
+}
+
+.intro-card--teal .intro-card__icon-container {
+    @apply bg-teal-100;
+}
+
+.intro-card--teal .intro-card__icon {
+    @apply text-teal-600;
+}
+
+.intro-card--teal .intro-card__title {
+    @apply text-teal-800;
+}
+
+.dark-theme .intro-card--teal {
+    @apply bg-gradient-to-br from-teal-800/50 to-teal-900/50;
+    @apply border-teal-500/30 hover:border-teal-400/60;
+    @apply hover:shadow-xl hover:shadow-teal-500/20;
+}
+
+.dark-theme .intro-card--teal .intro-card__icon-container {
+    @apply bg-teal-500/30;
+}
+
+.dark-theme .intro-card--teal .intro-card__icon {
+    @apply text-teal-400;
+}
+
+.dark-theme .intro-card--teal .intro-card__title {
+    @apply text-teal-300;
+}
+
+.intro-card--blue {
+    @apply bg-gradient-to-br from-blue-50 to-blue-100;
+    @apply border-blue-200 hover:border-blue-300;
+    @apply hover:shadow-xl hover:shadow-blue-200/50;
+}
+
+.intro-card--blue .intro-card__icon-container {
+    @apply bg-blue-100;
+}
+
+.intro-card--blue .intro-card__icon {
+    @apply text-blue-600;
+}
+
+.intro-card--blue .intro-card__title {
+    @apply text-blue-800;
+}
+
+.dark-theme .intro-card--blue {
+    @apply bg-gradient-to-br from-blue-800/50 to-blue-900/50;
+    @apply border-blue-500/30 hover:border-blue-400/60;
+    @apply hover:shadow-xl hover:shadow-blue-500/20;
+}
+
+.dark-theme .intro-card--blue .intro-card__icon-container {
+    @apply bg-blue-500/30;
+}
+
+.dark-theme .intro-card--blue .intro-card__icon {
+    @apply text-blue-400;
+}
+
+.dark-theme .intro-card--blue .intro-card__title {
+    @apply text-blue-300;
+}
+
+.intro-card--green {
+    @apply bg-gradient-to-br from-green-50 to-green-100;
+    @apply border-green-200 hover:border-green-300;
+    @apply hover:shadow-xl hover:shadow-green-200/50;
+}
+
+.intro-card--green .intro-card__icon-container {
+    @apply bg-green-100;
+}
+
+.intro-card--green .intro-card__icon {
+    @apply text-green-600;
+}
+
+.intro-card--green .intro-card__title {
+    @apply text-green-800;
+}
+
+.dark-theme .intro-card--green {
+    @apply bg-gradient-to-br from-green-800/50 to-green-900/50;
+    @apply border-green-500/30 hover:border-green-400/60;
+    @apply hover:shadow-xl hover:shadow-green-500/20;
+}
+
+.dark-theme .intro-card--green .intro-card__icon-container {
+    @apply bg-green-500/30;
+}
+
+.dark-theme .intro-card--green .intro-card__icon {
+    @apply text-green-400;
+}
+
+.dark-theme .intro-card--green .intro-card__title {
+    @apply text-green-300;
+}
+
+@media (max-width: 640px) {
+    .intro-card {
+        @apply p-4;
+    }
+
+    .intro-card__icon-container {
+        @apply w-10 h-10 mb-3;
+    }
+
+    .intro-card__icon {
+        @apply w-5 h-5;
+    }
+
+    .intro-card__title {
+        @apply text-base mb-2;
+    }
+
+    .intro-card__description {
+        @apply text-xs;
+    }
+}
+
