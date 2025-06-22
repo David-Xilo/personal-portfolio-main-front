@@ -18,8 +18,3 @@
 .project-store-link {
     cursor: pointer;
 }
-
-/* Empty projects screen styles */
-.flex.flex-col.items-center.justify-center {
-    cursor: default;
-}
