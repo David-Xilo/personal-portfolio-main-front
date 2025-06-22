@@ -53,6 +53,7 @@
     cursor: default;
     @apply relative w-full;
     outline: none;
+    --track-margin: 40px;
 }
 
 .repository-carousel-container {
@@ -61,7 +62,7 @@
 
 .repository-carousel-track {
     @apply overflow-hidden;
-    margin: 0 40px;
+    margin: 0 var(--track-margin);
 }
 
 .repository-carousel-items {
@@ -127,8 +128,8 @@
 }
 
 @media (max-width: 1024px) {
-    .repository-carousel-track {
-        margin: 0 35px;
+    .repository-carousel {
+        --track-margin: 35px;
     }
 
     .repository-carousel-item {
@@ -138,8 +139,8 @@
 }
 
 @media (max-width: 768px) {
-    .repository-carousel-track {
-        margin: 0 30px;
+    .repository-carousel {
+        --track-margin: 30px;
     }
 
     .repository-carousel-item {
@@ -162,8 +163,8 @@
 }
 
 @media (max-width: 640px) {
-    .repository-carousel-track {
-        margin: 0 25px;
+    .repository-carousel {
+        --track-margin: 25px;
     }
 
     .repository-carousel-item {
@@ -181,8 +182,8 @@
 }
 
 @media (max-width: 480px) {
-    .repository-carousel-track {
-        margin: 0 20px;
+    .repository-carousel {
+        --track-margin: 20px;
     }
 
     .repository-carousel-item {
