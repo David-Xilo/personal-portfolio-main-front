@@ -3,20 +3,6 @@ import {RepositoryInfo} from 'components/projects/repository'
 
 const domain = process.env.REACT_APP_API_URL
 
-interface Games {
-  title: string
-  genre: string
-  description: string
-  repositories: RepositoryInfo[]
-  link_to_store: string
-}
-
-interface GamesResponse {
-  status: string
-  message: Games[]
-  error: string | null
-}
-
 interface GamesPlayed {
   title: string
   genre: string
@@ -29,7 +15,6 @@ interface GamesPlayedResponse {
   message: GamesPlayed[]
   error: string | null
 }
-
 
 const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
   const completeEndpoint = domain + endpoint
@@ -67,4 +52,4 @@ const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
   return data
 }
 
-export {useGamesPlayedGetApi, Games, GamesPlayed}
+export {useGamesPlayedGetApi, GamesPlayed}
