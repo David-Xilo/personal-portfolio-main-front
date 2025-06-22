@@ -7,6 +7,7 @@ interface ContactRest {
   email: string
   linkedin: string
   github: string
+  credly: string
 }
 
 interface ContactResponse {

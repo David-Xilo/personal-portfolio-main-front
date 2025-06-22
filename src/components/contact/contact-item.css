@@ -27,11 +27,11 @@
 }
 
 .contact-card-body {
-    @apply px-6 py-6 space-y-4;
+    @apply px-2 py-6 space-y-4;
 }
 
 .contact-screen-container {
-    @apply py-8 px-4;
+    @apply py-8 px-1;
 }
 
 .message-container {
@@ -85,7 +85,7 @@
 
 
 .contact-info-row {
-    @apply flex items-center space-x-3;
+    @apply flex items-center space-x-2;
 }
 
 .contact-info-icon {
@@ -105,6 +105,10 @@
 .contact-info-label {
     @apply text-sm font-medium;
     color: var(--color-text-primary);
+}
+
+.contact-email-compact {
+    font-size: small;
 }
 
 .contact-info-link {

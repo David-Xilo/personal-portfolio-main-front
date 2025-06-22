@@ -17,9 +17,10 @@ export const handlers = [
     const contact = {
       message: {
         name: 'John Doe',
-        email: 'johndoe@example.com',
+        email: 'david.dbmoura@gmail.com',
         linkedin: 'linkedin/johndoe',
         github: 'https://github.com/johndoe',
+        credly: 'https://github.com/johndoe',
       },
     }
     return HttpResponse.json(contact)

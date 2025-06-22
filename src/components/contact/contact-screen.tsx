@@ -52,12 +52,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
     return classes
   }
 
-  const shouldShowField = (field: keyof ContactRest): boolean => {
-    if (variant === 'compact' && containerWidth < 280) {
-      return field === 'email' || (field === 'github')
-    }
-    return true
-  }
+  const emailFontSize = variant === 'compact' ? 'contact-email-compact' : ''
 
   return (
     <div
@@ -76,7 +71,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
       </div>
 
       <div className="contact-card-body">
-        {contact.email && shouldShowField('email') && (
+        {contact.email && (
           <div className="contact-info-row">
             <div className="contact-info-icon">
               <span className="contact-info-icon-text">@</span>
@@ -85,7 +80,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
               <p className="contact-info-label">Email</p>
               <a
                 href={`mailto:${contact.email}`}
-                className="contact-info-link"
+                className={`contact-info-link ${emailFontSize}`}
                 title={contact.email}
               >
                 {containerWidth < 280 && contact.email.length > 25
@@ -97,7 +92,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
           </div>
         )}
 
-        {contact.github && shouldShowField('github') && (
+        {contact.github && (
           <div className="contact-info-row">
             <div className="contact-info-icon">
               <span className="contact-info-icon-text">GH</span>
@@ -117,7 +112,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
           </div>
         )}
 
-        {contact.linkedin && shouldShowField('linkedin') && (
+        {contact.linkedin && (
           <div className="contact-info-row">
             <div className="contact-info-icon">
               <span className="contact-info-icon-text">in</span>
@@ -132,6 +127,26 @@ const ContactItem: React.FC<ContactItemProps> = ({
                 title="Connect on LinkedIn"
               >
                 Connect
+              </a>
+            </div>
+          </div>
+        )}
+
+        {contact.credly && (
+          <div className="contact-info-row">
+            <div className="contact-info-icon">
+              <span className="contact-info-icon-text">C</span>
+            </div>
+            <div className="contact-info-content">
+              <p className="contact-info-label">Credly</p>
+              <a
+                href={contact.credly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-info-link"
+                title="Connect on LinkedIn"
+              >
+                Certifications
               </a>
             </div>
           </div>
