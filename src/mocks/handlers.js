@@ -201,6 +201,13 @@ export const handlers = [
           link_to_store: 'https://github.com/game',
           repositories: [],
         },
+        {
+          title: 'game title',
+          genre: 'RPG',
+          description: 'game description',
+          link_to_store: 'https://github.com/game',
+          repositories: [],
+        },
       ],
     }
     return HttpResponse.json(projects)

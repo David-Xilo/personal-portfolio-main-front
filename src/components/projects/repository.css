@@ -39,7 +39,6 @@
     transform: translateY(-1px);
 }
 
-/* Repository Carousel Styles */
 .repository-carousel {
     @apply relative w-full;
     outline: none;
@@ -51,7 +50,7 @@
 
 .repository-carousel-track {
     @apply overflow-hidden;
-    margin: 0 40px; /* Space for arrows */
+    margin: 0 40px;
 }
 
 .repository-carousel-items {
@@ -65,7 +64,6 @@
     max-width: 320px;
 }
 
-/* Carousel Arrow Styles */
 .carousel-arrow {
     @apply absolute top-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200;
     @apply bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600;
@@ -94,7 +92,6 @@
     @apply w-5 h-5;
 }
 
-/* Carousel Indicators */
 .carousel-indicators {
     @apply flex justify-center mt-4 space-x-2;
 }
@@ -113,7 +110,6 @@
     @apply bg-gray-500 dark:bg-gray-500;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .repository-carousel-track {
         margin: 0 35px;
@@ -168,7 +164,6 @@
     }
 }
 
-/* Single card layout for very small screens */
 @media (max-width: 480px) {
     .repository-carousel-track {
         margin: 0 20px;
@@ -180,25 +175,15 @@
     }
 }
 
-/* Smooth scroll behavior for keyboard navigation */
-.repository-carousel:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-
-/* Loading state styles (optional) */
 .repository-carousel.loading .repository-carousel-items {
     opacity: 0.6;
     pointer-events: none;
 }
 
-/* Empty state */
 .repository-carousel .text-center {
     @apply py-8 text-gray-500 dark:text-gray-400;
 }
 
-/* Animation for card entrance */
 .repository-card {
     animation: fadeInUp 0.5s ease-out forwards;
 }

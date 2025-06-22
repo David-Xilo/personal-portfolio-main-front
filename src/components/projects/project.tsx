@@ -2,6 +2,7 @@ import React from 'react'
 import {RepositoryCarousel} from './repository'
 import {ContentListItem} from 'components/menu/content-list-item'
 import {Project, useProjectsGetApi} from '../../hooks/projects-rest'
+import './project.css'
 
 const ProjectComponent: React.FC<{ project: Project }> = ({ project }) => {
   return (
@@ -14,32 +15,25 @@ const ProjectComponent: React.FC<{ project: Project }> = ({ project }) => {
           {project.repositories.length} {project.repositories.length === 1 ? 'repository' : 'repositories'}
         </p>
 
-        {(project.genre || project.link_to_store) && (
-          <div className="project-optional-fields">
-            {project.genre && (
-              <span className="project-genre">
-                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
+        {project.genre && (
+          <p className="project-genre capitalize">
                 Genre: {project.genre}
-              </span>
-            )}
+              </p>
+        )}
 
-            {project.link_to_store && (
-              <a
-                href={project.link_to_store}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-store-link"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5zM8 15v-3a1 1 0 011-1h2a1 1 0 011 1v3H8z" clipRule="evenodd"/>
-                </svg>
-                View in Store
-              </a>
-            )}
-          </div>
+        {project.link_to_store && (
+          <a
+            href={project.link_to_store}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-store-link flex items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            View in Store
+            <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5zM8 15v-3a1 1 0 011-1h2a1 1 0 011 1v3H8z" clipRule="evenodd"/>
+            </svg>
+          </a>
         )}
       </div>
 
