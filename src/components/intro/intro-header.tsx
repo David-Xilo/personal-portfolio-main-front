@@ -11,7 +11,7 @@ interface SectionHeaderProps {
   title: string
   colorScheme: ColorScheme
   variant?: 'simple' | 'enhanced'
-  leftIcon: React.ReactNode
+  leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
 }
 
@@ -40,7 +40,6 @@ const IntroHeader: React.FC<SectionHeaderProps> = ({
     ? getReverseGradientKey(colorScheme.primary, colorScheme.secondary, colorScheme.tertiary)
     : leftIconGradient
   const titleGradient = getGradientKey(colorScheme.primary, colorScheme.secondary, colorScheme.tertiary)
-  const underlineGradient = titleGradient
 
   return (
     <div className="intro-header">
@@ -66,7 +65,7 @@ const IntroHeader: React.FC<SectionHeaderProps> = ({
         )}
       </div>
 
-      <div className={`intro-header__underline intro-header__underline--${underlineGradient}`}></div>
+      <div className={`intro-header__underline intro-header__underline--${titleGradient}`}></div>
     </div>
   )
 }

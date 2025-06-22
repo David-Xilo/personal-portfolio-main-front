@@ -1,7 +1,7 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
-import {ContactScreen} from '../../screens/about/contact-screen'
+import {ContactScreen} from '../../components/contact/contact-screen'
 // Mocking the custom hook
 jest.mock('../../hooks/contact-rest', () => ({
   useContactGetApi: jest.fn(),

@@ -5,7 +5,7 @@ import {
   CLEAR_HIDDEN_NAV,
   SET_HIDDEN_NAV,
 } from '../../reducers/hidden-menu-reducer'
-import {ContactScreen} from './contact-screen'
+import {ContactScreen} from 'components/contact/contact-screen'
 import {useIntroGetApi} from '../../hooks/intro-rest'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 

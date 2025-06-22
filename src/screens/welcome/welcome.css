@@ -2,7 +2,7 @@
 
 /* Container and Layout Classes */
 .welcome-container {
-    @apply max-w-7xl mx-auto p-0 min-h-screen;
+    @apply max-w-7xl mx-auto p-8 min-h-screen;
     background-color: var(--color-background);
 }
 

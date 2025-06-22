@@ -1,4 +1,8 @@
 @import './root.css';
+@import 'styles/about-theme.css';
+@import 'styles/finance-theme.css';
+@import 'styles/games-theme.css';
+@import 'styles/technology-theme.css';
 
 @tailwind base;
 @tailwind components;

@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import { ContactRest, useContactGetApi } from '../../hooks/contact-rest'
-import './about.css'
+import './contact-item.css'
 
 interface ContactItemProps {
   contact: ContactRest | null;
-  variant?: 'default' | 'compact' | 'minimal';
+  variant?: 'default' | 'compact';
   maxWidth?: string;
 }
 
@@ -39,32 +39,20 @@ const ContactItem: React.FC<ContactItemProps> = ({
         <p className="message-warning-text">
           Contact information is incomplete
         </p>
-        {variant !== 'minimal' && (
-          <>
-            <p className="debug-text">Name: {contact?.name || 'Missing'}</p>
-            <p className="debug-text">Email: {contact?.email || 'Missing'}</p>
-          </>
-        )}
       </div>
     )
   }
-
-  const firstLetter = contact.name?.charAt(0)?.toUpperCase() || '?'
 
   const getCardClasses = () => {
     let classes = 'contact-card'
 
     if (variant === 'compact') classes += ' contact-card--compact'
-    if (variant === 'minimal') classes += ' contact-card--minimal'
     if (containerWidth > 0 && containerWidth < 320) classes += ' contact-card--narrow'
 
     return classes
   }
 
   const shouldShowField = (field: keyof ContactRest): boolean => {
-    if (variant === 'minimal') {
-      return field === 'email'
-    }
     if (variant === 'compact' && containerWidth < 280) {
       return field === 'email' || (field === 'github')
     }
@@ -79,12 +67,6 @@ const ContactItem: React.FC<ContactItemProps> = ({
     >
       <div className="contact-card-header">
         <div className="contact-profile-section">
-          {!(variant === 'minimal' && containerWidth < 250) && (
-            <div className="contact-profile-avatar">
-              <span className="contact-profile-avatar-text">{firstLetter}</span>
-            </div>
-          )}
-
           <h2 className="contact-profile-name">{contact.name}</h2>
 
           {variant === 'default' || containerWidth > 300 ? (
@@ -160,7 +142,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
 }
 
 interface ContactScreenProps {
-  variant?: 'default' | 'compact' | 'minimal';
+  variant?: 'default' | 'compact';
   className?: string;
   maxWidth?: string;
 }

@@ -4,6 +4,7 @@ import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {CLEAR_SUB_NAV, MainMenuProps} from '../../reducers/sub-menu-reducer'
 import {Link} from 'react-router-dom'
 import './welcome.css'
+import {IntroHeader} from 'components/intro/intro-header'
 
 const WelcomeScreen: React.FC<MainMenuProps> = ({
   subMenuDispatch,
@@ -19,11 +20,7 @@ const WelcomeScreen: React.FC<MainMenuProps> = ({
 const WelcomeContent: React.FC = () => {
   return (
     <div className="welcome-container">
-      <div className="welcome-hero">
-        <div className="welcome-overlay">
-          <h1 className="welcome-title">Welcome!</h1>
-        </div>
-      </div>
+      <IntroHeader title="Welcome!" colorScheme={{ primary: 'cyan', secondary: 'purple' }} />
 
       <div className="welcome-content">
         <p className="welcome-intro">

@@ -1,0 +1,13 @@
+:root {
+    --tech-primary: color-mix(in srgb, var(--color-primary) 90%, #3b82f6 10%);
+    --tech-secondary: color-mix(in srgb, var(--color-primary) 80%, #0ea5e9 20%);
+    --tech-tertiary: color-mix(in srgb, var(--color-primary) 70%, #06b6d4 30%);
+    --tech-light: color-mix(in srgb, var(--color-primary) 20%, var(--color-surface) 80%);
+}
+
+.dark-theme {
+    --tech-primary: color-mix(in srgb, var(--color-primary) 85%, #60a5fa 15%);
+    --tech-secondary: color-mix(in srgb, var(--color-primary) 75%, #38bdf8 25%);
+    --tech-tertiary: color-mix(in srgb, var(--color-primary) 65%, #22d3ee 35%);
+    --tech-light: color-mix(in srgb, var(--color-primary) 15%, var(--color-surface) 85%);
+}

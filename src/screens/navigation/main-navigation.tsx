@@ -10,7 +10,7 @@ import {GamesApp} from '../games/games'
 import {FinanceApp} from '../finance/finance'
 import {MainMenuProps} from '../../reducers/sub-menu-reducer'
 import {HomeIcon} from '../welcome/home-icon'
-import {ThemeToggle} from '../../theme/ThemeToggle'
+import {ThemeToggle} from 'components/theme/ThemeToggle'
 
 const MainNav: React.FC = () => {
   return (

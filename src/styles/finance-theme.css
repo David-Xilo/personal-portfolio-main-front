@@ -1,0 +1,13 @@
+:root {
+    --finance-primary: color-mix(in srgb, var(--color-secondary) 90%, #059669 10%);
+    --finance-secondary: color-mix(in srgb, var(--color-secondary) 80%, #14b8a6 20%);
+    --finance-accent: color-mix(in srgb, var(--color-secondary) 70%, #0d9488 30%);
+    --finance-light: color-mix(in srgb, var(--color-secondary) 20%, var(--color-surface) 80%);
+}
+
+.dark-theme {
+    --finance-primary: color-mix(in srgb, var(--color-secondary) 85%, #34d399 15%);
+    --finance-secondary: color-mix(in srgb, var(--color-secondary) 75%, #2dd4bf 25%);
+    --finance-accent: color-mix(in srgb, var(--color-secondary) 65%, #5eead4 35%);
+    --finance-light: color-mix(in srgb, var(--color-secondary) 15%, var(--color-surface) 85%);
+}

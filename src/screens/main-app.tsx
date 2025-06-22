@@ -21,7 +21,7 @@ import {
   SubMenuState,
 } from '../reducers/sub-menu-reducer'
 import {AppRoutes, MainNav} from './navigation/main-navigation'
-import {ThemeToggle} from '../theme/ThemeToggle'
+import {ThemeToggle} from 'components/theme/ThemeToggle'
 
 const MainApp: React.FC = () => {
   const [subMenuState, subMenuDispatch] = useReducer<

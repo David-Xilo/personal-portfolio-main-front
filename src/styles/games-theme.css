@@ -1,0 +1,13 @@
+:root {
+    --games-primary: color-mix(in srgb, var(--color-accent) 90%, #8b5cf6 10%);
+    --games-secondary: color-mix(in srgb, var(--color-accent) 80%, #a855f7 20%);
+    --games-tertiary: color-mix(in srgb, var(--color-accent) 70%, #ec4899 30%);
+    --games-light: color-mix(in srgb, var(--color-accent) 20%, var(--color-surface) 80%);
+}
+
+.dark-theme {
+    --games-primary: color-mix(in srgb, var(--color-accent) 85%, #a78bfa 15%);
+    --games-secondary: color-mix(in srgb, var(--color-accent) 75%, #c084fc 25%);
+    --games-tertiary: color-mix(in srgb, var(--color-accent) 65%, #f472b6 35%);
+    --games-light: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface) 85%);
+}
