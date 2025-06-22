@@ -1,11 +1,15 @@
 /* Repository Card Styles */
 .repository-card {
-    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-all duration-300 h-full;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    cursor: default;
+    @apply rounded-lg transition-all duration-300 h-full;
     min-height: 200px;
 }
 
 .repository-card:hover {
-    @apply shadow-lg;
+    box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
     border-color: var(--color-primary);
 }
@@ -15,12 +19,14 @@
 }
 
 .repository-card-title {
-    @apply text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2;
+    color: var(--color-text-primary);
+    @apply text-lg font-semibold mb-2 line-clamp-2;
     min-height: 3.5rem; /* Ensure consistent height */
 }
 
 .repository-card-description {
-    @apply text-sm text-gray-600 dark:text-gray-300 mb-4 flex-grow;
+    color: var(--color-text-secondary);
+    @apply text-sm mb-4 flex-grow;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -32,14 +38,19 @@
 }
 
 .repository-link {
-    @apply inline-flex items-center px-4 py-2 bg-gray-900 hover:bg-gray-800 dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors duration-200;
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    @apply inline-flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200;
 }
 
 .repository-link:hover {
+    background-color: var(--color-primary-hover);
     transform: translateY(-1px);
 }
 
 .repository-carousel {
+    cursor: default;
     @apply relative w-full;
     outline: none;
 }
@@ -65,14 +76,18 @@
 }
 
 .carousel-arrow {
-    @apply absolute top-1/2 z-10 p-2 rounded-full shadow-lg transition-all duration-200;
-    @apply bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600;
-    @apply text-gray-600 dark:text-gray-300 hover:text-white;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    @apply absolute top-1/2 z-10 p-2 rounded-full transition-all duration-200;
     transform: translateY(-50%);
 }
 
 .carousel-arrow:hover {
-    @apply bg-gray-800 dark:bg-gray-600;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -97,17 +112,18 @@
 }
 
 .carousel-indicator {
+    background-color: var(--color-border);
+    cursor: pointer;
     @apply w-2 h-2 rounded-full transition-all duration-200;
-    @apply bg-gray-300 dark:bg-gray-600;
 }
 
 .carousel-indicator.active {
-    @apply bg-gray-600 dark:bg-gray-400;
+    background-color: var(--color-text-secondary);
     transform: scale(1.2);
 }
 
 .carousel-indicator:hover {
-    @apply bg-gray-500 dark:bg-gray-500;
+    background-color: var(--color-text-tertiary);
 }
 
 @media (max-width: 1024px) {
@@ -181,7 +197,8 @@
 }
 
 .repository-carousel .text-center {
-    @apply py-8 text-gray-500 dark:text-gray-400;
+    color: var(--color-text-tertiary);
+    @apply py-8;
 }
 
 .repository-card {
