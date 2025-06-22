@@ -87,10 +87,6 @@
   );
 }
 
-.about-intro-content {
-  /*@apply mb-6;*/
-}
-
 .about-intro-text-container {
   @apply max-w-4xl mx-auto mb-4;
 }

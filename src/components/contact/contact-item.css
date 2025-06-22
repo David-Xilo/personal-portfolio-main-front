@@ -113,7 +113,7 @@
 }
 
 .contact-card--compact {
-    max-width: 20rem; /* 320px */
+    max-width: 20rem;
 }
 
 .contact-card--compact .contact-card-body {

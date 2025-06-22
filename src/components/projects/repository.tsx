@@ -3,7 +3,6 @@ import {ArrowLeftIcon} from 'components/icons/arrow-left-icon'
 import {ArrowRightIcon} from 'components/icons/arrow-right-icon'
 import './repository.css'
 
-// Carousel configuration
 const ARROW_SPACE = 80
 const CARD_WIDTH = 300
 const DEFAULT_CARDS_PER_VIEW = 3
@@ -62,7 +61,6 @@ const RepositoryCarousel: React.FC<{ repositories: RepositoryInfo[] }> = ({ repo
     return () => window.removeEventListener('resize', updateCardsPerView)
   }, [repositories.length])
 
-  // Calculate navigation bounds
   const maxIndex = Math.max(0, repositories.length - cardsPerView)
   const canGoLeft = currentIndex > 0
   const canGoRight = currentIndex < maxIndex && repositories.length > cardsPerView

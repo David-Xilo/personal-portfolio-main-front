@@ -80,7 +80,6 @@
     transform: scale(1.1);
 }
 
-/* Mobile adjustments */
 @media (max-width: 480px) {
     .carousel-content-area {
         width: calc(100% - 80px);
