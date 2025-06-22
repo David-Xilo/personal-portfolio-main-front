@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {ErrorProps} from 'components/error/error-fallback'
+import './error.css'
 
 interface ErrorMessageProps {
   error: ErrorProps

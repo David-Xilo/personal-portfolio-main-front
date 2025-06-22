@@ -57,12 +57,6 @@ export const handlers = [
     }
     return HttpResponse.json(contact)
   }),
-  http.get(`${domain}/about/contact-text`, () => {
-    const contactText = {
-      message: 'contact-text',
-    }
-    return HttpResponse.json(contactText)
-  }),
   http.get(`${domain}/tech/intro`, () => {
     const intro = {
       message: "Technology is always improving — and so am I.\n " +
