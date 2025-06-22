@@ -1,15 +1,11 @@
 
 .games-intro-container {
-  @apply min-h-screen p-12;
+  @apply p-12;
   background-color: var(--color-background);
 }
 
 .games-intro-wrapper {
   @apply max-w-6xl mx-auto;
-}
-
-.games-intro-section {
-  @apply relative mb-12;
 }
 
 .games-intro-desktop-grid {

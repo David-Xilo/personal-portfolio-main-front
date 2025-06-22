@@ -1,26 +1,53 @@
-import * as React from 'react'
-import {useEffect} from 'react'
-import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
-import {CLEAR_SUB_NAV, MainMenuProps} from '../../reducers/sub-menu-reducer'
-import {Link} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { CLEAR_HIDDEN_NAV } from '../../reducers/hidden-menu-reducer'
+import { CLEAR_SUB_NAV, MainMenuProps } from '../../reducers/sub-menu-reducer'
+import { IntroHeader } from 'components/intro/intro-header'
 import './welcome.css'
-import {IntroHeader} from 'components/intro/intro-header'
 
 const WelcomeScreen: React.FC<MainMenuProps> = ({
   subMenuDispatch,
   hiddenMenuDispatch,
 }) => {
   useEffect(() => {
-    hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
-    subMenuDispatch({type: CLEAR_SUB_NAV})
+    hiddenMenuDispatch({ type: CLEAR_HIDDEN_NAV })
+    subMenuDispatch({ type: CLEAR_SUB_NAV })
   }, [subMenuDispatch, hiddenMenuDispatch])
 
   return <WelcomeContent />
 }
+
 const WelcomeContent: React.FC = () => {
+  const welcomeCards = [
+    {
+      to: '/tech',
+      className: 'tech-card',
+      icon: '💻',
+      title: 'Technology',
+      text: 'Explore my tech projects and experiments'
+    },
+    {
+      to: '/games',
+      className: 'games-card',
+      icon: '🎮',
+      title: 'Gaming',
+      text: 'Check out my game development journey'
+    },
+    {
+      to: '/finance',
+      className: 'finance-card',
+      icon: '📊',
+      title: 'Finance',
+      text: 'Discover financial insights and analysis'
+    }
+  ]
+
   return (
     <div className="welcome-container">
-      <IntroHeader title="Welcome!" colorScheme={{ primary: 'cyan', secondary: 'purple' }} />
+      <IntroHeader 
+        title="Welcome!" 
+        colorScheme={{ primary: 'cyan', secondary: 'purple' }} 
+      />
 
       <div className="welcome-content">
         <p className="welcome-intro">
@@ -33,27 +60,21 @@ const WelcomeContent: React.FC = () => {
         </p>
 
         <div className="welcome-cards">
-          <Link to="/tech" className="welcome-card tech-card">
-            <div className="welcome-icon">💻</div>
-            <h3 className="welcome-card-title">Technology</h3>
-            <p className="welcome-card-text">Explore my tech projects and experiments</p>
-          </Link>
-
-          <Link to="/games" className="welcome-card games-card">
-            <div className="welcome-icon">🎮</div>
-            <h3 className="welcome-card-title">Gaming</h3>
-            <p className="welcome-card-text">Check out my game development journey</p>
-          </Link>
-
-          <Link to="/finance" className="welcome-card finance-card">
-            <div className="welcome-icon">📊</div>
-            <h3 className="welcome-card-title">Finance</h3>
-            <p className="welcome-card-text">Discover financial insights and analysis</p>
-          </Link>
+          {welcomeCards.map((card) => (
+            <Link 
+              key={card.to}
+              to={card.to} 
+              className={`welcome-card ${card.className}`}
+            >
+              <div className="welcome-icon">{card.icon}</div>
+              <h3 className="welcome-card-title">{card.title}</h3>
+              <p className="welcome-card-text">{card.text}</p>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export {WelcomeScreen}

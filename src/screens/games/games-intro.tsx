@@ -24,7 +24,6 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
   return (
     <div className="games-intro-container">
       <div className="games-intro-wrapper">
-        <div className="games-intro-section">
 
           <IntroHeader
             title="Games"
@@ -122,7 +121,6 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
                 </IntroductionCard>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

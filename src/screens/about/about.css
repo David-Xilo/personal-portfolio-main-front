@@ -1,6 +1,6 @@
 
 .about-intro-container {
-  @apply min-h-screen p-8;
+  @apply p-8;
   background-color: var(--color-background);
 }
 
@@ -88,7 +88,7 @@
 }
 
 .about-intro-content {
-  @apply mb-6;
+  /*@apply mb-6;*/
 }
 
 .about-intro-text-container {

@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './menu.css'
-import {ArrowLeftIcon} from 'components/icons/arrow-left-icon'
-import {ArrowRightIcon} from 'components/icons/arrow-right-icon'
+import { ArrowLeftIcon } from 'components/icons/arrow-left-icon'
+import { ArrowRightIcon } from 'components/icons/arrow-right-icon'
 
 interface HiddenMenuProps {
   content: React.ComponentType<any> | undefined
@@ -18,24 +18,35 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({
     onToggle(!isOpen)
   }
 
+  const buttonStyle = {
+    right: isOpen ? 'var(--hidden-menu-width)' : '0'
+  }
+
+  const containerStyle = {
+    right: isOpen ? '0' : 'calc(-1 * var(--hidden-menu-width))'
+  }
+
   return (
     <>
       <button
         onClick={toggleMenu}
         className="hidden-menu-button"
-        style={{right: isOpen ? 'var(--hidden-menu-width)' : '0'}}
+        style={buttonStyle}
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
       >
         {isOpen ? <ArrowRightIcon /> : <ArrowLeftIcon />}
       </button>
 
       <div
         className="hidden-menu-container"
-        style={{right: isOpen ? '0' : 'calc(-1 * var(--hidden-menu-width))'}}
+        style={containerStyle}
       >
-        <div className="hidden-menu-content">{Content && <Content />}</div>
+        <div className="hidden-menu-content">
+          {Content && <Content />}
+        </div>
       </div>
     </>
   )
 }
 
-export {HiddenMenu}
+export { HiddenMenu }
