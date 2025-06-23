@@ -66,7 +66,9 @@ const WelcomeContent: React.FC = () => {
               to={card.to} 
               className={`welcome-card ${card.className}`}
             >
-              <div className="welcome-icon">{card.icon}</div>
+              <div className="welcome-icon">
+                <span role="img" aria-label={`${card.title} icon`}>{card.icon}</span>
+              </div>
               <h3 className="welcome-card-title">{card.title}</h3>
               <p className="welcome-card-text">{card.text}</p>
             </Link>
