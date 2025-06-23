@@ -33,6 +33,7 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({
         className="hidden-menu-button"
         style={buttonStyle}
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={isOpen}
       >
         {isOpen ? <ArrowRightIcon /> : <ArrowLeftIcon />}
       </button>
