@@ -3,15 +3,6 @@
     @apply text-center;
 }
 
-.contact-profile-avatar {
-    @apply w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.contact-profile-avatar-text {
-    @apply text-2xl font-bold text-white;
-}
-
 .contact-profile-name {
     @apply text-2xl font-bold text-white mb-2;
 }
@@ -28,6 +19,15 @@
 
 .contact-card-body {
     @apply px-2 py-6 space-y-4;
+}
+
+.contact-card-header {
+    @apply px-6 py-8;
+    background: linear-gradient(
+        to right,
+        var(--about-primary),
+        var(--about-secondary)
+    );
 }
 
 .contact-screen-container {
@@ -65,24 +65,6 @@
 .error-message-text {
     color: color-mix(in srgb, #991b1b 80%, var(--color-text-primary) 20%);
 }
-
-.contact-card-header {
-    @apply px-6 py-8;
-    background: linear-gradient(
-            to right,
-            var(--about-primary),
-            var(--about-secondary)
-    );
-}
-
-.contact-card--minimal .contact-card-header {
-    padding: clamp(0.5rem, 2vw, 1rem) clamp(0.5rem, 3vw, 0.75rem);
-}
-
-.contact-card--compact .contact-card-header {
-    padding: clamp(0.75rem, 3vw, 1.25rem) clamp(0.75rem, 4vw, 1rem);
-}
-
 
 .contact-info-row {
     @apply flex items-center space-x-2;
@@ -130,9 +112,8 @@
     word-break: break-word;
 }
 
-
 .contact-card--compact {
-    max-width: 20rem; /* 320px */
+    max-width: 20rem;
 }
 
 .contact-card--compact .contact-card-body {
@@ -144,10 +125,6 @@
     font-size: clamp(1rem, 4vw, 1.5rem);
 }
 
-.contact-card--compact .contact-profile-avatar {
-    width: clamp(3rem, 6vw, 4rem);
-    height: clamp(3rem, 6vw, 4rem);
+.contact-card--compact .contact-card-header {
+    padding: clamp(0.75rem, 3vw, 1.25rem) clamp(0.75rem, 4vw, 1rem);
 }
-
-
-

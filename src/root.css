@@ -3,15 +3,12 @@
   --sub-menu-width: 150px;
   --hidden-menu-width: 300px;
 
-  /*carousel vars - simplified approach*/
   --carousel-content-height: min(250px, 25vh);
   --carousel-total-height: calc(var(--carousel-content-height) + 40px);
   --carousel-total-width: min(600px, 95vw);
 
-  /* Arrow space - reserve 60px on each side for arrows */
   --carousel-arrow-space: 120px;
 
-  /* Calculate the actual content area width (total minus arrow space) */
   --carousel-content-width: calc(var(--carousel-total-width) - var(--carousel-arrow-space));
 
   @media (max-width: 768px) {
@@ -34,25 +31,22 @@
     :root {
       --carousel-content-height: min(180px, 22vh);
       --carousel-total-width: min(340px, 95vw);
-      --carousel-arrow-space: 100px; /* Smaller arrows on mobile */
+      --carousel-arrow-space: 100px;
       --carousel-content-width: calc(var(--carousel-total-width) - var(--carousel-arrow-space));
     }
   }
 
-  /* Surface state variations */
   --color-surface-hover: rgba(59, 130, 246, 0.02);
   --color-surface-active: rgba(59, 130, 246, 0.05);
 
-  /* Primary color variations */
   --color-primary-light: rgba(59, 130, 246, 0.1);
 
-  /* Light theme (default) */
-  --color-primary: #3b82f6; /* Blue */
-  --color-primary-hover: #2563eb; /* Darker Blue */
-  --color-secondary: #10b981; /* Green */
-  --color-secondary-hover: #059669; /* Darker Green */
-  --color-accent: #8b5cf6; /* Purple */
-  --color-accent-hover: #7c3aed; /* Darker Purple */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-secondary: #10b981;
+  --color-secondary-hover: #059669;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
 
   --color-background: #ffffff;
   --color-surface: #f3f4f6;
@@ -80,12 +74,12 @@
   --color-surface-active: rgba(255, 255, 255, 0.05);
   --color-primary-light: rgba(96, 165, 250, 0.1);
 
-  --color-primary: #3b82f6; /* Same Blue */
-  --color-primary-hover: #60a5fa; /* Lighter Blue for hover in dark mode */
-  --color-secondary: #10b981; /* Same Green */
-  --color-secondary-hover: #34d399; /* Lighter Green for hover in dark mode */
-  --color-accent: #8b5cf6; /* Same Purple */
-  --color-accent-hover: #a78bfa; /* Lighter Purple for hover in dark mode */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-secondary: #10b981;
+  --color-secondary-hover: #34d399;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #a78bfa;
 
   --color-background: #111827;
   --color-surface: #1f2937;

@@ -38,7 +38,6 @@
     border-color: var(--color-border);
 }
 
-/* Theme toggle button */
 .theme-toggle-button {
     @apply flex items-center justify-center rounded-full p-2 transition-colors duration-200;
     background-color: var(--color-surface);
@@ -51,7 +50,6 @@
     color: white;
 }
 
-/* General transitions for smoother theme changes */
 button,
 a,
 div,

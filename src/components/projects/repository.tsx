@@ -3,6 +3,9 @@ import {ArrowLeftIcon} from 'components/icons/arrow-left-icon'
 import {ArrowRightIcon} from 'components/icons/arrow-right-icon'
 import './repository.css'
 
+const ARROW_SPACE = 80
+const CARD_WIDTH = 300
+const DEFAULT_CARDS_PER_VIEW = 3
 
 interface RepositoryInfo {
   title: string
@@ -41,16 +44,15 @@ const RepositoryCard: React.FC<{ repository: RepositoryInfo }> = ({ repository }
 
 const RepositoryCarousel: React.FC<{ repositories: RepositoryInfo[] }> = ({ repositories }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [cardsPerView, setCardsPerView] = useState(3)
+  const [cardsPerView, setCardsPerView] = useState(DEFAULT_CARDS_PER_VIEW)
   const carouselRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const updateCardsPerView = () => {
       if (carouselRef.current) {
-        const containerWidth = carouselRef.current.offsetWidth - 80
-        const cardWidth = 300
-        const newCardsPerView = Math.floor(containerWidth / cardWidth)
-        setCardsPerView(Math.max(1, Math.min(newCardsPerView, repositories.length)))
+        const availableWidth = carouselRef.current.offsetWidth - ARROW_SPACE
+        const cardsToShow = Math.floor(availableWidth / CARD_WIDTH)
+        setCardsPerView(Math.max(1, Math.min(cardsToShow, repositories.length)))
       }
     }
 

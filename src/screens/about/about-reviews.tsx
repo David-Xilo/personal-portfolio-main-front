@@ -65,7 +65,13 @@ const AboutReviewCard: React.FC<{ review: AboutReview }> = ({ review }) => {
 const AboutReviewCarousel: React.FC = () => {
   const {status, message, error} = useAboutReviewsGetApi('/about/reviews/carousel')
   if (status !== 'success') {
-    return <div>Found error {error}</div>
+    return (
+      <div className="error-message-container">
+        <p className="error-message-text">
+          Unable to load reviews: {error}
+        </p>
+      </div>
+      )
   }
 
   return (

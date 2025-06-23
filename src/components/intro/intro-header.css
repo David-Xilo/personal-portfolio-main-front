@@ -1,16 +1,13 @@
-/* Introduction Header Component Styles */
-
-/* Base container styles */
 .intro-header {
     @apply text-center mb-8;
 }
 
-/* Header flex container */
+
 .intro-header__content {
     @apply inline-flex items-center gap-3 mb-4;
 }
 
-/* Icon base styles */
+
 .intro-header__icon {
     @apply w-12 h-12 rounded-2xl flex items-center justify-center;
 }
@@ -19,17 +16,17 @@
     @apply text-2xl text-white;
 }
 
-/* Title styles */
+
 .intro-header__title {
     @apply text-4xl font-bold bg-clip-text text-transparent inline-flex;
 }
 
-/* Underline styles */
+
 .intro-header__underline {
     @apply w-24 h-1 mx-auto rounded-full;
 }
 
-/* Icon gradient combinations - Light mode */
+
 .intro-header__icon--cyan-blue {
     @apply bg-gradient-to-br from-cyan-400 to-blue-500;
 }
@@ -58,7 +55,7 @@
     @apply bg-gradient-to-br from-pink-400 to-purple-500;
 }
 
-/* Icon gradient combinations - Dark mode */
+
 .dark-theme .intro-header__icon--cyan-blue {
     @apply bg-gradient-to-br from-cyan-500 to-blue-500;
 }
@@ -87,7 +84,7 @@
     @apply bg-gradient-to-br from-pink-500 to-purple-500;
 }
 
-/* Title gradient combinations - Light mode */
+
 .intro-header__title--cyan-blue {
     @apply bg-gradient-to-r from-cyan-600 to-blue-600;
 }
@@ -116,7 +113,7 @@
     @apply bg-gradient-to-r from-cyan-600 to-purple-600;
 }
 
-/* Title gradient combinations - Dark mode */
+
 .dark-theme .intro-header__title--cyan-blue {
     @apply bg-gradient-to-r from-cyan-400 to-blue-400;
 }
@@ -145,7 +142,7 @@
     @apply bg-gradient-to-r from-cyan-400 to-purple-400;
 }
 
-/* Underline gradient combinations - Light mode */
+
 .intro-header__underline--cyan-blue {
     @apply bg-gradient-to-r from-cyan-500 to-blue-500;
 }
@@ -174,7 +171,7 @@
     @apply bg-gradient-to-r from-cyan-500 to-purple-500;
 }
 
-/* Underline gradient combinations - Dark mode (same as light mode for underlines) */
+
 .dark-theme .intro-header__underline--cyan-blue {
     @apply bg-gradient-to-r from-cyan-500 to-blue-500;
 }
@@ -203,7 +200,7 @@
     @apply bg-gradient-to-r from-cyan-500 to-purple-500;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .intro-header__content {
         @apply gap-2;
