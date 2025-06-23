@@ -41,6 +41,7 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({
       <div
         className="hidden-menu-container"
         style={containerStyle}
+        aria-hidden={!isOpen}
       >
         <div className="hidden-menu-content">
           {Content && <Content />}
