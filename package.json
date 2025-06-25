@@ -42,6 +42,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
+    "dotenv": "^16.5.0",
     "eslint": "^9.11.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-define-config": "^2.1.0",
@@ -75,12 +76,16 @@
     "whatwg-fetch": "^3.6.20"
   },
   "scripts": {
-    "start": "webpack serve --mode development",
-    "start:prod": "webpack serve --mode production NODE_ENV=production",
-    "build": "webpack --mode production",
+    "start": "cross-env NODE_ENV=development webpack serve --mode development",
+    "start:staging": "cross-env NODE_ENV=staging webpack serve --mode development",
+    "start:prod": "cross-env NODE_ENV=production webpack serve --mode production",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "build:staging": "cross-env NODE_ENV=staging webpack --mode production",
+    "build:development": "cross-env NODE_ENV=development webpack --mode development",
     "lint": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "test": "jest"
+    "test": "jest",
+    "validate-env": "node scripts/validate-env.js"
   },
   "husky": {
     "hooks": {

@@ -49,7 +49,10 @@ if (process.env.NODE_ENV === 'development') {
 
   initApp().catch(err => {
     console.error('Error initializing app:', err)
+    // render app anyway in case of MSW failure
+    renderApp()
   })
 } else {
+
   renderApp()
 }

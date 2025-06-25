@@ -11,14 +11,13 @@ module.exports = {
     filename: 'bundle.[contenthash].js',
     publicPath: '/',
   },
-  mode: 'development', // Use 'production' for production builds
+  mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       styles: path.resolve(__dirname, 'src/styles/'),
-      // Add other aliases as needed
     },
   },
   devtool: 'source-map',
@@ -26,30 +25,26 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, 'public'),
     },
-    historyApiFallback: true, // Enable for routing
-    port: 3000, // Development server port
-    open: true, // Open browser on server start
-    hot: true, // Enable hot module replacement
+    historyApiFallback: true,
+    port: 3000,
+    open: true,
+    hot: true,
   },
   module: {
     rules: [
-      // JavaScript and TypeScript files
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
-      // CSS files
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
-      // Images and fonts
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
-      // Source maps
       {
         enforce: 'pre',
         test: /\.js$/,
@@ -58,7 +53,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(), // Clean output directory before each build
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       favicon: './public/assets/safehouse.png',
@@ -70,13 +65,14 @@ module.exports = {
     }),
     new DefinePlugin({
       'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL || 'http://localhost:4000'),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'public', to: '', globOptions: {
-            ignore: ['**/index.html'], // Ignore index.html, HtmlWebpackPlugin will handle it
-          }, }, // Copy everything from public folder to the output folder (dist)
+            ignore: ['**/index.html'],
+          }, },
       ],
     }),
   ],
-}
+};
