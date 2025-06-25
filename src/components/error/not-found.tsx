@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import {Link as RouterLink} from 'react-router-dom'
 import './error.css'
 
 const NotFoundScreen: React.FC = () => {

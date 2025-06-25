@@ -1,12 +1,11 @@
 import {useEffect, useState} from 'react'
-import {RepositoryInfo} from 'components/projects/repository'
 
 const domain = process.env.REACT_APP_API_URL
 
 interface GamesPlayed {
   title: string
   genre: string
-  rating: number,
+  rating: number
   description: string
 }
 

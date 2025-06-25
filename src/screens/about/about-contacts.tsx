@@ -1,9 +1,7 @@
 import * as React from 'react'
 
 import {useEffect} from 'react'
-import {
-  CLEAR_HIDDEN_NAV,
-} from '../../reducers/hidden-menu-reducer'
+import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {ContactScreen} from 'components/contact/contact-screen'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
 

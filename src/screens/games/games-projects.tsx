@@ -6,7 +6,7 @@ import {ContactScreen} from 'components/contact/contact-screen'
 import {GenericProjectsScreen} from 'components/projects/project'
 
 const GamesProjectsHiddenMenu: React.FC = () => {
-  return (<ContactScreen variant="compact" maxWidth="500px" />)
+  return <ContactScreen variant="compact" maxWidth="500px" />
 }
 
 const GamesProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
@@ -17,7 +17,12 @@ const GamesProjectsScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
     })
   }, [hiddenMenuDispatch])
 
-  return <GenericProjectsScreen projectsPath={'/games/projects'} projectName={'Games Projects'} />
+  return (
+    <GenericProjectsScreen
+      projectsPath={'/games/projects'}
+      projectName={'Games Projects'}
+    />
+  )
 }
 
 export {GamesProjectsScreen}

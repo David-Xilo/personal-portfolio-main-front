@@ -11,9 +11,7 @@ function FullApp() {
 }
 
 const App: React.FC = () => {
-  return (
-    <MainApp />
-  )
+  return <MainApp />
 }
 
 export {FullApp}

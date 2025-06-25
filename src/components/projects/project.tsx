@@ -4,21 +4,17 @@ import {ContentListItem} from 'components/menu/content-list-item'
 import {Project, useProjectsGetApi} from '../../hooks/projects-rest'
 import './project.css'
 
-const ProjectComponent: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectComponent: React.FC<{project: Project}> = ({project}) => {
   return (
-    <div
-      className="project-component"
-      onClick={(e) => e.stopPropagation()}
-    >
+    <div className="project-component" onClick={e => e.stopPropagation()}>
       <div className="project-header">
         <p className="project-count">
-          {project.repositories.length} {project.repositories.length === 1 ? 'repository' : 'repositories'}
+          {project.repositories.length}{' '}
+          {project.repositories.length === 1 ? 'repository' : 'repositories'}
         </p>
 
         {project.genre && (
-          <p className="project-genre capitalize">
-                Genre: {project.genre}
-              </p>
+          <p className="project-genre capitalize">Genre: {project.genre}</p>
         )}
 
         {project.link_to_store && (
@@ -27,11 +23,19 @@ const ProjectComponent: React.FC<{ project: Project }> = ({ project }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="project-store-link flex items-center"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             View in Store
-            <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5zM8 15v-3a1 1 0 011-1h2a1 1 0 011 1v3H8z" clipRule="evenodd"/>
+            <svg
+              className="w-4 h-4 ml-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 2L3 7v11a2 2 0 002 2h10a2 2 0 002-2V7l-7-5zM8 15v-3a1 1 0 011-1h2a1 1 0 011 1v3H8z"
+                clipRule="evenodd"
+              />
             </svg>
           </a>
         )}
@@ -42,20 +46,33 @@ const ProjectComponent: React.FC<{ project: Project }> = ({ project }) => {
   )
 }
 
-const EmptyProjectsScreen: React.FC<{ projectName?: string }> = ({ projectName = "Projects" }) => {
+const EmptyProjectsScreen: React.FC<{projectName?: string}> = ({
+  projectName = 'Projects',
+}) => {
   return (
     <div className="flex flex-col items-center justify-center p-12 text-center">
       <div className="mb-6">
         <div className="w-16 h-16 mx-auto mb-4 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <svg
+            className="w-8 h-8 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
           </svg>
         </div>
         <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
           No {projectName} Available
         </h2>
         <p className="text-gray-500 dark:text-gray-400 max-w-md">
-          There are currently no {projectName.toLowerCase()} to display. Check back later for updates!
+          There are currently no {projectName.toLowerCase()} to display. Check
+          back later for updates!
         </p>
       </div>
     </div>
@@ -65,8 +82,8 @@ const EmptyProjectsScreen: React.FC<{ projectName?: string }> = ({ projectName =
 const GenericProjectsScreen: React.FC<{
   projectsPath: string
   projectName?: string
-}> = ({ projectsPath, projectName = "projects" }) => {
-  const { status, message, error } = useProjectsGetApi(projectsPath)
+}> = ({projectsPath, projectName = 'projects'}) => {
+  const {status, message, error} = useProjectsGetApi(projectsPath)
 
   if (status !== 'success') {
     return (
@@ -76,7 +93,8 @@ const GenericProjectsScreen: React.FC<{
             Error Loading {projectName}
           </h3>
           <p className="text-red-600 dark:text-red-300">
-            {error || `An unexpected error occurred while loading ${projectName}.`}
+            {error ||
+              `An unexpected error occurred while loading ${projectName}.`}
           </p>
         </div>
       </div>
@@ -102,4 +120,4 @@ const GenericProjectsScreen: React.FC<{
   )
 }
 
-export { GenericProjectsScreen, ProjectComponent}
+export {GenericProjectsScreen, ProjectComponent}

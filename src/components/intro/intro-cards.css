@@ -1,180 +1,162 @@
-
 .intro-card {
-    @apply rounded-xl p-6 border transition-all duration-300;
-    @apply hover:transform hover:scale-105;
+  @apply rounded-xl p-6 border transition-all duration-300;
+  @apply hover:transform hover:scale-105;
 }
 
 .intro-card__icon-container {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center mb-4;
-    background-color: rgba(0, 0, 0, 0.8) !important;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+  @apply w-12 h-12 rounded-xl flex items-center justify-center mb-4;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .intro-card__icon {
-    @apply w-6 h-6;
-    color: #ffffff !important;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  @apply w-6 h-6;
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
 }
 
 .dark-theme .intro-card__icon-container {
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .dark-theme .intro-card__icon {
-    color: #000000 !important;
-    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5));
+  color: #000000 !important;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5));
 }
 
 .intro-card__title {
-    @apply text-lg font-bold mb-3;
-    color: #000000 !important;
+  @apply text-lg font-bold mb-3;
+  color: #000000 !important;
 }
 
 .intro-card__description {
-    @apply text-sm leading-relaxed;
-    color: #1f2937 !important;
+  @apply text-sm leading-relaxed;
+  color: #1f2937 !important;
 }
 
 .dark-theme .intro-card__title {
-    color: #ffffff !important;
+  color: #ffffff !important;
 }
 
 .dark-theme .intro-card__description {
-    color: #f3f4f6 !important;
+  color: #f3f4f6 !important;
 }
 
 .intro-card--purple {
-    @apply bg-gradient-to-br from-purple-50 to-purple-100;
-    @apply border-purple-200 hover:border-purple-300;
-    @apply hover:shadow-xl hover:shadow-purple-200/50;
+  @apply bg-gradient-to-br from-purple-50 to-purple-100;
+  @apply border-purple-200 hover:border-purple-300;
+  @apply hover:shadow-xl hover:shadow-purple-200/50;
 }
-
 
 .dark-theme .intro-card--purple {
-    @apply bg-gradient-to-br from-purple-800/50 to-purple-900/50;
-    @apply border-purple-500/30 hover:border-purple-400/60;
-    @apply hover:shadow-xl hover:shadow-purple-500/20;
+  @apply bg-gradient-to-br from-purple-800/50 to-purple-900/50;
+  @apply border-purple-500/30 hover:border-purple-400/60;
+  @apply hover:shadow-xl hover:shadow-purple-500/20;
 }
-
 
 .intro-card--pink {
-    @apply bg-gradient-to-br from-pink-50 to-pink-100;
-    @apply border-pink-200 hover:border-pink-300;
-    @apply hover:shadow-xl hover:shadow-pink-200/50;
+  @apply bg-gradient-to-br from-pink-50 to-pink-100;
+  @apply border-pink-200 hover:border-pink-300;
+  @apply hover:shadow-xl hover:shadow-pink-200/50;
 }
-
 
 .dark-theme .intro-card--pink {
-    @apply bg-gradient-to-br from-pink-800/50 to-pink-900/50;
-    @apply border-pink-500/30 hover:border-pink-400/60;
-    @apply hover:shadow-xl hover:shadow-pink-500/20;
+  @apply bg-gradient-to-br from-pink-800/50 to-pink-900/50;
+  @apply border-pink-500/30 hover:border-pink-400/60;
+  @apply hover:shadow-xl hover:shadow-pink-500/20;
 }
-
 
 .intro-card--cyan {
-    @apply bg-gradient-to-br from-cyan-50 to-cyan-100;
-    @apply border-cyan-200 hover:border-cyan-300;
-    @apply hover:shadow-xl hover:shadow-cyan-200/50;
+  @apply bg-gradient-to-br from-cyan-50 to-cyan-100;
+  @apply border-cyan-200 hover:border-cyan-300;
+  @apply hover:shadow-xl hover:shadow-cyan-200/50;
 }
-
 
 .dark-theme .intro-card--cyan {
-    @apply bg-gradient-to-br from-cyan-800/50 to-cyan-900/50;
-    @apply border-cyan-500/30 hover:border-cyan-400/60;
-    @apply hover:shadow-xl hover:shadow-cyan-500/20;
+  @apply bg-gradient-to-br from-cyan-800/50 to-cyan-900/50;
+  @apply border-cyan-500/30 hover:border-cyan-400/60;
+  @apply hover:shadow-xl hover:shadow-cyan-500/20;
 }
-
 
 .intro-card--violet {
-    @apply bg-gradient-to-br from-violet-50 to-violet-100;
-    @apply border-violet-200 hover:border-violet-300;
-    @apply hover:shadow-xl hover:shadow-violet-200/50;
+  @apply bg-gradient-to-br from-violet-50 to-violet-100;
+  @apply border-violet-200 hover:border-violet-300;
+  @apply hover:shadow-xl hover:shadow-violet-200/50;
 }
-
 
 .dark-theme .intro-card--violet {
-    @apply bg-gradient-to-br from-violet-800/50 to-violet-900/50;
-    @apply border-violet-500/30 hover:border-violet-400/60;
-    @apply hover:shadow-xl hover:shadow-violet-500/20;
+  @apply bg-gradient-to-br from-violet-800/50 to-violet-900/50;
+  @apply border-violet-500/30 hover:border-violet-400/60;
+  @apply hover:shadow-xl hover:shadow-violet-500/20;
 }
-
 
 .intro-card--emerald {
-    @apply bg-gradient-to-br from-emerald-50 to-emerald-100;
-    @apply border-emerald-200 hover:border-emerald-300;
-    @apply hover:shadow-xl hover:shadow-emerald-200/50;
+  @apply bg-gradient-to-br from-emerald-50 to-emerald-100;
+  @apply border-emerald-200 hover:border-emerald-300;
+  @apply hover:shadow-xl hover:shadow-emerald-200/50;
 }
-
 
 .dark-theme .intro-card--emerald {
-    @apply bg-gradient-to-br from-emerald-800/50 to-emerald-900/50;
-    @apply border-emerald-500/30 hover:border-emerald-400/60;
-    @apply hover:shadow-xl hover:shadow-emerald-500/20;
+  @apply bg-gradient-to-br from-emerald-800/50 to-emerald-900/50;
+  @apply border-emerald-500/30 hover:border-emerald-400/60;
+  @apply hover:shadow-xl hover:shadow-emerald-500/20;
 }
-
 
 .intro-card--teal {
-    @apply bg-gradient-to-br from-teal-50 to-teal-100;
-    @apply border-teal-200 hover:border-teal-300;
-    @apply hover:shadow-xl hover:shadow-teal-200/50;
+  @apply bg-gradient-to-br from-teal-50 to-teal-100;
+  @apply border-teal-200 hover:border-teal-300;
+  @apply hover:shadow-xl hover:shadow-teal-200/50;
 }
-
 
 .dark-theme .intro-card--teal {
-    @apply bg-gradient-to-br from-teal-800/50 to-teal-900/50;
-    @apply border-teal-500/30 hover:border-teal-400/60;
-    @apply hover:shadow-xl hover:shadow-teal-500/20;
+  @apply bg-gradient-to-br from-teal-800/50 to-teal-900/50;
+  @apply border-teal-500/30 hover:border-teal-400/60;
+  @apply hover:shadow-xl hover:shadow-teal-500/20;
 }
-
 
 .intro-card--blue {
-    @apply bg-gradient-to-br from-blue-50 to-blue-100;
-    @apply border-blue-200 hover:border-blue-300;
-    @apply hover:shadow-xl hover:shadow-blue-200/50;
+  @apply bg-gradient-to-br from-blue-50 to-blue-100;
+  @apply border-blue-200 hover:border-blue-300;
+  @apply hover:shadow-xl hover:shadow-blue-200/50;
 }
-
 
 .dark-theme .intro-card--blue {
-    @apply bg-gradient-to-br from-blue-800/50 to-blue-900/50;
-    @apply border-blue-500/30 hover:border-blue-400/60;
-    @apply hover:shadow-xl hover:shadow-blue-500/20;
+  @apply bg-gradient-to-br from-blue-800/50 to-blue-900/50;
+  @apply border-blue-500/30 hover:border-blue-400/60;
+  @apply hover:shadow-xl hover:shadow-blue-500/20;
 }
-
 
 .intro-card--green {
-    @apply bg-gradient-to-br from-green-50 to-green-100;
-    @apply border-green-200 hover:border-green-300;
-    @apply hover:shadow-xl hover:shadow-green-200/50;
+  @apply bg-gradient-to-br from-green-50 to-green-100;
+  @apply border-green-200 hover:border-green-300;
+  @apply hover:shadow-xl hover:shadow-green-200/50;
 }
-
 
 .dark-theme .intro-card--green {
-    @apply bg-gradient-to-br from-green-800/50 to-green-900/50;
-    @apply border-green-500/30 hover:border-green-400/60;
-    @apply hover:shadow-xl hover:shadow-green-500/20;
+  @apply bg-gradient-to-br from-green-800/50 to-green-900/50;
+  @apply border-green-500/30 hover:border-green-400/60;
+  @apply hover:shadow-xl hover:shadow-green-500/20;
 }
-
 
 @media (max-width: 640px) {
-    .intro-card {
-        @apply p-4;
-    }
+  .intro-card {
+    @apply p-4;
+  }
 
-    .intro-card__icon-container {
-        @apply w-10 h-10 mb-3;
-    }
+  .intro-card__icon-container {
+    @apply w-10 h-10 mb-3;
+  }
 
-    .intro-card__icon {
-        @apply w-5 h-5;
-    }
+  .intro-card__icon {
+    @apply w-5 h-5;
+  }
 
-    .intro-card__title {
-        @apply text-base mb-2;
-    }
+  .intro-card__title {
+    @apply text-base mb-2;
+  }
 
-    .intro-card__description {
-        @apply text-xs;
-    }
+  .intro-card__description {
+    @apply text-xs;
+  }
 }
-

@@ -20,7 +20,12 @@ const FinanceProjectsScreen: React.FC<SubMenuProps> = ({
     })
   }, [hiddenMenuDispatch])
 
-  return <GenericProjectsScreen projectsPath={'/finance/projects'} projectName={'Finance Projects'} />
+  return (
+    <GenericProjectsScreen
+      projectsPath={'/finance/projects'}
+      projectName={'Finance Projects'}
+    />
+  )
 }
 
 export {FinanceProjectsScreen}

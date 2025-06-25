@@ -5,16 +5,16 @@ import {WrenchScrewdriverIcon} from '../../../components/icons/wrench-screwdrive
 
 describe('WrenchScrewdriverIcon', () => {
   test('renders SVG element', () => {
-    const { container } = render(<WrenchScrewdriverIcon />)
+    const {container} = render(<WrenchScrewdriverIcon />)
     const svg = container.querySelector('svg')
-    
+
     expect(svg).toBeInTheDocument()
   })
 
   test('has correct SVG attributes', () => {
-    const { container } = render(<WrenchScrewdriverIcon />)
+    const {container} = render(<WrenchScrewdriverIcon />)
     const svg = container.querySelector('svg')
-    
+
     expect(svg).toHaveAttribute('xmlns', 'http://www.w3.org/2000/svg')
     expect(svg).toHaveAttribute('fill', 'none')
     expect(svg).toHaveAttribute('viewBox', '0 0 24 24')
@@ -22,16 +22,16 @@ describe('WrenchScrewdriverIcon', () => {
   })
 
   test('has correct CSS class', () => {
-    const { container } = render(<WrenchScrewdriverIcon />)
+    const {container} = render(<WrenchScrewdriverIcon />)
     const svg = container.querySelector('svg')
-    
+
     expect(svg).toHaveClass('size-6')
   })
 
   test('contains path element', () => {
-    const { container } = render(<WrenchScrewdriverIcon />)
+    const {container} = render(<WrenchScrewdriverIcon />)
     const path = container.querySelector('path')
-    
+
     expect(path).toBeInTheDocument()
   })
 })

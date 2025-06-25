@@ -1,7 +1,10 @@
 import React from 'react'
 import {render, screen, waitFor} from '@testing-library/react'
 import '@testing-library/jest-dom'
-import {ContactScreen, ContactItem} from '../../../components/contact/contact-screen'
+import {
+  ContactScreen,
+  ContactItem,
+} from '../../../components/contact/contact-screen'
 import * as contactRest from '../../../hooks/contact-rest'
 
 jest.mock('../../../hooks/contact-rest')
@@ -11,13 +14,13 @@ const mockContact = {
   email: 'john.doe@example.com',
   github: 'https://github.com/johndoe',
   linkedin: 'https://linkedin.com/in/johndoe',
-  credly: 'https://credly.com/johndoe'
+  credly: 'https://credly.com/johndoe',
 }
 
 describe('ContactItem', () => {
   test('renders contact information correctly', () => {
     render(<ContactItem contact={mockContact} />)
-    
+
     expect(screen.getByText('John Doe')).toBeInTheDocument()
     expect(screen.getByText('Casual Human')).toBeInTheDocument()
     expect(screen.getByText('john.doe@example.com')).toBeInTheDocument()
@@ -28,41 +31,51 @@ describe('ContactItem', () => {
 
   test('renders warning when contact is null', () => {
     render(<ContactItem contact={null} />)
-    
-    expect(screen.getByText('Contact information is incomplete')).toBeInTheDocument()
+
+    expect(
+      screen.getByText('Contact information is incomplete'),
+    ).toBeInTheDocument()
   })
 
   test('renders warning when contact is missing required fields', () => {
-    const incompleteContact = { 
-      name: '', 
-      email: '', 
+    const incompleteContact = {
+      name: '',
+      email: '',
       github: 'https://github.com/test',
       linkedin: 'https://linkedin.com/test',
-      credly: 'https://credly.com/test'
+      credly: 'https://credly.com/test',
     }
     render(<ContactItem contact={incompleteContact} />)
-    
-    expect(screen.getByText('Contact information is incomplete')).toBeInTheDocument()
+
+    expect(
+      screen.getByText('Contact information is incomplete'),
+    ).toBeInTheDocument()
   })
 
   test('renders compact variant correctly', () => {
-    const { container } = render(<ContactItem contact={mockContact} variant="compact" />)
-    
-    expect(container.querySelector('.contact-card--compact')).toBeInTheDocument()
-    expect(container.querySelector('.message-warning--compact')).not.toBeInTheDocument()
+    const {container} = render(
+      <ContactItem contact={mockContact} variant="compact" />,
+    )
+
+    expect(
+      container.querySelector('.contact-card--compact'),
+    ).toBeInTheDocument()
+    expect(
+      container.querySelector('.message-warning--compact'),
+    ).not.toBeInTheDocument()
   })
 
   test('renders email link with correct href', () => {
     render(<ContactItem contact={mockContact} />)
-    
-    const emailLink = screen.getByRole('link', { name: mockContact.email })
+
+    const emailLink = screen.getByRole('link', {name: mockContact.email})
     expect(emailLink).toHaveAttribute('href', `mailto:${mockContact.email}`)
   })
 
   test('renders GitHub link with correct attributes', () => {
     render(<ContactItem contact={mockContact} />)
-    
-    const githubLink = screen.getByRole('link', { name: 'View Profile' })
+
+    const githubLink = screen.getByRole('link', {name: 'View Profile'})
     expect(githubLink).toHaveAttribute('href', mockContact.github)
     expect(githubLink).toHaveAttribute('target', '_blank')
     expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer')
@@ -70,8 +83,8 @@ describe('ContactItem', () => {
 
   test('renders LinkedIn link with correct attributes', () => {
     render(<ContactItem contact={mockContact} />)
-    
-    const linkedinLink = screen.getByRole('link', { name: 'Connect' })
+
+    const linkedinLink = screen.getByRole('link', {name: 'Connect'})
     expect(linkedinLink).toHaveAttribute('href', mockContact.linkedin)
     expect(linkedinLink).toHaveAttribute('target', '_blank')
     expect(linkedinLink).toHaveAttribute('rel', 'noopener noreferrer')
@@ -83,11 +96,11 @@ describe('ContactItem', () => {
       email: 'jane@example.com',
       linkedin: '',
       github: '',
-      credly: ''
+      credly: '',
     }
-    
+
     render(<ContactItem contact={partialContact} />)
-    
+
     expect(screen.getByText('Jane Doe')).toBeInTheDocument()
     expect(screen.getByText('jane@example.com')).toBeInTheDocument()
     expect(screen.queryByText('View Profile')).not.toBeInTheDocument()
@@ -97,7 +110,10 @@ describe('ContactItem', () => {
 })
 
 describe('ContactScreen', () => {
-  const mockUseContactGetApi = contactRest.useContactGetApi as jest.MockedFunction<typeof contactRest.useContactGetApi>
+  const mockUseContactGetApi =
+    contactRest.useContactGetApi as jest.MockedFunction<
+      typeof contactRest.useContactGetApi
+    >
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -107,11 +123,11 @@ describe('ContactScreen', () => {
     mockUseContactGetApi.mockReturnValue({
       status: 'success',
       message: mockContact,
-      error: null
+      error: null,
     })
 
     render(<ContactScreen />)
-    
+
     await waitFor(() => {
       expect(screen.getByText('John Doe')).toBeInTheDocument()
     })
@@ -121,13 +137,15 @@ describe('ContactScreen', () => {
     mockUseContactGetApi.mockReturnValue({
       status: 'error',
       message: null,
-      error: 'Network error'
+      error: 'Network error',
     })
 
     render(<ContactScreen />)
-    
+
     await waitFor(() => {
-      expect(screen.getByText('Unable to load contact information: Network error')).toBeInTheDocument()
+      expect(
+        screen.getByText('Unable to load contact information: Network error'),
+      ).toBeInTheDocument()
     })
   })
 
@@ -135,13 +153,15 @@ describe('ContactScreen', () => {
     mockUseContactGetApi.mockReturnValue({
       status: 'loading',
       message: null,
-      error: 'Loading...'
+      error: 'Loading...',
     })
 
     render(<ContactScreen />)
-    
+
     await waitFor(() => {
-      expect(screen.getByText('Unable to load contact information: Loading...')).toBeInTheDocument()
+      expect(
+        screen.getByText('Unable to load contact information: Loading...'),
+      ).toBeInTheDocument()
     })
   })
 
@@ -149,13 +169,15 @@ describe('ContactScreen', () => {
     mockUseContactGetApi.mockReturnValue({
       status: 'success',
       message: mockContact,
-      error: null
+      error: null,
     })
 
-    const { container } = render(<ContactScreen variant="compact" />)
-    
+    const {container} = render(<ContactScreen variant="compact" />)
+
     await waitFor(() => {
-      expect(container.querySelector('.contact-card--compact')).toBeInTheDocument()
+      expect(
+        container.querySelector('.contact-card--compact'),
+      ).toBeInTheDocument()
     })
   })
 
@@ -163,23 +185,25 @@ describe('ContactScreen', () => {
     mockUseContactGetApi.mockReturnValue({
       status: 'error',
       message: null,
-      error: 'Test error'
+      error: 'Test error',
     })
 
-    const { container } = render(<ContactScreen className="custom-class" />)
-    
-    expect(container.querySelector('.contact-screen-container.custom-class')).toBeInTheDocument()
+    const {container} = render(<ContactScreen className="custom-class" />)
+
+    expect(
+      container.querySelector('.contact-screen-container.custom-class'),
+    ).toBeInTheDocument()
   })
 
   test('passes maxWidth prop correctly', async () => {
     mockUseContactGetApi.mockReturnValue({
       status: 'success',
       message: mockContact,
-      error: null
+      error: null,
     })
 
-    const { container } = render(<ContactScreen maxWidth="500px" />)
-    
+    const {container} = render(<ContactScreen maxWidth="500px" />)
+
     await waitFor(() => {
       const contactCard = container.querySelector('.contact-card')
       expect(contactCard).toHaveStyle('max-width: 500px')

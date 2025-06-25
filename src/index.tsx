@@ -17,42 +17,66 @@ function renderApp() {
   }
 }
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
+  renderApp()
+} else if (process.env.NODE_ENV === 'development') {
   async function clearServiceWorkers() {
     if ('serviceWorker' in navigator) {
       try {
         const registrations = await navigator.serviceWorker.getRegistrations()
-        await Promise.all(
-          registrations.map(registration => registration.unregister()),
+        const unregisterPromises = registrations.map(registration =>
+          registration.unregister(),
         )
-        console.log('Service workers unregistered')
+        await Promise.all(unregisterPromises)
+        console.log('✅ Service workers unregistered')
       } catch (err) {
-        console.error('Error unregistering service workers:', err)
+        console.error('❌ Error unregistering service workers:', err)
       }
     }
   }
 
   async function enableMocking() {
-    console.log('Development mode: enabling MSW')
-    const {worker} = await import('./mocks/browser')
-    return worker.start({
-      serviceWorker: {url: `/mockServiceWorker.js?v=${Date.now()}`},
-      onUnhandledRequest: 'bypass',
-    })
+    try {
+      console.log('🔧 Development mode: enabling MSW')
+
+      // Dynamic import ensures MSW is only loaded in development
+      const {worker} = await import('./mocks/browser')
+
+      await worker.start({
+        serviceWorker: {url: `/mockServiceWorker.js?v=${Date.now()}`},
+        onUnhandledRequest: 'bypass',
+        quiet: false, // Set to true to reduce MSW console logs
+      })
+
+      console.log('✅ MSW started successfully')
+      return true
+    } catch (error) {
+      console.warn('⚠️ Failed to start MSW:', error)
+      console.log('📡 Continuing without mocks - will use real API')
+      return false
+    }
   }
 
-  async function initApp() {
-    await clearServiceWorkers()
-    await enableMocking()
-    renderApp()
+  async function initDevelopmentApp() {
+    try {
+      await clearServiceWorkers()
+      const mswStarted = await enableMocking()
+
+      if (mswStarted) {
+        console.log('🎭 Development app starting with mocks')
+      } else {
+        console.log('🌐 Development app starting without mocks')
+      }
+
+      renderApp()
+    } catch (err) {
+      console.error('❌ Error initializing development app:', err)
+      console.log('🔄 Falling back to basic app rendering')
+      renderApp()
+    }
   }
 
-  initApp().catch(err => {
-    console.error('Error initializing app:', err)
-    // render app anyway in case of MSW failure
-    renderApp()
-  })
+  initDevelopmentApp()
 } else {
-
   renderApp()
 }

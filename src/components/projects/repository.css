@@ -1,213 +1,222 @@
 .repository-card {
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
-    cursor: default;
-    @apply rounded-lg transition-all duration-300 h-full;
-    min-height: 200px;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  cursor: default;
+  @apply rounded-lg transition-all duration-300 h-full;
+  min-height: 200px;
 }
 
 .repository-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
-    border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
 }
 
 .repository-card-content {
-    @apply p-6 h-full flex flex-col justify-between;
+  @apply p-6 h-full flex flex-col justify-between;
 }
 
 .repository-card-title {
-    color: var(--color-text-primary);
-    @apply text-lg font-semibold mb-2 line-clamp-2;
-    min-height: 3.5rem;
+  color: var(--color-text-primary);
+  @apply text-lg font-semibold mb-2 line-clamp-2;
+  min-height: 3.5rem;
 }
 
 .repository-card-description {
-    color: var(--color-text-secondary);
-    @apply text-sm mb-4 flex-grow;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  color: var(--color-text-secondary);
+  @apply text-sm mb-4 flex-grow;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .repository-card-actions {
-    @apply flex justify-start;
+  @apply flex justify-start;
 }
 
 .repository-link {
-    background-color: var(--color-primary);
-    color: white;
-    cursor: pointer;
-    @apply inline-flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200;
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  @apply inline-flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200;
 }
 
 .repository-link:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-1px);
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
 }
 
 .repository-carousel {
-    cursor: default;
-    @apply relative w-full;
-    outline: none;
-    --track-margin: 40px;
+  cursor: default;
+  @apply relative w-full;
+  outline: none;
+  --track-margin: 40px;
 }
 
 .repository-carousel-container {
-    @apply relative overflow-hidden;
+  @apply relative overflow-hidden;
 }
 
 .repository-carousel-track {
-    @apply overflow-hidden;
-    margin: 0 var(--track-margin);
+  @apply overflow-hidden;
+  margin: 0 var(--track-margin);
 }
 
 .repository-carousel-items {
-    @apply flex transition-transform duration-300 ease-in-out;
-    gap: 1rem;
+  @apply flex transition-transform duration-300 ease-in-out;
+  gap: 1rem;
 }
 
 .repository-carousel-item {
-    @apply flex-shrink-0 px-2;
-    min-width: 280px;
-    max-width: 320px;
+  @apply flex-shrink-0 px-2;
+  min-width: 280px;
+  max-width: 320px;
 }
 
 .carousel-arrow {
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    box-shadow: var(--shadow-lg);
-    cursor: pointer;
-    @apply absolute top-1/2 z-10 p-2 rounded-full transition-all duration-200;
-    transform: translateY(-50%);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  @apply absolute top-1/2 z-10 p-2 rounded-full transition-all duration-200;
+  transform: translateY(-50%);
 }
 
 .carousel-arrow:hover {
-    background-color: var(--color-surface);
-    color: var(--color-text-primary);
-    transform: translateY(-50%) scale(1.1);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-arrow:active {
-    transform: translateY(-50%) scale(0.95);
+  transform: translateY(-50%) scale(0.95);
 }
 
 .carousel-arrow-left {
-    left: 0;
+  left: 0;
 }
 
 .carousel-arrow-right {
-    right: 0;
+  right: 0;
 }
 
 .carousel-arrow svg {
-    @apply w-5 h-5;
+  @apply w-5 h-5;
 }
 
 .carousel-indicators {
-    @apply flex justify-center mt-4 space-x-2;
+  @apply flex justify-center mt-4 space-x-2;
 }
 
 .carousel-indicator {
-    background-color: var(--color-border);
-    cursor: pointer;
-    @apply w-2 h-2 rounded-full transition-all duration-200;
+  background-color: var(--color-border);
+  cursor: pointer;
+  @apply w-2 h-2 rounded-full transition-all duration-200;
 }
 
 .carousel-indicator.active {
-    background-color: var(--color-text-secondary);
-    transform: scale(1.2);
+  background-color: var(--color-text-secondary);
+  transform: scale(1.2);
 }
 
 .carousel-indicator:hover {
-    background-color: var(--color-text-tertiary);
+  background-color: var(--color-text-tertiary);
 }
 
 @media (max-width: 1024px) {
-    .repository-carousel {
-        --track-margin: 35px;
-    }
+  .repository-carousel {
+    --track-margin: 35px;
+  }
 
-    .repository-carousel-item {
-        min-width: 260px;
-        max-width: 300px;
-    }
+  .repository-carousel-item {
+    min-width: 260px;
+    max-width: 300px;
+  }
 }
 
 @media (max-width: 768px) {
-    .repository-carousel {
-        --track-margin: 30px;
-    }
+  .repository-carousel {
+    --track-margin: 30px;
+  }
 
-    .repository-carousel-item {
-        min-width: 240px;
-        max-width: 280px;
-    }
+  .repository-carousel-item {
+    min-width: 240px;
+    max-width: 280px;
+  }
 
-    .repository-card-content {
-        @apply p-4;
-    }
+  .repository-card-content {
+    @apply p-4;
+  }
 
-    .repository-card-title {
-        @apply text-base;
-        min-height: 3rem;
-    }
+  .repository-card-title {
+    @apply text-base;
+    min-height: 3rem;
+  }
 
-    .repository-card-description {
-        -webkit-line-clamp: 2;
-    }
+  .repository-card-description {
+    -webkit-line-clamp: 2;
+  }
 }
 
 @media (max-width: 640px) {
-    .repository-carousel {
-        --track-margin: 25px;
-    }
+  .repository-carousel {
+    --track-margin: 25px;
+  }
 
-    .repository-carousel-item {
-        min-width: 220px;
-        max-width: 260px;
-    }
+  .repository-carousel-item {
+    min-width: 220px;
+    max-width: 260px;
+  }
 
-    .carousel-arrow {
-        @apply p-1;
-    }
+  .carousel-arrow {
+    @apply p-1;
+  }
 
-    .carousel-arrow svg {
-        @apply w-4 h-4;
-    }
+  .carousel-arrow svg {
+    @apply w-4 h-4;
+  }
 }
 
 @media (max-width: 480px) {
-    .repository-carousel {
-        --track-margin: 20px;
-    }
+  .repository-carousel {
+    --track-margin: 20px;
+  }
 
-    .repository-carousel-item {
-        min-width: 200px;
-        max-width: 240px;
-    }
+  .repository-carousel-item {
+    min-width: 200px;
+    max-width: 240px;
+  }
 }
 
 .repository-carousel.loading .repository-carousel-items {
-    opacity: 0.6;
-    pointer-events: none;
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .repository-carousel .text-center {
-    color: var(--color-text-tertiary);
-    @apply py-8;
+  color: var(--color-text-tertiary);
+  @apply py-8;
 }
 
 .repository-card {
-    animation: fadeInUp 0.5s ease-out forwards;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
-.repository-carousel-item:nth-child(1) .repository-card { animation-delay: 0.1s; }
-.repository-carousel-item:nth-child(2) .repository-card { animation-delay: 0.2s; }
-.repository-carousel-item:nth-child(3) .repository-card { animation-delay: 0.3s; }
-.repository-carousel-item:nth-child(4) .repository-card { animation-delay: 0.4s; }
-.repository-carousel-item:nth-child(5) .repository-card { animation-delay: 0.5s; }
-
+.repository-carousel-item:nth-child(1) .repository-card {
+  animation-delay: 0.1s;
+}
+.repository-carousel-item:nth-child(2) .repository-card {
+  animation-delay: 0.2s;
+}
+.repository-carousel-item:nth-child(3) .repository-card {
+  animation-delay: 0.3s;
+}
+.repository-carousel-item:nth-child(4) .repository-card {
+  animation-delay: 0.4s;
+}
+.repository-carousel-item:nth-child(5) .repository-card {
+  animation-delay: 0.5s;
+}

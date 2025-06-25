@@ -4,7 +4,7 @@
 
 // Mock modules that are imported in index.tsx
 jest.mock('../app', () => ({
-  FullApp: () => <div data-testid="full-app">Full App Component</div>
+  FullApp: () => <div data-testid="full-app">Full App Component</div>,
 }))
 
 jest.mock('../index.css', () => ({}))
@@ -13,15 +13,15 @@ jest.mock('../index.css', () => ({}))
 const mockRender = jest.fn()
 jest.mock('react-dom/client', () => ({
   createRoot: jest.fn(() => ({
-    render: mockRender
-  }))
+    render: mockRender,
+  })),
 }))
 
 // Mock MSW browser worker
 jest.mock('../mocks/browser', () => ({
   worker: {
-    start: jest.fn(() => Promise.resolve())
-  }
+    start: jest.fn(() => Promise.resolve()),
+  },
 }))
 
 describe('index.tsx module structure', () => {
@@ -39,7 +39,7 @@ describe('index.tsx module structure', () => {
   test('handles DOM correctly in production mode', () => {
     // Set up DOM
     document.body.innerHTML = '<div id="root"></div>'
-    
+
     // Verify the root element exists
     const rootElement = document.getElementById('root')
     expect(rootElement).toBeTruthy()
@@ -48,14 +48,16 @@ describe('index.tsx module structure', () => {
   test('handles missing root element', () => {
     // Remove root element
     document.body.innerHTML = ''
-    
+
     // Mock console.error to capture the error
-    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
-    
+    const consoleErrorSpy = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => {})
+
     // Verify the root element doesn't exist
     const rootElement = document.getElementById('root')
     expect(rootElement).toBeFalsy()
-    
+
     consoleErrorSpy.mockRestore()
   })
 })

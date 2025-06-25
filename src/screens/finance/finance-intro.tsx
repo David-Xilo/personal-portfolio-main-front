@@ -3,7 +3,7 @@ import * as React from 'react'
 import {useEffect} from 'react'
 import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
 import {SubMenuProps} from '../../reducers/sub-menu-reducer'
-import { IntroductionCard } from 'components/intro/intro-cards'
+import {IntroductionCard} from 'components/intro/intro-cards'
 import {IntroHeader} from 'components/intro/intro-header'
 import {RocketIcon} from 'components/icons/rocket-icon'
 import {AcademicCapIcon} from 'components/icons/academic-cap-icon'
@@ -12,7 +12,6 @@ import {BirthdayCakeIcon} from 'components/icons/birthday-cake-icon'
 import {ChartBarIcon} from 'components/icons/chart-bar-icon'
 import {BankNoteIcon} from 'components/icons/bank-note-icon'
 import './finance.css'
-
 
 const BarChartPulsating: React.FC = () => {
   return (
@@ -26,64 +25,68 @@ const BarChartPulsating: React.FC = () => {
   )
 }
 
-const FinanceIntroScreen: React.FC<SubMenuProps> = ({ hiddenMenuDispatch }) => {
+const FinanceIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
   useEffect(() => {
     hiddenMenuDispatch({type: CLEAR_HIDDEN_NAV})
-  }, [hiddenMenuDispatch]);
+  }, [hiddenMenuDispatch])
 
   return (
     <div className="finance-intro-container">
       <div className="finance-intro-wrapper">
-
         <div className="finance-intro-section">
-            <IntroHeader
-              title="Finance"
-              colorScheme={{ primary: 'emerald', secondary: 'teal', tertiary: 'blue' }}
-              variant="enhanced"
-              leftIcon={<ChartBarIcon />}
-              rightIcon={<BankNoteIcon />}
-            />
+          <IntroHeader
+            title="Finance"
+            colorScheme={{
+              primary: 'emerald',
+              secondary: 'teal',
+              tertiary: 'blue',
+            }}
+            variant="enhanced"
+            leftIcon={<ChartBarIcon />}
+            rightIcon={<BankNoteIcon />}
+          />
 
-            <BarChartPulsating />
+          <BarChartPulsating />
 
-            <div className="finance-intro-cards-grid">
+          <div className="finance-intro-cards-grid">
+            <IntroductionCard
+              color="green"
+              title="Early Beginnings"
+              icon={<BirthdayCakeIcon />}
+            >
+              Since I was young, I've followed the stock market and economic
+              news
+            </IntroductionCard>
 
-              <IntroductionCard
-                color="green"
-                title="Early Beginnings"
-                icon={<BirthdayCakeIcon />}
-              >
-                Since I was young, I've followed the stock market and economic news
-              </IntroductionCard>
+            <IntroductionCard
+              color="emerald"
+              title="Study"
+              icon={<BeakerIcon />}
+            >
+              Reading, studying, and staying informed about financial markets
+              whenever possible
+            </IntroductionCard>
 
-              <IntroductionCard
-                color="emerald"
-                title="Study"
-                icon={<BeakerIcon />}
-              >
-                Reading, studying, and staying informed about financial markets whenever possible
-              </IntroductionCard>
+            <IntroductionCard
+              color="teal"
+              title="Academic Fusion"
+              icon={<AcademicCapIcon />}
+            >
+              Combined technology and finance in my master's thesis
+            </IntroductionCard>
 
-              <IntroductionCard
-                color="teal"
-                title="Academic Fusion"
-                icon={<AcademicCapIcon />}
-              >
-                Combined technology and finance in my master's thesis
-              </IntroductionCard>
-
-              <IntroductionCard
-                color="cyan"
-                title="Projects & Growth"
-                icon={<RocketIcon />}
-              >
-                Finance projects, certifications, and continuous learning
-              </IntroductionCard>
-            </div>
+            <IntroductionCard
+              color="cyan"
+              title="Projects & Growth"
+              icon={<RocketIcon />}
+            >
+              Finance projects, certifications, and continuous learning
+            </IntroductionCard>
+          </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export {FinanceIntroScreen}

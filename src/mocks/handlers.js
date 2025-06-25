@@ -31,7 +31,7 @@ export const handlers = [
         {
           author: 'My Best Friend',
           rating: 4,
-          description: 'He\'s alright ',
+          description: "He's alright ",
         },
         {
           author: 'My Third Grade Teacher',
@@ -43,7 +43,7 @@ export const handlers = [
           rating: 1,
           description: 'Pure annoyance',
         },
-      ]
+      ],
     }
     return HttpResponse.json(contact)
   }),
@@ -94,12 +94,12 @@ export const handlers = [
               description: 'repo 3 description',
               link_to_git: 'https://github.com/johndoe/3',
             },
-            ]
+          ],
         },
         {
           title: 'tech project title 2',
           description: 'project description 2',
-          repositories: []
+          repositories: [],
         },
       ],
     }
@@ -154,7 +154,7 @@ export const handlers = [
               description: 'repo 3 description',
               link_to_git: 'https://github.com/johndoe/3',
             },
-          ]
+          ],
         },
         {
           title: 'game title',
@@ -178,29 +178,33 @@ export const handlers = [
     const games_played_carousel = {
       message: [
         {
-          "title": "Skyrim",
-          "genre": "RPG",
-          "description": "A sprawling, snow-drenched Nordic realm to freely explore, brimming with epic dragon battles, rich lore, unforgettable quests, dynamic combat, and endless mod-friendly adventures.",
-          "rating": 5
+          title: 'Skyrim',
+          genre: 'RPG',
+          description:
+            'A sprawling, snow-drenched Nordic realm to freely explore, brimming with epic dragon battles, rich lore, unforgettable quests, dynamic combat, and endless mod-friendly adventures.',
+          rating: 5,
         },
         {
-          "title": "DnD",
-          "genre": "table top",
-          "description": "Dungeons & Dragons is a boundless fantasy role-playing game full of imaginative storytelling, camaraderie, problem-solving, and epic quests—empowering creativity, teamwork, and adventure at every roll of the dice.",
-          "rating": 5
+          title: 'DnD',
+          genre: 'table top',
+          description:
+            'Dungeons & Dragons is a boundless fantasy role-playing game full of imaginative storytelling, camaraderie, problem-solving, and epic quests—empowering creativity, teamwork, and adventure at every roll of the dice.',
+          rating: 5,
         },
         {
-          "title": "Age of Empires II",
-          "genre": "strategy",
-          "description": "Age of Empires II is a legendary real-time strategy game set in the Middle Ages—build thriving empires across 13 civilizations, master resource economy, epic battles, historic campaigns, and deep multiplayer—timeless classic",
-          "rating": 4
+          title: 'Age of Empires II',
+          genre: 'strategy',
+          description:
+            'Age of Empires II is a legendary real-time strategy game set in the Middle Ages—build thriving empires across 13 civilizations, master resource economy, epic battles, historic campaigns, and deep multiplayer—timeless classic',
+          rating: 4,
         },
         {
-          "title": "Final Fantasy 7",
-          "genre": "RPG",
-          "description": "Final Fantasy VII is a timeless, genre‑defining RPG—rich with unforgettable characters, sweeping eco‑drama, cinematic twists, iconic music, and deep, emotion‑driven storytelling that still enthralls",
-          "rating": 4
-        }
+          title: 'Final Fantasy 7',
+          genre: 'RPG',
+          description:
+            'Final Fantasy VII is a timeless, genre‑defining RPG—rich with unforgettable characters, sweeping eco‑drama, cinematic twists, iconic music, and deep, emotion‑driven storytelling that still enthralls',
+          rating: 4,
+        },
       ],
     }
     return HttpResponse.json(games_played_carousel)

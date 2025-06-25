@@ -1,28 +1,30 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { MemoryRouter } from 'react-router-dom'
-import { AboutApp } from '../../../screens/about/about'
+import {MemoryRouter} from 'react-router-dom'
+import {AboutApp} from '../../../screens/about/about'
 
 // Mock components
 jest.mock('../../../screens/about/about-intro', () => ({
-  AboutIntroScreen: ({ hiddenMenuDispatch }: any) => (
+  AboutIntroScreen: ({hiddenMenuDispatch}: any) => (
     <div data-testid="about-intro">About Intro Screen</div>
-  )
+  ),
 }))
 
 jest.mock('../../../screens/about/about-contacts', () => ({
-  AboutContactsScreen: ({ hiddenMenuDispatch }: any) => (
+  AboutContactsScreen: ({hiddenMenuDispatch}: any) => (
     <div data-testid="about-contacts">About Contacts Screen</div>
-  )
+  ),
 }))
 
 jest.mock('components/error/not-found', () => ({
-  NotFoundScreen: () => <div data-testid="not-found">Not Found Screen</div>
+  NotFoundScreen: () => <div data-testid="not-found">Not Found Screen</div>,
 }))
 
 jest.mock('components/error/error-fallback', () => ({
-  ErrorFallback: ({ error }: any) => <div data-testid="error-fallback">Error: {error.message}</div>
+  ErrorFallback: ({error}: any) => (
+    <div data-testid="error-fallback">Error: {error.message}</div>
+  ),
 }))
 
 const mockSubMenuDispatch = jest.fn()
@@ -30,14 +32,15 @@ const mockHiddenMenuDispatch = jest.fn()
 
 const defaultProps = {
   subMenuDispatch: mockSubMenuDispatch,
-  hiddenMenuDispatch: mockHiddenMenuDispatch
+  hiddenMenuDispatch: mockHiddenMenuDispatch,
 }
 
-const renderWithRouter = (component: React.ReactElement, initialEntry = '/') => {
+const renderWithRouter = (
+  component: React.ReactElement,
+  initialEntry = '/',
+) => {
   return render(
-    <MemoryRouter initialEntries={[initialEntry]}>
-      {component}
-    </MemoryRouter>
+    <MemoryRouter initialEntries={[initialEntry]}>{component}</MemoryRouter>,
   )
 }
 
@@ -55,7 +58,7 @@ describe('AboutApp', () => {
     renderWithRouter(<AboutApp {...defaultProps} />)
     expect(mockSubMenuDispatch).toHaveBeenCalledWith({
       type: 'SET_SUB_NAV',
-      component: expect.any(Function)
+      component: expect.any(Function),
     })
   })
 
@@ -76,7 +79,7 @@ describe('AboutApp', () => {
 
   test('sub navigation contains correct links', () => {
     renderWithRouter(<AboutApp {...defaultProps} />)
-    
+
     // The sub navigation is set up via dispatch, so we verify the dispatch was called
     expect(mockSubMenuDispatch).toHaveBeenCalledTimes(1)
     const dispatchCall = mockSubMenuDispatch.mock.calls[0][0]
@@ -86,7 +89,7 @@ describe('AboutApp', () => {
 
   test('passes hiddenMenuDispatch to route components', () => {
     renderWithRouter(<AboutApp {...defaultProps} />)
-    
+
     // Since we're mocking the components, we can't directly test prop passing
     // but we can verify the component renders correctly
     expect(screen.getByTestId('about-intro')).toBeInTheDocument()
