@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 import {useEffect} from 'react'
 import {SET_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'

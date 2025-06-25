@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 import {SubNavLink} from '../navigation/navigation'
 import {Routes, Route} from 'react-router-dom'

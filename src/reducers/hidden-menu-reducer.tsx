@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 const SET_HIDDEN_NAV = 'SET_HIDDEN_NAV'
 const CLEAR_HIDDEN_NAV = 'CLEAR_HIDDEN_NAV'

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {MainNavLink} from './navigation'
 import {Route, Routes} from 'react-router-dom'
 import {AboutApp} from '../about/about'

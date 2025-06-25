@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {useState, useEffect, useRef} from 'react'
 import {ContactRest, useContactGetApi} from '../../hooks/contact-rest'
 import './contact-item.css'

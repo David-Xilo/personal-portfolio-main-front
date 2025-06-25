@@ -1,41 +1,40 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const {DefinePlugin} = require('webpack')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {DefinePlugin} = require('webpack');
 
 module.exports = (env, argv) => {
-  const mode = argv.mode || 'development'
-  const isProduction = mode === 'production'
-  const isDevelopment = mode === 'development'
+  const mode = argv.mode || 'development';
+  const isProduction = mode === 'production';
+  const isDevelopment = mode === 'development';
 
   // console.log(`🔧 Building for: ${mode}`);
 
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
     if (isProduction) {
-      return function (modulePath) {
+      return function(modulePath) {
         // Always exclude node_modules
-        if (/node_modules/.test(modulePath)) return true
+        if (/node_modules/.test(modulePath)) return true;
         // Exclude test files in production
-        if (/\.(test|spec)\.(js|jsx|ts|tsx)$/.test(modulePath)) return true
+        if (/\.(test|spec)\.(js|jsx|ts|tsx)$/.test(modulePath)) return true;
         // Exclude mocks in production
-        if (/\/mocks\//.test(modulePath)) return true
+        if (/\/mocks\//.test(modulePath)) return true;
         // Exclude MSW service worker
-        return /mockServiceWorker\.js$/.test(modulePath)
-      }
+        if (/mockServiceWorker\.js$/.test(modulePath)) return true;
+        return false;
+      };
     }
-    return /node_modules/
-  }
+    return /node_modules/;
+  };
 
   return {
     entry: './src/index.tsx',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: isProduction ? '[name].[contenthash].js' : 'bundle.js',
-      chunkFilename: isProduction
-        ? '[name].[contenthash].chunk.js'
-        : '[name].chunk.js',
+      chunkFilename: isProduction ? '[name].[contenthash].chunk.js' : '[name].chunk.js',
       publicPath: '/',
       clean: true,
     },
@@ -49,18 +48,16 @@ module.exports = (env, argv) => {
       },
     },
     devtool: isProduction ? 'source-map' : 'eval-source-map',
-    devServer: isDevelopment
-      ? {
-          static: {
-            directory: path.resolve(__dirname, 'public'),
-          },
-          historyApiFallback: true,
-          port: 3000,
-          open: true,
-          hot: true,
-          compress: true,
-        }
-      : undefined,
+    devServer: isDevelopment ? {
+      static: {
+        directory: path.resolve(__dirname, 'public'),
+      },
+      historyApiFallback: true,
+      port: 3000,
+      open: true,
+      hot: true,
+      compress: true,
+    } : undefined,
     module: {
       rules: [
         {
@@ -70,11 +67,11 @@ module.exports = (env, argv) => {
             loader: 'babel-loader',
             options: {
               presets: [
-                ['@babel/preset-env', {modules: false}],
+                ['@babel/preset-env', { modules: false }],
                 '@babel/preset-react',
-                '@babel/preset-typescript',
+                '@babel/preset-typescript'
               ],
-            },
+            }
           },
         },
         {
@@ -85,10 +82,8 @@ module.exports = (env, argv) => {
           test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf|otf)$/i,
           type: 'asset/resource',
           generator: {
-            filename: isProduction
-              ? 'assets/[name].[contenthash][ext]'
-              : 'assets/[name][ext]',
-          },
+            filename: isProduction ? 'assets/[name].[contenthash][ext]' : 'assets/[name][ext]'
+          }
         },
         {
           enforce: 'pre',
@@ -103,26 +98,23 @@ module.exports = (env, argv) => {
 
       new HtmlWebpackPlugin({
         template: './public/index.html',
-        favicon: './public/assets/safehouse.png',
-        minify: isProduction
-          ? {
-              collapseWhitespace: true,
-              removeComments: true,
-              removeRedundantAttributes: true,
-              removeEmptyAttributes: true,
-              removeScriptTypeAttributes: true,
-              removeStyleLinkTypeAttributes: true,
-              useShortDoctype: true,
-            }
-          : false,
+        // Remove favicon from HtmlWebpackPlugin to avoid duplication
+        // favicon: './public/assets/safehouse.png',
+        minify: isProduction ? {
+          collapseWhitespace: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          removeEmptyAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          useShortDoctype: true,
+        } : false,
       }),
 
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(
           process.env.REACT_APP_API_URL ||
-            (isProduction
-              ? 'https://your-production-api.com'
-              : 'http://localhost:4000'),
+          (isProduction ? 'https://your-production-api.com' : 'http://localhost:4000')
         ),
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
@@ -134,45 +126,83 @@ module.exports = (env, argv) => {
             to: '',
             globOptions: {
               ignore: [
-                '**/index.html',
+                '**/index.html', // Handled by HtmlWebpackPlugin
                 // Exclude MSW service worker from production builds
-                ...(isProduction ? ['**/mockServiceWorker.js'] : []),
+                ...(isProduction ? ['**/mockServiceWorker.js'] : [])
               ],
             },
+            // Add file size optimization for images
+            transform: isProduction ? {
+              transformer(content, path) {
+                // Only transform if it's a large PNG file
+                if (path.endsWith('.png') && content.length > 100000) {
+                  console.warn(`⚠️  Large image detected: ${path} (${(content.length / 1024).toFixed(1)}KB)`);
+                  console.warn(`   Consider optimizing this image for better performance.`);
+                }
+                return content;
+              },
+            } : undefined,
           },
         ],
       }),
     ],
 
-    // Simple optimization settings
+    // Better optimization settings
     optimization: {
       minimize: isProduction,
-      // Basic code splitting for production
-      splitChunks: isProduction
-        ? {
+      // Improved code splitting for production
+      splitChunks: isProduction ? {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 250000, // Split chunks that are too large
+        cacheGroups: {
+          // Vendor dependencies (React, etc.)
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            priority: 10,
             chunks: 'all',
-            cacheGroups: {
-              default: {
-                minChunks: 2,
-                priority: -20,
-                reuseExistingChunk: true,
-              },
-              vendor: {
-                test: /[\\/]node_modules[\\/]/,
-                name: 'vendors',
-                priority: -10,
-                chunks: 'all',
-              },
-            },
-          }
-        : false,
+            maxSize: 300000, // Split large vendor bundles
+          },
+          // Common code used across components
+          common: {
+            name: 'common',
+            minChunks: 2,
+            priority: 5,
+            chunks: 'all',
+            maxSize: 200000,
+            reuseExistingChunk: true,
+          },
+          // React-specific chunk
+          react: {
+            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            name: 'react',
+            priority: 20,
+            chunks: 'all',
+          },
+          // UI libraries chunk
+          ui: {
+            test: /[\\/]node_modules[\\/](react-bootstrap|@emotion)[\\/]/,
+            name: 'ui',
+            priority: 15,
+            chunks: 'all',
+          },
+        },
+      } : false,
+      // Remove unused code
+      usedExports: true,
+      sideEffects: false,
     },
 
-    // Performance hints
+    // Performance hints - more realistic limits for React apps
     performance: {
       hints: isProduction ? 'warning' : false,
-      maxEntrypointSize: 300000,
-      maxAssetSize: 300000,
+      maxEntrypointSize: 500000, // 500KB for entry point (React apps are typically 400-600KB)
+      maxAssetSize: 300000, // 300KB for individual assets
+      assetFilter: function(assetFilename) {
+        // Don't apply size limits to source maps, images, and fonts
+        return !assetFilename.match(/\.(map|png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf|otf)$/);
+      },
     },
-  }
-}
+  };
+};
