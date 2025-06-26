@@ -1,55 +1,113 @@
-import {useState, useEffect} from 'react'
-
-const domain = process.env.REACT_APP_API_URL
+import { useState, useEffect } from 'react';
+import { config } from '../../config';
+import apiClient, { ApiError } from '../client';
 
 interface ContactRest {
-  name: string
-  email: string
-  linkedin: string
-  github: string
-  credly: string
+  name: string;
+  email: string;
+  linkedin: string;
+  github: string;
+  credly: string;
 }
 
 interface ContactResponse {
-  status: string
-  message: ContactRest | null
-  error: string | null
+  status: string;
+  message: ContactRest | null;
+  error: string | null;
 }
 
 const useContactGetApi = (endpoint: string): ContactResponse => {
-  const completeEndpoint = domain + endpoint
   const [data, setData] = useState<ContactResponse>({
     status: '',
     message: null,
     error: null,
-  })
+  });
+
   useEffect(() => {
-    fetch(completeEndpoint)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Error using endpoint ' + completeEndpoint)
+    const controller = new AbortController();
+
+    const fetchData = async () => {
+      try {
+        // Simple online check
+        if (!navigator.onLine) {
+          throw new ApiError('No internet connection', 0, 'OFFLINE');
         }
-        return res.json()
-      })
-      .then(data => {
+
+        // Set loading state
+        setData(prev => ({ ...prev, status: 'loading' }));
+
+        // Use the secure API client
+        const response = await apiClient.get<{ message: ContactRest }>(endpoint);
+
+        // Normalize the response
         const normalizedData: ContactResponse = {
           status: 'success',
-          message: data.message,
+          message: response.message || null,
           error: null,
+        };
+        setData(normalizedData);
+
+      } catch (err) {
+        // Don't set error if request was aborted (component unmounted)
+        if (err instanceof Error && err.name === 'AbortError') {
+          return;
         }
-        setData(normalizedData)
-      })
-      .catch(err => {
-        const errorData = {
+
+        let errorMessage = 'An error occurred';
+
+        if (err instanceof ApiError) {
+          switch (err.code) {
+            case 'FORBIDDEN':
+              errorMessage = 'Access denied - please refresh the page';
+              break;
+            case 'RATE_LIMITED':
+              errorMessage = 'Too many requests - please wait a moment';
+              break;
+            case 'OFFLINE':
+              errorMessage = 'No internet connection';
+              break;
+            case 'SERVER_ERROR':
+              errorMessage = 'Server error - please try again later';
+              break;
+            case 'NETWORK_ERROR':
+              errorMessage = 'Network error - check your connection';
+              break;
+            default:
+              errorMessage = config.isDevelopment ? err.message : 'Something went wrong';
+          }
+        } else if (err instanceof Error) {
+          errorMessage = config.isDevelopment ? err.message : 'Something went wrong';
+        }
+
+        const errorData: ContactResponse = {
           status: 'error',
           message: null,
-          error: err.message,
-        }
-        setData(errorData)
-      })
-  }, [completeEndpoint])
+          error: errorMessage,
+        };
+        setData(errorData);
+      }
+    };
 
-  return data
-}
+    fetchData().catch((err) => {
+      // Handle any errors that escape the try-catch block
+      console.error('Unhandled error in fetchData:', err);
 
-export {useContactGetApi, ContactRest}
+      const errorData: ContactResponse = {
+        status: 'error',
+        message: null,
+        error: config.isDevelopment ? 'Unexpected error occurred' : 'Something went wrong',
+      };
+      setData(errorData);
+    });
+
+    // Cleanup function - abort any ongoing requests
+    return () => {
+      controller.abort();
+    };
+  }, [endpoint]);
+
+  return data;
+};
+
+export { useContactGetApi };
+export type { ContactRest };

@@ -1,54 +1,112 @@
-import {useEffect, useState} from 'react'
-
-const domain = process.env.REACT_APP_API_URL
+import { useEffect, useState } from 'react';
+import { config } from '../../config';
+import apiClient, { ApiError } from '../client';
 
 interface GamesPlayed {
-  title: string
-  genre: string
-  rating: number
-  description: string
+  title: string;
+  genre: string;
+  rating: number;
+  description: string;
 }
 
 interface GamesPlayedResponse {
-  status: string
-  message: GamesPlayed[]
-  error: string | null
+  status: string;
+  message: GamesPlayed[];
+  error: string | null;
 }
 
 const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
-  const completeEndpoint = domain + endpoint
   const [data, setData] = useState<GamesPlayedResponse>({
     status: '',
     message: [],
     error: null,
-  })
+  });
+
   useEffect(() => {
-    fetch(completeEndpoint)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Error using endpoint ' + completeEndpoint)
+    const controller = new AbortController();
+
+    const fetchData = async () => {
+      try {
+        // Simple online check
+        if (!navigator.onLine) {
+          throw new ApiError('No internet connection', 0, 'OFFLINE');
         }
-        return res.json()
-      })
-      .then(data => {
+
+        // Set loading state
+        setData(prev => ({ ...prev, status: 'loading' }));
+
+        // Use the secure API client
+        const response = await apiClient.get<{ message: GamesPlayed[] }>(endpoint);
+
+        // Normalize the response
         const normalizedData: GamesPlayedResponse = {
           status: 'success',
-          message: Array.isArray(data.message) ? data.message : [],
+          message: Array.isArray(response.message) ? response.message : [],
           error: null,
+        };
+        setData(normalizedData);
+
+      } catch (err) {
+        // Don't set error if request was aborted (component unmounted)
+        if (err instanceof Error && err.name === 'AbortError') {
+          return;
         }
-        setData(normalizedData)
-      })
-      .catch(err => {
-        const errorData = {
+
+        let errorMessage = 'An error occurred';
+
+        if (err instanceof ApiError) {
+          switch (err.code) {
+            case 'FORBIDDEN':
+              errorMessage = 'Access denied - please refresh the page';
+              break;
+            case 'RATE_LIMITED':
+              errorMessage = 'Too many requests - please wait a moment';
+              break;
+            case 'OFFLINE':
+              errorMessage = 'No internet connection';
+              break;
+            case 'SERVER_ERROR':
+              errorMessage = 'Server error - please try again later';
+              break;
+            case 'NETWORK_ERROR':
+              errorMessage = 'Network error - check your connection';
+              break;
+            default:
+              errorMessage = config.isDevelopment ? err.message : 'Something went wrong';
+          }
+        } else if (err instanceof Error) {
+          errorMessage = config.isDevelopment ? err.message : 'Something went wrong';
+        }
+
+        const errorData: GamesPlayedResponse = {
           status: 'error',
           message: [],
-          error: err.message,
-        }
-        setData(errorData)
-      })
-  }, [completeEndpoint])
+          error: errorMessage,
+        };
+        setData(errorData);
+      }
+    };
 
-  return data
-}
+    fetchData().catch((err) => {
+      // Handle any errors that escape the try-catch block
+      console.error('Unhandled error in fetchData:', err);
 
-export {useGamesPlayedGetApi, GamesPlayed}
+      const errorData: GamesPlayedResponse = {
+        status: 'error',
+        message: [],
+        error: config.isDevelopment ? 'Unexpected error occurred' : 'Something went wrong',
+      };
+      setData(errorData);
+    });
+
+    // Cleanup function - abort any ongoing requests
+    return () => {
+      controller.abort();
+    };
+  }, [endpoint]);
+
+  return data;
+};
+
+export { useGamesPlayedGetApi };
+export type { GamesPlayed };
