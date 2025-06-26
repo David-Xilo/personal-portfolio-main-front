@@ -1,20 +1,20 @@
-import { RepositoryInfo } from 'components/projects/repository';
-import { useEffect, useState } from 'react';
-import { config } from '../../config';
-import apiClient, { ApiError } from '../client';
+import {RepositoryInfo} from 'components/projects/repository'
+import {useEffect, useState} from 'react'
+import {config} from '../../config'
+import apiClient, {ApiError} from '../client'
 
 interface Project {
-  title: string;
-  description: string;
-  repositories: RepositoryInfo[];
-  genre?: string;
-  link_to_store?: string;
+  title: string
+  description: string
+  repositories: RepositoryInfo[]
+  genre?: string
+  link_to_store?: string
 }
 
 interface ProjectsResponse {
-  status: string;
-  message: Project[];
-  error: string | null;
+  status: string
+  message: Project[]
+  error: string | null
 }
 
 const useProjectsGetApi = (path: string): ProjectsResponse => {
@@ -22,93 +22,98 @@ const useProjectsGetApi = (path: string): ProjectsResponse => {
     status: '',
     message: [],
     error: null,
-  });
+  })
 
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = new AbortController()
 
     const fetchData = async () => {
       try {
         // Simple online check
         if (!navigator.onLine) {
-          throw new ApiError('No internet connection', 0, 'OFFLINE');
+          throw new ApiError('No internet connection', 0, 'OFFLINE')
         }
 
         // Set loading state
-        setData(prev => ({ ...prev, status: 'loading' }));
+        setData(prev => ({...prev, status: 'loading'}))
 
         // Use the secure API client
-        const response = await apiClient.get<{ message: Project[] }>(path);
+        const response = await apiClient.get<{message: Project[]}>(path)
 
         // Normalize the response
         const normalizedData: ProjectsResponse = {
           status: 'success',
           message: Array.isArray(response.message) ? response.message : [],
           error: null,
-        };
-        setData(normalizedData);
-
+        }
+        setData(normalizedData)
       } catch (err) {
         // Don't set error if request was aborted (component unmounted)
         if (err instanceof Error && err.name === 'AbortError') {
-          return;
+          return
         }
 
-        let errorMessage = 'An error occurred';
+        let errorMessage = 'An error occurred'
 
         if (err instanceof ApiError) {
           switch (err.code) {
             case 'FORBIDDEN':
-              errorMessage = 'Access denied - please refresh the page';
-              break;
+              errorMessage = 'Access denied - please refresh the page'
+              break
             case 'RATE_LIMITED':
-              errorMessage = 'Too many requests - please wait a moment';
-              break;
+              errorMessage = 'Too many requests - please wait a moment'
+              break
             case 'OFFLINE':
-              errorMessage = 'No internet connection';
-              break;
+              errorMessage = 'No internet connection'
+              break
             case 'SERVER_ERROR':
-              errorMessage = 'Server error - please try again later';
-              break;
+              errorMessage = 'Server error - please try again later'
+              break
             case 'NETWORK_ERROR':
-              errorMessage = 'Network error - check your connection';
-              break;
+              errorMessage = 'Network error - check your connection'
+              break
             default:
-              errorMessage = config.isDevelopment ? err.message : 'Something went wrong';
+              errorMessage = config.isDevelopment
+                ? err.message
+                : 'Something went wrong'
           }
         } else if (err instanceof Error) {
-          errorMessage = config.isDevelopment ? err.message : 'Something went wrong';
+          errorMessage = config.isDevelopment
+            ? err.message
+            : 'Something went wrong'
         }
 
         const errorData: ProjectsResponse = {
           status: 'error',
           message: [],
           error: errorMessage,
-        };
-        setData(errorData);
+        }
+        setData(errorData)
       }
-    };
+    }
 
-    fetchData().catch((err) => {
+    fetchData().catch(err => {
       // Handle any errors that escape the try-catch block
-      console.error('Unhandled error in fetchData:', err);
+      console.error('Unhandled error in fetchData:', err)
 
       const errorData: ProjectsResponse = {
         status: 'error',
         message: [],
-        error: config.isDevelopment ? 'Unexpected error occurred' : 'Something went wrong',
-      };
-      setData(errorData);
-    });
+        error: config.isDevelopment
+          ? 'Unexpected error occurred'
+          : 'Something went wrong',
+      }
+      setData(errorData)
+    })
 
     // Cleanup function - abort any ongoing requests
     return () => {
-      controller.abort();
-    };
-  }, [path]);
+      controller.abort()
+    }
+  }, [path])
 
-  return data;
-};
+  return data
+}
 
-export { useProjectsGetApi };
-export type { Project };
+export {useProjectsGetApi}
+export type {Project}
