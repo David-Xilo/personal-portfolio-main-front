@@ -1,7 +1,7 @@
 import {RepositoryInfo} from 'components/projects/repository'
 import {useEffect, useState} from 'react'
-import {config} from '../../config'
 import apiClient, {ApiError} from '../client'
+import {handleApiError, handleUnexpectedError} from './shared/error-handler'
 
 interface Project {
   title: string
@@ -48,40 +48,8 @@ const useProjectsGetApi = (path: string): ProjectsResponse => {
         }
         setData(normalizedData)
       } catch (err) {
-        // Don't set error if request was aborted (component unmounted)
-        if (err instanceof Error && err.name === 'AbortError') {
-          return
-        }
-
-        let errorMessage = 'An error occurred'
-
-        if (err instanceof ApiError) {
-          switch (err.code) {
-            case 'FORBIDDEN':
-              errorMessage = 'Access denied - please refresh the page'
-              break
-            case 'RATE_LIMITED':
-              errorMessage = 'Too many requests - please wait a moment'
-              break
-            case 'OFFLINE':
-              errorMessage = 'No internet connection'
-              break
-            case 'SERVER_ERROR':
-              errorMessage = 'Server error - please try again later'
-              break
-            case 'NETWORK_ERROR':
-              errorMessage = 'Network error - check your connection'
-              break
-            default:
-              errorMessage = config.isDevelopment
-                ? err.message
-                : 'Something went wrong'
-          }
-        } else if (err instanceof Error) {
-          errorMessage = config.isDevelopment
-            ? err.message
-            : 'Something went wrong'
-        }
+        const {errorMessage, shouldReturn} = handleApiError(err)
+        if (shouldReturn) return
 
         const errorData: ProjectsResponse = {
           status: 'error',
@@ -93,15 +61,10 @@ const useProjectsGetApi = (path: string): ProjectsResponse => {
     }
 
     fetchData().catch(err => {
-      // Handle any errors that escape the try-catch block
-      console.error('Unhandled error in fetchData:', err)
-
       const errorData: ProjectsResponse = {
         status: 'error',
         message: [],
-        error: config.isDevelopment
-          ? 'Unexpected error occurred'
-          : 'Something went wrong',
+        error: handleUnexpectedError(err),
       }
       setData(errorData)
     })

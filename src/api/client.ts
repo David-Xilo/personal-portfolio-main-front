@@ -62,8 +62,8 @@ class ApiClient {
         'X-Client-Version': config.appVersion,
         ...options.headers,
       },
-      credentials: 'include', // Important: Send cookies for CORS
-      mode: 'cors', // Important: Enable CORS
+      credentials: 'include',
+      mode: 'cors',
     }
 
     if (config.isDevelopment) {

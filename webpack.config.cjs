@@ -98,8 +98,13 @@ module.exports = (env, argv) => {
 
       new HtmlWebpackPlugin({
         template: './public/index.html',
-        // Remove favicon from HtmlWebpackPlugin to avoid duplication
-        // favicon: './public/assets/safehouse.png',
+        templateParameters: {
+          // SECURE: Only HTTPS in production (automatically blocks localhost)
+          CSP_CONNECT_SRC: isProduction
+            ? "'self' https: http://localhost:*"  // TODO Remove localhost - if needed add http domain used in prod
+            : "'self' http://localhost:* http: https:",
+          NODE_ENV: process.env.NODE_ENV || mode,
+        },
         minify: isProduction ? {
           collapseWhitespace: true,
           removeComments: true,
@@ -114,7 +119,7 @@ module.exports = (env, argv) => {
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(
           process.env.REACT_APP_API_URL ||
-          (isProduction ? 'https://your-production-api.com' : 'http://localhost:4000')
+          (isProduction ? 'http://localhost:4000' : 'http://localhost:4000')
         ),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '1.0.0'
