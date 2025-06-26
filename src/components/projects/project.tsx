@@ -1,7 +1,7 @@
 import React from 'react'
 import {RepositoryCarousel} from './repository'
 import {ContentListItem} from 'components/menu/content-list-item'
-import {Project, useProjectsGetApi} from '../../hooks/projects-rest'
+import {Project, useProjectsGetApi} from '../../api/hooks/projects-rest'
 import './project.css'
 
 const ProjectComponent: React.FC<{project: Project}> = ({project}) => {

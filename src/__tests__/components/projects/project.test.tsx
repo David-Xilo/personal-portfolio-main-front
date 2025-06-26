@@ -5,7 +5,7 @@ import {
   ProjectComponent,
   GenericProjectsScreen,
 } from '../../../components/projects/project'
-import {Project} from '../../../hooks/projects-rest'
+import {Project} from '../../../api/hooks/projects-rest'
 
 jest.mock('../../../components/projects/repository', () => ({
   RepositoryCarousel: ({repositories}: {repositories: any[]}) => (
@@ -15,12 +15,12 @@ jest.mock('../../../components/projects/repository', () => ({
   ),
 }))
 
-jest.mock('../../../hooks/projects-rest', () => ({
+jest.mock('../../../api/hooks/projects-rest', () => ({
   useProjectsGetApi: jest.fn(),
   Project: {} as any,
 }))
 
-import {useProjectsGetApi} from '../../../hooks/projects-rest'
+import {useProjectsGetApi} from '../../../api/hooks/projects-rest'
 
 const mockProject: Project = {
   title: 'Test Project',

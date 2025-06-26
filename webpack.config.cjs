@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development';
 
-  // console.log(`🔧 Building for: ${mode}`);
+  console.log(`🔧 Building for: ${mode}`);
 
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
@@ -115,6 +115,9 @@ module.exports = (env, argv) => {
         'process.env.REACT_APP_API_URL': JSON.stringify(
           process.env.REACT_APP_API_URL ||
           (isProduction ? 'https://your-production-api.com' : 'http://localhost:4000')
+        ),
+        'process.env.REACT_APP_APP_VERSION': JSON.stringify(
+          process.env.REACT_APP_APP_VERSION || '1.0.0'
         ),
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),

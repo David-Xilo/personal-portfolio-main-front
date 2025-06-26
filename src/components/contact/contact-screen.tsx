@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState, useEffect, useRef} from 'react'
-import {ContactRest, useContactGetApi} from '../../hooks/contact-rest'
+import {ContactRest, useContactGetApi} from '../../api/hooks/contact-rest'
 import './contact-item.css'
 
 interface ContactItemProps {

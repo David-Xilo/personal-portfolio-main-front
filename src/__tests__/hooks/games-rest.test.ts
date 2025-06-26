@@ -1,5 +1,5 @@
 import {renderHook, waitFor} from '@testing-library/react'
-import {useGamesPlayedGetApi} from '../../hooks/games-rest'
+import {useGamesPlayedGetApi} from '../../api/hooks/games-rest'
 
 // Mock fetch
 global.fetch = jest.fn()

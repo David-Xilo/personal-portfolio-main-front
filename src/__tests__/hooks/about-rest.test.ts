@@ -1,5 +1,5 @@
 import {renderHook, waitFor} from '@testing-library/react'
-import {useAboutReviewsGetApi} from '../../hooks/about-rest'
+import {useAboutReviewsGetApi} from '../../api/hooks/about-rest'
 
 // Mock fetch
 global.fetch = jest.fn()

@@ -1,5 +1,5 @@
 import {renderHook, waitFor} from '@testing-library/react'
-import {useProjectsGetApi} from '../../hooks/projects-rest'
+import {useProjectsGetApi} from '../../api/hooks/projects-rest'
 
 // Mock fetch
 global.fetch = jest.fn()

@@ -5,9 +5,9 @@ import {
   ContactScreen,
   ContactItem,
 } from '../../../components/contact/contact-screen'
-import * as contactRest from '../../../hooks/contact-rest'
+import * as contactRest from '../../../api/hooks/contact-rest'
 
-jest.mock('../../../hooks/contact-rest')
+jest.mock('../../../api/hooks/contact-rest')
 
 const mockContact = {
   name: 'John Doe',

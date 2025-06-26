@@ -1,5 +1,5 @@
 import {renderHook, waitFor} from '@testing-library/react'
-import {useContactGetApi} from '../../hooks/contact-rest'
+import {useContactGetApi} from '../../api/hooks/contact-rest'
 
 // Mock fetch
 global.fetch = jest.fn()

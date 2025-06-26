@@ -1,7 +1,7 @@
 import React from 'react'
 import './games.css'
 import {InfiniteCarousel} from 'components/carousel/infinite-carousel'
-import {useGamesPlayedGetApi} from '../../hooks/games-rest'
+import {useGamesPlayedGetApi} from '../../api/hooks/games-rest'
 import {UserGroupIcon} from 'components/icons/user-group-icon'
 import {BuildingLibraryIcon} from 'components/icons/building-library-icon'
 import {PuzzlePieceIcon} from 'components/icons/puzzle-piece-icon'

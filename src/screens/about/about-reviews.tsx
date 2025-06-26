@@ -1,7 +1,7 @@
 import React from 'react'
 import './about.css'
 import {InfiniteCarousel} from 'components/carousel/infinite-carousel'
-import {useAboutReviewsGetApi} from '../../hooks/about-rest'
+import {useAboutReviewsGetApi} from '../../api/hooks/about-rest'
 
 interface AboutReview {
   author: string
