@@ -31,6 +31,10 @@ export default [
         ...globals.browser,
         ...globals.node,
         ...globals.es2022,
+        NodeJS: 'readonly',
+        RequestInit: 'readonly',
+        Response: 'readonly',
+        fetch: 'readonly',
       },
     },
     linterOptions: {
