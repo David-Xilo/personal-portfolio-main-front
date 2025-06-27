@@ -1,5 +1,5 @@
 import React from 'react'
-import { ErrorProps } from './error-fallback'
+import {ErrorProps} from './error-fallback'
 import './error.css'
 
 interface ErrorMessageProps {
@@ -14,8 +14,12 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
   className = '',
   ...props
 }) => {
-  const containerClass = variant === 'inline' ? 'error-message-inline' : 'error-message-stacked'
-  const preClass = variant === 'inline' ? 'error-message-pre-inline' : 'error-message-pre-stacked'
+  const containerClass =
+    variant === 'inline' ? 'error-message-inline' : 'error-message-stacked'
+  const preClass =
+    variant === 'inline'
+      ? 'error-message-pre-inline'
+      : 'error-message-pre-stacked'
 
   return (
     <div
@@ -31,4 +35,4 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
   )
 }
 
-export { ErrorMessage }
+export {ErrorMessage}

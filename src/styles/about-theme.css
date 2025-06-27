@@ -1,18 +1,17 @@
 :root {
-    --about-primary: #dc2626;
-    --about-secondary: #ea580c;
-    --about-tertiary: #d97706;
-    --about-quaternary: #92400e;
-    --about-light: #fef3c7;
-    --about-text-warm: #451a03;
+  --about-primary: #dc2626;
+  --about-secondary: #ea580c;
+  --about-tertiary: #d97706;
+  --about-quaternary: #92400e;
+  --about-light: #fef3c7;
+  --about-text-warm: #451a03;
 }
 
 .dark-theme {
-    --about-primary: #f87171;
-    --about-secondary: #fb923c;
-    --about-tertiary: #fbbf24;
-    --about-quaternary: #d97706;
-    --about-light: #292524;
-    --about-text-warm: #fef3c7;
+  --about-primary: #f87171;
+  --about-secondary: #fb923c;
+  --about-tertiary: #fbbf24;
+  --about-quaternary: #d97706;
+  --about-light: #292524;
+  --about-text-warm: #fef3c7;
 }
-

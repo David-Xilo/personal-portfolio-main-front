@@ -5,7 +5,7 @@ import {
   SET_SUB_NAV,
   CLEAR_SUB_NAV,
   SubMenuState,
-  SubMenuAction
+  SubMenuAction,
 } from '../../reducers/sub-menu-reducer'
 
 // Test component
@@ -20,7 +20,7 @@ describe('subMenuReducer', () => {
   test('SET_SUB_NAV action sets sub navigation', () => {
     const action: SubMenuAction = {
       type: SET_SUB_NAV,
-      component: TestSubComponent
+      component: TestSubComponent,
     }
 
     const newState = subMenuReducer(subMenuInitialState, action)
@@ -32,12 +32,12 @@ describe('subMenuReducer', () => {
   test('CLEAR_SUB_NAV action clears sub navigation', () => {
     const initialStateWithComponent: SubMenuState = {
       SubNavComponent: TestSubComponent,
-      shouldRenderSubNav: true
+      shouldRenderSubNav: true,
     }
 
     const action: SubMenuAction = {
       type: CLEAR_SUB_NAV,
-      component: TestSubComponent // component is required but not used in CLEAR action
+      component: TestSubComponent, // component is required but not used in CLEAR action
     }
 
     const newState = subMenuReducer(initialStateWithComponent, action)
@@ -49,7 +49,7 @@ describe('subMenuReducer', () => {
   test('unknown action returns unchanged state', () => {
     const unknownAction: SubMenuAction = {
       type: 'UNKNOWN_ACTION',
-      component: TestSubComponent
+      component: TestSubComponent,
     }
 
     const newState = subMenuReducer(subMenuInitialState, unknownAction)
@@ -60,7 +60,7 @@ describe('subMenuReducer', () => {
   test('maintains state immutability', () => {
     const action: SubMenuAction = {
       type: SET_SUB_NAV,
-      component: TestSubComponent
+      component: TestSubComponent,
     }
 
     const newState = subMenuReducer(subMenuInitialState, action)
@@ -74,7 +74,7 @@ describe('subMenuReducer', () => {
 
     const action1: SubMenuAction = {
       type: SET_SUB_NAV,
-      component: TestSubComponent
+      component: TestSubComponent,
     }
 
     const state1 = subMenuReducer(subMenuInitialState, action1)
@@ -82,7 +82,7 @@ describe('subMenuReducer', () => {
 
     const action2: SubMenuAction = {
       type: SET_SUB_NAV,
-      component: AnotherComponent
+      component: AnotherComponent,
     }
 
     const state2 = subMenuReducer(state1, action2)
@@ -93,12 +93,12 @@ describe('subMenuReducer', () => {
   test('CLEAR_SUB_NAV resets to empty component', () => {
     const stateWithComponent: SubMenuState = {
       SubNavComponent: TestSubComponent,
-      shouldRenderSubNav: true
+      shouldRenderSubNav: true,
     }
 
     const action: SubMenuAction = {
       type: CLEAR_SUB_NAV,
-      component: TestSubComponent
+      component: TestSubComponent,
     }
 
     const newState = subMenuReducer(stateWithComponent, action)
@@ -119,7 +119,7 @@ describe('subMenuReducer', () => {
     // Set first component
     const action1: SubMenuAction = {
       type: SET_SUB_NAV,
-      component: Component1
+      component: Component1,
     }
     const state1 = subMenuReducer(subMenuInitialState, action1)
     expect(state1.SubNavComponent).toBe(Component1)
@@ -128,7 +128,7 @@ describe('subMenuReducer', () => {
     // Replace with second component
     const action2: SubMenuAction = {
       type: SET_SUB_NAV,
-      component: Component2
+      component: Component2,
     }
     const state2 = subMenuReducer(state1, action2)
     expect(state2.SubNavComponent).toBe(Component2)
@@ -137,7 +137,7 @@ describe('subMenuReducer', () => {
     // Clear navigation
     const action3: SubMenuAction = {
       type: CLEAR_SUB_NAV,
-      component: Component2
+      component: Component2,
     }
     const state3 = subMenuReducer(state2, action3)
     expect(state3.shouldRenderSubNav).toBe(false)

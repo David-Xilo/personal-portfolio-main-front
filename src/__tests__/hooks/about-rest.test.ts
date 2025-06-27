@@ -1,5 +1,5 @@
-import { renderHook, waitFor } from '@testing-library/react'
-import { useAboutReviewsGetApi } from '../../hooks/about-rest'
+import {renderHook, waitFor} from '@testing-library/react'
+import {useAboutReviewsGetApi} from '../../api/hooks/about-rest'
 
 // Mock fetch
 global.fetch = jest.fn()
@@ -12,7 +12,7 @@ describe('useAboutReviewsGetApi', () => {
 
   beforeEach(() => {
     jest.clearAllMocks()
-    process.env = { ...originalEnv }
+    process.env = {...originalEnv}
     process.env.REACT_APP_API_URL = 'http://localhost:4000'
   })
 
@@ -25,21 +25,21 @@ describe('useAboutReviewsGetApi', () => {
       {
         author: 'John Doe',
         rating: 5,
-        description: 'Great work!'
+        description: 'Great work!',
       },
       {
         author: 'Jane Smith',
         rating: 4,
-        description: 'Very professional'
-      }
+        description: 'Very professional',
+      },
     ]
 
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ message: mockReviews })
+      json: async () => ({message: mockReviews}),
     } as Response)
 
-    const { result } = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
+    const {result} = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
 
     // Initial state
     expect(result.current.status).toBe('')
@@ -53,14 +53,16 @@ describe('useAboutReviewsGetApi', () => {
 
     expect(result.current.message).toEqual(mockReviews)
     expect(result.current.error).toBe(null)
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/about/reviews')
+    expect(mockFetch).toHaveBeenCalledWith(
+      'http://localhost:4000/api/about/reviews',
+    )
   })
 
   test('handles fetch error', async () => {
     const errorMessage = 'Network error'
     mockFetch.mockRejectedValueOnce(new Error(errorMessage))
 
-    const { result } = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
+    const {result} = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
 
     await waitFor(() => {
       expect(result.current.status).toBe('error')
@@ -73,28 +75,30 @@ describe('useAboutReviewsGetApi', () => {
   test('handles non-ok response', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: false,
-      status: 404
+      status: 404,
     } as Response)
 
-    const { result } = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
+    const {result} = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
 
     await waitFor(() => {
       expect(result.current.status).toBe('error')
     })
 
     expect(result.current.message).toEqual([])
-    expect(result.current.error).toBe('Error using endpoint http://localhost:4000/api/about/reviews')
+    expect(result.current.error).toBe(
+      'Error using endpoint http://localhost:4000/api/about/reviews',
+    )
   })
 
   test('handles non-array message response', async () => {
-    const mockResponse = { message: 'not an array' }
+    const mockResponse = {message: 'not an array'}
 
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => mockResponse
+      json: async () => mockResponse,
     } as Response)
 
-    const { result } = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
+    const {result} = renderHook(() => useAboutReviewsGetApi(mockEndpoint))
 
     await waitFor(() => {
       expect(result.current.status).toBe('success')
@@ -110,25 +114,29 @@ describe('useAboutReviewsGetApi', () => {
 
     mockFetch.mockResolvedValue({
       ok: true,
-      json: async () => ({ message: [] })
+      json: async () => ({message: []}),
     } as Response)
 
-    const { result, rerender } = renderHook(
-      ({ endpoint }) => useAboutReviewsGetApi(endpoint),
-      { initialProps: { endpoint: firstEndpoint } }
+    const {result, rerender} = renderHook(
+      ({endpoint}) => useAboutReviewsGetApi(endpoint),
+      {initialProps: {endpoint: firstEndpoint}},
     )
 
     await waitFor(() => {
       expect(result.current.status).toBe('success')
     })
 
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/about/reviews')
+    expect(mockFetch).toHaveBeenCalledWith(
+      'http://localhost:4000/api/about/reviews',
+    )
 
     // Change endpoint
-    rerender({ endpoint: secondEndpoint })
+    rerender({endpoint: secondEndpoint})
 
     await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/about/other-reviews')
+      expect(mockFetch).toHaveBeenCalledWith(
+        'http://localhost:4000/api/about/other-reviews',
+      )
     })
 
     expect(mockFetch).toHaveBeenCalledTimes(2)

@@ -45,22 +45,38 @@
 }
 
 .finance-intro-section .intro-card--green {
-  background: linear-gradient(135deg, var(--finance-primary) 0%, var(--finance-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--finance-primary) 0%,
+    var(--finance-secondary) 100%
+  );
   border-color: var(--finance-accent);
 }
 
 .finance-intro-section .intro-card--emerald {
-  background: linear-gradient(135deg, var(--finance-secondary) 0%, var(--finance-accent) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--finance-secondary) 0%,
+    var(--finance-accent) 100%
+  );
   border-color: var(--finance-primary);
 }
 
 .finance-intro-section .intro-card--teal {
-  background: linear-gradient(135deg, var(--finance-accent) 0%, var(--finance-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--finance-accent) 0%,
+    var(--finance-light) 100%
+  );
   border-color: var(--finance-secondary);
 }
 
 .finance-intro-section .intro-card--cyan {
-  background: linear-gradient(135deg, var(--finance-light) 0%, var(--finance-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--finance-light) 0%,
+    var(--finance-primary) 100%
+  );
   border-color: var(--finance-accent);
 }
 
@@ -81,7 +97,7 @@
   .finance-chart-container {
     @apply gap-1;
   }
-  
+
   .finance-chart-bar-1,
   .finance-chart-bar-2,
   .finance-chart-bar-3,
@@ -95,7 +111,7 @@
   .finance-intro-container {
     @apply p-6;
   }
-  
+
   .finance-intro-cards-grid {
     @apply grid-cols-1 gap-4;
   }

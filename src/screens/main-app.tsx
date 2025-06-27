@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {ErrorBoundary} from 'react-error-boundary'
 import './main-app.css'
 import {useReducer} from 'react'
@@ -21,7 +21,6 @@ import {
   SubMenuState,
 } from '../reducers/sub-menu-reducer'
 import {AppRoutes, MainNav} from './navigation/main-navigation'
-import {ThemeToggle} from 'components/theme/ThemeToggle'
 
 const MainApp: React.FC = () => {
   const [subMenuState, subMenuDispatch] = useReducer<
@@ -41,7 +40,6 @@ const MainApp: React.FC = () => {
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div className="h-screen">
-
         <MainNav />
 
         {subMenuState.shouldRenderSubNav && (

@@ -1,4 +1,3 @@
-
 .tech-intro-container {
   @apply flex items-center justify-center p-12;
   background-color: var(--color-background);
@@ -38,17 +37,29 @@
 }
 
 .tech-intro-section .intro-card--cyan {
-  background: linear-gradient(135deg, var(--tech-primary) 0%, var(--tech-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--tech-primary) 0%,
+    var(--tech-secondary) 100%
+  );
   border-color: var(--tech-tertiary);
 }
 
 .tech-intro-section .intro-card--blue {
-  background: linear-gradient(135deg, var(--tech-secondary) 0%, var(--tech-tertiary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--tech-secondary) 0%,
+    var(--tech-tertiary) 100%
+  );
   border-color: var(--tech-primary);
 }
 
 .tech-intro-section .intro-card--violet {
-  background: linear-gradient(135deg, var(--tech-tertiary) 0%, var(--tech-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--tech-tertiary) 0%,
+    var(--tech-light) 100%
+  );
   border-color: var(--tech-secondary);
 }
 
@@ -66,47 +77,47 @@
 }
 
 .tech-project {
-    @apply w-full;
+  @apply w-full;
 }
 
 .tech-project-header {
-    @apply mb-4 pb-2;
-    border-bottom: 1px solid var(--color-border);
+  @apply mb-4 pb-2;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tech-project-count {
-    @apply text-sm font-medium;
-    color: var(--color-text-secondary);
+  @apply text-sm font-medium;
+  color: var(--color-text-secondary);
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tech-fade-in-up {
-    animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 @media (max-width: 768px) {
   .tech-intro-container {
     @apply p-6;
   }
-  
+
   .tech-intro-cards-grid {
     @apply grid-cols-1 gap-4;
   }
-  
+
   .tech-indicators-container {
     @apply gap-2;
   }
-  
+
   .tech-indicator-1,
   .tech-indicator-2,
   .tech-indicator-3 {

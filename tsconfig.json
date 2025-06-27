@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "target": "ESNext", // Specify ECMAScript target version
     "module": "ESNext", // Specify module code generation
     "jsx": "react-jsx", // Support JSX in React

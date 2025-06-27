@@ -10,10 +10,10 @@ interface ContentListItemProps {
 }
 
 const ContentListItem: React.FC<ContentListItemProps> = ({
-                                                           title,
-                                                           description,
-                                                           children,
-                                                         }) => {
+  title,
+  description,
+  children,
+}) => {
   const [expanded, setExpanded] = useState(false)
 
   const toggleExpanded = () => {
@@ -51,6 +51,5 @@ const ContentListItem: React.FC<ContentListItemProps> = ({
     </div>
   )
 }
-
 
 export {ContentListItem}

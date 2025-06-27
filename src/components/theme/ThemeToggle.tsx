@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { SunIcon } from './sun-icon'
-import { MoonIcon } from './moon-icon'
+import React, {useEffect, useState} from 'react'
+import {SunIcon} from './sun-icon'
+import {MoonIcon} from './moon-icon'
 
 interface ThemeToggleProps {
   className?: string
@@ -8,7 +8,7 @@ interface ThemeToggleProps {
 
 type Theme = 'light' | 'dark'
 
-const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
+const ThemeToggle: React.FC<ThemeToggleProps> = ({className = ''}) => {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme')
@@ -28,7 +28,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
   }
 
   const isDarkMode = theme === 'dark'
@@ -45,4 +45,4 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
   )
 }
 
-export { ThemeToggle }
+export {ThemeToggle}

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 const MainApp = React.lazy(() => import('./screens/main-app'))
 
@@ -11,9 +11,7 @@ function FullApp() {
 }
 
 const App: React.FC = () => {
-  return (
-    <MainApp />
-  )
+  return <MainApp />
 }
 
 export {FullApp}

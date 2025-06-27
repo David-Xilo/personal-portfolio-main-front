@@ -1,19 +1,19 @@
-import * as React from 'react'
-import { useState, useEffect, useRef } from 'react'
-import { ContactRest, useContactGetApi } from '../../hooks/contact-rest'
+import React from 'react'
+import {useState, useEffect, useRef} from 'react'
+import {ContactRest, useContactGetApi} from '../../api/hooks/contact-rest'
 import './contact-item.css'
 
 interface ContactItemProps {
-  contact: ContactRest | null;
-  variant?: 'default' | 'compact';
-  maxWidth?: string;
+  contact: ContactRest | null
+  variant?: 'default' | 'compact'
+  maxWidth?: string
 }
 
 const ContactItem: React.FC<ContactItemProps> = ({
-                                                   contact,
-                                                   variant = 'default',
-                                                   maxWidth
-                                                 }) => {
+  contact,
+  variant = 'default',
+  maxWidth,
+}) => {
   const cardRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState<number>(0)
 
@@ -34,7 +34,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
     return (
       <div
         className={`message-warning ${variant === 'compact' ? 'message-warning--compact' : ''}`}
-        style={{ maxWidth }}
+        style={{maxWidth}}
       >
         <p className="message-warning-text">
           Contact information is incomplete
@@ -47,7 +47,8 @@ const ContactItem: React.FC<ContactItemProps> = ({
     let classes = 'contact-card'
 
     if (variant === 'compact') classes += ' contact-card--compact'
-    if (containerWidth > 0 && containerWidth < 320) classes += ' contact-card--narrow'
+    if (containerWidth > 0 && containerWidth < 320)
+      classes += ' contact-card--narrow'
 
     return classes
   }
@@ -55,11 +56,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
   const emailFontSize = variant === 'compact' ? 'contact-email-compact' : ''
 
   return (
-    <div
-      ref={cardRef}
-      className={getCardClasses()}
-      style={{ maxWidth }}
-    >
+    <div ref={cardRef} className={getCardClasses()} style={{maxWidth}}>
       <div className="contact-card-header">
         <div className="contact-profile-section">
           <h2 className="contact-profile-name">{contact.name}</h2>
@@ -85,8 +82,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
               >
                 {containerWidth < 280 && contact.email.length > 25
                   ? `${contact.email.substring(0, 22)}...`
-                  : contact.email
-                }
+                  : contact.email}
               </a>
             </div>
           </div>
@@ -157,23 +153,23 @@ const ContactItem: React.FC<ContactItemProps> = ({
 }
 
 interface ContactScreenProps {
-  variant?: 'default' | 'compact';
-  className?: string;
-  maxWidth?: string;
+  variant?: 'default' | 'compact'
+  className?: string
+  maxWidth?: string
 }
 
 const ContactScreen: React.FC<ContactScreenProps> = ({
-                                                       variant = 'default',
-                                                       className = '',
-                                                       maxWidth
-                                                     }) => {
+  variant = 'default',
+  className = '',
+  maxWidth,
+}) => {
   const contactPath = '/about/contact'
-  const { status, message, error } = useContactGetApi(contactPath)
+  const {status, message, error} = useContactGetApi(contactPath)
 
   if (status !== 'success') {
     return (
       <div className={`contact-screen-container ${className}`}>
-        <div className="error-message-container" style={{ maxWidth }}>
+        <div className="error-message-container" style={{maxWidth}}>
           <p className="error-message-text">
             Unable to load contact information: {error}
           </p>
@@ -184,13 +180,9 @@ const ContactScreen: React.FC<ContactScreenProps> = ({
 
   return (
     <div className={`contact-screen-container ${className}`}>
-      <ContactItem
-        contact={message}
-        variant={variant}
-        maxWidth={maxWidth}
-      />
+      <ContactItem contact={message} variant={variant} maxWidth={maxWidth} />
     </div>
   )
 }
 
-export { ContactScreen, ContactItem }
+export {ContactScreen, ContactItem}

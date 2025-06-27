@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 import {useEffect} from 'react'
 import {CLEAR_HIDDEN_NAV} from '../../reducers/hidden-menu-reducer'
@@ -29,9 +29,7 @@ const AboutIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
 
           <div className="about-intro-header">
             <div className="about-intro-title-container">
-              <h1 className="about-intro-title">
-                About Me
-              </h1>
+              <h1 className="about-intro-title">About Me</h1>
             </div>
             <div className="about-intro-underline"></div>
           </div>
@@ -43,14 +41,20 @@ const AboutIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
                   Hey! I'm David—great to see you here!
                 </p>
                 <p className="about-intro-description">
-                  I built a simple portfolio page a while back but kept postponing it—well, it's finally live!
-                  I'm a <span className="about-intro-role-highlight">Senior Software Engineer</span> specializing in backend.
+                  I built a simple portfolio page a while back but kept
+                  postponing it—well, it's finally live! I'm a{' '}
+                  <span className="about-intro-role-highlight">
+                    Senior Software Engineer
+                  </span>{' '}
+                  specializing in backend.
                 </p>
               </div>
 
               <p className="about-intro-interests">
-                I have a <span className="about-intro-lot-highlight">LOT</span> of interests and tend to explore them fully
-                (maybe dispersing a bit too much lol), so expect to see some interesting projects here!
+                I have a <span className="about-intro-lot-highlight">LOT</span>{' '}
+                of interests and tend to explore them fully (maybe dispersing a
+                bit too much lol), so expect to see some interesting projects
+                here!
               </p>
             </div>
           </div>
@@ -58,7 +62,6 @@ const AboutIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
           <div className="about-intro-carousel-container">
             <AboutReviewCarousel />
           </div>
-
         </div>
       </div>
     </div>

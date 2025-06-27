@@ -5,15 +5,15 @@ import {ChevronRightIcon} from '../../../components/icons/chevron-right-icon'
 
 describe('ChevronRightIcon', () => {
   test('renders SVG element', () => {
-    const { container } = render(<ChevronRightIcon />)
-    
+    const {container} = render(<ChevronRightIcon />)
+
     const svg = container.querySelector('svg')
     expect(svg).toBeInTheDocument()
   })
 
   test('has correct SVG attributes', () => {
-    const { container } = render(<ChevronRightIcon />)
-    
+    const {container} = render(<ChevronRightIcon />)
+
     const svg = container.querySelector('svg')
     expect(svg).toHaveAttribute('fill', 'none')
     expect(svg).toHaveAttribute('viewBox', '0 0 24 24')
@@ -23,8 +23,8 @@ describe('ChevronRightIcon', () => {
   })
 
   test('contains polyline element', () => {
-    const { container } = render(<ChevronRightIcon />)
-    
+    const {container} = render(<ChevronRightIcon />)
+
     const polyline = container.querySelector('polyline')
     expect(polyline).toBeInTheDocument()
     expect(polyline).toHaveAttribute('points', '9,18 15,12 9,6')

@@ -1,144 +1,140 @@
 .welcome-container {
-    @apply max-w-7xl mx-auto p-8;
-    background-color: var(--color-background);
+  @apply max-w-7xl mx-auto p-8;
+  background-color: var(--color-background);
 }
 
 .welcome-hero {
-    @apply relative h-52 overflow-hidden rounded-b-2xl;
-    background: linear-gradient(
-            135deg,
-            var(--color-primary) 0%,
-            var(--color-accent) 100%
-    );
+  @apply relative h-52 overflow-hidden rounded-b-2xl;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
 }
 
 .welcome-overlay {
-    @apply absolute bottom-0 left-0 right-0 p-10;
-    background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.4),
-            transparent
-    );
+  @apply absolute bottom-0 left-0 right-0 p-10;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
 }
 
 .welcome-title {
-    @apply text-5xl font-bold m-0 text-white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  @apply text-5xl font-bold m-0 text-white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .welcome-content {
-    @apply py-16 px-12;
+  @apply py-16 px-12;
 }
 
 .welcome-intro {
-    @apply text-xl leading-relaxed mb-8;
-    color: var(--color-text-primary);
+  @apply text-xl leading-relaxed mb-8;
+  color: var(--color-text-primary);
 }
 
 .welcome-navigation {
-    @apply text-lg mb-10;
-    color: var(--color-text-secondary);
+  @apply text-lg mb-10;
+  color: var(--color-text-secondary);
 }
 
 .welcome-cards {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10;
 }
 
 .welcome-card {
-    @apply flex flex-col items-center p-8 rounded-2xl no-underline;
-    @apply transition-all duration-300 ease-in-out cursor-pointer;
-    @apply border-2 border-transparent;
-    background-color: var(--color-surface);
-    color: var(--color-text-primary);
-    box-shadow: var(--shadow-md);
+  @apply flex flex-col items-center p-8 rounded-2xl no-underline;
+  @apply transition-all duration-300 ease-in-out cursor-pointer;
+  @apply border-2 border-transparent;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .welcome-card:hover {
-    @apply -translate-y-1;
-    box-shadow: var(--shadow-lg);
+  @apply -translate-y-1;
+  box-shadow: var(--shadow-lg);
 }
 
 .tech-card:hover {
-    border-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .games-card:hover {
-    border-color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .finance-card:hover {
-    border-color: var(--color-secondary);
+  border-color: var(--color-secondary);
 }
 
 .dark-theme .tech-card {
-    @apply bg-gradient-to-b;
-    background-image: linear-gradient(
-            to bottom,
-            var(--color-surface),
-            rgba(59, 130, 246, 0.05)
-    );
+  @apply bg-gradient-to-b;
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-surface),
+    rgba(59, 130, 246, 0.05)
+  );
 }
 
 .dark-theme .games-card {
-    @apply bg-gradient-to-b;
-    background-image: linear-gradient(
-            to bottom,
-            var(--color-surface),
-            rgba(139, 92, 246, 0.05)
-    );
+  @apply bg-gradient-to-b;
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-surface),
+    rgba(139, 92, 246, 0.05)
+  );
 }
 
 .dark-theme .finance-card {
-    @apply bg-gradient-to-b;
-    background-image: linear-gradient(
-            to bottom,
-            var(--color-surface),
-            rgba(16, 185, 129, 0.05)
-    );
+  @apply bg-gradient-to-b;
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-surface),
+    rgba(16, 185, 129, 0.05)
+  );
 }
 
 .welcome-icon {
-    @apply text-5xl mb-4;
+  @apply text-5xl mb-4;
 }
 
 .welcome-card-title {
-    @apply text-2xl font-semibold mb-2;
-    color: var(--color-text-primary);
+  @apply text-2xl font-semibold mb-2;
+  color: var(--color-text-primary);
 }
 
 .welcome-card-text {
-    @apply text-center;
-    color: var(--color-text-secondary);
+  @apply text-center;
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 768px) {
-    .welcome-hero {
-        @apply h-40;
-    }
+  .welcome-hero {
+    @apply h-40;
+  }
 
-    .welcome-title {
-        @apply text-3xl;
-    }
+  .welcome-title {
+    @apply text-3xl;
+  }
 
-    .welcome-overlay {
-        @apply p-5;
-    }
+  .welcome-overlay {
+    @apply p-5;
+  }
 
-    .welcome-content {
-        @apply py-10 px-5;
-    }
+  .welcome-content {
+    @apply py-10 px-5;
+  }
 
-    .welcome-intro {
-        @apply text-lg;
-    }
+  .welcome-intro {
+    @apply text-lg;
+  }
 
-    .welcome-navigation {
-        @apply text-base;
-    }
+  .welcome-navigation {
+    @apply text-base;
+  }
 
-    .welcome-card {
-        @apply p-6;
-    }
+  .welcome-card {
+    @apply p-6;
+  }
 }
 
 .welcome-container,
@@ -147,5 +143,5 @@
 .welcome-navigation,
 .welcome-card-title,
 .welcome-card-text {
-    @apply transition-colors duration-300;
+  @apply transition-colors duration-300;
 }

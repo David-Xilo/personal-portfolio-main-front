@@ -1,95 +1,95 @@
 .infinite-carousel {
-    @apply relative w-full flex items-center justify-center;
-    height: var(--carousel-total-height);
-    max-width: var(--carousel-total-width);
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
+  @apply relative w-full flex items-center justify-center;
+  height: var(--carousel-total-height);
+  max-width: var(--carousel-total-width);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .carousel-content-area {
-    @apply overflow-hidden;
-    height: var(--carousel-content-height);
-    width: calc(100% - 100px);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    margin: 0 auto;
-    background: rgba(255, 0, 0, 0.1);
+  @apply overflow-hidden;
+  height: var(--carousel-content-height);
+  width: calc(100% - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  margin: 0 auto;
+  background: rgba(255, 0, 0, 0.1);
 }
 
 .carousel-track-infinite {
-    @apply flex transition-transform duration-300 ease-in-out h-full;
+  @apply flex transition-transform duration-300 ease-in-out h-full;
 }
 
 .carousel-item-infinite {
-    @apply flex-shrink-0;
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    background: rgba(0, 255, 0, 0.1);
+  @apply flex-shrink-0;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 255, 0, 0.1);
 }
 
 .carousel-nav-arrow-infinite {
-    @apply rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 z-10;
-    width: clamp(40px, 8vw, 48px);
-    height: clamp(40px, 8vw, 48px);
-    background-color: var(--color-background);
-    border: 2px solid var(--color-border);
-    color: var(--color-text-primary);
-    box-shadow: var(--shadow-md);
-    position: absolute;
+  @apply rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 z-10;
+  width: clamp(40px, 8vw, 48px);
+  height: clamp(40px, 8vw, 48px);
+  background-color: var(--color-background);
+  border: 2px solid var(--color-border);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-md);
+  position: absolute;
 }
 
 .carousel-nav-arrow-infinite:first-of-type {
-    left: 10px;
+  left: 10px;
 }
 
 .carousel-nav-arrow-infinite:last-of-type {
-    right: 10px;
+  right: 10px;
 }
 
 .carousel-nav-arrow-infinite:hover {
-    background-color: var(--color-primary);
-    color: white;
-    transform: scale(1.1);
-    box-shadow: var(--shadow-lg);
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .infinite-carousel-indicators {
-    @apply absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-3;
+  @apply absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-3;
 }
 
 .infinite-carousel-indicator {
-    @apply w-3 h-3 rounded-full cursor-pointer transition-all duration-200;
-    background-color: var(--color-text-disabled);
+  @apply w-3 h-3 rounded-full cursor-pointer transition-all duration-200;
+  background-color: var(--color-text-disabled);
 }
 
 .infinite-carousel-indicator.active {
-    background-color: var(--color-primary);
-    transform: scale(1.2);
+  background-color: var(--color-primary);
+  transform: scale(1.2);
 }
 
 .infinite-carousel-indicator:hover {
-    background-color: var(--color-primary-hover);
-    transform: scale(1.1);
+  background-color: var(--color-primary-hover);
+  transform: scale(1.1);
 }
 
 @media (max-width: 480px) {
-    .carousel-content-area {
-        width: calc(100% - 80px);
-    }
+  .carousel-content-area {
+    width: calc(100% - 80px);
+  }
 
-    .carousel-nav-arrow-infinite:first-of-type {
-        left: 5px;
-    }
+  .carousel-nav-arrow-infinite:first-of-type {
+    left: 5px;
+  }
 
-    .carousel-nav-arrow-infinite:last-of-type {
-        right: 5px;
-    }
+  .carousel-nav-arrow-infinite:last-of-type {
+    right: 5px;
+  }
 }

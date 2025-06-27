@@ -1,5 +1,5 @@
-import { renderHook, waitFor } from '@testing-library/react'
-import { useGamesPlayedGetApi } from '../../hooks/games-rest'
+import {renderHook, waitFor} from '@testing-library/react'
+import {useGamesPlayedGetApi} from '../../api/hooks/games-rest'
 
 // Mock fetch
 global.fetch = jest.fn()
@@ -12,7 +12,7 @@ describe('useGamesPlayedGetApi', () => {
 
   beforeEach(() => {
     jest.clearAllMocks()
-    process.env = { ...originalEnv }
+    process.env = {...originalEnv}
     process.env.REACT_APP_API_URL = 'http://localhost:4000'
   })
 
@@ -26,22 +26,22 @@ describe('useGamesPlayedGetApi', () => {
         title: 'The Legend of Zelda',
         genre: 'Adventure',
         rating: 9,
-        description: 'Epic adventure game'
+        description: 'Epic adventure game',
       },
       {
         title: 'Mario Kart',
         genre: 'Racing',
         rating: 8,
-        description: 'Fun racing game'
-      }
+        description: 'Fun racing game',
+      },
     ]
 
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ message: mockGames })
+      json: async () => ({message: mockGames}),
     } as Response)
 
-    const { result } = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
+    const {result} = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
 
     // Initial state
     expect(result.current.status).toBe('')
@@ -55,14 +55,16 @@ describe('useGamesPlayedGetApi', () => {
 
     expect(result.current.message).toEqual(mockGames)
     expect(result.current.error).toBe(null)
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/games/played')
+    expect(mockFetch).toHaveBeenCalledWith(
+      'http://localhost:4000/api/games/played',
+    )
   })
 
   test('handles fetch error', async () => {
     const errorMessage = 'Network error'
     mockFetch.mockRejectedValueOnce(new Error(errorMessage))
 
-    const { result } = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
+    const {result} = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
 
     await waitFor(() => {
       expect(result.current.status).toBe('error')
@@ -75,28 +77,30 @@ describe('useGamesPlayedGetApi', () => {
   test('handles non-ok response', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: false,
-      status: 500
+      status: 500,
     } as Response)
 
-    const { result } = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
+    const {result} = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
 
     await waitFor(() => {
       expect(result.current.status).toBe('error')
     })
 
     expect(result.current.message).toEqual([])
-    expect(result.current.error).toBe('Error using endpoint http://localhost:4000/api/games/played')
+    expect(result.current.error).toBe(
+      'Error using endpoint http://localhost:4000/api/games/played',
+    )
   })
 
   test('handles non-array message response', async () => {
-    const mockResponse = { message: null }
+    const mockResponse = {message: null}
 
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => mockResponse
+      json: async () => mockResponse,
     } as Response)
 
-    const { result } = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
+    const {result} = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
 
     await waitFor(() => {
       expect(result.current.status).toBe('success')
@@ -112,25 +116,29 @@ describe('useGamesPlayedGetApi', () => {
 
     mockFetch.mockResolvedValue({
       ok: true,
-      json: async () => ({ message: [] })
+      json: async () => ({message: []}),
     } as Response)
 
-    const { result, rerender } = renderHook(
-      ({ endpoint }) => useGamesPlayedGetApi(endpoint),
-      { initialProps: { endpoint: firstEndpoint } }
+    const {result, rerender} = renderHook(
+      ({endpoint}) => useGamesPlayedGetApi(endpoint),
+      {initialProps: {endpoint: firstEndpoint}},
     )
 
     await waitFor(() => {
       expect(result.current.status).toBe('success')
     })
 
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/games/played')
+    expect(mockFetch).toHaveBeenCalledWith(
+      'http://localhost:4000/api/games/played',
+    )
 
     // Change endpoint
-    rerender({ endpoint: secondEndpoint })
+    rerender({endpoint: secondEndpoint})
 
     await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/games/favorite')
+      expect(mockFetch).toHaveBeenCalledWith(
+        'http://localhost:4000/api/games/favorite',
+      )
     })
 
     expect(mockFetch).toHaveBeenCalledTimes(2)
@@ -142,16 +150,16 @@ describe('useGamesPlayedGetApi', () => {
         title: 'Valid Game',
         genre: 'Action',
         rating: 7,
-        description: 'A valid game object'
-      }
+        description: 'A valid game object',
+      },
     ]
 
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ message: mockGames })
+      json: async () => ({message: mockGames}),
     } as Response)
 
-    const { result } = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
+    const {result} = renderHook(() => useGamesPlayedGetApi(mockEndpoint))
 
     await waitFor(() => {
       expect(result.current.status).toBe('success')

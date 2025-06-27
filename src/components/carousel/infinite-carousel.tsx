@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, {useEffect, useState, useRef, useCallback} from 'react'
 import './infinite-carousel.css'
 import {ChevronLeftIcon} from 'components/icons/chevron-left-icon'
 import {ChevronRightIcon} from 'components/icons/chevron-right-icon'
-
 
 interface InfiniteCarouselProps<T> {
   items: T[]
@@ -16,22 +15,21 @@ interface InfiniteCarouselProps<T> {
 }
 
 function InfiniteCarousel<T>({
-                               items,
-                               renderItem,
-                               size = 'medium',
-                               className = '',
-                               showArrows = true,
-                               showIndicators = true,
-                               autoAdvance = false,
-                               autoAdvanceInterval = 4000
-                             }: InfiniteCarouselProps<T>) {
+  items,
+  renderItem,
+  size = 'medium',
+  className = '',
+  showArrows = true,
+  showIndicators = true,
+  autoAdvance = false,
+  autoAdvanceInterval = 4000,
+}: InfiniteCarouselProps<T>) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [contentAreaWidth, setContentAreaWidth] = useState(0)
   const trackRef = useRef<HTMLDivElement>(null)
   const contentAreaRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
   const autoAdvanceRef = useRef<NodeJS.Timeout | null>(null)
-
 
   const updateDimensions = useCallback(() => {
     if (contentAreaRef.current && trackRef.current) {
@@ -40,7 +38,7 @@ function InfiniteCarousel<T>({
 
       trackRef.current.style.width = `${areaWidth * items.length}px`
 
-      itemRefs.current.forEach((itemRef) => {
+      itemRefs.current.forEach(itemRef => {
         if (itemRef) {
           itemRef.style.width = `${areaWidth}px`
         }
@@ -81,7 +79,7 @@ function InfiniteCarousel<T>({
   }, [autoAdvance, autoAdvanceInterval, items.length])
 
   const goToPrevious = () => {
-    setCurrentIndex(prev => prev === 0 ? items.length - 1 : prev - 1)
+    setCurrentIndex(prev => (prev === 0 ? items.length - 1 : prev - 1))
     resetAutoAdvance()
   }
 
@@ -128,11 +126,11 @@ function InfiniteCarousel<T>({
 
   if (items.length === 1) {
     return (
-      <div className={`infinite-carousel infinite-carousel-${size} ${className}`}>
+      <div
+        className={`infinite-carousel infinite-carousel-${size} ${className}`}
+      >
         <div className="carousel-content-area" ref={contentAreaRef}>
-          <div className="h-full w-full">
-            {renderItem(items[0], 0)}
-          </div>
+          <div className="h-full w-full">{renderItem(items[0], 0)}</div>
         </div>
       </div>
     )
@@ -155,15 +153,12 @@ function InfiniteCarousel<T>({
       )}
 
       <div className="carousel-content-area" ref={contentAreaRef}>
-        <div
-          ref={trackRef}
-          className="carousel-track-infinite"
-        >
+        <div ref={trackRef} className="carousel-track-infinite">
           {items.map((item, index) => (
             <div
               key={index}
               className="carousel-item-infinite"
-              ref={(el) => itemRefs.current[index] = el}
+              ref={el => (itemRefs.current[index] = el)}
             >
               {renderItem(item, index)}
             </div>

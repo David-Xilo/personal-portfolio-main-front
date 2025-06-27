@@ -6,7 +6,7 @@ import {
   CLEAR_HIDDEN_NAV,
   TOGGLE_HIDDEN_MENU,
   HiddenMenuState,
-  HiddenMenuAction
+  HiddenMenuAction,
 } from '../../reducers/hidden-menu-reducer'
 
 // Test component
@@ -23,7 +23,7 @@ describe('hiddenMenuReducer', () => {
     const action: HiddenMenuAction = {
       type: SET_HIDDEN_NAV,
       component: TestComponent,
-      isExpanded: false
+      isExpanded: false,
     }
 
     const newState = hiddenMenuReducer(hiddenMenuInitialState, action)
@@ -37,12 +37,12 @@ describe('hiddenMenuReducer', () => {
     const initialStateWithComponent: HiddenMenuState = {
       HiddenMenuComponent: TestComponent,
       shouldRenderHiddenMenu: true,
-      isHiddenMenuExpanded: true
+      isHiddenMenuExpanded: true,
     }
 
     const action: HiddenMenuAction = {
       type: CLEAR_HIDDEN_NAV,
-      isExpanded: false
+      isExpanded: false,
     }
 
     const newState = hiddenMenuReducer(initialStateWithComponent, action)
@@ -55,25 +55,27 @@ describe('hiddenMenuReducer', () => {
   test('TOGGLE_HIDDEN_MENU action toggles menu expansion state', () => {
     const action: HiddenMenuAction = {
       type: TOGGLE_HIDDEN_MENU,
-      isExpanded: true
+      isExpanded: true,
     }
 
     const newState = hiddenMenuReducer(hiddenMenuInitialState, action)
 
     expect(newState.isHiddenMenuExpanded).toBe(true)
     expect(newState.shouldRenderHiddenMenu).toBe(false) // unchanged
-    expect(newState.HiddenMenuComponent).toBe(hiddenMenuInitialState.HiddenMenuComponent) // unchanged
+    expect(newState.HiddenMenuComponent).toBe(
+      hiddenMenuInitialState.HiddenMenuComponent,
+    ) // unchanged
   })
 
   test('TOGGLE_HIDDEN_MENU action can collapse menu', () => {
     const expandedState: HiddenMenuState = {
       ...hiddenMenuInitialState,
-      isHiddenMenuExpanded: true
+      isHiddenMenuExpanded: true,
     }
 
     const action: HiddenMenuAction = {
       type: TOGGLE_HIDDEN_MENU,
-      isExpanded: false
+      isExpanded: false,
     }
 
     const newState = hiddenMenuReducer(expandedState, action)
@@ -84,7 +86,7 @@ describe('hiddenMenuReducer', () => {
   test('unknown action returns unchanged state', () => {
     const unknownAction: HiddenMenuAction = {
       type: 'UNKNOWN_ACTION',
-      isExpanded: false
+      isExpanded: false,
     }
 
     const newState = hiddenMenuReducer(hiddenMenuInitialState, unknownAction)
@@ -96,7 +98,7 @@ describe('hiddenMenuReducer', () => {
     const action: HiddenMenuAction = {
       type: SET_HIDDEN_NAV,
       component: TestComponent,
-      isExpanded: false
+      isExpanded: false,
     }
 
     const newState = hiddenMenuReducer(hiddenMenuInitialState, action)
@@ -108,13 +110,13 @@ describe('hiddenMenuReducer', () => {
   test('SET_HIDDEN_NAV preserves isHiddenMenuExpanded state', () => {
     const expandedState: HiddenMenuState = {
       ...hiddenMenuInitialState,
-      isHiddenMenuExpanded: true
+      isHiddenMenuExpanded: true,
     }
 
     const action: HiddenMenuAction = {
       type: SET_HIDDEN_NAV,
       component: TestComponent,
-      isExpanded: false
+      isExpanded: false,
     }
 
     const newState = hiddenMenuReducer(expandedState, action)

@@ -8,19 +8,19 @@ describe('MenuTable', () => {
     render(
       <MenuTable>
         <div>Test content</div>
-      </MenuTable>
+      </MenuTable>,
     )
-    
+
     expect(screen.getByText('Test content')).toBeInTheDocument()
   })
 
   test('has correct CSS class', () => {
-    const { container } = render(
+    const {container} = render(
       <MenuTable>
         <div>Content</div>
-      </MenuTable>
+      </MenuTable>,
     )
-    
+
     expect(container.firstChild).toHaveClass('menu-table')
   })
 
@@ -30,9 +30,9 @@ describe('MenuTable', () => {
         <div>First child</div>
         <div>Second child</div>
         <span>Third child</span>
-      </MenuTable>
+      </MenuTable>,
     )
-    
+
     expect(screen.getByText('First child')).toBeInTheDocument()
     expect(screen.getByText('Second child')).toBeInTheDocument()
     expect(screen.getByText('Third child')).toBeInTheDocument()
@@ -44,19 +44,19 @@ describe('MenuTableCell', () => {
     render(
       <MenuTableCell>
         <p>Cell content</p>
-      </MenuTableCell>
+      </MenuTableCell>,
     )
-    
+
     expect(screen.getByText('Cell content')).toBeInTheDocument()
   })
 
   test('has correct CSS class', () => {
-    const { container } = render(
+    const {container} = render(
       <MenuTableCell>
         <div>Cell</div>
-      </MenuTableCell>
+      </MenuTableCell>,
     )
-    
+
     expect(container.firstChild).toHaveClass('menu-table-cell')
   })
 
@@ -68,10 +68,10 @@ describe('MenuTableCell', () => {
           <p>Description</p>
           <button>Action</button>
         </div>
-      </MenuTableCell>
+      </MenuTableCell>,
     )
-    
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Header')
+
+    expect(screen.getByRole('heading', {level: 2})).toHaveTextContent('Header')
     expect(screen.getByText('Description')).toBeInTheDocument()
     expect(screen.getByRole('button')).toHaveTextContent('Action')
   })
@@ -85,9 +85,9 @@ describe('MenuTableCell', () => {
         <MenuTableCell>
           <span>Second cell</span>
         </MenuTableCell>
-      </MenuTable>
+      </MenuTable>,
     )
-    
+
     expect(screen.getByText('First cell')).toBeInTheDocument()
     expect(screen.getByText('Second cell')).toBeInTheDocument()
   })

@@ -1,7 +1,7 @@
 import React from 'react'
 import './menu.css'
-import { ArrowLeftIcon } from 'components/icons/arrow-left-icon'
-import { ArrowRightIcon } from 'components/icons/arrow-right-icon'
+import {ArrowLeftIcon} from 'components/icons/arrow-left-icon'
+import {ArrowRightIcon} from 'components/icons/arrow-right-icon'
 
 interface HiddenMenuProps {
   content: React.ComponentType<any> | undefined
@@ -19,11 +19,11 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({
   }
 
   const buttonStyle = {
-    right: isOpen ? 'var(--hidden-menu-width)' : '0'
+    right: isOpen ? 'var(--hidden-menu-width)' : '0',
   }
 
   const containerStyle = {
-    right: isOpen ? '0' : 'calc(-1 * var(--hidden-menu-width))'
+    right: isOpen ? '0' : 'calc(-1 * var(--hidden-menu-width))',
   }
 
   return (
@@ -43,12 +43,10 @@ const HiddenMenu: React.FC<HiddenMenuProps> = ({
         style={containerStyle}
         aria-hidden={!isOpen}
       >
-        <div className="hidden-menu-content">
-          {Content && <Content />}
-        </div>
+        <div className="hidden-menu-content">{Content && <Content />}</div>
       </div>
     </>
   )
 }
 
-export { HiddenMenu }
+export {HiddenMenu}

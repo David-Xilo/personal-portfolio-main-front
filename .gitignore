@@ -1,5 +1,7 @@
-# dependencies
+# Dependencies
 /node_modules
+/.pnp
+.pnp.js
 
 .idea/
 
@@ -8,23 +10,42 @@
 /cypress/videos
 /cypress/screenshots
 
-# production
+# Production build
+/dist
 /build
 
 # misc
 .DS_Store
 
+# Testing
+*.lcov
+
 # env variables
+.env
+.env.development.local
+.env.production.local
 
-#.env
-#.env.local
-#.env.development.local
-#.env.test.local
-#.env.production.local
+# IDE
+.vscode/
+*.swp
+*.swo
 
+# OS
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+
+# Bundle analysis
+bundle-report.html
 
 dev-tools.local.js
 
@@ -51,3 +72,5 @@ ignored/
 
 .vscode/
 .github/
+
+.claude/
