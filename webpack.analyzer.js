@@ -1,5 +1,5 @@
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
-const webpackConfig = require('./webpack.config.js')
+const webpackConfig = require('./webpack.config.cjs')
 
 module.exports = (env, argv) => {
   const config = webpackConfig(env, argv)
