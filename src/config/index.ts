@@ -44,7 +44,7 @@ function createConfig(): AppConfig {
   const apiUrl = getRequiredEnvVar(
     process.env.REACT_APP_API_URL,
     'REACT_APP_API_URL',
-    'http://localhost:4000',
+    process.env.NODE_ENV === 'production' ? 'https://api.your-domain.com' : 'http://localhost:4000',
   )
   const appVersion = getRequiredEnvVar(
     process.env.REACT_APP_APP_VERSION,

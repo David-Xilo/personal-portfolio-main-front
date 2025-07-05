@@ -99,9 +99,9 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         templateParameters: {
-          // SECURE: Only HTTPS in production (automatically blocks localhost)
+          // SECURE: Only HTTPS in production
           CSP_CONNECT_SRC: isProduction
-            ? "'self' https: http://localhost:*"  // TODO Remove localhost - if needed add http domain used in prod
+            ? "'self' https:"
             : "'self' http://localhost:* http: https:",
           NODE_ENV: process.env.NODE_ENV || mode,
         },
@@ -119,7 +119,7 @@ module.exports = (env, argv) => {
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(
           process.env.REACT_APP_API_URL ||
-          (isProduction ? 'http://localhost:4000' : 'http://localhost:4000')
+          (isProduction ? 'https://api.your-domain.com' : 'http://localhost:4000')
         ),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '1.0.0'
