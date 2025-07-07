@@ -3,6 +3,7 @@
 interface AppConfig {
   apiUrl: string
   appVersion: string
+  frontendKey: string
   environment: 'development' | 'staging' | 'production'
   isProduction: boolean
   isDevelopment: boolean
@@ -40,16 +41,22 @@ function validateUrl(url: string, name: string): string {
 
 function createConfig(): AppConfig {
   // These MUST be accessed as complete expressions for webpack DefinePlugin to work
+  // NODE_ENV is injected by webpack DefinePlugin based on webpack mode for consistency
   // Get environment variables with validation
   const apiUrl = getRequiredEnvVar(
     process.env.REACT_APP_API_URL,
     'REACT_APP_API_URL',
-    process.env.NODE_ENV === 'production' ? 'https://api.your-domain.com' : 'http://localhost:4000',
+    process.env.NODE_ENV === 'production' ? 'http://localhost:4000' : 'http://localhost:4000',
   )
   const appVersion = getRequiredEnvVar(
     process.env.REACT_APP_APP_VERSION,
     'REACT_APP_APP_VERSION',
     '1.0.0',
+  )
+  const frontendKey = getRequiredEnvVar(
+    process.env.FRONTEND_KEY,
+    'FRONTEND_KEY',
+    'safehouse-frontend',
   )
 
   // For NODE_ENV, we need to access it directly as webpack replaces this
@@ -69,6 +76,7 @@ function createConfig(): AppConfig {
   return {
     apiUrl: validatedApiUrl,
     appVersion,
+    frontendKey,
     environment,
     isProduction: environment === 'production',
     isDevelopment: environment === 'development',

@@ -5,7 +5,8 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {DefinePlugin} = require('webpack');
 
 module.exports = (env, argv) => {
-  const mode = argv.mode || 'development';
+  // Use webpack mode as the source of truth for environment
+  const mode = argv.mode || process.env.NODE_ENV || 'development';
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development';
 
@@ -101,7 +102,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           // SECURE: Only HTTPS in production
           CSP_CONNECT_SRC: isProduction
-            ? "'self' https:"
+            ? "'self' http://localhost:* https:"
             : "'self' http://localhost:* http: https:",
           NODE_ENV: process.env.NODE_ENV || mode,
         },
@@ -119,10 +120,13 @@ module.exports = (env, argv) => {
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(
           process.env.REACT_APP_API_URL ||
-          (isProduction ? 'https://api.your-domain.com' : 'http://localhost:4000')
+          (isProduction ? 'http://localhost:4000' : 'http://localhost:4000')
         ),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '1.0.0'
+        ),
+        'process.env.FRONTEND_KEY': JSON.stringify(
+          process.env.FRONTEND_KEY || 'safehouse-frontend'
         ),
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),

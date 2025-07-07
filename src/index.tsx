@@ -18,8 +18,10 @@ function renderApp() {
 }
 
 if (process.env.NODE_ENV === 'production') {
+  console.log("prod")
   renderApp()
 } else if (process.env.NODE_ENV === 'development') {
+  console.log("dev")
   async function clearServiceWorkers() {
     if ('serviceWorker' in navigator) {
       try {

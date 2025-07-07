@@ -21,9 +21,9 @@
 *.lcov
 
 # env variables
-.env
-.env.development.local
-.env.production.local
+#.env
+#.env.development.local
+#.env.production.local
 
 # IDE
 .vscode/
