@@ -78,7 +78,6 @@ class ApiClient {
     }
 
     try {
-      console.log("fetching with auth")
       const response = await this.fetchWithAuth(url, requestOptions)
       return await this.handleResponse<T>(response)
     } catch (error) {
@@ -93,7 +92,6 @@ class ApiClient {
   }
 
   async get<T>(endpoint: string): Promise<T> {
-    console.log("making get request")
     return this.makeRequest<T>(endpoint, {method: 'GET'})
   }
 
@@ -106,7 +104,6 @@ class ApiClient {
   }
 
   async refreshToken(): Promise<string> {
-    console.log("refreshing token")
     const url = this.baseURL + '/auth/token'
     const res = await fetch(url, {
       method: 'POST',
@@ -133,7 +130,6 @@ class ApiClient {
 
     // Ensure accessToken...
     if (!accessToken) {
-      console.log("No access token")
       try {
         accessToken = await this.refreshToken()
       } catch {

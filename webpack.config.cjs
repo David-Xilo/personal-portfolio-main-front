@@ -10,8 +10,6 @@ module.exports = (env, argv) => {
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development';
 
-  console.log(`🔧 Building for: ${mode}`);
-
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
     if (isProduction) {
