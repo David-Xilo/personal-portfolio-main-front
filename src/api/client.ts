@@ -1,5 +1,4 @@
 import {config} from '../config'
-import * as process from 'node:process'
 
 class ApiError extends Error {
   constructor(
@@ -74,7 +73,9 @@ class ApiClient {
       mode: 'cors',
     }
 
-    console.log(`API: ${options.method || 'GET'} ${url}`)
+    if (config.isDevelopment) {
+      console.log(`API: ${options.method || 'GET'} ${url}`)
+    }
 
     try {
       console.log("fetching with auth")
