@@ -6,9 +6,9 @@ const {DefinePlugin} = require('webpack');
 
 module.exports = (env, argv) => {
   // Use webpack mode as the source of truth for environment
-  const mode = argv.mode || process.env.NODE_ENV || 'development';
+  const mode = argv.mode || process.env.NODE_ENV || 'local';
   const isProduction = mode === 'production';
-  const isDevelopment = mode === 'development';
+  const isDevelopment = mode === 'development' || mode === 'local';
 
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
@@ -52,7 +52,7 @@ module.exports = (env, argv) => {
         directory: path.resolve(__dirname, 'public'),
       },
       historyApiFallback: true,
-      port: 3000,
+      port: 80,
       open: true,
       hot: true,
       compress: true,

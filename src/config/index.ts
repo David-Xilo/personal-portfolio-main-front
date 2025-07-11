@@ -4,7 +4,7 @@ interface AppConfig {
   apiUrl: string
   appVersion: string
   frontendKey: string
-  environment: 'development' | 'staging' | 'production'
+  environment: 'development' | 'local' | 'production'
   isProduction: boolean
   isDevelopment: boolean
 }
@@ -60,16 +60,16 @@ function createConfig(): AppConfig {
   )
 
   // For NODE_ENV, we need to access it directly as webpack replaces this
-  const nodeEnv = process.env.NODE_ENV || 'development'
+  const nodeEnv = process.env.NODE_ENV || 'local'
   const environment = nodeEnv as AppConfig['environment']
 
   // Validate URLs
   const validatedApiUrl = validateUrl(apiUrl, 'REACT_APP_API_URL')
 
   // Validate environment
-  if (!['development', 'staging', 'production'].includes(environment)) {
+  if (!['development', 'local', 'production'].includes(environment)) {
     throw new ConfigError(
-      `Invalid environment: ${environment}. Must be 'development', 'staging', or 'production'`,
+      `Invalid environment: ${environment}. Must be 'development', 'local', or 'production'`,
     )
   }
 
@@ -79,18 +79,10 @@ function createConfig(): AppConfig {
     frontendKey,
     environment,
     isProduction: environment === 'production',
-    isDevelopment: environment === 'development',
+    isDevelopment: environment === 'development' || environment === 'local',
   }
 }
 
 // Create and export the configuration
 export const config = createConfig()
 
-// Log configuration in development (no sensitive data to hide)
-if (config.isDevelopment) {
-  console.log('🔧 App Configuration:', {
-    apiUrl: config.apiUrl,
-    appVersion: config.appVersion,
-    environment: config.environment,
-  })
-}

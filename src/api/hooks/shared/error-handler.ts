@@ -31,12 +31,10 @@ export const handleApiError = (err: unknown): ErrorHandlerResult => {
         errorMessage = 'Network error - check your connection'
         break
       default:
-        errorMessage = config.isDevelopment
-          ? err.message
-          : 'Something went wrong'
+        errorMessage = 'Something went wrong'
     }
   } else if (err instanceof Error) {
-    errorMessage = config.isDevelopment ? err.message : 'Something went wrong'
+    errorMessage = 'Something went wrong'
   }
 
   return {errorMessage, shouldReturn: false}
@@ -44,7 +42,5 @@ export const handleApiError = (err: unknown): ErrorHandlerResult => {
 
 export const handleUnexpectedError = (err: unknown): string => {
   console.error('Unhandled error in fetchData:', err)
-  return config.isDevelopment
-    ? 'Unexpected error occurred'
-    : 'Something went wrong'
+  return 'Something went wrong'
 }

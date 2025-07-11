@@ -5,7 +5,7 @@
   "author": "David Bugalho de Moura <david.dbmoura@gmail.com>",
   "type": "module",
   "engines": {
-    "node": "14 || 16 || 18 || 19",
+    "node": ">=19",
     "npm": ">=6"
   },
   "dependencies": {
@@ -81,13 +81,15 @@
     "whatwg-fetch": "^3.6.20"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --mode development",
+    "start": "cross-env NODE_ENV=local webpack serve --mode local",
+    "start:dev": "cross-env NODE_ENV=development webpack serve --mode development",
     "start:prod": "cross-env NODE_ENV=production webpack serve --mode production",
     "build": "npm run build:production",
+    "build:local": "cross-env NODE_ENV=local webpack --mode local",
     "build:development": "cross-env NODE_ENV=development webpack --mode development",
     "build:production": "cross-env NODE_ENV=production webpack --mode production",
     "build:analyze": "cross-env NODE_ENV=production ANALYZE=true webpack --mode production",
-    "preview": "npm run build:production && npx serve dist -s -l 3000",
+    "preview": "npm run build:production && npx serve dist -s -l 80",
     "clean": "rimraf dist",
     "clean:build": "npm run clean && npm run build",
     "lint": "eslint . --fix",

@@ -1,27 +1,23 @@
-# Use an official Node.js runtime as the base image
-FROM node:20.5.1-bookworm AS build
+FROM node:21.1.0-bookworm AS build
 
-# Set the working directory in the container
 WORKDIR /app
-
-# Copy package.json and package-lock.json to the container
 COPY package*.json ./
-
-# Install the dependencies
 RUN npm install
-
-# Copy the application code to the container
 COPY . .
 
-# Build the React app for production
-RUN npm run build
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
-RUN ls -la /app/dist
+RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development ; else npm run build ; fi
 
-RUN npm install -g serve
+# Production stage
+FROM nginx:alpine
 
-# Expose the port on which the app will run
-EXPOSE 3000
+# Copy built app
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Define the command to start the app
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Copy nginx config for SPA routing
+COPY nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

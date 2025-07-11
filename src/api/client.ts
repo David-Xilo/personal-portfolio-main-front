@@ -81,9 +81,6 @@ class ApiClient {
       const response = await this.fetchWithAuth(url, requestOptions)
       return await this.handleResponse<T>(response)
     } catch (error) {
-      if (config.isDevelopment) {
-        console.error(`❌ API Error: ${endpoint}`, error)
-      }
 
       throw error instanceof ApiError
         ? error

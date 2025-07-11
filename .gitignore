@@ -20,11 +20,6 @@ dist
 # Testing
 *.lcov
 
-# env variables
-#.env
-#.env.development.local
-#.env.production.local
-
 # IDE
 .vscode/
 *.swp
