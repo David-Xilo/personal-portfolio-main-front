@@ -100,7 +100,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           // SECURE: Only HTTPS in production
           CSP_CONNECT_SRC: isProduction
-            ? "'self' http://localhost:* https:"
+            ? "'self' https:"
             : "'self' http://localhost:* http: https:",
           NODE_ENV: process.env.NODE_ENV || mode,
         },
@@ -118,7 +118,7 @@ module.exports = (env, argv) => {
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(
           process.env.REACT_APP_API_URL ||
-          (isProduction ? 'http://localhost:4000' : 'http://localhost:4000')
+          (isProduction ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:4000')
         ),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '1.0.0'
