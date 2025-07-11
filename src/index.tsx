@@ -17,9 +17,9 @@ function renderApp() {
   }
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
   renderApp()
-} else if (process.env.NODE_ENV === 'development') {
+} else if (process.env.NODE_ENV === 'local') {
   async function clearServiceWorkers() {
     if ('serviceWorker' in navigator) {
       try {
@@ -28,7 +28,6 @@ if (process.env.NODE_ENV === 'production') {
           registration.unregister(),
         )
         await Promise.all(unregisterPromises)
-        console.log('✅ Service workers unregistered')
       } catch (err) {
         console.error('❌ Error unregistering service workers:', err)
       }
@@ -37,9 +36,8 @@ if (process.env.NODE_ENV === 'production') {
 
   async function enableMocking() {
     try {
-      console.log('🔧 Development mode: enabling MSW')
 
-      // Dynamic import ensures MSW is only loaded in development
+      // Dynamic import ensures MSW is only loaded in local
       const {worker} = await import('./mocks/browser')
 
       await worker.start({
@@ -48,7 +46,6 @@ if (process.env.NODE_ENV === 'production') {
         quiet: false, // Set to true to reduce MSW console logs
       })
 
-      console.log('✅ MSW started successfully')
       return true
     } catch (error) {
       console.warn('⚠️ Failed to start MSW:', error)
@@ -63,15 +60,13 @@ if (process.env.NODE_ENV === 'production') {
       const mswStarted = await enableMocking()
 
       if (mswStarted) {
-        console.log('🎭 Development app starting with mocks')
+        console.log('Development app starting with mocks')
       } else {
-        console.log('🌐 Development app starting without mocks')
+        console.log('Development app starting without mocks')
       }
 
       renderApp()
     } catch (err) {
-      console.error('❌ Error initializing development app:', err)
-      console.log('🔄 Falling back to basic app rendering')
       renderApp()
     }
   }

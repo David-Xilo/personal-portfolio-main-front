@@ -5,11 +5,10 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {DefinePlugin} = require('webpack');
 
 module.exports = (env, argv) => {
-  const mode = argv.mode || 'development';
+  // Use webpack mode as the source of truth for environment
+  const mode = argv.mode || process.env.NODE_ENV || 'local';
   const isProduction = mode === 'production';
-  const isDevelopment = mode === 'development';
-
-  console.log(`🔧 Building for: ${mode}`);
+  const isDevelopment = mode === 'development' || mode === 'local';
 
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
@@ -53,7 +52,7 @@ module.exports = (env, argv) => {
         directory: path.resolve(__dirname, 'public'),
       },
       historyApiFallback: true,
-      port: 3000,
+      port: 80,
       open: true,
       hot: true,
       compress: true,
@@ -99,9 +98,9 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         templateParameters: {
-          // SECURE: Only HTTPS in production (automatically blocks localhost)
+          // SECURE: Only HTTPS in production
           CSP_CONNECT_SRC: isProduction
-            ? "'self' https: http://localhost:*"  // TODO Remove localhost - if needed add http domain used in prod
+            ? "'self' https:"
             : "'self' http://localhost:* http: https:",
           NODE_ENV: process.env.NODE_ENV || mode,
         },
@@ -119,10 +118,13 @@ module.exports = (env, argv) => {
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(
           process.env.REACT_APP_API_URL ||
-          (isProduction ? 'http://localhost:4000' : 'http://localhost:4000')
+          (isProduction ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:4000')
         ),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '1.0.0'
+        ),
+        'process.env.FRONTEND_KEY': JSON.stringify(
+          process.env.FRONTEND_KEY || 'safehouse-frontend'
         ),
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),

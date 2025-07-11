@@ -3,7 +3,8 @@
 interface AppConfig {
   apiUrl: string
   appVersion: string
-  environment: 'development' | 'staging' | 'production'
+  frontendKey: string
+  environment: 'development' | 'local' | 'production'
   isProduction: boolean
   isDevelopment: boolean
 }
@@ -40,49 +41,48 @@ function validateUrl(url: string, name: string): string {
 
 function createConfig(): AppConfig {
   // These MUST be accessed as complete expressions for webpack DefinePlugin to work
+  // NODE_ENV is injected by webpack DefinePlugin based on webpack mode for consistency
   // Get environment variables with validation
   const apiUrl = getRequiredEnvVar(
     process.env.REACT_APP_API_URL,
     'REACT_APP_API_URL',
-    'http://localhost:4000',
+    process.env.NODE_ENV === 'production' ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:4000',
   )
   const appVersion = getRequiredEnvVar(
     process.env.REACT_APP_APP_VERSION,
     'REACT_APP_APP_VERSION',
     '1.0.0',
   )
+  const frontendKey = getRequiredEnvVar(
+    process.env.FRONTEND_KEY,
+    'FRONTEND_KEY',
+    'safehouse-frontend',
+  )
 
   // For NODE_ENV, we need to access it directly as webpack replaces this
-  const nodeEnv = process.env.NODE_ENV || 'development'
+  const nodeEnv = process.env.NODE_ENV || 'local'
   const environment = nodeEnv as AppConfig['environment']
 
   // Validate URLs
   const validatedApiUrl = validateUrl(apiUrl, 'REACT_APP_API_URL')
 
   // Validate environment
-  if (!['development', 'staging', 'production'].includes(environment)) {
+  if (!['development', 'local', 'production'].includes(environment)) {
     throw new ConfigError(
-      `Invalid environment: ${environment}. Must be 'development', 'staging', or 'production'`,
+      `Invalid environment: ${environment}. Must be 'development', 'local', or 'production'`,
     )
   }
 
   return {
     apiUrl: validatedApiUrl,
     appVersion,
+    frontendKey,
     environment,
     isProduction: environment === 'production',
-    isDevelopment: environment === 'development',
+    isDevelopment: environment === 'development' || environment === 'local',
   }
 }
 
 // Create and export the configuration
 export const config = createConfig()
 
-// Log configuration in development (no sensitive data to hide)
-if (config.isDevelopment) {
-  console.log('🔧 App Configuration:', {
-    apiUrl: config.apiUrl,
-    appVersion: config.appVersion,
-    environment: config.environment,
-  })
-}

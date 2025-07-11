@@ -11,7 +11,7 @@
 /cypress/screenshots
 
 # Production build
-/dist
+dist
 /build
 
 # misc
@@ -19,11 +19,6 @@
 
 # Testing
 *.lcov
-
-# env variables
-.env
-.env.development.local
-.env.production.local
 
 # IDE
 .vscode/
@@ -68,9 +63,5 @@ ignored/
 # npm rc
 
 #.npmrc
-
-
-.vscode/
-.github/
 
 .claude/
