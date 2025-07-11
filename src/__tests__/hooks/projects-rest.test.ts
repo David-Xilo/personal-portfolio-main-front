@@ -1,10 +1,21 @@
 import {renderHook, waitFor} from '@testing-library/react'
 import {useProjectsGetApi} from '../../api/hooks/projects-rest'
+import {ApiError} from '../../api/client'
 
-// Mock fetch
-global.fetch = jest.fn()
+// Mock the API client
+jest.mock('../../api/client', () => {
+  const originalModule = jest.requireActual('../../api/client')
+  return {
+    __esModule: true,
+    default: {
+      get: jest.fn(),
+    },
+    ApiError: originalModule.ApiError,
+  }
+})
 
-const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>
+import apiClient from '../../api/client'
+const mockApiClient = apiClient as jest.Mocked<typeof apiClient>
 
 describe('useProjectsGetApi', () => {
   const mockEndpoint = '/api/projects'
@@ -48,15 +59,13 @@ describe('useProjectsGetApi', () => {
       },
     ]
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({message: mockProjects}),
-    } as Response)
+    mockApiClient.get.mockResolvedValueOnce({
+      message: mockProjects,
+    })
 
     const {result} = renderHook(() => useProjectsGetApi(mockEndpoint))
 
-    // Initial state
-    expect(result.current.status).toBe('')
+    // Initial state (hook loads immediately)
     expect(result.current.message).toEqual([])
     expect(result.current.error).toBe(null)
 
@@ -67,12 +76,12 @@ describe('useProjectsGetApi', () => {
 
     expect(result.current.message).toEqual(mockProjects)
     expect(result.current.error).toBe(null)
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/projects')
+    expect(mockApiClient.get).toHaveBeenCalledWith(mockEndpoint)
   })
 
   test('handles fetch error', async () => {
-    const errorMessage = 'Network error'
-    mockFetch.mockRejectedValueOnce(new Error(errorMessage))
+    const networkError = new ApiError('Network error', 0, 'NETWORK_ERROR')
+    mockApiClient.get.mockRejectedValueOnce(networkError)
 
     const {result} = renderHook(() => useProjectsGetApi(mockEndpoint))
 
@@ -81,14 +90,12 @@ describe('useProjectsGetApi', () => {
     })
 
     expect(result.current.message).toEqual([])
-    expect(result.current.error).toBe(errorMessage)
+    expect(result.current.error).toBe('Network error - check your connection')
   })
 
   test('handles non-ok response', async () => {
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-    } as Response)
+    const apiError = new ApiError('Server error', 500, 'SERVER_ERROR')
+    mockApiClient.get.mockRejectedValueOnce(apiError)
 
     const {result} = renderHook(() => useProjectsGetApi(mockEndpoint))
 
@@ -97,18 +104,13 @@ describe('useProjectsGetApi', () => {
     })
 
     expect(result.current.message).toEqual([])
-    expect(result.current.error).toBe(
-      'Error using endpoint http://localhost:4000/api/projects',
-    )
+    expect(result.current.error).toBe('Server error - please try again later')
   })
 
   test('handles non-array message response', async () => {
     const mockResponse = {message: null}
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockResponse,
-    } as Response)
+    mockApiClient.get.mockResolvedValueOnce(mockResponse)
 
     const {result} = renderHook(() => useProjectsGetApi(mockEndpoint))
 
@@ -124,10 +126,9 @@ describe('useProjectsGetApi', () => {
     const firstPath = '/api/projects'
     const secondPath = '/api/projects/featured'
 
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: async () => ({message: []}),
-    } as Response)
+    mockApiClient.get.mockResolvedValue({
+      message: [],
+    })
 
     const {result, rerender} = renderHook(({path}) => useProjectsGetApi(path), {
       initialProps: {path: firstPath},
@@ -137,18 +138,16 @@ describe('useProjectsGetApi', () => {
       expect(result.current.status).toBe('success')
     })
 
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/projects')
+    expect(mockApiClient.get).toHaveBeenCalledWith(firstPath)
 
     // Change path
     rerender({path: secondPath})
 
     await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith(
-        'http://localhost:4000/api/projects/featured',
-      )
+      expect(mockApiClient.get).toHaveBeenCalledWith(secondPath)
     })
 
-    expect(mockFetch).toHaveBeenCalledTimes(2)
+    expect(mockApiClient.get).toHaveBeenCalledTimes(2)
   })
 
   test('validates project object structure', async () => {
@@ -169,10 +168,9 @@ describe('useProjectsGetApi', () => {
       },
     ]
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({message: mockProjects}),
-    } as Response)
+    mockApiClient.get.mockResolvedValueOnce({
+      message: mockProjects,
+    })
 
     const {result} = renderHook(() => useProjectsGetApi(mockEndpoint))
 
@@ -198,10 +196,9 @@ describe('useProjectsGetApi', () => {
       },
     ]
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({message: mockProjects}),
-    } as Response)
+    mockApiClient.get.mockResolvedValueOnce({
+      message: mockProjects,
+    })
 
     const {result} = renderHook(() => useProjectsGetApi(mockEndpoint))
 
