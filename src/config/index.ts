@@ -59,7 +59,6 @@ function createConfig(): AppConfig {
     'safehouse-frontend',
   )
 
-  // For NODE_ENV, we need to access it directly as webpack replaces this
   const nodeEnv = process.env.NODE_ENV || 'local'
   const environment = nodeEnv as AppConfig['environment']
 
@@ -67,7 +66,7 @@ function createConfig(): AppConfig {
   const validatedApiUrl = validateUrl(apiUrl, 'REACT_APP_API_URL')
 
   // Validate environment
-  if (!['development', 'local', 'production'].includes(environment)) {
+  if (!['development', 'local', 'test', 'production'].includes(environment)) {
     throw new ConfigError(
       `Invalid environment: ${environment}. Must be 'development', 'local', or 'production'`,
     )

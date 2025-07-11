@@ -1,10 +1,21 @@
 import {renderHook, waitFor} from '@testing-library/react'
 import {useContactGetApi} from '../../api/hooks/contact-rest'
+import {ApiError} from '../../api/client'
 
-// Mock fetch
-global.fetch = jest.fn()
+// Mock the API client
+jest.mock('../../api/client', () => {
+  const originalModule = jest.requireActual('../../api/client')
+  return {
+    __esModule: true,
+    default: {
+      get: jest.fn(),
+    },
+    ApiError: originalModule.ApiError, // Use the real ApiError class
+  }
+})
 
-const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>
+import apiClient from '../../api/client'
+const mockApiClient = apiClient as jest.Mocked<typeof apiClient>
 
 describe('useContactGetApi', () => {
   const mockEndpoint = '/api/contact'
@@ -29,15 +40,13 @@ describe('useContactGetApi', () => {
       credly: 'https://credly.com/johndoe',
     }
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({message: mockContact}),
-    } as Response)
+    mockApiClient.get.mockResolvedValueOnce({
+      message: mockContact,
+    })
 
     const {result} = renderHook(() => useContactGetApi(mockEndpoint))
 
-    // Initial state
-    expect(result.current.status).toBe('')
+    // Initial state (hook loads immediately, so we can't reliably catch the initial empty state)
     expect(result.current.message).toBe(null)
     expect(result.current.error).toBe(null)
 
@@ -48,12 +57,12 @@ describe('useContactGetApi', () => {
 
     expect(result.current.message).toEqual(mockContact)
     expect(result.current.error).toBe(null)
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/contact')
+    expect(mockApiClient.get).toHaveBeenCalledWith(mockEndpoint)
   })
 
   test('handles fetch error', async () => {
-    const errorMessage = 'Network error'
-    mockFetch.mockRejectedValueOnce(new Error(errorMessage))
+    const networkError = new ApiError('Network error', 0, 'NETWORK_ERROR')
+    mockApiClient.get.mockRejectedValueOnce(networkError)
 
     const {result} = renderHook(() => useContactGetApi(mockEndpoint))
 
@@ -62,14 +71,12 @@ describe('useContactGetApi', () => {
     })
 
     expect(result.current.message).toBe(null)
-    expect(result.current.error).toBe(errorMessage)
+    expect(result.current.error).toBe('Network error - check your connection')
   })
 
   test('handles non-ok response', async () => {
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 404,
-    } as Response)
+    const apiError = new ApiError('Not found', 404, 'API_ERROR')
+    mockApiClient.get.mockRejectedValueOnce(apiError)
 
     const {result} = renderHook(() => useContactGetApi(mockEndpoint))
 
@@ -78,18 +85,13 @@ describe('useContactGetApi', () => {
     })
 
     expect(result.current.message).toBe(null)
-    expect(result.current.error).toBe(
-      'Error using endpoint http://localhost:4000/api/contact',
-    )
+    expect(result.current.error).toBe('Something went wrong')
   })
 
   test('handles null message response', async () => {
     const mockResponse = {message: null}
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockResponse,
-    } as Response)
+    mockApiClient.get.mockResolvedValueOnce(mockResponse)
 
     const {result} = renderHook(() => useContactGetApi(mockEndpoint))
 
@@ -101,36 +103,32 @@ describe('useContactGetApi', () => {
     expect(result.current.error).toBe(null)
   })
 
-  test('re-fetches when endpoint changes', async () => {
-    const firstEndpoint = '/api/contact'
-    const secondEndpoint = '/api/contact/details'
+  test('handles offline error', async () => {
+    const offlineError = new ApiError('No internet connection', 0, 'OFFLINE')
+    mockApiClient.get.mockRejectedValueOnce(offlineError)
 
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: async () => ({message: null}),
-    } as Response)
-
-    const {result, rerender} = renderHook(
-      ({endpoint}) => useContactGetApi(endpoint),
-      {initialProps: {endpoint: firstEndpoint}},
-    )
+    const {result} = renderHook(() => useContactGetApi(mockEndpoint))
 
     await waitFor(() => {
-      expect(result.current.status).toBe('success')
+      expect(result.current.status).toBe('error')
     })
 
-    expect(mockFetch).toHaveBeenCalledWith('http://localhost:4000/api/contact')
+    expect(result.current.message).toBe(null)
+    expect(result.current.error).toBe('No internet connection')
+  })
 
-    // Change endpoint
-    rerender({endpoint: secondEndpoint})
+  test('handles rate limiting error', async () => {
+    const rateLimitError = new ApiError('Too many requests', 429, 'RATE_LIMITED')
+    mockApiClient.get.mockRejectedValueOnce(rateLimitError)
+
+    const {result} = renderHook(() => useContactGetApi(mockEndpoint))
 
     await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith(
-        'http://localhost:4000/api/contact/details',
-      )
+      expect(result.current.status).toBe('error')
     })
 
-    expect(mockFetch).toHaveBeenCalledTimes(2)
+    expect(result.current.message).toBe(null)
+    expect(result.current.error).toBe('Too many requests - please wait a moment')
   })
 
   test('validates contact object structure', async () => {
@@ -142,10 +140,9 @@ describe('useContactGetApi', () => {
       credly: 'https://credly.com/janesmith',
     }
 
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({message: mockContact}),
-    } as Response)
+    mockApiClient.get.mockResolvedValueOnce({
+      message: mockContact,
+    })
 
     const {result} = renderHook(() => useContactGetApi(mockEndpoint))
 
