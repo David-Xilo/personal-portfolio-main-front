@@ -46,7 +46,7 @@ function createConfig(): AppConfig {
   const apiUrl = getRequiredEnvVar(
     process.env.REACT_APP_API_URL,
     'REACT_APP_API_URL',
-    process.env.NODE_ENV === 'production' ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:4000',
+    process.env.NODE_ENV === 'production' ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:8080',
   )
   const appVersion = getRequiredEnvVar(
     process.env.REACT_APP_APP_VERSION,

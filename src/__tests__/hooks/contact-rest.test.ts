@@ -24,7 +24,7 @@ describe('useContactGetApi', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     process.env = {...originalEnv}
-    process.env.REACT_APP_API_URL = 'http://localhost:4000'
+    process.env.REACT_APP_API_URL = 'http://localhost:8080'
   })
 
   afterEach(() => {
