@@ -8,8 +8,10 @@ COPY . .
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
 
-#ARG REACT_APP_API_URL
-#ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+
+RUN echo "DEBUG: REACT_APP_API_URL = $REACT_APP_API_URL"
 
 RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development ; else npm run build ; fi
 

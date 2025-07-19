@@ -5,10 +5,18 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {DefinePlugin} = require('webpack');
 
 module.exports = (env, argv) => {
-  // Use webpack mode as the source of truth for environment
-  const mode = argv.mode || env.NODE_ENV || 'local';
+  const mode = argv.mode || process.env.NODE_ENV || 'local';
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development' || mode === 'local';
+
+  console.log('🔍 WEBPACK DEBUG:');
+  console.log('- REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
+  console.log('- NODE_ENV:', process.env.NODE_ENV);
+  console.log('- All REACT_APP vars:', Object.keys(process.env).filter(k => k.startsWith('REACT_APP')));
+
+  const getApiUrl = () => {
+    return process.env.REACT_APP_API_URL || 'https://your-backend-service.up.railway.app';
+  };
 
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
@@ -98,7 +106,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         templateParameters: {
-          NODE_ENV: env.NODE_ENV || mode,
+          NODE_ENV: process.env.NODE_ENV || mode,
         },
         minify: isProduction ? {
           collapseWhitespace: true,
@@ -112,9 +120,7 @@ module.exports = (env, argv) => {
       }),
 
       new DefinePlugin({
-        'process.env.REACT_APP_API_URL': JSON.stringify(
-          (isProduction ? env.REACT_APP_API_URL : 'http://localhost:8080')
-        ),
+        'process.env.REACT_APP_API_URL': JSON.stringify(getApiUrl()),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '1.0.0'
         ),
