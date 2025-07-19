@@ -98,10 +98,6 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         templateParameters: {
-          // SECURE: Only HTTPS in production
-          CSP_CONNECT_SRC: isProduction
-            ? "'self' https:"
-            : "'self' http://localhost:* http: https:",
           NODE_ENV: process.env.NODE_ENV || mode,
         },
         minify: isProduction ? {
