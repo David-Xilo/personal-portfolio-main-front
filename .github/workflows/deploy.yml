@@ -109,7 +109,7 @@ jobs:
             BUILD_TIME=${{ github.run_number }}
             GIT_COMMIT=${{ github.sha }}
             NODE_ENV=${{ github.event.inputs.environment }}
-#            REACT_APP_API_URL=${{ secrets.API_URL }}
+            REACT_APP_API_URL=${{ secrets.API_URL }}
 
       - name: Output build summary
         run: |
