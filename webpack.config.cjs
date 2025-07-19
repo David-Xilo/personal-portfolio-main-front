@@ -117,8 +117,7 @@ module.exports = (env, argv) => {
 
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(
-          process.env.REACT_APP_API_URL ||
-          (isProduction ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:8080')
+          (isProduction ? process.env.REACT_APP_API_URL : 'http://localhost:8080')
         ),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '1.0.0'
