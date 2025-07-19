@@ -1,15 +1,15 @@
 FROM node:21.1.0-bookworm AS build
 
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-
 ARG NODE_ENV
 ENV NODE_ENV=${NODE_ENV}
 
 ARG REACT_APP_API_URL
 ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
 
 RUN echo "DEBUG: REACT_APP_API_URL = $REACT_APP_API_URL"
 
