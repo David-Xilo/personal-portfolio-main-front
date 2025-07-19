@@ -15,7 +15,7 @@ module.exports = (env, argv) => {
   console.log('- All REACT_APP vars:', Object.keys(process.env).filter(k => k.startsWith('REACT_APP')));
 
   const getApiUrl = () => {
-    return process.env.REACT_APP_API_URL || 'https://your-backend-service.up.railway.app';
+    return process.env.REACT_APP_API_URL || 'http://localhost:8080';
   };
 
   // Create exclude function for cleaner webpack config
