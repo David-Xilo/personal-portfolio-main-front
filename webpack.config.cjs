@@ -9,11 +9,6 @@ module.exports = (env, argv) => {
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development' || mode === 'local';
 
-  console.log('🔍 WEBPACK DEBUG:');
-  console.log('- REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
-  console.log('- NODE_ENV:', process.env.NODE_ENV);
-  console.log('- All REACT_APP vars:', Object.keys(process.env).filter(k => k.startsWith('REACT_APP')));
-
   const getApiUrl = () => {
     return process.env.REACT_APP_API_URL || 'http://localhost:8080';
   };
@@ -29,8 +24,8 @@ module.exports = (env, argv) => {
         // Exclude mocks in production
         if (/\/mocks\//.test(modulePath)) return true;
         // Exclude MSW service worker
-        if (/mockServiceWorker\.js$/.test(modulePath)) return true;
-        return false;
+        return /mockServiceWorker\.js$/.test(modulePath);
+
       };
     }
     return /node_modules/;

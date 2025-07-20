@@ -11,8 +11,6 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-RUN echo "DEBUG: REACT_APP_API_URL = $REACT_APP_API_URL"
-
 RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development ; else npm run build ; fi
 
 # Production stage

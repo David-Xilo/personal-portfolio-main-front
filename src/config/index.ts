@@ -1,4 +1,3 @@
-// src/config/index.ts
 
 interface AppConfig {
   apiUrl: string
@@ -46,7 +45,7 @@ function createConfig(): AppConfig {
   const apiUrl = getRequiredEnvVar(
     process.env.REACT_APP_API_URL,
     'REACT_APP_API_URL',
-    'http://localhost:8080',
+    '',
   )
   const appVersion = getRequiredEnvVar(
     process.env.REACT_APP_APP_VERSION,
@@ -62,10 +61,9 @@ function createConfig(): AppConfig {
   const nodeEnv = process.env.NODE_ENV || 'local'
   const environment = nodeEnv as AppConfig['environment']
 
-  // Validate URLs
+
   const validatedApiUrl = validateUrl(apiUrl, 'REACT_APP_API_URL')
 
-  // Validate environment
   if (!['development', 'local', 'test', 'production'].includes(environment)) {
     throw new ConfigError(
       `Invalid environment: ${environment}. Must be 'development', 'local', or 'production'`,
