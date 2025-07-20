@@ -5,10 +5,16 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {DefinePlugin} = require('webpack');
 
 module.exports = (env, argv) => {
-  // Use webpack mode as the source of truth for environment
   const mode = argv.mode || process.env.NODE_ENV || 'local';
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development' || mode === 'local';
+
+  const getApiUrl = () => {
+    if (!process.env.REACT_APP_API_URL) {
+      throw new Error('REACT_APP_API_URL environment variable is not set. Please configure it to proceed.');
+    }
+    return process.env.REACT_APP_API_URL;
+  };
 
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
@@ -21,8 +27,8 @@ module.exports = (env, argv) => {
         // Exclude mocks in production
         if (/\/mocks\//.test(modulePath)) return true;
         // Exclude MSW service worker
-        if (/mockServiceWorker\.js$/.test(modulePath)) return true;
-        return false;
+        return /mockServiceWorker\.js$/.test(modulePath);
+
       };
     }
     return /node_modules/;
@@ -98,10 +104,6 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         templateParameters: {
-          // SECURE: Only HTTPS in production
-          CSP_CONNECT_SRC: isProduction
-            ? "'self' https:"
-            : "'self' http://localhost:* http: https:",
           NODE_ENV: process.env.NODE_ENV || mode,
         },
         minify: isProduction ? {
@@ -116,15 +118,9 @@ module.exports = (env, argv) => {
       }),
 
       new DefinePlugin({
-        'process.env.REACT_APP_API_URL': JSON.stringify(
-          process.env.REACT_APP_API_URL ||
-          (isProduction ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:8080')
-        ),
+        'process.env.REACT_APP_API_URL': JSON.stringify(getApiUrl()),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
-          process.env.REACT_APP_APP_VERSION || '1.0.0'
-        ),
-        'process.env.FRONTEND_KEY': JSON.stringify(
-          process.env.FRONTEND_KEY || 'safehouse-frontend'
+          process.env.REACT_APP_APP_VERSION || '0.0.1'
         ),
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),

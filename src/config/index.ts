@@ -1,9 +1,6 @@
-// src/config/index.ts
 
 interface AppConfig {
   apiUrl: string
-  appVersion: string
-  frontendKey: string
   environment: 'development' | 'local' | 'production'
   isProduction: boolean
   isDevelopment: boolean
@@ -46,26 +43,15 @@ function createConfig(): AppConfig {
   const apiUrl = getRequiredEnvVar(
     process.env.REACT_APP_API_URL,
     'REACT_APP_API_URL',
-    process.env.NODE_ENV === 'production' ? 'https://safehouse-backend-942519139037.us-central1.run.app' : 'http://localhost:8080',
-  )
-  const appVersion = getRequiredEnvVar(
-    process.env.REACT_APP_APP_VERSION,
-    'REACT_APP_APP_VERSION',
-    '1.0.0',
-  )
-  const frontendKey = getRequiredEnvVar(
-    process.env.FRONTEND_KEY,
-    'FRONTEND_KEY',
-    'safehouse-frontend',
+    '',
   )
 
   const nodeEnv = process.env.NODE_ENV || 'local'
   const environment = nodeEnv as AppConfig['environment']
 
-  // Validate URLs
+
   const validatedApiUrl = validateUrl(apiUrl, 'REACT_APP_API_URL')
 
-  // Validate environment
   if (!['development', 'local', 'test', 'production'].includes(environment)) {
     throw new ConfigError(
       `Invalid environment: ${environment}. Must be 'development', 'local', or 'production'`,
@@ -74,8 +60,6 @@ function createConfig(): AppConfig {
 
   return {
     apiUrl: validatedApiUrl,
-    appVersion,
-    frontendKey,
     environment,
     isProduction: environment === 'production',
     isDevelopment: environment === 'development' || environment === 'local',
