@@ -15,9 +15,6 @@ on:
         required: true
         type: string
 
-env:
-  DOCKER_HUB_REPO: xilo/safehouse-frontend-main
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -71,11 +68,11 @@ jobs:
           CUSTOM_TAG="${{ github.event.inputs.tag_version }}"
           
           if [[ "$ENVIRONMENT" == "production" ]]; then
-            TAGS="${TAGS}${{ env.DOCKER_HUB_REPO }}:latest,"
+            TAGS="${TAGS}xilo/safehouse-frontend-main:latest,"
           fi
           
           if [[ -n "$CUSTOM_TAG" ]]; then
-            TAGS="${TAGS}${{ env.DOCKER_HUB_REPO }}:${CUSTOM_TAG},"
+            TAGS="${TAGS}xilo/safehouse-frontend-main:${CUSTOM_TAG},"
           fi
           
           TAGS=${TAGS%,}

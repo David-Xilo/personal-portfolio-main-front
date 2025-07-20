@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development ; else npm run build ; fi
+RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development NODE_ENV=${NODE_ENV} REACT_APP_API_URL=${REACT_APP_API_URL} ; else npm run build NODE_ENV=${NODE_ENV} REACT_APP_API_URL=${REACT_APP_API_URL} ; fi
 
 # Production stage
 FROM nginx:alpine
