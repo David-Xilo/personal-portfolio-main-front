@@ -12,7 +12,7 @@ on:
           - production
       tag_version:
         description: 'Custom tag version'
-        required: false
+        required: true
         type: string
 
 env:
