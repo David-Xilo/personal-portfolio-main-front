@@ -10,10 +10,10 @@ module.exports = (env, argv) => {
   const isDevelopment = mode === 'development' || mode === 'local';
 
   const getApiUrl = () => {
-    if (!process.env.REACT_APP_API_URL) {
+    if (!env.REACT_APP_API_URL) {
       throw new Error('REACT_APP_API_URL environment variable is not set. Please configure it to proceed.');
     }
-    return process.env.REACT_APP_API_URL;
+    return env.REACT_APP_API_URL;
   };
 
   // Create exclude function for cleaner webpack config
@@ -104,7 +104,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
         templateParameters: {
-          NODE_ENV: process.env.NODE_ENV || mode,
+          NODE_ENV: env.NODE_ENV || mode,
         },
         minify: isProduction ? {
           collapseWhitespace: true,
