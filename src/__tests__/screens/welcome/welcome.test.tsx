@@ -90,10 +90,10 @@ describe('WelcomeScreen', () => {
       screen.getByText('Explore my tech projects and experiments'),
     ).toBeInTheDocument()
     expect(
-      screen.getByText('Check out my game development journey'),
+      screen.getByText('Hobby game development'),
     ).toBeInTheDocument()
     expect(
-      screen.getByText('Discover financial insights and analysis'),
+      screen.getByText('Discover technical projects applied to finance'),
     ).toBeInTheDocument()
   })
 

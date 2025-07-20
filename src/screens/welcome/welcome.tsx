@@ -31,7 +31,7 @@ const WelcomeContent: React.FC = () => {
       className: 'games-card',
       icon: '🎮',
       title: 'Gaming',
-      text: 'Check hobby game development',
+      text: 'Hobby game development',
     },
     {
       to: '/finance',
