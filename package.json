@@ -2,7 +2,7 @@
   "name": "safehouse-front",
   "version": "0.0.1",
   "private": true,
-  "author": "David Bugalho de Moura <david.dbmoura@gmail.com>",
+  "author": "David Bugalho de Moura",
   "type": "module",
   "engines": {
     "node": ">=18",
