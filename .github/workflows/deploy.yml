@@ -38,6 +38,9 @@ jobs:
 
       - name: Build application
         run: npm run build
+        env:
+          NODE_ENV: ${{ github.event.inputs.environment }}
+          REACT_APP_API_URL: ${{ secrets.API_URL }}
 
   build-and-push:
     runs-on: ubuntu-latest
@@ -95,8 +98,6 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: linux/amd64
           build-args: |
-            BUILD_TIME=${{ github.run_number }}
-            GIT_COMMIT=${{ github.sha }}
             NODE_ENV=${{ github.event.inputs.environment }}
             REACT_APP_API_URL=${{ secrets.API_URL }}
 
