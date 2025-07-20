@@ -66,7 +66,6 @@ class ApiClient {
       ...options,
       headers: {
         'Content-Type': 'application/json',
-        'X-Client-Version': config.appVersion,
         ...options.headers,
       },
       credentials: 'include',
@@ -109,7 +108,7 @@ class ApiClient {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        'auth_key': config.frontendKey
+        'auth_key': 'safehouse-frontend'
       })
     });
     if (!res.ok) throw new Error('Refresh failed');

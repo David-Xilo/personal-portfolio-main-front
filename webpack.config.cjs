@@ -10,7 +10,10 @@ module.exports = (env, argv) => {
   const isDevelopment = mode === 'development' || mode === 'local';
 
   const getApiUrl = () => {
-    return process.env.REACT_APP_API_URL || 'http://localhost:8080';
+    if (!process.env.REACT_APP_API_URL) {
+      throw new Error('REACT_APP_API_URL environment variable is not set. Please configure it to proceed.');
+    }
+    return process.env.REACT_APP_API_URL;
   };
 
   // Create exclude function for cleaner webpack config
@@ -117,10 +120,7 @@ module.exports = (env, argv) => {
       new DefinePlugin({
         'process.env.REACT_APP_API_URL': JSON.stringify(getApiUrl()),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
-          process.env.REACT_APP_APP_VERSION || '1.0.0'
-        ),
-        'process.env.FRONTEND_KEY': JSON.stringify(
-          process.env.FRONTEND_KEY || 'safehouse-frontend'
+          process.env.REACT_APP_APP_VERSION || '0.0.1'
         ),
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),

@@ -1,8 +1,6 @@
 
 interface AppConfig {
   apiUrl: string
-  appVersion: string
-  frontendKey: string
   environment: 'development' | 'local' | 'production'
   isProduction: boolean
   isDevelopment: boolean
@@ -47,18 +45,8 @@ function createConfig(): AppConfig {
     'REACT_APP_API_URL',
     '',
   )
-  const appVersion = getRequiredEnvVar(
-    process.env.REACT_APP_APP_VERSION,
-    'REACT_APP_APP_VERSION',
-    '1.0.0',
-  )
-  const frontendKey = getRequiredEnvVar(
-    process.env.FRONTEND_KEY,
-    'FRONTEND_KEY',
-    'safehouse-frontend',
-  )
 
-  const nodeEnv = process.env.NODE_ENV || 'local'
+  const nodeEnv = process.env.NODE_ENV
   const environment = nodeEnv as AppConfig['environment']
 
 
@@ -72,8 +60,6 @@ function createConfig(): AppConfig {
 
   return {
     apiUrl: validatedApiUrl,
-    appVersion,
-    frontendKey,
     environment,
     isProduction: environment === 'production',
     isDevelopment: environment === 'development' || environment === 'local',
