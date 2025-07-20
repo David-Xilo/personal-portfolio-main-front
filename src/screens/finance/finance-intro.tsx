@@ -51,11 +51,10 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
           <div className="finance-intro-cards-grid">
             <IntroductionCard
               color="green"
-              title="Early Beginnings"
+              title="Early Interest"
               icon={<BirthdayCakeIcon />}
             >
-              Since I was young, I've followed the stock market and economic
-              news
+              I've been interested in investing for a while
             </IntroductionCard>
 
             <IntroductionCard
@@ -63,8 +62,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
               title="Study"
               icon={<BeakerIcon />}
             >
-              Reading, studying, and staying informed about financial markets
-              whenever possible
+              Studying and staying informed about financial markets whenever possible
             </IntroductionCard>
 
             <IntroductionCard
@@ -72,7 +70,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
               title="Academic Fusion"
               icon={<AcademicCapIcon />}
             >
-              Combined technology and finance in my master's thesis
+              Combined technology and finance in my Master's Thesis
             </IntroductionCard>
 
             <IntroductionCard
@@ -80,7 +78,7 @@ const FinanceIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
               title="Projects & Growth"
               icon={<RocketIcon />}
             >
-              Finance projects, certifications, and continuous learning
+              I'll keep posting finance projects and certifications
             </IntroductionCard>
           </div>
         </div>

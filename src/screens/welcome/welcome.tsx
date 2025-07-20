@@ -31,14 +31,14 @@ const WelcomeContent: React.FC = () => {
       className: 'games-card',
       icon: '🎮',
       title: 'Gaming',
-      text: 'Check out my game development journey',
+      text: 'Check hobby game development',
     },
     {
       to: '/finance',
       className: 'finance-card',
       icon: '📊',
       title: 'Finance',
-      text: 'Discover financial insights and analysis',
+      text: 'Discover technical projects applied to finance',
     },
   ]
 

@@ -35,10 +35,10 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
             <div className="games-intro-card-1">
               <IntroductionCard
                 color="purple"
-                title="Since a Youngster"
+                title="Like Most of Us"
                 icon={<BirthdayCakeIcon />}
               >
-                Since I was a kid I've loved video games
+                I've always loved video games
               </IntroductionCard>
             </div>
 
@@ -64,17 +64,17 @@ const GamesIntroScreen: React.FC<SubMenuProps> = ({hiddenMenuDispatch}) => {
                 title="Creating Games"
                 icon={<WrenchScrewdriverIcon />}
               >
-                I'll keep adding new games I've made here
+                I'll try to add some games here
               </IntroductionCard>
             </div>
 
             <div className="games-intro-card-4">
               <IntroductionCard
                 color="violet"
-                title="Big Dreams"
+                title="Hobby Game dev"
                 icon={<StarIcon />}
               >
-                Maybe one day you'll recognize one of the names!
+                I'll try to keep it fun and challenging
               </IntroductionCard>
             </div>
           </div>
