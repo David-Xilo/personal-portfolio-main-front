@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development ; else npm run build ; fi
+RUN npm run build
 
 FROM nginx:alpine
 
