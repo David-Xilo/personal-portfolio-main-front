@@ -81,11 +81,11 @@
     "whatwg-fetch": "^3.6.20"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=local REACT_APP_API_URL=http://localhost:8080 webpack serve --mode development --port 3000",
-    "start:env": "cross-env webpack serve --mode $NODE_ENV",
-    "build": "cross-env webpack --env apiUrl=$REACT_APP_API_URL --mode $NODE_ENV",
-    "build:local": "cross-env NODE_ENV=local REACT_APP_API_URL=http://localhost:8080 webpack --mode $NODE_ENV --port 3000",
-    "build:analyze": "cross-env --env apiUrl=$REACT_APP_API_URL ANALYZE=true webpack --mode $NODE_ENV",
+    "start": "cross-env npx NODE_ENV=local REACT_APP_API_URL=http://localhost:8080 webpack serve --mode development --port 3000",
+    "start:env": "cross-env npx webpack serve --mode $NODE_ENV",
+    "build": "cross-env npx webpack --env apiUrl=$REACT_APP_API_URL --mode $NODE_ENV",
+    "build:local": "cross-env npx NODE_ENV=local REACT_APP_API_URL=http://localhost:8080 webpack --mode $NODE_ENV --port 3000",
+    "build:analyze": "cross-env npx --env apiUrl=$REACT_APP_API_URL ANALYZE=true webpack --mode $NODE_ENV",
     "clean": "rimraf dist",
     "clean:build": "npm run clean && npm run build",
     "lint": "eslint . --fix",
