@@ -3,6 +3,12 @@ import {http, HttpResponse} from 'msw'
 const domain = process.env.REACT_APP_API_URL
 
 export const handlers = [
+  http.post(`${domain}/auth/token`, () => {
+    return HttpResponse.json({
+      token: 'mocked-access-token',
+      expires_in: 3600,
+    })
+  }),
   http.get(`${domain}/about/contact`, () => {
     const contact = {
       message: {
