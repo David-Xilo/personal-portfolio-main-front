@@ -46,7 +46,7 @@ function createConfig(): AppConfig {
     '',
   )
 
-  const nodeEnv = process.env.NODE_ENV
+  const nodeEnv = process.env.NODE_ENV || 'local'
   const environment = nodeEnv as AppConfig['environment']
 
 
