@@ -8,7 +8,7 @@ ENV REACT_APP_API_URL=${REACT_APP_API_URL}
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm ci --include=dev
 COPY . .
 
 RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development ; else npm run build ; fi
