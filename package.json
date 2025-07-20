@@ -83,9 +83,9 @@
   "scripts": {
     "start": "cross-env NODE_ENV=local REACT_APP_API_URL=http://localhost:8080 webpack serve --mode development --port 3000",
     "start:env": "cross-env webpack serve --mode $NODE_ENV",
-    "build": "cross-env webpack REACT_APP_API_URL=$REACT_APP_API_URL --mode $NODE_ENV",
+    "build": "cross-env webpack --env apiUrl=$REACT_APP_API_URL --mode $NODE_ENV",
     "build:local": "cross-env NODE_ENV=local REACT_APP_API_URL=http://localhost:8080 webpack --mode $NODE_ENV --port 3000",
-    "build:analyze": "cross-env NODE_ENV=$NODE_ENV REACT_APP_API_URL=$REACT_APP_API_URL ANALYZE=true webpack --mode $NODE_ENV",
+    "build:analyze": "cross-env --env apiUrl=$REACT_APP_API_URL ANALYZE=true webpack --mode $NODE_ENV",
     "preview": "npm run build:development && npx serve dist -s -l 80",
     "clean": "rimraf dist",
     "clean:build": "npm run clean && npm run build",

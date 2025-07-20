@@ -8,13 +8,10 @@ module.exports = (env, argv) => {
   const mode = argv.mode || process.env.NODE_ENV || 'local';
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development' || mode === 'local';
-
-  const getApiUrl = () => {
-    if (!process.env.REACT_APP_API_URL) {
-      throw new Error('REACT_APP_API_URL environment variable is not set. Please configure it to proceed.');
-    }
-    return process.env.REACT_APP_API_URL;
-  };
+  const apiUrl = env?.apiUrl;
+  if (!apiUrl) {
+    throw new Error('Missing env.apiUrl — did you pass --env apiUrl=...?');
+  }
 
   // Create exclude function for cleaner webpack config
   const getExcludePatterns = () => {
@@ -118,7 +115,7 @@ module.exports = (env, argv) => {
       }),
 
       new DefinePlugin({
-        'process.env.REACT_APP_API_URL': JSON.stringify(getApiUrl()),
+        'process.env.REACT_APP_API_URL': JSON.stringify(apiUrl),
         'process.env.REACT_APP_APP_VERSION': JSON.stringify(
           process.env.REACT_APP_APP_VERSION || '0.0.1'
         ),
