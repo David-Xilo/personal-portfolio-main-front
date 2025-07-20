@@ -13,10 +13,13 @@ COPY . .
 
 RUN if [ "$NODE_ENV" = "development" ] ; then npm run build:development NODE_ENV=${NODE_ENV} REACT_APP_API_URL=${REACT_APP_API_URL} ; else npm run build NODE_ENV=${NODE_ENV} REACT_APP_API_URL=${REACT_APP_API_URL} ; fi
 
+# Production stage
 FROM nginx:alpine
 
+# Copy built app
 COPY --from=build /app/dist /usr/share/nginx/html
 
+# Copy nginx config for SPA routing
 COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
