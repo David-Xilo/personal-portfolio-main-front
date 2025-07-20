@@ -16,9 +16,7 @@
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
-    "react-router-dom": "^6.23.0",
-    "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4"
+    "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -78,7 +76,9 @@
     "typescript": "^5.6.2",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-dev-server": "^5.1.0",
-    "whatwg-fetch": "^3.6.20"
+    "whatwg-fetch": "^3.6.20",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=local REACT_APP_API_URL=http://localhost:8080 webpack serve --mode local",
