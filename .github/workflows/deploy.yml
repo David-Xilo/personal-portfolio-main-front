@@ -6,13 +6,13 @@ on:
       environment:
         description: 'Environment to deploy to'
         required: true
-        default: 'prod'
+        default: 'production'
         type: choice
         options:
-          - prod
+          - production
       tag_version:
-        description: 'Custom tag version (e.g., v1.0.0)'
-        required: true
+        description: 'Custom tag version'
+        required: false
         type: string
 
 env:
@@ -70,22 +70,14 @@ jobs:
           ENVIRONMENT="${{ github.event.inputs.environment }}"
           CUSTOM_TAG="${{ github.event.inputs.tag_version }}"
           
-          # Always tag with commit SHA
-          TAGS="${TAGS}${{ env.DOCKER_HUB_REPO }}:${{ github.sha }},"
-          
-          # Tag based on environment
-          if [[ "$ENVIRONMENT" == "prod" ]]; then
+          if [[ "$ENVIRONMENT" == "production" ]]; then
             TAGS="${TAGS}${{ env.DOCKER_HUB_REPO }}:latest,"
-          elif [[ "$ENVIRONMENT" == "dev" ]]; then
-            TAGS="${TAGS}${{ env.DOCKER_HUB_REPO }}:dev,"
           fi
           
-          # Add custom tag if provided
           if [[ -n "$CUSTOM_TAG" ]]; then
             TAGS="${TAGS}${{ env.DOCKER_HUB_REPO }}:${CUSTOM_TAG},"
           fi
           
-          # Remove trailing comma
           TAGS=${TAGS%,}
           
           echo "tags=${TAGS}" >> $GITHUB_OUTPUT
@@ -120,15 +112,6 @@ jobs:
           echo "**Triggered by:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
           echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Built Images:**" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "${{ steps.meta.outputs.tags }}" | tr ',' '\n' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Primary Deployment Image:**" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "${{ steps.meta.outputs.primary_tag }}" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
 
   security-scan:
     needs: build-and-push
@@ -149,7 +132,6 @@ jobs:
           echo "Scanning image: $IMAGE"
           echo "All built tags: ${{ needs.build-and-push.outputs.all_tags }}"
           
-          # Trivy security scan
           echo "Running Trivy security scan..."
           docker run --rm \
             -v /var/run/docker.sock:/var/run/docker.sock \
