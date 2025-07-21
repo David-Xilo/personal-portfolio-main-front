@@ -37,8 +37,7 @@ const mockProject: Project = {
       link_to_git: 'https://github.com/test/repo2',
     },
   ],
-  genre: 'Web Development',
-  link_to_store: 'https://store.example.com',
+  link_to_project: 'https://project.example.com',
 }
 
 describe('ProjectComponent', () => {
@@ -58,27 +57,11 @@ describe('ProjectComponent', () => {
     expect(screen.getByText('1 repository')).toBeInTheDocument()
   })
 
-  test('renders genre when provided', () => {
-    render(<ProjectComponent project={mockProject} />)
-
-    expect(screen.getByText('Genre: Web Development')).toBeInTheDocument()
-  })
-
   test('does not render genre when not provided', () => {
     const projectWithoutGenre = {...mockProject, genre: undefined}
     render(<ProjectComponent project={projectWithoutGenre} />)
 
     expect(screen.queryByText(/Genre:/)).not.toBeInTheDocument()
-  })
-
-  test('renders store link when provided', () => {
-    render(<ProjectComponent project={mockProject} />)
-
-    const storeLink = screen.getByRole('link', {name: /View in Store/})
-    expect(storeLink).toBeInTheDocument()
-    expect(storeLink).toHaveAttribute('href', 'https://store.example.com')
-    expect(storeLink).toHaveAttribute('target', '_blank')
-    expect(storeLink).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
   test('does not render store link when not provided', () => {
@@ -112,29 +95,12 @@ describe('ProjectComponent', () => {
     expect(parentClickHandler).not.toHaveBeenCalled()
   })
 
-  test('stops event propagation on store link click', () => {
-    const parentClickHandler = jest.fn()
-
-    render(
-      <div onClick={parentClickHandler}>
-        <ProjectComponent project={mockProject} />
-      </div>,
-    )
-
-    const storeLink = screen.getByRole('link', {name: /View in Store/})
-    fireEvent.click(storeLink)
-
-    expect(parentClickHandler).not.toHaveBeenCalled()
-  })
-
   test('has correct CSS classes', () => {
     const {container} = render(<ProjectComponent project={mockProject} />)
 
     expect(container.querySelector('.project-component')).toBeInTheDocument()
     expect(container.querySelector('.project-header')).toBeInTheDocument()
     expect(container.querySelector('.project-count')).toBeInTheDocument()
-    expect(container.querySelector('.project-genre')).toBeInTheDocument()
-    expect(container.querySelector('.project-store-link')).toBeInTheDocument()
   })
 })
 

@@ -85,6 +85,7 @@ const GenericProjectsScreen: React.FC<{
           key={item.title || index}
           title={item.title}
           description={item.description}
+          link={item.link_to_project}
         >
           <ProjectComponent project={item} />
         </ContentListItem>

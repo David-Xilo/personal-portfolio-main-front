@@ -15,6 +15,7 @@ describe('ContentListItem', () => {
   const defaultProps = {
     title: 'Test Title',
     description: 'Test description',
+    link: 'https://github.com'
   }
 
   test('renders title and description', () => {
