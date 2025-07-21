@@ -64,7 +64,7 @@ module.exports = (env, argv) => {
         directory: path.resolve(__dirname, 'public'),
       },
       historyApiFallback: true,
-      port: isLocal ? 3000 : 80,
+      port: 3000,
       open: true,
       hot: true,
       compress: true,
