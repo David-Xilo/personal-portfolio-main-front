@@ -7,8 +7,7 @@ interface Project {
   title: string
   description: string
   repositories: RepositoryInfo[]
-  genre?: string
-  link_to_store?: string
+  link_to_project: string
 }
 
 interface ProjectsResponse {

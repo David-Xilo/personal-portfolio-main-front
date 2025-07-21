@@ -59,6 +59,7 @@ export const handlers = [
         {
           title: 'tech project title',
           description: 'project description',
+          link_to_project: 'https://github.com/',
           repositories: [
             {
               title: 'repo 1',
@@ -105,6 +106,7 @@ export const handlers = [
         {
           title: 'tech project title 2',
           description: 'project description 2',
+          link_to_project: 'https://github.com/',
           repositories: [],
         },
       ],
@@ -118,7 +120,7 @@ export const handlers = [
           title: 'game with rating title',
           genre: 'table top',
           description: 'game with rating description',
-          link_to_store: 'https://github.com/othergame',
+          link_to_project: 'https://github.com/',
           repositories: [
             {
               title: 'repo 1',

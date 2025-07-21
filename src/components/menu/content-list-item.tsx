@@ -6,12 +6,14 @@ import './content-list.css'
 interface ContentListItemProps {
   title: string
   description: string
+  link: string
   children?: React.ReactNode
 }
 
 const ContentListItem: React.FC<ContentListItemProps> = ({
   title,
   description,
+  link,
   children,
 }) => {
   const [expanded, setExpanded] = useState(false)
@@ -43,6 +45,15 @@ const ContentListItem: React.FC<ContentListItemProps> = ({
       <div className="content-list-item-content">
         <h1 className="content-list-item-title">{title}</h1>
         <p className="content-list-item-description">{description}</p>
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-store-link flex items-center"
+          onClick={e => e.stopPropagation()}
+        >
+          Link to {title}
+        </a>
       </div>
 
       {expanded && children && (
