@@ -70,11 +70,11 @@ jobs:
           CUSTOM_TAG="${{ github.event.inputs.tag_version }}"
           
           if [[ "$ENVIRONMENT" == "production" ]]; then
-            TAGS="${TAGS}xilo/safehouse-frontend-main:latest,"
+            TAGS="${TAGS}xilo/personal-portfolio-frontend-main:latest,"
           fi
           
           if [[ -n "$CUSTOM_TAG" ]]; then
-            TAGS="${TAGS}xilo/safehouse-frontend-main:${CUSTOM_TAG},"
+            TAGS="${TAGS}xilo/personal-portfolio-frontend-main:${CUSTOM_TAG},"
           fi
           
           TAGS=${TAGS%,}

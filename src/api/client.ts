@@ -108,7 +108,7 @@ class ApiClient {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        'auth_key': 'safehouse-frontend'
+        'auth_key': 'personal-portfolio-frontend'
       })
     });
     if (!res.ok) throw new Error('Refresh failed');

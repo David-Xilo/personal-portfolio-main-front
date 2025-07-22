@@ -1,4 +1,4 @@
-# Safehouse
+# Personal Portfolio
 
 A personal portfolio website showcasing projects across technology, gaming, and finance. Built as an accountability platform to share personal projects and professional work.
 
@@ -37,6 +37,6 @@ npm run build
 - `npm run build` - Build for production
 
 # Related Projects
-- **Backend**: https://github.com/David-Xilo/safehouse-main-back
-- **Infrastructure**: https://github.com/David-Xilo/safehouse-orchestration
-- **Database**: https://github.com/David-Xilo/safehouse-db-schema
+- **Backend**: https://github.com/David-Xilo/personal-portfolio-main-back
+- **Infrastructure**: https://github.com/David-Xilo/personal-portfolio-orchestration
+- **Database**: https://github.com/David-Xilo/personal-portfolio-db-schema
