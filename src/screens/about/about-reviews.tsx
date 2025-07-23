@@ -2,7 +2,7 @@ import React from 'react'
 import './about.css'
 import {InfiniteCarousel} from 'components/carousel/infinite-carousel'
 import {useAboutReviewsGetApi} from '../../api/hooks/about-rest'
-import Loader from '../../components/loader/loader'
+import {Loader} from 'components/loader/loader'
 
 interface AboutReview {
   author: string

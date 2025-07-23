@@ -6,7 +6,7 @@ import {UserGroupIcon} from 'components/icons/user-group-icon'
 import {BuildingLibraryIcon} from 'components/icons/building-library-icon'
 import {PuzzlePieceIcon} from 'components/icons/puzzle-piece-icon'
 import {TrophyIcon} from 'components/icons/trophy-icon'
-import Loader from '../../components/loader/loader'
+import {Loader} from 'components/loader/loader'
 
 interface FavoriteGameVisuals {
   emoji: React.ReactNode

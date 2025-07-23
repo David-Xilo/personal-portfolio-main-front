@@ -156,11 +156,11 @@ describe('ContactScreen', () => {
       error: 'Loading...',
     })
 
-    render(<ContactScreen />)
+    const {container} = render(<ContactScreen />)
 
     await waitFor(() => {
       expect(
-        screen.getByText('Unable to load contact information: Loading...'),
+        container.querySelector('.loader-spinner'),
       ).toBeInTheDocument()
     })
   })

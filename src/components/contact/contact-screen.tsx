@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect, useRef} from 'react'
 import {ContactRest, useContactGetApi} from '../../api/hooks/contact-rest'
-import Loader from '../loader/loader'
+import {Loader} from '../loader/loader'
 import './contact-item.css'
 
 interface ContactItemProps {
