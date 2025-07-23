@@ -18,7 +18,7 @@ interface ContactResponse {
 
 const useContactGetApi = (endpoint: string): ContactResponse => {
   const [data, setData] = useState<ContactResponse>({
-    status: '',
+    status: 'loading',
     message: null,
     error: null,
   })
@@ -28,18 +28,12 @@ const useContactGetApi = (endpoint: string): ContactResponse => {
 
     const fetchData = async () => {
       try {
-        // Simple online check
         if (!navigator.onLine) {
           throw new ApiError('No internet connection', 0, 'OFFLINE')
         }
 
-        // Set loading state
-        setData(prev => ({...prev, status: 'loading'}))
-
-        // Use the secure API client
         const response = await apiClient.get<{message: ContactRest}>(endpoint)
 
-        // Normalize the response
         const normalizedData: ContactResponse = {
           status: 'success',
           message: response.message || null,
@@ -68,7 +62,6 @@ const useContactGetApi = (endpoint: string): ContactResponse => {
       setData(errorData)
     })
 
-    // Cleanup function - abort any ongoing requests
     return () => {
       controller.abort()
     }

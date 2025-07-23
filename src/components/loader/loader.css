@@ -1,0 +1,12 @@
+.loader-container {
+  @apply flex justify-center items-center p-5;
+}
+
+.loader-spinner {
+  @apply w-8 h-8 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin;
+}
+
+/* Dark mode support */
+.dark .loader-spinner {
+  @apply border-gray-600 border-t-blue-400;
+}
