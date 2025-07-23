@@ -16,7 +16,7 @@ interface AboutReviewsResponse {
 
 const useAboutReviewsGetApi = (endpoint: string): AboutReviewsResponse => {
   const [data, setData] = useState<AboutReviewsResponse>({
-    status: '',
+    status: 'loading',
     message: [],
     error: null,
   })
@@ -26,20 +26,14 @@ const useAboutReviewsGetApi = (endpoint: string): AboutReviewsResponse => {
 
     const fetchData = async () => {
       try {
-        // Simple online check (since we removed isOnline() method)
         if (!navigator.onLine) {
           throw new ApiError('No internet connection', 0, 'OFFLINE')
         }
 
-        // Set loading state
-        setData(prev => ({...prev, status: 'loading'}))
-
-        // Use the simplified API client
         const response = await apiClient.get<{message: AboutReviews[]}>(
           endpoint,
         )
 
-        // Normalize the response
         const normalizedData: AboutReviewsResponse = {
           status: 'success',
           message: Array.isArray(response.message) ? response.message : [],
@@ -68,7 +62,6 @@ const useAboutReviewsGetApi = (endpoint: string): AboutReviewsResponse => {
       setData(errorData)
     })
 
-    // Cleanup function - abort any ongoing requests
     return () => {
       controller.abort()
     }

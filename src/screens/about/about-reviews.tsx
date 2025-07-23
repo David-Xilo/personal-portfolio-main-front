@@ -2,6 +2,7 @@ import React from 'react'
 import './about.css'
 import {InfiniteCarousel} from 'components/carousel/infinite-carousel'
 import {useAboutReviewsGetApi} from '../../api/hooks/about-rest'
+import Loader from '../../components/loader/loader'
 
 interface AboutReview {
   author: string
@@ -55,7 +56,15 @@ const AboutReviewCarousel: React.FC = () => {
   const {status, message, error} = useAboutReviewsGetApi(
     '/about/reviews/carousel',
   )
-  if (status !== 'success') {
+  if (status === 'loading' || status === '') {
+    return (
+      <div className="about-reviews-container">
+        <Loader />
+      </div>
+    )
+  }
+
+  if (status === 'error') {
     return (
       <div className="error-message-container">
         <p className="error-message-text">Unable to load reviews: {error}</p>

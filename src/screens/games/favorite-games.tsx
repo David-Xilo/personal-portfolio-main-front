@@ -6,6 +6,7 @@ import {UserGroupIcon} from 'components/icons/user-group-icon'
 import {BuildingLibraryIcon} from 'components/icons/building-library-icon'
 import {PuzzlePieceIcon} from 'components/icons/puzzle-piece-icon'
 import {TrophyIcon} from 'components/icons/trophy-icon'
+import Loader from '../../components/loader/loader'
 
 interface FavoriteGameVisuals {
   emoji: React.ReactNode
@@ -72,8 +73,23 @@ const FavoriteGamesCarousel: React.FC = () => {
   const {status, message, error} = useGamesPlayedGetApi(
     '/games/played/carousel',
   )
-  if (status !== 'success') {
-    return <div>Found error {error}</div>
+  
+  if (status === 'loading' || status === '') {
+    return (
+      <div className="favorite-games-container">
+        <Loader />
+      </div>
+    )
+  }
+
+  if (status === 'error') {
+    return (
+      <div className="favorite-games-container">
+        <div className="error-message-container">
+          <p className="error-message-text">Unable to load games: {error}</p>
+        </div>
+      </div>
+    )
   }
 
   return (

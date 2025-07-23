@@ -2,6 +2,7 @@ import React from 'react'
 import {RepositoryCarousel} from './repository'
 import {ContentListItem} from 'components/menu/content-list-item'
 import {Project, useProjectsGetApi} from '../../api/hooks/projects-rest'
+import Loader from '../loader/loader'
 import './project.css'
 
 const ProjectComponent: React.FC<{project: Project}> = ({project}) => {
@@ -58,7 +59,15 @@ const GenericProjectsScreen: React.FC<{
 }> = ({projectsPath, projectName = 'projects'}) => {
   const {status, message, error} = useProjectsGetApi(projectsPath)
 
-  if (status !== 'success') {
+  if (status === 'loading' || status === '') {
+    return (
+      <div className="flex flex-col items-center justify-center p-8">
+        <Loader />
+      </div>
+    )
+  }
+
+  if (status === 'error') {
     return (
       <div className="flex flex-col items-center justify-center p-8 text-center">
         <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">

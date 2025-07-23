@@ -17,7 +17,7 @@ interface GamesPlayedResponse {
 
 const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
   const [data, setData] = useState<GamesPlayedResponse>({
-    status: '',
+    status: 'loading',
     message: [],
     error: null,
   })
@@ -27,18 +27,13 @@ const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
 
     const fetchData = async () => {
       try {
-        // Simple online check
+
         if (!navigator.onLine) {
           throw new ApiError('No internet connection', 0, 'OFFLINE')
         }
 
-        // Set loading state
-        setData(prev => ({...prev, status: 'loading'}))
-
-        // Use the secure API client
         const response = await apiClient.get<{message: GamesPlayed[]}>(endpoint)
 
-        // Normalize the response
         const normalizedData: GamesPlayedResponse = {
           status: 'success',
           message: Array.isArray(response.message) ? response.message : [],
@@ -67,7 +62,6 @@ const useGamesPlayedGetApi = (endpoint: string): GamesPlayedResponse => {
       setData(errorData)
     })
 
-    // Cleanup function - abort any ongoing requests
     return () => {
       controller.abort()
     }

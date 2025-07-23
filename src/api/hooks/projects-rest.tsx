@@ -18,7 +18,7 @@ interface ProjectsResponse {
 
 const useProjectsGetApi = (path: string): ProjectsResponse => {
   const [data, setData] = useState<ProjectsResponse>({
-    status: '',
+    status: 'loading',
     message: [],
     error: null,
   })
@@ -28,18 +28,13 @@ const useProjectsGetApi = (path: string): ProjectsResponse => {
 
     const fetchData = async () => {
       try {
-        // Simple online check
+
         if (!navigator.onLine) {
           throw new ApiError('No internet connection', 0, 'OFFLINE')
         }
 
-        // Set loading state
-        setData(prev => ({...prev, status: 'loading'}))
-
-        // Use the secure API client
         const response = await apiClient.get<{message: Project[]}>(path)
 
-        // Normalize the response
         const normalizedData: ProjectsResponse = {
           status: 'success',
           message: Array.isArray(response.message) ? response.message : [],
@@ -68,7 +63,6 @@ const useProjectsGetApi = (path: string): ProjectsResponse => {
       setData(errorData)
     })
 
-    // Cleanup function - abort any ongoing requests
     return () => {
       controller.abort()
     }

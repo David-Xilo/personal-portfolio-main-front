@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect, useRef} from 'react'
 import {ContactRest, useContactGetApi} from '../../api/hooks/contact-rest'
+import Loader from '../loader/loader'
 import './contact-item.css'
 
 interface ContactItemProps {
@@ -166,7 +167,15 @@ const ContactScreen: React.FC<ContactScreenProps> = ({
   const contactPath = '/about/contact'
   const {status, message, error} = useContactGetApi(contactPath)
 
-  if (status !== 'success') {
+  if (status === 'loading' || status === '') {
+    return (
+      <div className={`contact-screen-container ${className}`}>
+        <Loader />
+      </div>
+    )
+  }
+
+  if (status === 'error') {
     return (
       <div className={`contact-screen-container ${className}`}>
         <div className="error-message-container" style={{maxWidth}}>
